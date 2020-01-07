@@ -1,15 +1,16 @@
 import * as React from 'react';
-import { View, Dimensions, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Image, StyleSheet } from "react-native";
 import SwipeRender from "react-native-swipe-render";
 
-const entireScreenWidth = Dimensions.get('window').width;
+import { moderateScale, scale, verticalScale } from '../scale';
+import colors from '../assets/colors';
 
 class Swiper extends React.Component {
     render() {
         return (
             <View style={styles.swiperStyle}>
                 <SwipeRender
-                    index={1} // default 0
+                    index={0} // default 0
                     loop={true} // default false
                     loadMinimal={true} // default false
                     loadMinimalSize={2}
@@ -57,23 +58,23 @@ const styles = StyleSheet.create({
         width: "100%"
     },
     dot: {
-        height: 6.06,
-        width: 32.44,
-        backgroundColor: '#C4C2C2',
-        paddingRight: 11.6,
-        borderRadius: 5,
+        height: verticalScale(6.06),
+        width: moderateScale(30),
+        backgroundColor: colors.inactivegreybutton,
+        paddingRight: scale(11),
+        borderRadius: scale(5),
     },
     activeDot: {
-        height: 6.06,
-        width: 32.44,
-        backgroundColor: '#875099',
-        paddingRight: 11.6,
-        borderRadius: 5,
+        height: verticalScale(6.06),
+        width: moderateScale(30),
+        backgroundColor: colors.bgblue,
+        paddingRight: scale(11),
+        borderRadius: scale(5),
     },
     paginationContainer: {
         position: "absolute",
-        bottom: -20.72,
-        marginLeft: -40,
+        bottom: scale(-20.72),
+        marginLeft: scale(-50),
         flexDirection: "row",
         flex: 2,
         justifyContent: "center",
