@@ -66,6 +66,20 @@ export default class App extends React.Component {
 
                 {/* Product Details & Description */}
                 <View style={styles.productContainer}>
+                    <View style={{ flexDirection: 'row', marginHorizontal: scale(5), marginVertical: verticalScale(5) }}>
+                        <Text style={styles.catogeryContainerTitle}>BRANDING DESIGN</Text>
+                        <View style={{ marginHorizontal: moderateScale(68), flexDirection: 'row' }}>
+                            <Image source={require('./assets/star.png')}
+                                style={{
+                                    width: moderateScale(14), height: verticalScale(14),
+                                    marginTop: verticalScale(7)
+                                }} />
+                            <Text style={styles.ratingText}> 4.3</Text>
+                            <Text style={styles.reviewsText}> | 2350 Reviews</Text>
+
+                        </View>
+                    </View>
+
 
                     <View style={styles.productHeadingContainer}>
                         <Text style={styles.productHeadingText}>{products[0].name}</Text>
@@ -142,22 +156,43 @@ const styles = StyleSheet.create({
     },
     productContainer: {
         flex: 1,
-        marginTop: scale(40),
+        marginTop: scale(30),
         marginHorizontal: moderateScale(7),
         flexDirection: 'column',
+    },
+    buttonContainer: {
+        width: moderateScale(53),
+        height: verticalScale(18),
+        borderRadius: 0,
+        marginTop: scale(5),
+        backgroundColor: colors.bgyellow,
+        marginRight: moderateScale(-2),
     },
     productHeadingContainer: {
         flex: 1,
         flexDirection: 'row',
+        marginBottom: verticalScale(15),
     },
     productHeadingText: {
-        fontSize: scale(19),
+        fontSize: scale(18),
         fontWeight: "bold",
         color: colors.bgyellow,
         paddingHorizontal: moderateScale(8),
     },
+    ratingText: {
+        fontSize: scale(14),
+        fontWeight: "bold",
+        color: colors.bgyellow,
+        marginTop: verticalScale(5),
+    },
+    reviewsText: {
+        fontSize: scale(10),
+        fontWeight: "200",
+        color: colors.blacktext,
+        marginTop: verticalScale(8),
+    },
     ratebuttonContainer: {
-        width: moderateScale(53),
+        width: moderateScale(55),
         height: verticalScale(18),
         borderRadius: 0,
         marginTop: scale(5),
@@ -195,6 +230,7 @@ const styles = StyleSheet.create({
     productdescription: {
         flex: 2,
         paddingHorizontal: moderateScale(10),
+        marginTop: verticalScale(6)
     },
     descriptionText: {
         fontSize: scale(9),
@@ -221,5 +257,6 @@ const styles = StyleSheet.create({
         width: moderateScale(190),
         borderRadius: scale(10),
         marginRight: scale(10),
+        marginTop: verticalScale(10)
     },
 });
