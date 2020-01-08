@@ -5,7 +5,8 @@ const colors = {
     bggreen: '#7DA805',
     inactivegreybutton: '#C4C2C2',
     greytext: '#5D5D5D',
-    whitetext: '#fff'
+    whitetext: '#fff',
+    blacktext: '#000'
 }
 
 export default colors;

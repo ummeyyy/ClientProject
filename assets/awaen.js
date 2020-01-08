@@ -3,9 +3,9 @@ import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, ScrollView } fr
 
 import { AntDesign, FontAwesome } from '@expo/vector-icons';
 
-import Swiper from './components/Swiper';
-import { CButton } from './components/CButton';
-import FlatListComponent from './components/FlatListComponent';
+import Swiper from '../components/Swiper';
+import { CButton } from '../components/CButton';
+import FlatListComponent from '../components/FlatListComponent';
 
 const products = [
     { name: '4F FLYERS', code: "D01", price: 100, sale: 20, id: '1', description1line: "(ONE DESCRIPTION LINE - DYNAMIC)", image: require('./assets/Asset 1.png') },
