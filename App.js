@@ -11,6 +11,9 @@ import { CButton } from './components/CButton';
 import FlatListComponent from './components/FlatListComponent';
 import CategoryButton from './components/CategoryButton';
 import { Colors } from "react-native/Libraries/NewAppScreen";
+import PriceTab from "./components/PriceTabs";
+
+
 
 const products = [
     { name: '4F FLYERS DESIGN', code: "D01", price: 100, sale: 20, id: '1', description1line: "(ONE DESCRIPTION LINE - DYNAMIC)", image: require('./assets/product1.png') },
@@ -23,95 +26,116 @@ const products = [
 export default class App extends React.Component {
     render() {
         return (
-            <View style={styles.container}>
+            <SafeAreaView>
+                <View style={styles.container}>
+                    {/* CATEGORY SECTION */}
 
-                {/* CATEGORY SECTION */}
-
-                {/* <ScrollView
+                    {/* <ScrollView
                     directionalLockEnabled={true}
                     showsHorizontalScrollIndicator={false}
                     horizontal={true}
                     }}
                 > */}
 
-                <View style={styles.catogeryContainer}>
+                    <View style={styles.catogeryContainer}>
 
-                    <Text style={styles.catogeryContainerTitle}>CATEGORIES</Text>
+                        <Text style={styles.catogeryContainerTitle}>CATEGORIES</Text>
 
-                    <CategoryButton>
-                        <Text style={styles.catogeryContainerText}>BRANDING</Text>
-                    </CategoryButton>
-
-                    <CategoryButton style={{ backgroundColor: colors.inactivegreybutton }}>
-                        <Text style={styles.catogeryContainerText}>WEBSITE</Text>
-                    </CategoryButton>
-
-                    <CategoryButton style={{ backgroundColor: colors.inactivegreybutton }}>
-                        <Text style={styles.catogeryContainerText}>ANIMATION</Text>
-                    </CategoryButton>
-
-                    <CategoryButton style={{ backgroundColor: colors.inactivegreybutton }}>
-                        <Text style={styles.catogeryContainerText}>ILLUSTRATION</Text>
-                    </CategoryButton>
-                </View>
-                {/* </ScrollView> */}
-
-                {/* SWIPER SECTION */}
-                <View>
-                    <Swiper />
-                    <TouchableOpacity style={styles.favwrapper}>
-                        <FontAwesome name='heart' color={colors.bgred} size="30" />
-                    </TouchableOpacity>
-                </View>
-
-                {/* Product Details & Description */}
-                <View style={styles.productContainer}>
-                    <View style={{ flexDirection: 'row', marginHorizontal: scale(5), marginVertical: verticalScale(5) }}>
-                        <Text style={styles.catogeryContainerTitle}>BRANDING DESIGN</Text>
-                        <View style={{ marginHorizontal: moderateScale(68), flexDirection: 'row' }}>
-                            <Image source={require('./assets/star.png')}
-                                style={{
-                                    width: moderateScale(14), height: verticalScale(14),
-                                    marginTop: verticalScale(7)
-                                }} />
-                            <Text style={styles.ratingText}> 4.3</Text>
-                            <Text style={styles.reviewsText}> | 2350 Reviews</Text>
-
-                        </View>
-                    </View>
-
-
-                    <View style={styles.productHeadingContainer}>
-                        <Text style={styles.productHeadingText}>{products[0].name}</Text>
-                        <CategoryButton style={styles.ratebuttonContainer}>
-                            <Text style={styles.ratebuttontext}>RATE US</Text>
+                        <CategoryButton>
+                            <Text style={styles.catogeryContainerText}>BRANDING</Text>
                         </CategoryButton>
-                        <CategoryButton style={styles.reviewbuttonContainer}>
-                            <Text style={styles.reviewbuttontext}>WRITE REVIEW</Text>
+
+                        <CategoryButton style={{ backgroundColor: colors.inactivegreybutton }}>
+                            <Text style={styles.catogeryContainerText}>WEBSITE</Text>
+                        </CategoryButton>
+
+                        <CategoryButton style={{ backgroundColor: colors.inactivegreybutton }}>
+                            <Text style={styles.catogeryContainerText}>ANIMATION</Text>
+                        </CategoryButton>
+
+                        <CategoryButton style={{ backgroundColor: colors.inactivegreybutton }}>
+                            <Text style={styles.catogeryContainerText}>ILLUSTRATION</Text>
                         </CategoryButton>
                     </View>
+                    {/* </ScrollView> */}
 
-                    <View style={styles.imageandDescriptionContainer}>
-                        <View style={styles.productdescription}>
-                            <Text style={styles.descriptionText}>Short Description will come here in a very stylish and sleek way.
-                                It can be in bullet points, BOLD, ITALIC, UNDERLINE etc</Text>
-                            <Text style={styles.descriptionText}>Description will come here in a very stylish
-                            and sleek way.Description will come here in a very stylish
-                            and sleek way..</Text>
-                            <Text style={styles.descriptionText}>Description can be in bullet points, BOLD, ITALIC, UNDERLINE etc</Text>
-                            <View style={{ flexDirection: "row" }}>
-                                <Text style={styles.codeText}>CODE: {products[0].code}</Text>
-                                <Text style={styles.shareText}>SHARE  </Text>
-                                <FontAwesome5 name='share-square' color={colors.greytext} size="15"
-                                    style={{ marginTop: scale(6) }} />
+                    {/* SWIPER SECTION */}
+                    <View>
+                        <Swiper />
+                        <TouchableOpacity style={styles.favwrapper}>
+                            <FontAwesome name='heart' color={colors.bgred} size="30" />
+                        </TouchableOpacity>
+                    </View>
+
+                    {/* Product Details & Description */}
+                    <View style={styles.productContainer}>
+
+                        <View style={{ flexDirection: 'row', marginHorizontal: scale(5), marginVertical: verticalScale(5) }}>
+                            <Text style={styles.catogeryContainerTitle}>BRANDING DESIGN</Text>
+                            <View style={{ marginHorizontal: moderateScale(68), flexDirection: 'row' }}>
+                                <Image source={require('./assets/star.png')}
+                                    style={{
+                                        width: moderateScale(14), height: verticalScale(14),
+                                        marginTop: verticalScale(7)
+                                    }} />
+                                <Text style={styles.ratingText}> 4.3</Text>
+                                <Text style={styles.reviewsText}> | 2350 Reviews</Text>
+
                             </View>
                         </View>
-                        <Image source={products[0].image}
-                            style={styles.productimage}></Image>
-                    </View>
-                </View>
-            </View >
 
+                        <View style={styles.productHeadingContainer}>
+                            <Text style={styles.productHeadingText}>{products[0].name}</Text>
+                            <CategoryButton style={styles.ratebuttonContainer}>
+                                <Text style={styles.ratebuttontext}>RATE US</Text>
+                            </CategoryButton>
+                            <CategoryButton style={styles.reviewbuttonContainer}>
+                                <Text style={styles.reviewbuttontext}>WRITE REVIEW</Text>
+                            </CategoryButton>
+                        </View>
+
+                        <View style={styles.imageandDescriptionContainer}>
+                            <View style={styles.productdescription}>
+                                <Text style={styles.descriptionText}>Short Description will come here in a very stylish and sleek way.
+                                It can be in bullet points, BOLD, ITALIC, UNDERLINE etc</Text>
+                                <Text style={styles.descriptionText}>Description will come here in a very stylish
+                                and sleek way.Description will come here in a very stylish
+                            and sleek way..</Text>
+                                <Text style={styles.descriptionText}>Description can be in bullet points, BOLD, ITALIC, UNDERLINE etc</Text>
+                                <View style={{ flexDirection: "row" }}>
+                                    <Text style={styles.codeText}>CODE: {products[0].code}</Text>
+                                    <Text style={styles.shareText}>SHARE  </Text>
+                                    <FontAwesome5 name='share-square' color={colors.greytext} size="15"
+                                        style={{ marginTop: scale(6) }} />
+                                </View>
+                            </View>
+                            <Image source={products[0].image}
+                                style={styles.productimage}></Image>
+                        </View>
+                    </View>
+                    {/* Price Tab */}
+                    <View style={styles.pricetabWrapper}>
+                        <PriceTab />
+                        {/* <Text style={styles.originalpricetabtext}>AED{() => this.originalPrice(products[0].price)}</Text>
+                            <Text style={styles.pricetabtext}>AED{() => this.salePrice(this.state.count, products[0].price)}</Text>
+                            <TouchableOpacity
+                                onPress={this.handleIncerement}
+                                style={styles.plusiconwrapper}>
+                                <FontAwesome name='plus' color='#F9CF2F' size="23" />
+                            </TouchableOpacity>
+                            <View style={styles.countwrapper}>
+                                <Text style={styles.counttext}>{this.state.count}</Text>
+                            </View>
+                            <TouchableOpacity
+                                onPress={this.handleDecrement}
+                                style={styles.minusiconwrapper}>
+                                <FontAwesome name='minus' color='#F9CF2F' size="23" />
+                            </TouchableOpacity>
+                            <Text style={styles.onelinetext}>(One line) {products[0].description1line}</Text> */}
+                    </View>
+
+                </View >
+            </SafeAreaView>
         );
     }
 }
