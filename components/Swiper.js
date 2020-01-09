@@ -61,8 +61,7 @@ class Swiper extends React.Component {
                   source={{ uri: item.uri }}
                   style={{
                     height: verticalScale(250),
-                    width: "100%",
-                    backgroundColor: "green"
+                    width: "100%"
                   }}
                 />
               </View>
@@ -100,12 +99,9 @@ const styles = StyleSheet.create({
     bottom: scale(-20.72),
     marginRight: moderateScale(55),
     marginLeft: moderateScale(10),
-
     flexDirection: "row",
     flex: 1,
     justifyContent: "center",
-    alignItems: "center",
-
-    backgroundColor: "green"
+    alignItems: "center"
   }
 });

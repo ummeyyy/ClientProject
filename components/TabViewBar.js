@@ -1,5 +1,12 @@
 import * as React from "react";
-import { View, StyleSheet, Dimensions, StatusBar, Text } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Dimensions,
+  StatusBar,
+  Text,
+  Animated
+} from "react-native";
 import { TabView, SceneMap, TabBar } from "react-native-tab-view";
 
 import { moderateScale, scale, verticalScale } from "../scale";
@@ -68,26 +75,12 @@ const reviews = () => (
 
 const initialLayout = { width: Dimensions.get("window").width };
 
-//FOR CUSTOMIZED TABBAR
-const renderTabBar = props => (
-  <TabBar
-    {...props}
-    indicatorStyle={{ backgroundColor: colors.bgyellow }}
-    labelStyle={{ fontWeight: "800", fontSize: scale(12) }}
-    activeColor={colors.whitetext}
-    inactiveColor={colors.greytext}
-    bounces={false}
-    tabStyle={{
-      backgroundColor: colors.whitetext
-    }}
-    style={{
-      backgroundColor: colors.bgyellow,
-      borderColor: colors.blacktext,
-      borderBottomWidth: scale(1.25)
-      //   width:
-    }}
-  />
-);
+//COMPLEX
+const activeBg = "#F9CF2F";
+const normalBg = "#fff";
+const activeText = "#fff";
+const normalText = "#5D5D5D";
+const headerBg = "#282f3f";
 
 export default class TabViewBar extends React.Component {
   state = {
@@ -99,10 +92,6 @@ export default class TabViewBar extends React.Component {
     ]
   };
 
-  // _updateRoute(newIdx) {
-  //     this.setState({index: newIdx})
-  //     }
-
   render() {
     return (
       <View style={styles.container}>
@@ -113,10 +102,61 @@ export default class TabViewBar extends React.Component {
             details: details,
             reviews: reviews
           })}
-          scrollEnabled={false}
           onIndexChange={index => this.setState({ index })}
-          initialLayout={{ width: Dimensions.get("window").width }}
-          renderTabBar={renderTabBar}
+          initialLayout={{
+            width: Dimensions.get("window").width - moderateScale(45)
+          }}
+          renderTabBar={props => (
+            <TabBar
+              {...props}
+              indicatorStyle={{
+                backgroundColor: colors.bgyellow,
+                height: verticalScale(50),
+                width: moderateScale(105)
+              }}
+              activeColor={colors.whitetext}
+              inactiveColor={colors.greytext}
+              bounces={false}
+              tabStyle={{
+                backgroundColor: colors.whitetext,
+                height: verticalScale(50)
+              }}
+              style={{
+                backgroundColor: colors.bgyellow,
+                borderColor: colors.blacktext,
+                borderBottomWidth: scale(1.25)
+              }}
+              renderLabel={({ route, focused, color }) => (
+                <View>
+                  <Text
+                    style={
+                      route.key ===
+                      props.navigationState.routes[this.state.index].key
+                        ? {
+                            color: "#fff",
+                            backgroundColor: activeBg,
+                            height: verticalScale(50),
+                            width: moderateScale(115),
+                            fontWeight: "800",
+                            fontSize: scale(12),
+                            paddingVertical: verticalScale(15),
+                            paddingHorizontal: moderateScale(20)
+                          }
+                        : {
+                            color: "#5D5D5D",
+                            fontWeight: "800",
+                            fontSize: scale(12)
+                          }
+                    }
+                  >
+                    {route.title}
+                  </Text>
+                </View>
+              )}
+              getLabelText={({ route: { title } }) => title}
+            />
+          )}
+          onIndexChange={index => this.setState({ index })}
         />
       </View>
     );

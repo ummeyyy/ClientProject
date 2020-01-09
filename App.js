@@ -66,40 +66,40 @@ export default class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      count: 0,
+      count: 1,
       salePrice: (products[0].price * products[0].sale) / 100,
-      totalPrice: products[0].price
+      price: products[0].price,
+      actualprice: 0,
+      totalPrice:
+        products[0].price - (products[0].price * products[0].sale) / 100
     };
   }
 
   handleIncerement = () => {
+    // console.log("asaasasassas");
+    // console.log(this.state.count);
+
     this.setState({
-      count: this.state.count + 1
+      count: this.state.count + 1,
+      actualprice: this.state.price - this.state.salePrice,
+      totalPrice:
+        (this.state.count + 1) * (this.state.price - this.state.salePrice)
     });
   };
 
   handleDecrement = () => {
-    if (this.state.count < 1) {
-      this.setState({
-        count: 0
-      });
+    // console.log("asaasasassas");
+    // console.log(this.state.count);
+    if (this.state.count <= 1) {
+      return;
     } else {
       this.setState({
-        count: this.state.count - 1
+        count: this.state.count - 1,
+        actualprice: this.state.price - this.state.salePrice,
+        totalPrice:
+          (this.state.count - 1) * (this.state.price - this.state.salePrice)
       });
     }
-  };
-
-  handlesaleprice = (price, sale) => {
-    this.setState({
-      salePrice: this.state.salePrice * ((price * sale) / 100)
-    });
-  };
-
-  handletotalprice = (count, orignalprice) => {
-    this.setState({
-      totalPrice: this.state.totalPrice + count * price
-    });
   };
 
   render() {
@@ -164,14 +164,12 @@ export default class App extends React.Component {
                 style={{
                   flexDirection: "row",
                   marginHorizontal: scale(5),
-                  marginVertical: verticalScale(5),
-                  backgroundColor: colors.bggreen
+                  marginVertical: verticalScale(5)
                 }}
               >
                 <View
                   style={{
                     flex: 2,
-                    backgroundColor: "red",
                     alignItems: "flex-start",
                     justifyContent: "center"
                   }}
@@ -185,7 +183,6 @@ export default class App extends React.Component {
                   style={{
                     flex: 1.5,
                     flexDirection: "row",
-                    backgroundColor: colors.bgred,
                     justifyContent: "center",
                     alignItems: "center"
                   }}
@@ -207,8 +204,7 @@ export default class App extends React.Component {
                 <View
                   style={{
                     flex: 2,
-                    flexDirection: "row",
-                    backgroundColor: "red"
+                    flexDirection: "row"
                   }}
                 >
                   <Text style={styles.productHeadingText}>
@@ -219,7 +215,6 @@ export default class App extends React.Component {
                 <View
                   style={{
                     flexDirection: "row",
-                    backgroundColor: colors.bgred,
                     flex: 1.5,
                     justifyContent: "center"
                   }}
@@ -305,10 +300,10 @@ export default class App extends React.Component {
               </View>
 
               <Text style={styles.pricetabtext}>
-                AED {this.state.totalPrice - this.state.salePrice}
+                AED {this.state.price - this.state.salePrice}
               </Text>
               <TouchableOpacity
-                onPress={this.handleIncerement}
+                onPress={() => this.handleIncerement()}
                 style={styles.plusiconwrapper}
               >
                 <FontAwesome
@@ -321,7 +316,7 @@ export default class App extends React.Component {
                 <Text style={styles.counttext}>{this.state.count}</Text>
               </View>
               <TouchableOpacity
-                onPress={this.handleDecrement}
+                onPress={() => this.handleDecrement()}
                 style={styles.minusiconwrapper}
               >
                 <FontAwesome
@@ -422,11 +417,10 @@ const styles = StyleSheet.create({
     borderRadius: moderateScale(25)
   },
   productContainer: {
-    height: verticalScale(250),
+    paddingBottom: scale(7),
     marginTop: scale(30),
     marginHorizontal: moderateScale(7),
-    flexDirection: "column",
-    backgroundColor: colors.bgblue
+    flexDirection: "column"
   },
   buttonContainer: {
     width: moderateScale(53),
@@ -438,13 +432,12 @@ const styles = StyleSheet.create({
   },
   productHeadingContainer: {
     flexDirection: "row",
-    backgroundColor: colors.greytext,
     height: verticalScale(30),
     marginHorizontal: scale(5),
     marginVertical: verticalScale(5)
   },
   productHeadingText: {
-    fontSize: scale(18),
+    fontSize: scale(17.5),
     fontWeight: "bold",
     color: colors.bgyellow,
     paddingHorizontal: moderateScale(8)
@@ -460,7 +453,6 @@ const styles = StyleSheet.create({
     fontWeight: "200",
     color: colors.blacktext,
     marginTop: moderateScale(8)
-    // marginTop: verticalScale(8)
   },
   ratebuttonContainer: {
     width: moderateScale(55),
@@ -523,8 +515,8 @@ const styles = StyleSheet.create({
   },
   productimage: {
     flex: 2,
-    height: verticalScale(190),
-    width: moderateScale(190),
+    height: moderateScale(180),
+    width: moderateScale(175),
     borderRadius: scale(10),
     marginRight: scale(10),
     marginTop: verticalScale(10)
@@ -532,7 +524,7 @@ const styles = StyleSheet.create({
   pricetabWrapper: {
     height: verticalScale(90),
     backgroundColor: colors.bgyellow,
-    marginTop: verticalScale(40),
+    marginTop: verticalScale(15),
     paddingHorizontal: moderateScale(20)
   },
   totalpricetabWrapper: {
