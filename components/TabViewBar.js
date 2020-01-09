@@ -1,142 +1,149 @@
-import React from "react";
-import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from "react-native";
+import * as React from "react";
+import { View, StyleSheet, Dimensions, StatusBar, Text } from "react-native";
+import { TabView, SceneMap, TabBar } from "react-native-tab-view";
 
-import { TabView, SceneMap } from 'react-native-tab-view';
-import Animated from 'react-native-reanimated';
-import { Constants } from 'expo';
+import { moderateScale, scale, verticalScale } from "../scale";
+import colors from "../assets/colors";
 
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+const overview = () => (
+  <View
+    style={[
+      styles.scene,
+      { backgroundColor: "transparrent", padding: scale(10) }
+    ]}
+  >
+    <Text style={styles.detailsText}>
+      The Application is amazing, its easy to navigate and with such a
+      comfortable UI, its easy to get comfortable to.
+    </Text>
+    <Text style={[styles.detailsTextLight, { paddingTop: scale(12) }]}>
+      The overview will comer here in a very stylish and sleek way. Overview
+      will comer here in a very stylish and sleek way. Overview will comer here
+      in a very stylish and sleek way. Overview will comer here in a very
+      stylish and sleek way. Overview will comer here in a very stylish and
+      sleek way.
+    </Text>
+  </View>
+);
+const details = () => (
+  <View
+    style={[
+      styles.scene,
+      { backgroundColor: "transparrent", padding: scale(10) }
+    ]}
+  >
+    <Text style={styles.detailsText}>
+      Normal Description will comer here in a very stylish and sleek way. It can
+      be in bullet points, BOLD, ITALIC, UNDERLINE.
+    </Text>
+    <Text style={[styles.detailsTextLight, { paddingTop: scale(12) }]}>
+      LIGHTER FONT - Description will comer here in a very stylish and sleek
+      way. Description will comer here in a very stylish and sleek way.
+      Description will comer here in a very stylish and sleek way. Description
+      will comer here in a very stylish and sleek way. Description will comer
+      here in a very stylish and sleek way.
+    </Text>
+  </View>
+);
+const reviews = () => (
+  <View
+    style={[
+      styles.scene,
+      { backgroundColor: "transparrent", padding: scale(10) }
+    ]}
+  >
+    <Text style={styles.reviewText}>
+      "The Application is amazing, its easy to navigate and with such a
+      comfortable UI, its easy to get comfortable to."
+    </Text>
+    <Text style={[styles.reviewText, { padding: scale(4) }]}> - Username</Text>
 
-const FirstRoute = () => (
-    <View style={[styles.scene, { backgroundColor: '#ff4081' }]} />
+    <Text style={[styles.reviewText, { paddingTop: scale(12) }]}>
+      "The Application is amazing, its easy to navigate and with such a
+      comfortable UI, its easy to get comfortable to."
+    </Text>
+    <Text style={[styles.reviewText, { padding: scale(4) }]}> - Username</Text>
+  </View>
 );
 
-const SecondRoute = () => (
-    <View style={[styles.scene, { backgroundColor: '#673ab7' }]} />
+const initialLayout = { width: Dimensions.get("window").width };
+
+//FOR CUSTOMIZED TABBAR
+const renderTabBar = props => (
+  <TabBar
+    {...props}
+    indicatorStyle={{ backgroundColor: colors.bgyellow }}
+    labelStyle={{ fontWeight: "800", fontSize: scale(12) }}
+    activeColor={colors.whitetext}
+    inactiveColor={colors.greytext}
+    bounces={false}
+    tabStyle={{
+      backgroundColor: colors.whitetext
+    }}
+    style={{
+      backgroundColor: colors.bgyellow,
+      borderColor: colors.blacktext,
+      borderBottomWidth: scale(1.25)
+      //   width:
+    }}
+  />
 );
 
-const ThirdRoute = () => (
-    <View style={[styles.scene, { backgroundColor: 'black' }]} />
-);
+export default class TabViewBar extends React.Component {
+  state = {
+    index: 1,
+    routes: [
+      { key: "overview", title: "OVERVIEW" },
+      { key: "details", title: "DETAILS" },
+      { key: "reviews", title: "REVIEWS" }
+    ]
+  };
 
-class TabViewBar extends React.Component {
-    // constructor() {
-    //     super();
-    //     this.state = {
-    //         originalPrice: 0,
-    //         salePrice: 0,
-    //         totalPrice: 0,
-    //     }
-    // }
-    state = {
-        index: 1,
-        routes: [
-            { key: 'overview', title: 'OVERVIEW' },
-            { key: 'details', title: 'DETAILS' },
-            { key: 'reviews', title: 'REVIEWS' },
+  // _updateRoute(newIdx) {
+  //     this.setState({index: newIdx})
+  //     }
 
-        ],
-    };
-
-    _handleIndexChange = index => this.setState({ index });
-
-    _renderTabBar = props => {
-        const inputRange = props.navigationState.routes.map((x, i) => i);
-        return (
-            <View style={styles.tabBar}>
-                {props.navigationState.routes.map((route, i) => {
-                    const color = Animated.color(
-                        Animated.round(
-                            Animated.interpolate(props.position, {
-                                inputRange,
-                                outputRange: inputRange.map(inputIndex =>
-                                    inputIndex === i ? 255 : 0
-                                ),
-                            })
-                        ),
-                        0,
-                        0
-                    );
-
-                    return (
-                        <TouchableOpacity
-                            style={styles.tabItem}
-                            onPress={() => this.setState({ index: i })}>
-                            <Animated.Text style={{ color }}>{route.title}</Animated.Text>
-                        </TouchableOpacity>
-                    );
-                })}
-            </View>
-        );
-    };
-
-    _renderScene = SceneMap({
-        overview: FirstRoute,
-        details: SecondRoute,
-        reviews: ThirdRoute,
-    });
-
-    render() {
-        return (
-            <TabView
-                navigationState={this.state}
-                renderScene={this._renderScene}
-                renderTabBar={this._renderTabBar}
-                onIndexChange={this._handleIndexChange}
-            />
-        );
-    }
+  render() {
+    return (
+      <View style={styles.container}>
+        <TabView
+          navigationState={this.state}
+          renderScene={SceneMap({
+            overview: overview,
+            details: details,
+            reviews: reviews
+          })}
+          scrollEnabled={false}
+          onIndexChange={index => this.setState({ index })}
+          initialLayout={{ width: Dimensions.get("window").width }}
+          renderTabBar={renderTabBar}
+        />
+      </View>
+    );
+  }
 }
 
-export default TabViewBar;
-
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    tabBar: {
-        flexDirection: 'row',
-        paddingTop: 100,
-    },
-    tabItem: {
-        flex: 1,
-        alignItems: 'center',
-        padding: hp('20%'),
-    },
+  container: {
+    marginTop: StatusBar.currentHeight,
+    marginHorizontal: moderateScale(16)
+  },
+  scene: {
+    flex: 1
+  },
+  reviewText: {
+    fontSize: scale(12),
+    fontWeight: "500",
+    color: colors.blacktext
+  },
+  detailsText: {
+    fontSize: scale(12),
+    fontWeight: "400",
+    color: colors.blacktext
+  },
+  detailsTextLight: {
+    fontSize: scale(12),
+    fontWeight: "300",
+    color: colors.blacktext
+  }
 });
-
-
-//     render() {
-//         return (
-//             <TabView
-//                 navigationState={this.state}
-//                 renderScene={SceneMap({
-//                     overview: FirstRoute,
-//                     details: SecondRoute,
-//                     reviews: ThirdRoute,
-//                 })}
-//                 onIndexChange={index => this.setState({ index })}
-//                 initialLayout={{
-//                     height: hp('30%'),
-//                     width: Dimensions.get('window').width
-//                 }}
-//                 swipeEnabled={false}
-//             />
-//         );
-//     }
-// }
-
-
-// const styles = StyleSheet.create({
-//     container: {
-//         flex: 1,
-//         alignItems: 'center',
-//         justifyContent: 'center'
-//     },
-//     scene: {
-//         height: hp('30%'),
-//         width: "100%",
-//         marginTop: hp('40%'),
-
-//     },
-// });
