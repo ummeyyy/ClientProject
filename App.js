@@ -433,14 +433,13 @@ const styles = StyleSheet.create({
   productHeadingContainer: {
     flexDirection: "row",
     height: verticalScale(30),
-    marginHorizontal: scale(5),
-    marginVertical: verticalScale(5)
+    marginVertical: verticalScale(5),
+    paddingHorizontal: moderateScale(8)
   },
   productHeadingText: {
     fontSize: scale(17.5),
     fontWeight: "bold",
-    color: colors.bgyellow,
-    paddingHorizontal: moderateScale(8)
+    color: colors.bgyellow
   },
   ratingText: {
     fontSize: scale(14),

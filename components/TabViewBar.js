@@ -104,7 +104,7 @@ export default class TabViewBar extends React.Component {
           })}
           onIndexChange={index => this.setState({ index })}
           initialLayout={{
-            width: Dimensions.get("window").width - moderateScale(45)
+            width: Dimensions.get("window").width - moderateScale(43)
           }}
           renderTabBar={props => (
             <TabBar

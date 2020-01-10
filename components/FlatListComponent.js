@@ -196,7 +196,6 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   ratetext: {
-    fontFamily: "Arial",
     fontWeight: "bold",
     fontSize: 13,
     color: "white"
@@ -210,7 +209,6 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   saletext: {
-    fontFamily: "Arial",
     fontWeight: "bold",
     fontSize: 12,
     color: "white",
@@ -230,13 +228,11 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   descriptionName: {
-    fontFamily: "Arial",
     fontWeight: "bold",
     fontSize: 13,
     color: "#21C7D8"
   },
   timeandpricetext: {
-    fontFamily: "Arial",
     fontWeight: "200",
     fontSize: 11,
     color: "#5D5D5D",

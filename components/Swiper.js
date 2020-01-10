@@ -13,7 +13,7 @@ class Swiper extends React.Component {
           index={0} // default 0
           loop={true} // default false
           loadMinimal={true} // default false
-          loadMinimalSize={2}
+          loadMinimalSize={3}
           enableAndroidScrollView={true} // default false
           horizontal={true} // default true
           autoplay={true}
@@ -21,7 +21,6 @@ class Swiper extends React.Component {
           dotStyle={styles.dot}
           activeDotStyle={styles.activeDot}
           paginationStyle={styles.paginationContainer}
-          // automaticallyAdjustContentInset={true}
           data={[
             {
               uri:
