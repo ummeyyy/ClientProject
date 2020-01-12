@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   StyleSheet,
   Image,
+  Dimensions,
   Text,
   View,
   SafeAreaView,
@@ -11,8 +12,8 @@ import {
 
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 
-import { moderateScale, scale, verticalScale } from "../../scale";
-import colors from "../../assets/colors";
+import { moderateScale, scale, verticalScale } from "../scale";
+import colors from "../assets/colors";
 
 import Swiper from "../../components/Swiper";
 import CButton from "../../components/CButton";
@@ -20,12 +21,15 @@ import FlatListComponent from "../../components/FlatListComponent";
 import CardsCategory from "../../components/CardsCategory";
 import PromotionCard from "../../components/PromotionCard";
 
-export default class App extends React.Component {
+// const entireScreenWidth = Dimensions.get('window').width;
+
+export default class HomeScreen extends React.Component {
   render() {
     return (
       // HEADER
       <View style={{ flex: 1 }}>
         <SafeAreaView />
+        {/* <View style={{ height: 30, backgroundColor: 'black', borderBottomWidth: 0.25, borderTopColor: '#E9E9E9' }} /> */}
 
         {/* BODY */}
         <ScrollView>
@@ -33,7 +37,7 @@ export default class App extends React.Component {
             <Swiper />
             <TouchableOpacity>
               <Image
-                source={require("../../assets/icon-layout.png")}
+                source={require("../assets/icon-layout.png")}
                 style={{
                   width: 30,
                   height: 30,

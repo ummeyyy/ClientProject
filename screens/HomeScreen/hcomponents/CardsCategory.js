@@ -8,24 +8,26 @@ import {
   TouchableOpacity,
   ImageBackground
 } from "react-native";
-import {
-  Ionicons,
-  MaterialCommunityIcons,
-  MaterialIcons
-} from "@expo/vector-icons";
+
+import { moderateScale, scale, verticalScale } from "../../../scale";
+import colors from "../../../assets/colors";
 
 const categ = [
-  { name: "BRANDING DESIGN", id: "1", image: require("../assets/bdesign.png") },
-  { name: "ADVERTISING", id: "2", image: require("../assets/adv.jpg") },
+  {
+    name: "BRANDING DESIGN",
+    id: "1",
+    image: require("../../assets/bdesign.png")
+  },
+  { name: "ADVERTISING", id: "2", image: require("../../assets/adv.jpg") },
   {
     name: "WEBSITE CREATION",
     id: "3",
-    image: require("../assets/webcreation.jpg")
+    image: require("../../assets/webcreation.jpg")
   },
   {
     name: "VIDEO ANIMATION",
     id: "4",
-    image: require("../assets/vanimation.jpg")
+    image: require("../../assets/vanimation.jpg")
   }
 ];
 
@@ -43,7 +45,7 @@ class CardsCategory extends Component {
           renderItem={({ item }) => (
             <TouchableOpacity
               style={{
-                backgroundColor: "#F9CF2F",
+                backgroundColor: colors.bgyellow,
                 height: 90,
                 borderRadius: 15,
                 marginBottom: 45,
@@ -59,11 +61,11 @@ class CardsCategory extends Component {
                     height: "100%",
                     resizeImage: "contain",
                     opacity: 0.4,
-                    backgroundColor: "#F9CF2F",
+                    backgroundColor: colors.bgyellow,
                     borderRadius: 30 / 2,
                     overflow: "hidden",
                     borderWidth: 0.2,
-                    borderColor: "#F9CF2F"
+                    borderColor: colors.bgyellow
                   }}
                 />
                 <View style={styles.CardTextContainer}>
@@ -89,9 +91,9 @@ const styles = StyleSheet.create({
     width: 160,
     height: 140,
     marginBottom: 20,
-    backgroundColor: "#F9CF2F",
+    backgroundColor: colors.bgyellow,
     borderRadius: 15,
-    shadowColor: "#000",
+    shadowColor: colors.blacktext,
     shadowOffset: {
       width: 0,
       height: 11
@@ -111,6 +113,6 @@ const styles = StyleSheet.create({
   CardTitle: {
     fontSize: 15,
     fontWeight: "bold",
-    color: "#ffffff"
+    color: colors.whitetext
   }
 });

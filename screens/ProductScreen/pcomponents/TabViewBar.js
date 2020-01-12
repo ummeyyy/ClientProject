@@ -9,8 +9,8 @@ import {
 } from "react-native";
 import { TabView, SceneMap, TabBar } from "react-native-tab-view";
 
-import { moderateScale, scale, verticalScale } from "../scale";
-import colors from "../assets/colors";
+import { moderateScale, scale, verticalScale } from "../../../scale";
+import colors from "../../../assets/colors";
 
 const overview = () => (
   <View
@@ -75,13 +75,6 @@ const reviews = () => (
 
 const initialLayout = { width: Dimensions.get("window").width };
 
-//COMPLEX
-const activeBg = "#F9CF2F";
-const normalBg = "#fff";
-const activeText = "#fff";
-const normalText = "#5D5D5D";
-const headerBg = "#282f3f";
-
 export default class TabViewBar extends React.Component {
   state = {
     index: 1,
@@ -133,8 +126,8 @@ export default class TabViewBar extends React.Component {
                       route.key ===
                       props.navigationState.routes[this.state.index].key
                         ? {
-                            color: "#fff",
-                            backgroundColor: activeBg,
+                            color: colors.whitetext,
+                            backgroundColor: colors.bgyellow,
                             height: verticalScale(50),
                             width: moderateScale(115),
                             fontWeight: "800",
@@ -143,7 +136,7 @@ export default class TabViewBar extends React.Component {
                             paddingHorizontal: moderateScale(20)
                           }
                         : {
-                            color: "#5D5D5D",
+                            color: colors.greytext,
                             fontWeight: "800",
                             fontSize: scale(12)
                           }

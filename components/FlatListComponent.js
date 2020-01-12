@@ -14,6 +14,9 @@ import {
   MaterialIcons
 } from "@expo/vector-icons";
 
+import { moderateScale, scale, verticalScale } from "../scale";
+import colors from "../assets/colors";
+
 const section = [
   {
     name: "4F FLYERS",
@@ -70,10 +73,24 @@ const section = [
 ];
 
 class FlatListComponent extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      liked: false
+    };
+  }
+
+  pressedLike = () => {
+    this.setState({
+      liked: !this.state.liked
+    });
+  };
+
   render() {
     return (
-      <View style={{ flex: 1, backgroundColor: "white" }}>
-        <View style={{ height: 150 }}>
+      <View style={{ flex: 1, backgroundColor: colors.whitetext }}>
+        <View style={{ height: verticalScale(150) }}>
           <FlatList
             horizontal={true}
             showsHorizontalScrollIndicator={false}
@@ -103,29 +120,46 @@ class FlatListComponent extends React.Component {
                 <TouchableOpacity style={styles.cartContainer}>
                   <MaterialIcons
                     name="add-shopping-cart"
-                    size={20}
-                    color="#F9CF2F"
+                    size={scale(20)}
+                    color={colors.bgyellow}
                   />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.favContainer}>
-                  <MaterialCommunityIcons
-                    name="heart-outline"
-                    size={22}
-                    color="#FF0000"
-                  />
+                <TouchableOpacity
+                  style={styles.favContainer}
+                  onPress={() => {
+                    this.pressedLike();
+                  }}
+                >
+                  {this.state.liked ? (
+                    <MaterialCommunityIcons
+                      name="heart"
+                      size={scale(22)}
+                      color={colors.bgred}
+                    />
+                  ) : (
+                    <MaterialCommunityIcons
+                      name="heart-outline"
+                      size={scale(22)}
+                      color={colors.bgred}
+                    />
+                  )}
                 </TouchableOpacity>
                 <View style={styles.descriptionContainer}>
                   <Text style={styles.descriptionName}>{item.name}</Text>
                   <View style={styles.timeandpricecontainer}>
-                    <Ionicons name="md-time" size={13} color="#5D5D5D" />
+                    <Ionicons
+                      name="md-time"
+                      size={scale(13)}
+                      color={colors.greytext}
+                    />
                     <Text style={styles.timeandpricetext}>
                       {" "}
-                      {item.time} DAYS{" "}
+                      {item.time} DAYS {"      "}
                     </Text>
                     <MaterialCommunityIcons
                       name="coin"
-                      size={13}
-                      color="#5D5D5D"
+                      size={scale(13)}
+                      color={colors.greytext}
                     />
                     <Text style={styles.timeandpricetext}>
                       {" "}
@@ -146,104 +180,104 @@ export default FlatListComponent;
 
 const styles = StyleSheet.create({
   itemImage: {
-    height: 100,
+    height: verticalScale(100),
     width: "100%"
   },
   itemContainer: {
-    height: 160,
-    width: 162,
-    marginLeft: 20,
-    backgroundColor: "white",
+    height: verticalScale(160),
+    width: moderateScale(162),
+    marginLeft: scale(20),
+    backgroundColor: colors.whitetext,
     flex: 2,
-    shadowColor: "#000",
+    shadowColor: colors.blacktext,
     shadowOffset: {
-      width: 0,
-      height: 11
+      width: scale(0),
+      height: moderateScale(11)
     },
-    shadowOpacity: 0.57,
-    shadowRadius: 10,
-    elevation: 23
+    shadowOpacity: scale(0.57),
+    shadowRadius: scale(10),
+    elevation: scale(23)
   },
   descriptionContainer: {
     flex: 1,
-    paddingLeft: 10,
-    paddingTop: 5,
-    backgroundColor: "white",
-    marginBottom: 5
+    paddingLeft: moderateScale(10),
+    paddingTop: verticalScale(5),
+    backgroundColor: colors.whitetext,
+    marginBottom: verticalScale(5)
   },
   favContainer: {
     position: "absolute",
-    right: 40,
-    top: 85,
-    zIndex: 999,
-    height: 28,
-    width: 28,
-    borderRadius: 15,
-    backgroundColor: "white",
+    right: scale(40),
+    top: scale(80),
+    zIndex: scale(999),
+    height: verticalScale(28),
+    width: moderateScale(28),
+    borderRadius: moderateScale(15),
+    backgroundColor: colors.whitetext,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  cartContainer: {
+    position: "absolute",
+    right: scale(5),
+    top: scale(80),
+    zIndex: scale(999),
+    height: verticalScale(30),
+    width: moderateScale(30),
+    borderRadius: moderateScale(15),
+    backgroundColor: colors.whitetext,
     justifyContent: "center",
     alignItems: "center"
   },
   rateContainer: {
     position: "absolute",
-    right: 5,
-    top: 5,
-    zIndex: 999,
-    height: 16,
-    width: 27,
-    borderRadius: 7,
-    backgroundColor: "#F9CF2F",
+    right: scale(5),
+    top: scale(5),
+    zIndex: scale(999),
+    height: verticalScale(16),
+    width: moderateScale(27),
+    borderRadius: moderateScale(7),
+    backgroundColor: colors.bgyellow,
     justifyContent: "center",
     alignItems: "center"
   },
   ratetext: {
     fontWeight: "bold",
-    fontSize: 13,
-    color: "white"
+    fontSize: scale(13),
+    color: colors.whitetext
   },
   saleContainer: {
     position: "absolute",
-    left: -16.5,
-    top: 5,
-    zIndex: 999,
+    left: scale(-16.5),
+    top: scale(5),
+    zIndex: scale(999),
     justifyContent: "center",
     alignItems: "center"
   },
   saletext: {
     fontWeight: "bold",
-    fontSize: 12,
-    color: "white",
-    padding: 8,
-    marginBottom: 9
-  },
-  cartContainer: {
-    position: "absolute",
-    right: 5,
-    top: 85,
-    zIndex: 999,
-    height: 30,
-    width: 30,
-    borderRadius: 15,
-    backgroundColor: "white",
-    justifyContent: "center",
-    alignItems: "center"
+    fontSize: scale(12),
+    color: colors.whitetext,
+    padding: scale(8),
+    marginBottom: moderateScale(12)
   },
   descriptionName: {
     fontWeight: "bold",
-    fontSize: 13,
-    color: "#21C7D8"
+    fontSize: scale(13),
+    color: colors.bgblue
   },
   timeandpricetext: {
     fontWeight: "200",
-    fontSize: 11,
-    color: "#5D5D5D",
-    paddingRight: 5
+    fontSize: scale(11),
+    color: colors.greytext,
+    paddingRight: moderateScale(3)
   },
   timeandpricecontainer: {
     flexDirection: "row",
     flex: 2,
-    marginTop: -5,
+    marginTop: verticalScale(-5),
     justifyContent: "flex-start",
     alignItems: "center",
-    paddingRight: 5
+    paddingRight: moderateScale(5)
   }
 });
