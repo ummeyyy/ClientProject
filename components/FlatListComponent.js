@@ -234,8 +234,8 @@ const styles = StyleSheet.create({
     right: scale(5),
     top: scale(5),
     zIndex: scale(999),
-    height: verticalScale(16),
-    width: moderateScale(27),
+    height: verticalScale(18),
+    width: moderateScale(28),
     borderRadius: moderateScale(7),
     backgroundColor: colors.bgyellow,
     justifyContent: "center",
@@ -243,12 +243,12 @@ const styles = StyleSheet.create({
   },
   ratetext: {
     fontWeight: "bold",
-    fontSize: scale(13),
+    fontSize: scale(12.5),
     color: colors.whitetext
   },
   saleContainer: {
     position: "absolute",
-    left: scale(-16.5),
+    left: scale(-14),
     top: scale(5),
     zIndex: scale(999),
     justifyContent: "center",

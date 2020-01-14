@@ -16,18 +16,18 @@ const categ = [
   {
     name: "BRANDING DESIGN",
     id: "1",
-    image: require("../../assets/bdesign.png")
+    image: require("../../../assets/bdesign.png")
   },
-  { name: "ADVERTISING", id: "2", image: require("../../assets/adv.jpg") },
+  { name: "ADVERTISING", id: "2", image: require("../../../assets/adv.jpg") },
   {
     name: "WEBSITE CREATION",
     id: "3",
-    image: require("../../assets/webcreation.jpg")
+    image: require("../../../assets/webcreation.jpg")
   },
   {
     name: "VIDEO ANIMATION",
     id: "4",
-    image: require("../../assets/vanimation.jpg")
+    image: require("../../../assets/vanimation.jpg")
   }
 ];
 
@@ -46,11 +46,11 @@ class CardsCategory extends Component {
             <TouchableOpacity
               style={{
                 backgroundColor: colors.bgyellow,
-                height: 90,
-                borderRadius: 15,
-                marginBottom: 45,
-                margin: 10,
-                marginTop: 30
+                height: verticalScale(90),
+                borderRadius: scale(15),
+                marginBottom: verticalScale(45),
+                margin: scale(10),
+                marginTop: verticalScale(30)
               }}
             >
               <View style={styles.cardStyle}>
@@ -62,9 +62,9 @@ class CardsCategory extends Component {
                     resizeImage: "contain",
                     opacity: 0.4,
                     backgroundColor: colors.bgyellow,
-                    borderRadius: 30 / 2,
+                    borderRadius: scale(30 / 2),
                     overflow: "hidden",
-                    borderWidth: 0.2,
+                    borderWidth: scale(0.2),
                     borderColor: colors.bgyellow
                   }}
                 />
@@ -88,30 +88,30 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   cardStyle: {
-    width: 160,
-    height: 140,
-    marginBottom: 20,
+    width: moderateScale(155),
+    height: verticalScale(140),
+    marginBottom: scale(20),
     backgroundColor: colors.bgyellow,
-    borderRadius: 15,
+    borderRadius: scale(15),
     shadowColor: colors.blacktext,
     shadowOffset: {
-      width: 0,
-      height: 11
+      width: scale(0),
+      height: scale(11)
     },
     shadowOpacity: 0.57,
-    shadowRadius: 10,
-    elevation: 23
+    shadowRadius: scale(10),
+    elevation: scale(23)
   },
   CardTextContainer: {
     position: "absolute",
-    right: 15,
-    left: 27,
-    top: 60,
-    bottom: 15,
-    zIndex: 999
+    right: scale(15),
+    left: scale(27),
+    top: scale(45),
+    bottom: scale(15),
+    zIndex: scale(999)
   },
   CardTitle: {
-    fontSize: 15,
+    fontSize: scale(14),
     fontWeight: "bold",
     color: colors.whitetext
   }

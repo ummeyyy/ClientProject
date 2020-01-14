@@ -8,8 +8,8 @@ import {
   ScrollView
 } from "react-native";
 
-import { moderateScale, scale, verticalScale } from "./scale";
-import colors from "./assets/colors";
+import { moderateScale, scale, verticalScale } from "../../scale";
+import colors from "../../assets/colors";
 
 import { FontAwesome } from "@expo/vector-icons";
 

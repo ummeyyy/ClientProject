@@ -6,6 +6,7 @@ const colors = {
   inactivegreybutton: "#C4C2C2",
   greytext: "#5D5D5D",
   whitetext: "#fff",
-  blacktext: "#000"
+  blacktext: "#000",
+  promotext: "#309D42"
 };
 export default colors;
