@@ -5,7 +5,7 @@ import CountDown from "react-native-countdown-component";
 import { moderateScale, scale, verticalScale } from "./scale";
 import colors from "./assets/colors";
 
-export default class App extends Component {
+class Timer extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -35,6 +35,7 @@ export default class App extends Component {
     );
   }
 }
+export default Timer;
 
 const styles = StyleSheet.create({
   container: {
