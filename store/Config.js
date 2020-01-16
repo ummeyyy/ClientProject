@@ -3,7 +3,7 @@ import { createStore, applyMiddleware,compose } from "redux";
 import { persistReducer } from "redux-persist";
 import thunk from "redux-thunk";
 
-import reducers from "./../redux/index";
+import reducers from "../redux/index";
 const persistConfig = {
   key: "root",
   storage: AsyncStorage
