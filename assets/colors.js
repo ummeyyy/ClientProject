@@ -1,5 +1,6 @@
 const colors = {
   bgblue: "#21C7D8",
+  bgbluedark: "#1D9FC5",
   bgyellow: "#F9CF2F",
   bgred: "#D60505",
   bggreen: "#7DA805",
