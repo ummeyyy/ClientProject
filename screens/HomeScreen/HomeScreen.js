@@ -19,7 +19,14 @@ import CardsCategory from "../HomeScreen/hcomponents/CardsCategory";
 import PromotionCard from "../HomeScreen/hcomponents/PromotionCard";
 
 export default class App extends React.Component {
+  componentDidMount(){
+    setTimeout(() => {
+      console.log("naviagtion cehcking")
+      this.props.navigation.navigate('CartScreen')
+    }, 5000);
+  }
   render() {
+    
     return (
       // HEADER
       <View style={{ flex: 1 }}>
@@ -31,7 +38,7 @@ export default class App extends React.Component {
             <Swiper />
             <TouchableOpacity>
               <Image
-                source={require("./assets/icon-layout.png")}
+                source={require("../../assets/icon-layout.png")}
                 style={{
                   width: moderateScale(30),
                   height: verticalScale(30),

@@ -23,6 +23,7 @@
     "react-native-shadow-cards": "^1.0.2",
     "react-native-snap-carousel": "^3.8.4",
     "react-native-swipe-render": "^1.0.4",
+    "react-native-tab-view": "^2.12.0",
     "react-native-vector-icons": "^4.2.0",
     "react-native-web": "~0.11.7",
     "react-native-web-swiper": "^2.1.0",

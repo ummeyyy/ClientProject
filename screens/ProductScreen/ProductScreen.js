@@ -15,14 +15,14 @@ import { FontAwesome } from "@expo/vector-icons";
 
 import Swiper from "../../components/Swiper";
 import CategoryButton from "../../components/CategoryButton";
-import TabViewBar from "../ProductScreen/TabViewBar";
+import TabViewBar from "../ProductScreen/pcomponents/TabViewBar"
 import CButton from "../../components/CButton";
 import FlatListComponent from "../../components/FlatListComponent";
-import CategoryRateReview from "../ProductScreen/CategoryRateReview";
-import ProductDetails from "../ProductScreen/ProductDetails";
+import CategoryRateReview from "../ProductScreen/pcomponents/CategoryRateReview";
+import ProductDetails from "../ProductScreen/pcomponents/ProductDetails";
 import PriceTab from "../../components/PriceTab";
-import ActualPriceCal from "../ProductScreen/ActualPriceCal";
-import TotalPrice from "../ProductScreen/TotalPrice";
+import ActualPriceCal from "../ProductScreen/pcomponents/ActualPriceCal";
+import TotalPrice from "../ProductScreen/pcomponents/TotalPrice";
 
 const products = [
   {
@@ -33,7 +33,7 @@ const products = [
     sale: 20,
     id: "1",
     description1line: "(ONE DESCRIPTION LINE - DYNAMIC)",
-    image: require("./assets/product1.png")
+    image: require("../../assets/product1.png")
   },
   {
     name: "2D DRAWING",
@@ -43,7 +43,7 @@ const products = [
     rating: 3.3,
     description1line: "(ONE DESCRIPTION LINE - DYNAMIC)",
     id: "2",
-    image: require("./assets/restaurant.jpg")
+    image: require("../../assets/restaurant.jpg")
   },
   {
     name: "3D DRAWING",
@@ -53,7 +53,7 @@ const products = [
     rating: 2.3,
     description1line: "(ONE DESCRIPTION LINE - DYNAMIC)",
     id: "3",
-    image: require("./assets/home.jpg")
+    image: require("../../assets/home.jpg")
   },
   {
     name: "INFOGRAPHICS",
@@ -62,7 +62,7 @@ const products = [
     rating: 4.2,
     description1line: "(ONE DESCRIPTION LINE - DYNAMIC)",
     id: "4",
-    image: require("./assets/restaurant.jpg")
+    image: require("../../assets/restaurant.jpg")
   }
 ];
 
