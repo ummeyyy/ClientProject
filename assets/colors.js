@@ -6,6 +6,7 @@ const colors = {
   bggreen: "#7DA805",
   inactivegreybutton: "#C4C2C2",
   greytext: "#5D5D5D",
+  grey2: "#9E9E9E",
   whitetext: "#fff",
   blacktext: "#000",
   promotext: "#309D42"

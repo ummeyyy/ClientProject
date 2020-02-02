@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
-import HomeScreen from "./screens/HomeScreen/HomeScreen"
+import HomeScreen from "./screens/HomeScreen/HomeScreen";
 // import ProductScreen from "./screens/ProductScreen/ProductScreen"
-import CartScreen from "./screens/TabNavigator/CartScreen"
-import MoreScreen from "./screens/TabNavigator/MoreScreen"
-import OffersScreen from "./screens/TabNavigator/OffersScreen"
-import SettingsScreen from "./screens/TabNavigator/SettingsScreen"
+import CartScreen from "./screens/TabNavigator/CartScreen";
+import MoreScreen from "./screens/TabNavigator/MoreScreen";
+import OffersScreen from "./screens/TabNavigator/OffersScreen";
+import SettingsScreen from "./screens/TabNavigator/SettingsScreen";
+import YourCart from "./screens/CartScreen/YourCart";
+
 import colors from "./assets/colors";
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from "@expo/vector-icons";
 
 import {
   createAppContainer,
@@ -15,18 +17,14 @@ import {
   createStackNavigator,
   createDrawerNavigator,
   createBottomTabNavigator
-} from 'react-navigation';
+} from "react-navigation";
 
 class navigationRouter extends Component {
   render() {
     {
       console.log("hellp");
     }
-    return (
-       
-<AppContainer></AppContainer>  
-    
-    );
+    return <AppContainer></AppContainer>;
   }
 }
 const TabNavigator = createBottomTabNavigator(
@@ -34,16 +32,16 @@ const TabNavigator = createBottomTabNavigator(
     HomeScreen: {
       screen: HomeScreen,
       navigationOptions: {
-        tabBarLabel: 'HomeScreen',
+        tabBarLabel: "HomeScreen"
         // tabBarIcon: ({ tintColor }) => (
         //   <BooksCountContainer color={tintColor} type="books" />
         // )
       }
     },
     CartScreen: {
-      screen: CartScreen,
+      screen: YourCart,
       navigationOptions: {
-        tabBarLabel: 'CartScreen',
+        tabBarLabel: "CartScreen"
         // tabBarIcon: ({ tintColor }) => (
         //   <BooksCountContainer color={tintColor} type="booksReading" />
         // )
@@ -52,7 +50,7 @@ const TabNavigator = createBottomTabNavigator(
     MoreScreen: {
       screen: MoreScreen,
       navigationOptions: {
-        tabBarLabel: 'MoreScreen',
+        tabBarLabel: "MoreScreen"
         // tabBarIcon: ({ tintColor }) => (
         //   <BooksCountContainer color={tintColor} type="booksRead" />
         // )
@@ -61,7 +59,7 @@ const TabNavigator = createBottomTabNavigator(
     OffersScreen: {
       screen: OffersScreen,
       navigationOptions: {
-        tabBarLabel: 'OffersScreen',
+        tabBarLabel: "OffersScreen"
         // tabBarIcon: ({ tintColor }) => (
         //   <BooksCountContainer color={tintColor} type="booksRead" />
         // )
@@ -70,7 +68,7 @@ const TabNavigator = createBottomTabNavigator(
     SettingsScreen: {
       screen: SettingsScreen,
       navigationOptions: {
-        tabBarLabel: 'SettingsScreen',
+        tabBarLabel: "SettingsScreen"
         // tabBarIcon: ({ tintColor }) => (
         //   <BooksCountContainer color={tintColor} type="booksRead" />
         // )
@@ -80,10 +78,10 @@ const TabNavigator = createBottomTabNavigator(
   {
     tabBarOptions: {
       style: {
-        backgroundColor: colors.bgblue
+        backgroundColor: colors.greytext
       },
-      activeTintColor: colors.bgyellow,
-      inactiveTintColor: colors.blacktext
+      activeTintColor: colors.bgblue,
+      inactiveTintColor: colors.whitetext
     }
   }
 );
@@ -105,9 +103,8 @@ const HomeStackNavigator = createStackNavigator(
         };
       }
     },
-    //just an example 
-    CartScreen:{screen: CartScreen}
-    
+    //just an example
+    CartScreen: { screen: YourCart }
   },
   {
     defaultNavigationOptions: {
@@ -123,18 +120,18 @@ const AppDrawerNavigator = createDrawerNavigator(
     HomeStackNavigator: {
       screen: HomeStackNavigator,
       navigationOptions: {
-        title: 'Home',
+        title: "Home",
         drawerIcon: () => <Ionicons name="ios-home" size={24} />
       }
     },
     SettingsScreen: {
       screen: SettingsScreen,
       navigationOptions: {
-        title: 'Settings',
+        title: "Settings",
         drawerIcon: () => <Ionicons name="ios-settings" size={24} />
       }
     }
-  },
+  }
   // {
   //   contentComponent: CustomDrawerComponent
   // }
@@ -148,6 +145,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor:'red'
+    backgroundColor: "red"
   }
 });

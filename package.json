@@ -22,6 +22,7 @@
     "react-native-rn-cardview": "^1.0.4",
     "react-native-shadow-cards": "^1.0.2",
     "react-native-snap-carousel": "^3.8.4",
+    "react-native-swipe-list-view": "^2.1.3",
     "react-native-swipe-render": "^1.0.4",
     "react-native-tab-view": "^2.12.0",
     "react-native-vector-icons": "^4.2.0",
