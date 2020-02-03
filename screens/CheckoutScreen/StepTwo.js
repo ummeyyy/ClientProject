@@ -12,11 +12,20 @@ import { AntDesign } from "@expo/vector-icons";
 
 import PriceTab from "../../components/PriceTab";
 import CategoryButton from "../../components/CategoryButton";
-import PaymentMethodSelection from "../CheckoutScreen/checkoutcomponents/PaymentMenthodSelection";
 import { moderateScale, scale, verticalScale } from "../../scale";
+
 import colors from "../../assets/colors";
 
-class CheckoutScreen extends Component {
+class StepTwo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      newbuttonColor: colors.greytext,
+      savedbuttonColor: colors.greytext
+    };
+    // this.selectionOnPress = this.selectionOnPress.bind(this);
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -66,62 +75,56 @@ class CheckoutScreen extends Component {
               }}
             >
               <CategoryButton style={styles.stepcountContainer}>
-                <Text style={styles.stepcountText}>01</Text>
+                <Text style={styles.stepcountText}>02</Text>
               </CategoryButton>
             </View>
           </View>
           {/* STEP DESIGNING END*/}
         </View>
+
         {/* Checkout heading Section END*/}
 
-        {/*WHICH PAYMENT METHOD START*/}
-        <View
-          style={{
-            marginHorizontal: moderateScale(20),
-            marginVertical: verticalScale(25)
-          }}
-        >
-          <PaymentMethodSelection name="CASH ON DELIVERY">
-            <Image
-              source={require("../../assets/cash.png")}
-              style={{
-                width: moderateScale(30),
-                height: verticalScale(30),
-                tintColor: colors.grey2
-              }}
-              resizeMode="contain"
-            />
-          </PaymentMethodSelection>
-
-          <PaymentMethodSelection
-            name="REWARD POINTS"
-            balance="BALANCE: 30 AED"
+        {/* NEW CARD / SAVED CARD START */}
+        <View style={{ flexDirection: "row", marginTop: verticalScale(20) }}>
+          {/* NEW CARD START */}
+          <View
+            style={{
+              marginLeft: moderateScale(25)
+            }}
           >
-            <Image
-              source={require("../../assets/reward.png")}
-              style={{
-                width: moderateScale(30),
-                height: verticalScale(30),
-                tintColor: colors.grey2
-              }}
-              resizeMode="contain"
-            />
-          </PaymentMethodSelection>
+            <CategoryButton
+              style={[
+                styles.cardbuttonContainer,
+                { backgroundColor: this.state.newbuttonColor }
+              ]}
+              onPress={() => this.setState({ newbuttonColor: colors.bgblue })}
+              onPressOut={() =>
+                this.setState({ newbuttonColor: colors.greytext })
+              }
+            >
+              <Text style={styles.cardbuttonText}>NEW CARD</Text>
+            </CategoryButton>
+          </View>
 
-          <PaymentMethodSelection name="CREDIT CARD">
-            <Image
-              source={require("../../assets/card.png")}
-              style={{
-                width: moderateScale(30),
-                height: verticalScale(30),
-                tintColor: colors.grey2
-              }}
-              resizeMode="contain"
-            />
-          </PaymentMethodSelection>
+          {/* SAVED CARD START */}
+
+          <View style={{ position: "absolute", right: moderateScale(30) }}>
+            <CategoryButton
+              style={[
+                styles.cardbuttonContainer,
+                { backgroundColor: this.state.savedbuttonColor }
+              ]}
+              onPress={() => this.setState({ savedbuttonColor: colors.bgblue })}
+              onPressOut={() =>
+                this.setState({ savedbuttonColor: colors.greytext })
+              }
+            >
+              <Text style={styles.cardbuttonText}>SAVED CARD</Text>
+            </CategoryButton>
+          </View>
         </View>
 
-        {/*WHICH PAYMENT METHOD END*/}
+        {/* NEW CARD / SAVED CARD END */}
 
         {/* PROCEED TO NEXT STEP BUTTON START*/}
         <View
@@ -197,7 +200,7 @@ class CheckoutScreen extends Component {
     );
   }
 }
-export default CheckoutScreen;
+export default StepTwo;
 
 const styles = StyleSheet.create({
   container: {
@@ -231,6 +234,19 @@ const styles = StyleSheet.create({
     fontSize: scale(15),
     fontWeight: "bold"
   },
+  // NEXT SECTION STYLE
+  cardbuttonContainer: {
+    width: moderateScale(100),
+    height: verticalScale(35),
+    borderRadius: moderateScale(25),
+    marginHorizontal: moderateScale(48)
+  },
+  cardbuttonText: {
+    color: colors.whitetext,
+    fontSize: scale(12),
+    fontWeight: "500"
+  },
+
   // NEXT SECTION STYLE
   addmorebuttonContainer: {
     width: moderateScale(270),

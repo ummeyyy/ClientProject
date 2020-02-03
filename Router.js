@@ -9,6 +9,7 @@ import YourCart from "./screens/CartScreen/YourCart";
 import ProductScreen from "./screens/ProductScreen/ProductScreen";
 import CheckoutScreen from "./screens/CheckoutScreen/CheckoutScreen";
 import ViewAllCategories from "./screens/HomeScreen/ViewAllCategories";
+import StepTwo from "./screens/CheckoutScreen/StepTwo";
 
 import colors from "./assets/colors";
 import { Ionicons } from "@expo/vector-icons";
@@ -120,6 +121,9 @@ const HomeStackNavigator = createStackNavigator(
     },
     item: {
       screen: ProductScreen
+    },
+    steptwo: {
+      screen: StepTwo
     }
   },
 

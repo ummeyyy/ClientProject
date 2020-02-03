@@ -1,108 +1,88 @@
 import React, { Component } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  FlatList,
-  TouchableOpacity
-} from "react-native";
-
-import { AntDesign } from "@expo/vector-icons";
-
-import { CheckBox } from "react-native-elements";
-// import { SwipeListView } from "react-native-swipe-list-view";
-
+import { View, Text, StyleSheet, Image } from "react-native";
 import { moderateScale, scale, verticalScale } from "../../../scale";
 import colors from "../../../assets/colors";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
-const paymenttype = [
-  {
-    name: "CASH ON DELIVERY",
-    id: "1"
-  },
-  {
-    name: "REWARD POINTS",
-    balance: 30,
-    id: "2"
-  },
-  {
-    name: "CREDIT CARD",
-    id: "3"
-  }
-];
+import { MaterialCommunityIcons, Entypo } from "@expo/vector-icons";
 
 class PaymentMethodSelection extends Component {
   constructor() {
     super();
-    this.state = {
-      checked: false
-    };
+    this.state = { isHidden: false };
   }
 
-  titleStyling = () => {
-    return (
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: colors.blacktext,
-          marginVertical: verticalScale(10)
-        }}
-      >
-        <Text
-          style={{
-            color: colors.greytext,
-            fontSize: scale(15),
-            fontWeight: "400"
-          }}
-        >
-          {paymenttype.name[index]}
-        </Text>
-      </View>
-    );
+  buttonPressed = () => {
+    this.setState({ isHidden: !this.state.isHidden });
   };
+
   render() {
     return (
-      <FlatList
-        horizontal={false}
-        showsVerticalScrollIndicator={false}
-        showsHorizontalScrollIndicator={false}
-        keyExtractor={(item, index) => item.id}
-        extraData={this.state.indexChecked}
-        data={paymenttype}
-        renderItem={({ item }) => (
-          <View style={{ flexDirection: "row" }}>
-            <View
+      <View style={styles.container}>
+        <View style={styles.methodContainer}>
+          <View
+            style={{
+              marginRight: moderateScale(15),
+              position: "absolute",
+              left: moderateScale(20)
+            }}
+          >
+            {this.props.children}
+          </View>
+          <View
+            style={{
+              position: "absolute",
+              left: moderateScale(70)
+            }}
+          >
+            <Text
               style={{
-                flex: 2,
-                flexDirection: "column"
+                color: colors.greytext,
+                fontSize: scale(17),
+                fontWeight: "300"
               }}
             >
-              {/* CHECKBOX FOR UNORDERED LIST*/}
-              <CheckBox
-                containerStyle={{
-                  backgroundColor: colors.whitetext,
-                  marginLeft: moderateScale(-11),
-                  borderWidth: scale(0)
+              {this.props.name}
+            </Text>
+            {this.props.balance ? (
+              <Text
+                style={{
+                  color: colors.bgblue,
+                  fontSize: scale(8),
+                  fontWeight: "500"
                 }}
-                iconRight
-                title={this.titleStyling}
-                iconType="material-community"
-                uncheckedIcon="circle-outline"
-                checkedIcon="circle-slice-8"
-                checkedColor={colors.bgblue}
-                checked={this.state.checked}
-                onPress={() =>
-                  this.setState({
-                    checked: !this.state.checked,
-                    indexChecked: item.id
-                  })
-                }
-              />
-            </View>
+              >
+                {this.props.balance}
+              </Text>
+            ) : null}
           </View>
-        )}
-      />
+          <View
+            style={{
+              marginLeft: moderateScale(20),
+              position: "absolute",
+              right: moderateScale(8)
+            }}
+          >
+            {!this.state.isHidden ? (
+              <TouchableOpacity onPress={this.buttonPressed}>
+                <Entypo
+                  name="circle"
+                  color={colors.greytext}
+                  size={scale(32)}
+                />
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity onPress={this.buttonPressed}>
+                <MaterialCommunityIcons
+                  name="check-circle-outline"
+                  color={colors.bgblue}
+                  size={scale(35)}
+                />
+              </TouchableOpacity>
+            )}
+          </View>
+        </View>
+      </View>
     );
   }
 }
@@ -110,8 +90,16 @@ export default PaymentMethodSelection;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // alignItems: "flex-start",
+    // justifyContent: "flex-start"
+  },
+  methodContainer: {
+    height: verticalScale(60),
+    width: moderateScale(320),
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    borderBottomWidth: scale(1),
+    borderBottomColor: colors.greytext,
+    flexDirection: "row"
   }
 });

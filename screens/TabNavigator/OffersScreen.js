@@ -6,6 +6,7 @@ import Brochure from "../ProductScreen/Brochure";
 import BrochureCart from "../../screens/CartScreen/BrochureCart";
 import BrochureCartTwo from "../ProductScreen/BrochureCartTwo";
 import CheckoutScreen from "../CheckoutScreen/CheckoutScreen";
+import StepTwo from "../CheckoutScreen/StepTwo";
 
 export default class OffersScreen extends Component {
   render() {
@@ -17,7 +18,8 @@ export default class OffersScreen extends Component {
       // <View style={styles.container}>
       //   <Text>HELLO</Text>
       // </View>
-      <CheckoutScreen></CheckoutScreen>
+      // <CheckoutScreen></CheckoutScreen>
+      <StepTwo></StepTwo>
     );
   }
 }
