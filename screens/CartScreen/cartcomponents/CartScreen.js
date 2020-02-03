@@ -4,29 +4,6 @@ import { View, Text, StyleSheet, Image, FlatList } from "react-native";
 import { moderateScale, scale, verticalScale } from "./scale";
 import colors from "./assets/colors";
 
-import CategoryButton from "./components/CategoryButton";
-
-// import { Provider } from "react-redux";
-// import { PersistGate } from "redux-persist/integration/react";
-// import Navigation from "./Router";
-// import store from "./store/Config";
-// import { persistStore } from "redux-persist";
-
-// class App extends Component {
-//   render() {
-//     const persistor = persistStore(store);
-
-//     return (
-//       <Provider store={store}>
-//         <PersistGate loading={null} persistor={persistor}>
-//           <Navigation />
-//         </PersistGate>
-//       </Provider>
-//     );
-//   }
-// }
-// export default App;
-
 const products = [
   {
     name: "4F FLYERS",
@@ -113,7 +90,8 @@ class CartScreen extends Component {
           />
           <Text style={styles.screenTitle}>YOUR CART</Text>
         </View>
-        {/* Car items Section*/}
+
+        {/* Cart items Section*/}
         <FlatList
           horizontal={false}
           showsHorizontalScrollIndicator={false}
@@ -131,72 +109,6 @@ class CartScreen extends Component {
           )}
         />
       </View>
-      /*
-                {item.sale ? (
-                  <View style={styles.saleContainer}>
-                    <ImageBackground
-                      source={require("../assets/saletag.png")}
-                      style={{ width: "100%", height: "100%" }}
-                    >
-                      <Text style={styles.saletext}>{item.sale}</Text>
-                    </ImageBackground>
-                  </View>
-                ) : null}
-                <View style={styles.rateContainer}>
-                  <Text style={styles.ratetext}>{item.rating}</Text>
-                </View>
-                <TouchableOpacity style={styles.cartContainer}>
-                  <MaterialIcons
-                    name="add-shopping-cart"
-                    size={scale(20)}
-                    color={colors.bgyellow}
-                  />
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={styles.favContainer}
-                  onPress={() => {
-                    this.pressedLike();
-                  }}
-                >
-                  {this.state.liked ? (
-                    <MaterialCommunityIcons
-                      name="heart"
-                      size={scale(22)}
-                      color={colors.bgred}
-                    />
-                  ) : (
-                    <MaterialCommunityIcons
-                      name="heart-outline"
-                      size={scale(22)}
-                      color={colors.bgred}
-                    />
-                  )}
-                </TouchableOpacity>
-                <View style={styles.descriptionContainer}>
-                  <Text style={styles.descriptionName}>{item.name}</Text>
-                  <View style={styles.timeandpricecontainer}>
-                    <Ionicons
-                      name="md-time"
-                      size={scale(13)}
-                      color={colors.greytext}
-                    />
-                    <Text style={styles.timeandpricetext}>
-                      {" "}
-                      {item.time} DAYS {"      "}
-                    </Text>
-                    <MaterialCommunityIcons
-                      name="coin"
-                      size={scale(13)}
-                      color={colors.greytext}
-                    />
-                    <Text style={styles.timeandpricetext}>
-                      {" "}
-                      {item.price} AED{" "}
-                    </Text>
-                  </View>
-                </View>
-              </View>
-            )} */
     );
   }
 }

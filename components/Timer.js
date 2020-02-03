@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
 
 import CountDown from "react-native-countdown-component";
-import { moderateScale, scale, verticalScale } from "./scale";
-import colors from "./assets/colors";
+import { moderateScale, scale, verticalScale } from "../scale";
+import colors from "../assets/colors";
 
 class Timer extends Component {
   render() {

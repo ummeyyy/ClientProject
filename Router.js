@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
+
 import HomeScreen from "./screens/HomeScreen/HomeScreen";
-// import ProductScreen from "./screens/ProductScreen/ProductScreen"
-import CartScreen from "./screens/TabNavigator/CartScreen";
 import MoreScreen from "./screens/TabNavigator/MoreScreen";
 import OffersScreen from "./screens/TabNavigator/OffersScreen";
 import SettingsScreen from "./screens/TabNavigator/SettingsScreen";
 import YourCart from "./screens/CartScreen/YourCart";
+import ProductScreen from "./screens/ProductScreen/ProductScreen";
+import CheckoutScreen from "./screens/CheckoutScreen/CheckoutScreen";
+import ViewAllCategories from "./screens/HomeScreen/ViewAllCategories";
 
 import colors from "./assets/colors";
 import { Ionicons } from "@expo/vector-icons";
@@ -104,8 +106,23 @@ const HomeStackNavigator = createStackNavigator(
       }
     },
     //just an example
-    CartScreen: { screen: YourCart }
+    CartScreen: {
+      screen: YourCart
+    },
+    // ProductScreen: {
+    //   screen: ProductScreen
+    // },
+    checkout: {
+      screen: CheckoutScreen
+    },
+    View: {
+      screen: ViewAllCategories
+    },
+    item: {
+      screen: ProductScreen
+    }
   },
+
   {
     defaultNavigationOptions: {
       headerStyle: {

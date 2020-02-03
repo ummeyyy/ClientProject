@@ -13,14 +13,26 @@ import {
 
 import colors from "../../assets/colors";
 import { moderateScale, scale, verticalScale } from "../../scale";
-import { Entypo, AntDesign } from "@expo/vector-icons";
+import { Entypo, FontAwesome, AntDesign } from "@expo/vector-icons";
+
+import { SwipeListView } from "react-native-swipe-list-view";
 
 import PriceTab from "../../components/PriceTab";
 import CartPriceTab from "../../components/CartPriceTab";
-import CartItemsFlatlist from "../CartScreen/cartcomponents/CartItemsFlatlist";
 import CategoryButton from "../../components/CategoryButton";
 
-class YourCart extends Component {
+const section = [
+  {
+    name: "BRAND CHECK UP",
+    category: "BRANDING DESIGN",
+    price: 750,
+    code: "D01",
+    id: "1",
+    image: require("../../assets/home.jpg")
+  }
+];
+
+class BrochureCartTwo extends Component {
   constructor() {
     super();
 
@@ -107,20 +119,177 @@ class YourCart extends Component {
             <Text style={styles.screenTitle}>YOUR CART</Text>
           </View>
 
-          {/* ITEMS TO ADD OR DELETE IN THE CART */}
+          {/* ITEMS IN THE CART */}
           <View
             style={{
               marginTop: verticalScale(20),
               paddingVertical: verticalScale(20)
             }}
           >
-            <CartItemsFlatlist></CartItemsFlatlist>
+            <View style={styles.container}>
+              <SwipeListView
+                horizontal={false}
+                showsHorizontalScrollIndicator={false}
+                showsVerticalScrollIndicator={false}
+                useFlatList={true}
+                keyExtractor={(item, index) => item.id}
+                ItemSeparatorComponent={this.renderSeparator}
+                data={section}
+                renderHiddenItem={(rowData, rowMap) => (
+                  <View style={styles.rowBack}>
+                    <TouchableOpacity
+                      onPress={() => rowMap[rowData.item.key].closeRow()}
+                    >
+                      <View
+                        style={{
+                          // backgroundColor: colors.bggreen,
+                          height: verticalScale(135),
+                          width: scale(78),
+                          paddingBottom: verticalScale(30),
+                          justifyContent: "center",
+                          alignItems: "center"
+                        }}
+                      >
+                        <FontAwesome
+                          name="edit"
+                          color={colors.bggreen}
+                          size={scale(25)}
+                        />
+                      </View>
+                    </TouchableOpacity>
+                  </View>
+                )}
+                leftOpenValue={75}
+                rightOpenValue={-75}
+                onRowOpen={(rowKey, rowMap) => {
+                  setTimeout(() => {
+                    rowMap[rowKey].closeRow();
+                  }, 2000);
+                }}
+                renderItem={({ item }) => (
+                  // ITEMS DESIGN
+                  <View style={styles.itemcontainer}>
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        marginHorizontal: moderateScale(5)
+                      }}
+                    >
+                      <View
+                        style={{
+                          flex: 1.15
+                        }}
+                      >
+                        {/* ITEM IMAGE */}
+                        <Image
+                          source={item.image}
+                          style={styles.itemImage}
+                          resizeMode="cover"
+                        />
+                      </View>
+
+                      {/* ITEM DETAILS */}
+                      <View
+                        style={{
+                          flex: 1.75,
+                          marginHorizontal: moderateScale(15),
+                          paddingTop: verticalScale(3)
+                        }}
+                      >
+                        <Text style={styles.categorytext}>{item.category}</Text>
+                        <Text style={styles.itemTitle}>{item.name}</Text>
+
+                        {/* CODE AND SALE */}
+                        <View style={{ flexDirection: "row" }}>
+                          <View View={{ flex: 1.25 }}>
+                            <Text style={styles.codeText}>
+                              CODE: {item.code}
+                            </Text>
+                          </View>
+                          <View
+                            style={{ flex: 0.75, marginLeft: verticalScale(5) }}
+                          >
+                            {item.sale ? (
+                              <View style={styles.saleContainer}>
+                                <Text style={styles.saletext}>{item.sale}</Text>
+                              </View>
+                            ) : null}
+                          </View>
+                        </View>
+
+                        {/* ITEM PRICE */}
+                        <View
+                          style={{
+                            flexDirection: "row",
+                            marginTop: verticalScale(15)
+                          }}
+                        >
+                          <Text style={styles.priceText}>AED</Text>
+                          <Text style={styles.priceText}> {item.price}</Text>
+                        </View>
+                      </View>
+
+                      {/* ITEM TIME AND DATE */}
+                      <View
+                        style={{
+                          flex: 1.65,
+                          marginTop: verticalScale(20)
+                        }}
+                      >
+                        {/* MONTH */}
+                        <View
+                          style={{
+                            justifyContent: "flex-end",
+                            alignItems: "flex-end"
+                          }}
+                        >
+                          <Text style={styles.PreferenceText}>January</Text>
+                        </View>
+                        {/* DAY & DATE */}
+
+                        <View
+                          style={{
+                            marginTop: verticalScale(-5),
+                            alignItems: "flex-end",
+                            justifyContent: "flex-end",
+                            flexDirection: "row"
+                          }}
+                        >
+                          <Text style={styles.PreferenceText}>Sunday 13</Text>
+                          <Text style={styles.superscript}>th</Text>
+                        </View>
+                        {/* TIMES */}
+                        <View
+                          style={{
+                            marginTop: verticalScale(2),
+                            alignItems: "flex-end",
+                            justifyContent: "flex-end"
+                          }}
+                        >
+                          <Text style={styles.PreferenceText}>
+                            11:45 AM - 12:30 PM
+                          </Text>
+                          <Text style={styles.PreferenceText}>
+                            04:30 PM - 05:00 PM
+                          </Text>
+                        </View>
+                        <CategoryButton style={styles.EditbuttonContainer}>
+                          <Text style={styles.EditText}>EDIT</Text>
+                        </CategoryButton>
+                      </View>
+                    </View>
+                  </View>
+                )}
+              />
+            </View>
           </View>
 
           {/* CONTINUE TO ADD MORE ITEMS BUTTON */}
-          <CategoryButton style={styles.addmorebuttonContainer}>
-            <Text style={styles.addmoreText}>CONTINUE TO ADD MORE</Text>
-          </CategoryButton>
+          <View style={{ marginTop: verticalScale(20) }}>
+            <CategoryButton style={styles.addmorebuttonContainer}>
+              <Text style={styles.addmoreText}>CONTINUE TO ADD MORE</Text>
+            </CategoryButton>
+          </View>
 
           {/* //APPLY PROMO CODE SECTION */}
           <View
@@ -343,12 +512,12 @@ class YourCart extends Component {
     );
   }
 }
-export default YourCart;
+export default BrochureCartTwo;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.whitetext
+    marginHorizontal: moderateScale(4)
   },
   image: {
     height: verticalScale(560)
@@ -362,6 +531,20 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: colors.bgblue,
     marginLeft: moderateScale(12)
+  },
+  EditbuttonContainer: {
+    width: moderateScale(50),
+    height: verticalScale(20),
+    paddingLeft: moderateScale(2),
+    borderRadius: moderateScale(15),
+    backgroundColor: colors.bgblue,
+    marginTop: verticalScale(10),
+    left: moderateScale(55)
+  },
+  EditText: {
+    color: colors.whitetext,
+    fontSize: scale(10),
+    fontWeight: "800"
   },
   addmorebuttonContainer: {
     width: moderateScale(270),
@@ -436,5 +619,65 @@ const styles = StyleSheet.create({
     fontSize: scale(10),
     fontWeight: "300",
     color: colors.whitetext
+  },
+
+  ///UGHH
+
+  itemContainer: {
+    height: verticalScale(50),
+    width: "100%"
+  },
+  itemImage: {
+    marginVertical: verticalScale(2),
+    width: "100%",
+    height: verticalScale(105),
+    borderWidth: scale(2.5),
+    borderColor: colors.bgblue,
+    borderRadius: moderateScale(10)
+  },
+  categorytext: {
+    fontWeight: "800",
+    fontSize: scale(8),
+    color: colors.greytext
+  },
+  saleContainer: {
+    backgroundColor: colors.bgred,
+    height: verticalScale(14),
+    width: verticalScale(60),
+    position: "absolute",
+    zIndex: scale(999),
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  saletext: {
+    fontWeight: "800",
+    fontSize: scale(9),
+    color: colors.whitetext
+  },
+  itemTitle: {
+    fontSize: scale(13),
+    fontWeight: "700",
+    color: colors.bgyellow
+  },
+  codeText: {
+    fontSize: scale(10),
+    fontWeight: "bold",
+    color: colors.bgblue
+  },
+  PreferenceText: {
+    fontSize: scale(8),
+    fontWeight: "800",
+    color: colors.greytext
+  },
+  superscript: {
+    lineHeight: scale(15),
+    fontSize: scale(5),
+    fontWeight: "800",
+    color: colors.greytext
+  },
+  priceText: {
+    fontSize: scale(20),
+    fontWeight: "800",
+    color: colors.greytext
   }
 });

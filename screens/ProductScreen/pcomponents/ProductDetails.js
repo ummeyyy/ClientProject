@@ -3,9 +3,10 @@ import { Component } from "react";
 
 import { View, Text, StyleSheet, Image } from "react-native";
 
-import { AntDesign, FontAwesome, FontAwesome5 } from "@expo/vector-icons";
-import { moderateScale, scale, verticalScale } from "../scale";
-import colors from "../assets/colors";
+import { FontAwesome, FontAwesme5 } from "@expo/vector-icons";
+
+import { moderateScale, scale, verticalScale } from "../../../scale";
+import colors from "../../../assets/colors";
 
 class ProductDetails extends React.Component {
   render() {

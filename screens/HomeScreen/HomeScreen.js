@@ -13,20 +13,19 @@ import { moderateScale, scale, verticalScale } from "../../scale";
 import colors from "../../assets/colors";
 
 import Swiper from "../../components/Swiper";
-import CButton from "../../components/CButton";
+import CategoryButton from "../../components/CategoryButton";
 import FlatListComponent from "../../components/FlatListComponent";
 import CardsCategory from "../HomeScreen/hcomponents/CardsCategory";
 import PromotionCard from "../HomeScreen/hcomponents/PromotionCard";
 
-export default class App extends React.Component {
-  componentDidMount(){
-    setTimeout(() => {
-      console.log("naviagtion cehcking")
-      this.props.navigation.navigate('CartScreen')
-    }, 5000);
-  }
+export default class HomeScreen extends React.Component {
+  // componentDidMount() {
+  //   setTimeout(() => {
+  //     console.log("naviagtion cehcking");
+  //     this.props.navigation.navigate("CartScreen");
+  //   }, 5000);
+  // }
   render() {
-    
     return (
       // HEADER
       <View style={{ flex: 1 }}>
@@ -49,18 +48,40 @@ export default class App extends React.Component {
               />
             </TouchableOpacity>
 
-            <View style={{ marginTop: verticalScale(55) }}>
-              <CButton />
-              <Text style={styles.categoryTitle}>BRANDING DESIGN</Text>
+            {/* BRANDING DESIGN */}
+            <View
+              style={{ marginTop: verticalScale(55), flexDirection: "row" }}
+            >
+              <View>
+                <Text style={styles.categoryTitle}>BRANDING DESIGN</Text>
+              </View>
+              <View>
+                <CategoryButton
+                  onPress={() => props.navigation.navigate("View")}
+                  style={styles.categorybuttonstyle}
+                >
+                  <Text style={styles.categorybuttonText}>VIEW ALL</Text>
+                </CategoryButton>
+              </View>
             </View>
             <View style={{ marginTop: verticalScale(17) }}>
               <FlatListComponent />
             </View>
 
-            <View style={{ marginTop: verticalScale(35) }}>
-              <CButton />
-              <Text style={styles.categoryTitle}>WEBSITE DESIGN</Text>
+            {/* WEBSITE DESIGN */}
+            <View
+              style={{ marginTop: verticalScale(35), flexDirection: "row" }}
+            >
+              <View>
+                <Text style={styles.categoryTitle}>WEBSITE DESIGN</Text>
+              </View>
+              <View style={{ marginLeft: moderateScale(20) }}>
+                <CategoryButton style={styles.categorybuttonstyle}>
+                  <Text style={styles.categorybuttonText}>VIEW ALL</Text>
+                </CategoryButton>
+              </View>
             </View>
+
             <View
               style={{
                 marginTop: verticalScale(15)
@@ -94,18 +115,38 @@ export default class App extends React.Component {
               <PromotionCard />
             </View>
 
-            <View style={{ marginTop: verticalScale(35) }}>
-              <CButton />
-              <Text style={styles.categoryTitle}>VIDEO ANIMATION</Text>
+            {/* VIDEO ANIMATION */}
+            <View
+              style={{ marginTop: verticalScale(35), flexDirection: "row" }}
+            >
+              <View>
+                <Text style={styles.categoryTitle}>VIDEO ANIMATION</Text>
+              </View>
+              <View style={{ marginLeft: moderateScale(5) }}>
+                <CategoryButton style={styles.categorybuttonstyle}>
+                  <Text style={styles.categorybuttonText}>VIEW ALL</Text>
+                </CategoryButton>
+              </View>
             </View>
+
             <View style={{ marginTop: verticalScale(17) }}>
               <FlatListComponent />
             </View>
 
-            <View style={{ marginTop: verticalScale(35) }}>
-              <CButton />
-              <Text style={styles.categoryTitle}>ILLUSTRATION</Text>
+            {/* ILLUSTRATION  */}
+            <View
+              style={{ marginTop: verticalScale(35), flexDirection: "row" }}
+            >
+              <View>
+                <Text style={styles.categoryTitle}>ILLUSTRATION</Text>
+              </View>
+              <View style={{ marginLeft: moderateScale(45) }}>
+                <CategoryButton style={styles.categorybuttonstyle}>
+                  <Text style={styles.categorybuttonText}>VIEW ALL</Text>
+                </CategoryButton>
+              </View>
             </View>
+
             <View style={{ marginTop: verticalScale(17) }}>
               <FlatListComponent />
             </View>
@@ -124,9 +165,22 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   },
-  buttonText: {
-    fontSize: scale(15),
-    color: colors.bgyellow
+  categorybuttonstyle: {
+    width: moderateScale(90),
+    height: verticalScale(30),
+    marginTop: verticalScale(-8),
+    marginLeft: moderateScale(30),
+    borderColor: colors.bgyellow,
+    borderRadius: scale(20),
+    backgroundColor: colors.whitetext,
+    borderWidth: scale(3),
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  categorybuttonText: {
+    fontSize: scale(11),
+    color: colors.bgyellow,
+    fontWeight: "500"
   },
   categoryTitle: {
     marginLeft: moderateScale(21),

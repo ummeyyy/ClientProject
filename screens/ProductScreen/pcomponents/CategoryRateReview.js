@@ -36,7 +36,7 @@ class CategoryRateReview extends React.Component {
           }}
         >
           <Image
-            source={require("../../assets/star.png")}
+            source={require("../../../assets/star.png")}
             style={{
               width: moderateScale(14),
               height: moderateScale(14)

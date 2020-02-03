@@ -17,6 +17,8 @@ import {
 import { moderateScale, scale, verticalScale } from "../scale";
 import colors from "../assets/colors";
 
+import { Card } from "react-native-shadow-cards";
+
 const section = [
   {
     name: "4F FLYERS",
@@ -77,100 +79,127 @@ class FlatListComponent extends React.Component {
     super();
 
     this.state = {
-      liked: false
+      liked: false,
+      addcart: true
     };
   }
 
   pressedLike = () => {
     this.setState({
-      liked: !this.state.liked
+      liked: !this.state.liked,
+      addcart: !this.state.addcart
     });
   };
 
   render() {
     return (
-      <View style={{ flex: 1, backgroundColor: colors.whitetext }}>
-        <View style={{ height: verticalScale(150) }}>
-          <FlatList
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            keyExtractor={(item, index) => item.id}
-            data={section}
-            renderItem={({ item }) => (
-              <View style={styles.itemContainer}>
-                <Image
-                  source={item.image}
-                  style={styles.itemImage}
-                  resizeMode="center"
-                />
+      // <View style={{ flex: 1, backgroundColor: colors.whitetext }}>
+      <View style={styles.container}>
+        <FlatList
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={(item, index) => item.id}
+          data={section}
+          renderItem={({ item }) => (
+            <Card style={styles.itemContainer}>
+              <Image
+                source={item.image}
+                style={styles.itemImage}
+                resizeMode="center"
+              />
 
-                {item.sale ? (
-                  <View style={styles.saleContainer}>
-                    <ImageBackground
-                      source={require("../assets/saletag.png")}
-                      style={{ width: "100%", height: "100%" }}
-                    >
-                      <Text style={styles.saletext}>{item.sale}</Text>
-                    </ImageBackground>
-                  </View>
-                ) : null}
-                <View style={styles.rateContainer}>
-                  <Text style={styles.ratetext}>{item.rating}</Text>
+              {item.sale ? (
+                <View style={styles.saleContainer}>
+                  <ImageBackground
+                    source={require("../assets/saletag.png")}
+                    style={{ width: "100%", height: "100%" }}
+                  >
+                    <Text style={styles.saletext}>{item.sale}</Text>
+                  </ImageBackground>
                 </View>
-                <TouchableOpacity style={styles.cartContainer}>
+              ) : null}
+              <View style={styles.rateContainer}>
+                <Text style={styles.ratetext}>{item.rating}</Text>
+              </View>
+              <TouchableOpacity
+                style={styles.cartContainer}
+                onPress={() => {
+                  this.pressedLike();
+                }}
+              >
+                {this.state.addcart ? (
                   <MaterialIcons
                     name="add-shopping-cart"
                     size={scale(20)}
                     color={colors.bgyellow}
                   />
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={styles.favContainer}
-                  onPress={() => {
-                    this.pressedLike();
-                  }}
-                >
-                  {this.state.liked ? (
-                    <MaterialCommunityIcons
-                      name="heart"
-                      size={scale(22)}
-                      color={colors.bgred}
+                ) : (
+                  <TouchableOpacity>
+                    <Image
+                      source={require("../assets/cart-view-icon.png")}
+                      style={{
+                        width: moderateScale(15),
+                        height: verticalScale(15)
+                      }}
                     />
-                  ) : (
-                    <MaterialCommunityIcons
-                      name="heart-outline"
-                      size={scale(22)}
-                      color={colors.bgred}
+                  </TouchableOpacity>
+                )}
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.favContainer}
+                onPress={() => {
+                  this.pressedLike();
+                }}
+              >
+                {this.state.liked ? (
+                  <MaterialCommunityIcons
+                    name="heart"
+                    size={scale(22)}
+                    color={colors.bgred}
+                  />
+                ) : (
+                  <MaterialCommunityIcons
+                    name="heart-outline"
+                    size={scale(22)}
+                    color={colors.bgred}
+                  />
+                )}
+              </TouchableOpacity>
+              <View style={styles.descriptionContainer}>
+                <Text style={styles.descriptionName}>{item.name}</Text>
+                <View style={styles.timeandpricecontainer}>
+                  <TouchableOpacity>
+                    <Image
+                      source={require("../assets/est-icon.png")}
+                      style={{
+                        width: moderateScale(15),
+                        height: verticalScale(15)
+                      }}
                     />
-                  )}
-                </TouchableOpacity>
-                <View style={styles.descriptionContainer}>
-                  <Text style={styles.descriptionName}>{item.name}</Text>
-                  <View style={styles.timeandpricecontainer}>
-                    <Ionicons
-                      name="md-time"
-                      size={scale(13)}
-                      color={colors.greytext}
+                  </TouchableOpacity>
+
+                  <Text style={styles.timeandpricetext}>
+                    {" "}
+                    {item.time} DAYS {"      "}
+                  </Text>
+                  <TouchableOpacity>
+                    <Image
+                      source={require("../assets/price-icon.png")}
+                      style={{
+                        width: moderateScale(15),
+                        height: verticalScale(15)
+                      }}
                     />
-                    <Text style={styles.timeandpricetext}>
-                      {" "}
-                      {item.time} DAYS {"      "}
-                    </Text>
-                    <MaterialCommunityIcons
-                      name="coin"
-                      size={scale(13)}
-                      color={colors.greytext}
-                    />
-                    <Text style={styles.timeandpricetext}>
-                      {" "}
-                      {item.price} AED{" "}
-                    </Text>
-                  </View>
+                  </TouchableOpacity>
+                  <Text style={styles.timeandpricetext}>
+                    {" "}
+                    {item.price} AED{" "}
+                  </Text>
                 </View>
               </View>
-            )}
-          />
-        </View>
+            </Card>
+          )}
+        />
       </View>
     );
   }
@@ -179,23 +208,28 @@ class FlatListComponent extends React.Component {
 export default FlatListComponent;
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center"
+  },
   itemImage: {
     height: verticalScale(100),
     width: "100%"
   },
   itemContainer: {
+    marginBottom: verticalScale(20),
     height: verticalScale(160),
     width: moderateScale(162),
+    borderRadius: scale(0),
     marginLeft: scale(20),
     backgroundColor: colors.whitetext,
     flex: 2,
+
     shadowColor: colors.blacktext,
-    shadowOffset: {
-      width: scale(0),
-      height: moderateScale(11)
-    },
-    shadowOpacity: scale(0.57),
-    shadowRadius: scale(10),
+    shadowOffset: { width: moderateScale(0), height: verticalScale(11) },
+    shadowOpacity: 0.57,
+    shadowRadius: scale(15.19),
     elevation: scale(23)
   },
   descriptionContainer: {

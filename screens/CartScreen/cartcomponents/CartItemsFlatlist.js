@@ -5,10 +5,8 @@ import {
   Image,
   View,
   FlatList,
-  TouchableOpacity,
-  ImageBackground
+  TouchableOpacity
 } from "react-native";
-
 import { SwipeListView } from "react-native-swipe-list-view";
 
 import { FontAwesome } from "@expo/vector-icons";
@@ -86,9 +84,10 @@ class CartItemsFlatlist extends Component {
       <View
         style={{
           height: 1,
-          width: "100%",
+          width: "95%",
           backgroundColor: colors.blacktext,
-          marginVertical: verticalScale(10)
+          marginVertical: verticalScale(10),
+          marginHorizontal: moderateScale(5)
         }}
       />
     );
@@ -134,17 +133,17 @@ class CartItemsFlatlist extends Component {
               >
                 <View
                   style={{
-                    backgroundColor: colors.whitetext,
+                    // backgroundColor: colors.bggreen,
                     height: verticalScale(135),
                     width: scale(78),
-                    // flex: 1,
+                    paddingBottom: verticalScale(30),
                     justifyContent: "center",
                     alignItems: "center"
                   }}
                 >
                   <FontAwesome
                     name="edit"
-                    color={colors.whitetext}
+                    color={colors.bggreen}
                     size={scale(25)}
                   />
                 </View>
@@ -161,7 +160,12 @@ class CartItemsFlatlist extends Component {
           renderItem={({ item }) => (
             // ITEMS DESIGN
             <View style={styles.itemcontainer}>
-              <View style={{ flexDirection: "row" }}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  marginHorizontal: moderateScale(5)
+                }}
+              >
                 <View
                   style={{
                     flex: 1.15
@@ -241,7 +245,8 @@ export default CartItemsFlatlist;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    marginHorizontal: moderateScale(6)
   },
   itemContainer: {
     height: verticalScale(50),

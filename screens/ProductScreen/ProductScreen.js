@@ -15,8 +15,7 @@ import { FontAwesome } from "@expo/vector-icons";
 
 import Swiper from "../../components/Swiper";
 import CategoryButton from "../../components/CategoryButton";
-import TabViewBar from "../ProductScreen/pcomponents/TabViewBar"
-import CButton from "../../components/CButton";
+import TabViewBar from "../ProductScreen/pcomponents/TabViewBar";
 import FlatListComponent from "../../components/FlatListComponent";
 import CategoryRateReview from "../ProductScreen/pcomponents/CategoryRateReview";
 import ProductDetails from "../ProductScreen/pcomponents/ProductDetails";
@@ -247,9 +246,19 @@ class ProductScreen extends React.Component {
             </View>
 
             {/* RELATED PRODUCTS HERE */}
-            <View style={{ marginTop: verticalScale(15) }}>
-              <CButton style={{ marginTop: verticalScale(7) }} />
-              <Text style={styles.relatedProductsTitle}>RELATED PRODUCTS</Text>
+            <View
+              style={{ marginTop: verticalScale(15), flexDirection: "row" }}
+            >
+              <View>
+                <Text style={styles.relatedProductsTitle}>
+                  RELATED PRODUCTS
+                </Text>
+              </View>
+              <View>
+                <CategoryButton style={styles.categorybuttonstyle}>
+                  <Text style={styles.categorybuttonText}>VIEW ALL</Text>
+                </CategoryButton>
+              </View>
             </View>
             <View style={{ marginTop: verticalScale(15) }}>
               <FlatListComponent />
@@ -296,6 +305,22 @@ const styles = StyleSheet.create({
     color: colors.whitetext,
     fontSize: scale(11),
     fontWeight: "bold"
+  },
+  categorybuttonstyle: {
+    width: moderateScale(90),
+    height: verticalScale(30),
+    marginLeft: moderateScale(15),
+    borderColor: colors.bgyellow,
+    borderRadius: scale(20),
+    backgroundColor: colors.whitetext,
+    borderWidth: scale(3),
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  categorybuttonText: {
+    fontSize: scale(11),
+    color: colors.bgyellow,
+    fontWeight: "500"
   },
   favwrapper: {
     position: "absolute",

@@ -8,21 +8,20 @@ import {
   ScrollView
 } from "react-native";
 
-import { moderateScale, scale, verticalScale } from "./scale";
-import colors from "./assets/colors";
+import { moderateScale, scale, verticalScale } from "../../scale";
+import colors from "../../assets/colors";
 
-import { FontAwesome } from "@expo/vector-icons";
+import { FontAwesome, AntDesign } from "@expo/vector-icons";
 
-import Swiper from "../../../components/Swiper";
-import CategoryButton from "../../../components/CategoryButton";
-import TabViewBar from "./TabViewBar";
-import CButton from "../../../components/CButton";
-import FlatListComponent from "../../../components/FlatListComponent";
-import CategoryRateReview from "../ProductScreen/CategoryRateReview";
-import ProductDetails from "../ProductScreen/ProductDetails";
-import PriceTab from "../../../components/PriceTab";
-import ActualPriceCal from "../ProductScreen/ActualPriceCal";
-import TotalPrice from "./TotalPrice";
+import Swiper from "../../components/Swiper";
+import CategoryButton from "../../components/CategoryButton";
+import TabViewBar from "../ProductScreen/pcomponents/TabViewBar";
+import FlatListComponent from "../../components/FlatListComponent";
+import CategoryRateReview from "../ProductScreen/pcomponents/CategoryRateReview";
+import ProductDetails from "../ProductScreen/pcomponents/ProductDetails";
+import PriceTab from "../../components/PriceTab";
+import ActualPriceCal from "../ProductScreen/pcomponents/ActualPriceCal";
+import TotalPrice from "../ProductScreen/pcomponents/TotalPrice";
 
 const products = [
   {
@@ -33,7 +32,7 @@ const products = [
     sale: 20,
     id: "1",
     description1line: "(ONE DESCRIPTION LINE - DYNAMIC)",
-    image: require("./assets/product1.png")
+    image: require("../../assets/product1.png")
   },
   {
     name: "2D DRAWING",
@@ -43,7 +42,7 @@ const products = [
     rating: 3.3,
     description1line: "(ONE DESCRIPTION LINE - DYNAMIC)",
     id: "2",
-    image: require("./assets/restaurant.jpg")
+    image: require("../../assets/restaurant.jpg")
   },
   {
     name: "3D DRAWING",
@@ -53,7 +52,7 @@ const products = [
     rating: 2.3,
     description1line: "(ONE DESCRIPTION LINE - DYNAMIC)",
     id: "3",
-    image: require("./assets/home.jpg")
+    image: require("../../assets/home.jpg")
   },
   {
     name: "INFOGRAPHICS",
@@ -62,7 +61,7 @@ const products = [
     rating: 4.2,
     description1line: "(ONE DESCRIPTION LINE - DYNAMIC)",
     id: "4",
-    image: require("./assets/restaurant.jpg")
+    image: require("../../assets/restaurant.jpg")
   }
 ];
 
@@ -175,9 +174,7 @@ class ProductScreen extends React.Component {
                   flexDirection: "row"
                 }}
               >
-                <Text style={styles.productHeadingText}>
-                  {products[0].name}
-                </Text>
+                <Text style={styles.productHeadingText}>BROCHURE</Text>
               </View>
 
               <View
@@ -206,34 +203,37 @@ class ProductScreen extends React.Component {
             {/* PRICE TAB */}
             <PriceTab>
               <ActualPriceCal
-                price={products[0].price}
-                sale={products[0].sale}
                 aftersale={this.state.price - this.state.salePrice}
                 oneline={products[0].description1line}
               />
-              <TouchableOpacity
-                onPress={() => this.handleIncerement()}
-                style={styles.plusiconwrapper}
-              >
-                <FontAwesome
-                  name="plus"
-                  color={colors.bgyellow}
-                  size={scale(23)}
-                />
-              </TouchableOpacity>
-              <View style={styles.countwrapper}>
-                <Text style={styles.counttext}>{this.state.count}</Text>
+              <View style={styles.cartbuttonwrapper}>
+                <TouchableOpacity style={{ flexDirection: "row" }}>
+                  <View
+                    style={{
+                      flex: 1,
+                      paddingVertical: scale(4),
+                      justifyContent: "flex-end",
+                      alignItems: "flex-end"
+                    }}
+                  >
+                    <Text style={styles.cartbuttontext}>ADD</Text>
+                  </View>
+
+                  <View
+                    style={{
+                      flex: 0.75,
+                      paddingVertical: verticalScale(5),
+                      left: scale(4)
+                    }}
+                  >
+                    <AntDesign
+                      name="pluscircle"
+                      color={colors.whitetext}
+                      size={scale(18)}
+                    />
+                  </View>
+                </TouchableOpacity>
               </View>
-              <TouchableOpacity
-                onPress={() => this.handleDecrement()}
-                style={styles.minusiconwrapper}
-              >
-                <FontAwesome
-                  name="minus"
-                  color={colors.bgyellow}
-                  size={scale(23)}
-                />
-              </TouchableOpacity>
             </PriceTab>
 
             {/* TAB VIEW */}
@@ -247,9 +247,19 @@ class ProductScreen extends React.Component {
             </View>
 
             {/* RELATED PRODUCTS HERE */}
-            <View style={{ marginTop: verticalScale(15) }}>
-              <CButton style={{ marginTop: verticalScale(7) }} />
-              <Text style={styles.relatedProductsTitle}>RELATED PRODUCTS</Text>
+            <View
+              style={{ marginTop: verticalScale(15), flexDirection: "row" }}
+            >
+              <View>
+                <Text style={styles.relatedProductsTitle}>
+                  RELATED PRODUCTS
+                </Text>
+              </View>
+              <View>
+                <CategoryButton style={styles.categorybuttonstyle}>
+                  <Text style={styles.categorybuttonText}>VIEW ALL</Text>
+                </CategoryButton>
+              </View>
             </View>
             <View style={{ marginTop: verticalScale(15) }}>
               <FlatListComponent />
@@ -279,6 +289,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
+
   catogeryContainer: {
     flexDirection: "row",
     height: verticalScale(55),
@@ -296,6 +307,22 @@ const styles = StyleSheet.create({
     color: colors.whitetext,
     fontSize: scale(11),
     fontWeight: "bold"
+  },
+  categorybuttonstyle: {
+    width: moderateScale(90),
+    height: verticalScale(30),
+    marginLeft: moderateScale(15),
+    borderColor: colors.bgyellow,
+    borderRadius: scale(20),
+    backgroundColor: colors.whitetext,
+    borderWidth: scale(3),
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  categorybuttonText: {
+    fontSize: scale(11),
+    color: colors.bgyellow,
+    fontWeight: "500"
   },
   favwrapper: {
     position: "absolute",
@@ -371,43 +398,22 @@ const styles = StyleSheet.create({
     color: colors.whitetext,
     textDecorationLine: "line-through"
   },
-  plusiconwrapper: {
-    width: moderateScale(30),
-    height: moderateScale(35),
-    position: "absolute",
-    backgroundColor: colors.whitetext,
-    padding: scale(5),
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+  cartbuttonwrapper: {
     right: scale(20),
-    top: scale(20)
-  },
-  minusiconwrapper: {
-    width: moderateScale(30),
-    height: moderateScale(35),
-    position: "absolute",
-    backgroundColor: colors.whitetext,
-    padding: scale(5),
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    right: scale(96),
-    top: scale(20)
-  },
-  countwrapper: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    width: moderateScale(50),
-    height: moderateScale(35),
+    top: scale(20),
+    width: moderateScale(100),
+    height: verticalScale(40),
     position: "absolute",
     backgroundColor: colors.bgyellow,
-    borderWidth: scale(4),
+    borderWidth: scale(3.5),
     borderColor: colors.whitetext,
-    right: scale(49),
-    top: scale(20),
-    padding: scale(0.25)
+    paddingHorizontal: moderateScale(5)
+  },
+  cartbuttontext: {
+    flex: 1.75,
+    fontSize: scale(14),
+    fontWeight: "600",
+    color: colors.whitetext
   },
   counttext: {
     fontSize: scale(20),
