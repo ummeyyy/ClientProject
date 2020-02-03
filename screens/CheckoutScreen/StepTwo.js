@@ -5,13 +5,16 @@ import {
   StyleSheet,
   Image,
   FlatList,
-  TouchableOpacity
+  TouchableOpacity,
+  ScrollView
 } from "react-native";
 
 import { AntDesign } from "@expo/vector-icons";
 
 import PriceTab from "../../components/PriceTab";
 import CategoryButton from "../../components/CategoryButton";
+import NewCard from "../CheckoutScreen/checkoutcomponents/NewCard";
+import VisaMasterCard from "../CheckoutScreen/checkoutcomponents/VisaMasterCard";
 import { moderateScale, scale, verticalScale } from "../../scale";
 
 import colors from "../../assets/colors";
@@ -29,173 +32,206 @@ class StepTwo extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {/* Searchbar Alternative*/}
-        {/* <View
+        <ScrollView
+          directionalLockEnabled={true}
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
+          horizontal={false}
+        >
+          {/* Searchbar Alternative*/}
+
+          {/* <View
           style={{
             height: moderateScale(50),
             backgroundColor: colors.bgblue
           }}
         ></View> */}
 
-        {/* Checkout heading Section*/}
-        <View
-          style={{
-            marginTop: verticalScale(25),
-            flexDirection: "row",
-            paddingHorizontal: moderateScale(20)
-          }}
-        >
-          <Image
-            source={require("../../assets/yourcart.png")}
-            style={styles.yourcartlogo}
-          />
-          <Text style={styles.screenTitle}>CHECKOUT</Text>
-
-          {/* STEP DESIGNING START */}
+          {/* Checkout heading Section*/}
           <View
             style={{
-              alignItems: "center",
+              marginTop: verticalScale(25),
               flexDirection: "row",
-              right: moderateScale(25),
-              position: "absolute"
+              paddingHorizontal: moderateScale(20)
             }}
           >
+            <Image
+              source={require("../../assets/yourcart.png")}
+              style={styles.yourcartlogo}
+            />
+            <Text style={styles.screenTitle}>CHECKOUT</Text>
+
+            {/* STEP DESIGNING START */}
             <View
               style={{
                 alignItems: "center",
-                justifyContent: "center"
+                flexDirection: "row",
+                right: moderateScale(25),
+                position: "absolute"
               }}
             >
-              <Text style={styles.stepText}>STEP</Text>
+              <View
+                style={{
+                  alignItems: "center",
+                  justifyContent: "center"
+                }}
+              >
+                <Text style={styles.stepText}>STEP</Text>
+              </View>
+              <View
+                style={{
+                  alignItems: "center",
+                  justifyContent: "center"
+                }}
+              >
+                <CategoryButton style={styles.stepcountContainer}>
+                  <Text style={styles.stepcountText}>02</Text>
+                </CategoryButton>
+              </View>
             </View>
+            {/* STEP DESIGNING END*/}
+          </View>
+          {/* Checkout heading Section END*/}
+
+          {/* NEW CARD / SAVED CARD Button START */}
+          <View style={{ flexDirection: "row", marginTop: verticalScale(20) }}>
+            {/* NEW CARD START */}
             <View
               style={{
-                alignItems: "center",
-                justifyContent: "center"
+                marginLeft: moderateScale(25)
               }}
             >
-              <CategoryButton style={styles.stepcountContainer}>
-                <Text style={styles.stepcountText}>02</Text>
+              <CategoryButton
+                style={[
+                  styles.cardbuttonContainer,
+                  { backgroundColor: this.state.newbuttonColor }
+                ]}
+                onPress={() => this.setState({ newbuttonColor: colors.bgblue })}
+                onPressOut={() =>
+                  this.setState({ newbuttonColor: colors.greytext })
+                }
+              >
+                <Text style={styles.cardbuttonText}>NEW CARD</Text>
+              </CategoryButton>
+            </View>
+
+            {/* SAVED CARD START Button*/}
+
+            <View style={{ position: "absolute", right: moderateScale(30) }}>
+              <CategoryButton
+                style={[
+                  styles.cardbuttonContainer,
+                  { backgroundColor: this.state.savedbuttonColor }
+                ]}
+                onPress={() =>
+                  this.setState({ savedbuttonColor: colors.bgblue })
+                }
+                onPressOut={() =>
+                  this.setState({ savedbuttonColor: colors.greytext })
+                }
+              >
+                <Text style={styles.cardbuttonText}>SAVED CARD</Text>
               </CategoryButton>
             </View>
           </View>
-          {/* STEP DESIGNING END*/}
-        </View>
 
-        {/* Checkout heading Section END*/}
+          {/* NEW CARD / SAVED CARD Button END */}
 
-        {/* NEW CARD / SAVED CARD START */}
-        <View style={{ flexDirection: "row", marginTop: verticalScale(20) }}>
-          {/* NEW CARD START */}
-          <View
-            style={{
-              marginLeft: moderateScale(25)
-            }}
-          >
-            <CategoryButton
-              style={[
-                styles.cardbuttonContainer,
-                { backgroundColor: this.state.newbuttonColor }
-              ]}
-              onPress={() => this.setState({ newbuttonColor: colors.bgblue })}
-              onPressOut={() =>
-                this.setState({ newbuttonColor: colors.greytext })
-              }
-            >
-              <Text style={styles.cardbuttonText}>NEW CARD</Text>
-            </CategoryButton>
+          {/* VISA/MASTER START */}
+          <View>
+            <VisaMasterCard></VisaMasterCard>
           </View>
 
-          {/* SAVED CARD START */}
-
-          <View style={{ position: "absolute", right: moderateScale(30) }}>
-            <CategoryButton
-              style={[
-                styles.cardbuttonContainer,
-                { backgroundColor: this.state.savedbuttonColor }
-              ]}
-              onPress={() => this.setState({ savedbuttonColor: colors.bgblue })}
-              onPressOut={() =>
-                this.setState({ savedbuttonColor: colors.greytext })
-              }
-            >
-              <Text style={styles.cardbuttonText}>SAVED CARD</Text>
-            </CategoryButton>
-          </View>
-        </View>
-
-        {/* NEW CARD / SAVED CARD END */}
-
-        {/* PROCEED TO NEXT STEP BUTTON START*/}
-        <View
-          style={{
-            marginTop: verticalScale(115),
-            marginBottom: verticalScale(30)
-          }}
-        >
-          <CategoryButton style={styles.addmorebuttonContainer}>
-            <Text style={styles.addmoreText}>PROCEED TO NEXT STEP</Text>
-          </CategoryButton>
-        </View>
-        {/* PROCEED TO NEXT STEP BUTTON END*/}
-
-        {/* TOTAL PRICE TAB BOTTOM START */}
-        <PriceTab
-          style={{
-            backgroundColor: colors.bgblue,
-            marginTop: verticalScale(10)
-          }}
-        >
+          {/* NEW CARD DEAILS START */}
           <View
             style={{
-              paddingVertical: moderateScale(10)
+              marginHorizontal: moderateScale(20),
+              marginTop: verticalScale(20),
+              flex: 1
             }}
           >
-            <Text style={styles.onelinetext}> TOTAL PAYABLE</Text>
+            <NewCard></NewCard>
+          </View>
+          {/* NEW CARD DEAILS END */}
 
-            <Text style={styles.tpricetabtext}>
-              AED 5,300{this.props.total}
-            </Text>
+          {/* PROCEED TO NEXT STEP BUTTON START*/}
+          <View
+            style={{
+              marginVertical: verticalScale(40)
+            }}
+          >
+            <CategoryButton style={styles.addmorebuttonContainer}>
+              <Text style={styles.addmoreText}>PROCEED TO NEXT STEP</Text>
+            </CategoryButton>
+          </View>
+          {/* PROCEED TO NEXT STEP BUTTON END*/}
 
-            <Text style={styles.onelinetaxtext}> INCLUSIVE OF TAX</Text>
-
-            <View style={styles.proceedbuttonwrapper}>
-              <TouchableOpacity
+          {/* TOTAL PRICE TAB BOTTOM START */}
+          <View
+            style={{
+              marginTop: verticalScale(5),
+              flex: 1
+            }}
+          >
+            <PriceTab
+              style={{
+                backgroundColor: colors.bgblue,
+                marginTop: verticalScale(10)
+              }}
+            >
+              <View
                 style={{
-                  flexDirection: "row",
-                  paddingHorizontal: moderateScale(5),
-                  paddingTop: verticalScale(3.5)
+                  paddingVertical: moderateScale(10)
                 }}
               >
-                <View
-                  style={{
-                    flex: 2.2,
-                    alignItems: "center",
-                    justifyContent: "center"
-                  }}
-                >
-                  <Text style={styles.proceedbuttontext}>DETAILS</Text>
-                </View>
+                <Text style={styles.onelinetext}> TOTAL PAYABLE</Text>
 
-                <View
-                  style={{
-                    flex: 0.5,
-                    alignItems: "center",
-                    justifyContent: "center",
-                    paddingLeft: moderateScale(5)
-                  }}
-                >
-                  <AntDesign
-                    name="upcircle"
-                    color={colors.whitetext}
-                    size={scale(18)}
-                  />
+                <Text style={styles.tpricetabtext}>
+                  AED 5,300{this.props.total}
+                </Text>
+
+                <Text style={styles.onelinetaxtext}> INCLUSIVE OF TAX</Text>
+
+                <View style={styles.proceedbuttonwrapper}>
+                  <TouchableOpacity
+                    style={{
+                      flexDirection: "row",
+                      paddingHorizontal: moderateScale(5),
+                      paddingTop: verticalScale(3.5)
+                    }}
+                  >
+                    <View
+                      style={{
+                        flex: 2.2,
+                        alignItems: "center",
+                        justifyContent: "center"
+                      }}
+                    >
+                      <Text style={styles.proceedbuttontext}>DETAILS</Text>
+                    </View>
+
+                    <View
+                      style={{
+                        flex: 0.5,
+                        alignItems: "center",
+                        justifyContent: "center",
+                        paddingLeft: moderateScale(5)
+                      }}
+                    >
+                      <AntDesign
+                        name="upcircle"
+                        color={colors.whitetext}
+                        size={scale(18)}
+                      />
+                    </View>
+                  </TouchableOpacity>
                 </View>
-              </TouchableOpacity>
-            </View>
+              </View>
+            </PriceTab>
           </View>
-        </PriceTab>
-        {/* TOTAL PRICE TAB BOTTOM END */}
+
+          {/* TOTAL PRICE TAB BOTTOM END */}
+        </ScrollView>
       </View>
     );
   }
