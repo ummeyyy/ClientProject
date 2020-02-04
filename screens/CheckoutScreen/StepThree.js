@@ -9,7 +9,9 @@ import {
   ScrollView
 } from "react-native";
 
-import { AntDesign } from "@expo/vector-icons";
+import { SwipeListView } from "react-native-swipe-list-view";
+
+import { FontAwesome, AntDesign } from "@expo/vector-icons";
 
 import CartPriceTab from "../../components/CartPriceTab";
 import PriceTab from "../../components/PriceTab";
@@ -18,13 +20,51 @@ import { moderateScale, scale, verticalScale } from "../../scale";
 import colors from "../../assets/colors";
 import SavedCard from "./checkoutcomponents/SavedCard";
 
+const section = [
+  {
+    name: "4F FLYERS",
+    category: "BRANDING DESIGN",
+    price: 1000,
+    sale: "10% OFF",
+    code: "D01",
+    quantity: "10",
+    id: "1",
+    image: require("../../assets/home.jpg")
+  },
+  {
+    name: "5 PAGE WEBSITE DESIGN",
+    category: "WEBSITE",
+    price: 2500,
+    sale: "35% OFF",
+    code: "W01",
+    quantity: "01",
+    id: "2",
+    image: require("../../assets/restaurant.jpg")
+  },
+  {
+    name: "ANIMATION FOR YOUR BUSINESS",
+    category: "VIDEO ANIMATION",
+    price: 1000,
+    sale: "5% OFF",
+    code: "V01",
+    quantity: "01",
+    id: "3",
+    image: require("../../assets/home.jpg")
+  }
+];
+
 class StepThree extends Component {
   constructor(props) {
     super(props);
     this.state = {
       newbuttonColor: colors.greytext,
       savedbuttonColor: colors.greytext,
-      isHidden: false
+      isHidden: false,
+      count: 1,
+      salePrice: (section[0].price * section[0].sale) / 100,
+      price: section[0].price,
+      actualprice: 0,
+      totalPrice: section[0].price - (section[0].price * section[0].sale) / 100
     };
     // this.selectionOnPress = this.selectionOnPress.bind(this);
   }
@@ -33,6 +73,42 @@ class StepThree extends Component {
     this.setState({
       isHidden: !this.state.isHidden
     });
+  };
+
+  handleIncerement = () => {
+    this.setState({
+      count: this.state.count + 1,
+      actualprice: this.state.price - this.state.salePrice,
+      totalPrice:
+        (this.state.count + 1) * (this.state.price - this.state.salePrice)
+    });
+  };
+
+  handleDecrement = () => {
+    if (this.state.count <= 1) {
+      return;
+    } else {
+      this.setState({
+        count: this.state.count - 1,
+        actualprice: this.state.price - this.state.salePrice,
+        totalPrice:
+          (this.state.count - 1) * (this.state.price - this.state.salePrice)
+      });
+    }
+  };
+
+  renderSeparator = () => {
+    return (
+      <View
+        style={{
+          height: 1,
+          width: moderateScale(320),
+          backgroundColor: colors.blacktext,
+          marginVertical: verticalScale(10),
+          marginLeft: moderateScale(30)
+        }}
+      />
+    );
   };
 
   render() {
@@ -205,7 +281,8 @@ class StepThree extends Component {
           {/* YOUR CART START */}
           <View
             style={{
-              flexDirection: "row"
+              flexDirection: "row",
+              marginTop: verticalScale(20)
             }}
           >
             <View
@@ -244,6 +321,111 @@ class StepThree extends Component {
               <CategoryButton style={styles.changeeditContainer}>
                 <Text style={styles.changeeditText}>EDIT</Text>
               </CategoryButton>
+            </View>
+            {/* DISPLAYING ITEMS THROUGH FLATLIST */}
+            <View
+              style={{
+                flex: 1,
+                marginHorizontal: moderateScale(-355),
+                marginVertical: verticalScale(50)
+              }}
+            >
+              <FlatList
+                horizontal={false}
+                showsHorizontalScrollIndicator={false}
+                showsVerticalScrollIndicator={false}
+                useFlatList={true}
+                keyExtractor={(item, index) => item.id}
+                ItemSeparatorComponent={this.renderSeparator}
+                data={section}
+                renderItem={({ item }) => (
+                  // ITEMS DESIGN
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      marginHorizontal: moderateScale(20),
+                      marginTop: verticalScale(10),
+                      width: moderateScale(330)
+                    }}
+                  >
+                    <View
+                      style={{
+                        flex: 0.65,
+                        marginLeft: moderateScale(8)
+                      }}
+                    >
+                      {/* ITEM IMAGE */}
+                      <Image
+                        source={item.image}
+                        style={styles.itemImage}
+                        resizeMode="cover"
+                      />
+                    </View>
+
+                    {/* ITEM DETAILS */}
+                    <View
+                      style={{
+                        flex: 1.35,
+                        marginLeft: moderateScale(25),
+                        paddingTop: verticalScale(3)
+                      }}
+                    >
+                      <Text style={styles.categorytext}>{item.category}</Text>
+                      <Text style={styles.itemTitle}>{item.name}</Text>
+
+                      {/* CODE AND SALE */}
+                      <View style={{ flexDirection: "row" }}>
+                        <View View={{ flex: 1.25 }}>
+                          <Text style={styles.codeText}>CODE: {item.code}</Text>
+                        </View>
+                        <View
+                          style={{ flex: 0.75, marginLeft: verticalScale(5) }}
+                        >
+                          {item.sale ? (
+                            <View style={styles.saleContainer}>
+                              <Text style={styles.saletext}>{item.sale}</Text>
+                            </View>
+                          ) : null}
+                        </View>
+                      </View>
+
+                      {/* ITEM PRICE */}
+                      <View style={{ flexDirection: "row" }}>
+                        <Text
+                          style={{
+                            fontSize: scale(10),
+                            fontWeight: "800",
+                            color: colors.greytext,
+                            lineHeight: 18
+                          }}
+                        >
+                          AED
+                        </Text>
+                        <Text style={styles.priceText}> {item.price}</Text>
+                      </View>
+                    </View>
+
+                    {/* ITEM QUANTITY */}
+                    <View
+                      style={{
+                        flex: 0.54,
+                        marginRight: moderateScale(10),
+                        paddingTop: verticalScale(70)
+                      }}
+                    >
+                      <Text
+                        style={{
+                          color: colors.bgblue,
+                          fontSize: scale(15),
+                          fontWeight: "700"
+                        }}
+                      >
+                        QTY {item.quantity}
+                      </Text>
+                    </View>
+                  </View>
+                )}
+              />
             </View>
           </View>
           {/* YOUR CART END */}
@@ -547,5 +729,49 @@ const styles = StyleSheet.create({
     fontSize: scale(10),
     fontWeight: "300",
     color: colors.whitetext
+  },
+  // NEXT SECTION STYLE
+  itemImage: {
+    marginVertical: verticalScale(2),
+    width: moderateScale(85),
+    height: verticalScale(95),
+    borderWidth: scale(2.5),
+    borderColor: colors.bgblue,
+    borderRadius: moderateScale(10)
+  },
+  categorytext: {
+    fontWeight: "800",
+    fontSize: scale(11),
+    color: colors.greytext
+  },
+  saleContainer: {
+    backgroundColor: colors.bgred,
+    height: verticalScale(14),
+    width: verticalScale(60),
+    position: "absolute",
+    zIndex: scale(999),
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  saletext: {
+    fontWeight: "800",
+    fontSize: scale(9),
+    color: colors.whitetext
+  },
+  itemTitle: {
+    fontSize: scale(15),
+    fontWeight: "700",
+    color: colors.bgyellow
+  },
+  codeText: {
+    fontSize: scale(11),
+    fontWeight: "bold",
+    color: colors.bgblue
+  },
+  priceText: {
+    fontSize: scale(25),
+    fontWeight: "800",
+    color: colors.greytext,
+    lineHeight: 30
   }
 });
