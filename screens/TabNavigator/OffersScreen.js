@@ -7,6 +7,7 @@ import BrochureCart from "../../screens/CartScreen/BrochureCart";
 import BrochureCartTwo from "../ProductScreen/BrochureCartTwo";
 import CheckoutScreen from "../CheckoutScreen/CheckoutScreen";
 import StepTwo from "../CheckoutScreen/StepTwo";
+import StepThree from "../CheckoutScreen/StepThree";
 
 export default class OffersScreen extends Component {
   render() {
@@ -19,7 +20,8 @@ export default class OffersScreen extends Component {
       //   <Text>HELLO</Text>
       // </View>
       // <CheckoutScreen></CheckoutScreen>
-      <StepTwo></StepTwo>
+      // <StepTwo></StepTwo>
+      <StepThree></StepThree>
     );
   }
 }

@@ -9,11 +9,25 @@ import { MaterialCommunityIcons, Entypo } from "@expo/vector-icons";
 class VisaMasterCard extends Component {
   constructor() {
     super();
-    this.state = { isHidden: false };
+    this.state = { isHidden: false, visa: false, master: false };
   }
 
   buttonPressed = () => {
-    this.setState({ isHidden: !this.state.isHidden });
+    this.setState({
+      isHidden: !this.state.isHidden
+    });
+  };
+
+  visabuttonPressed = () => {
+    this.setState({
+      visa: !this.state.visa
+    });
+  };
+
+  masterbuttonPressed = () => {
+    this.setState({
+      master: !this.state.master
+    });
   };
 
   render() {
@@ -27,9 +41,14 @@ class VisaMasterCard extends Component {
         >
           {/* MASTER CARD */}
 
-          <View style={{ marginTop: verticalScale(50) }}>
-            {!this.state.isHidden ? (
-              <TouchableOpacity onPress={this.buttonPressed}>
+          <View
+            style={{
+              marginTop: verticalScale(50),
+              marginRight: moderateScale(-5)
+            }}
+          >
+            {!this.state.master ? (
+              <TouchableOpacity onPress={this.masterbuttonPressed}>
                 <Entypo
                   name="circle"
                   color={colors.greytext}
@@ -37,7 +56,7 @@ class VisaMasterCard extends Component {
                 />
               </TouchableOpacity>
             ) : (
-              <TouchableOpacity onPress={this.buttonPressed}>
+              <TouchableOpacity onPress={this.masterbuttonPressed}>
                 <MaterialCommunityIcons
                   name="check-circle-outline"
                   color={colors.bgblue}
@@ -59,10 +78,14 @@ class VisaMasterCard extends Component {
           {/* MASTER CARD  END*/}
 
           {/* VISA CARD START */}
-
-          <View style={{ marginTop: verticalScale(50) }}>
-            {!this.state.isHidden ? (
-              <TouchableOpacity onPress={this.buttonPressed}>
+          <View
+            style={{
+              marginTop: verticalScale(50),
+              marginRight: moderateScale(-7)
+            }}
+          >
+            {!this.state.visa ? (
+              <TouchableOpacity onPress={this.visabuttonPressed}>
                 <Entypo
                   name="circle"
                   color={colors.greytext}
@@ -70,7 +93,7 @@ class VisaMasterCard extends Component {
                 />
               </TouchableOpacity>
             ) : (
-              <TouchableOpacity onPress={this.buttonPressed}>
+              <TouchableOpacity onPress={this.visabuttonPressed}>
                 <MaterialCommunityIcons
                   name="check-circle-outline"
                   color={colors.bgblue}

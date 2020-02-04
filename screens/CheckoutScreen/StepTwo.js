@@ -18,16 +18,24 @@ import VisaMasterCard from "../CheckoutScreen/checkoutcomponents/VisaMasterCard"
 import { moderateScale, scale, verticalScale } from "../../scale";
 
 import colors from "../../assets/colors";
+import SavedCard from "./checkoutcomponents/SavedCard";
 
 class StepTwo extends Component {
   constructor(props) {
     super(props);
     this.state = {
       newbuttonColor: colors.greytext,
-      savedbuttonColor: colors.greytext
+      savedbuttonColor: colors.greytext,
+      isHidden: false
     };
     // this.selectionOnPress = this.selectionOnPress.bind(this);
   }
+
+  buttonPressed = () => {
+    this.setState({
+      isHidden: !this.state.isHidden
+    });
+  };
 
   render() {
     return (
@@ -137,22 +145,78 @@ class StepTwo extends Component {
 
           {/* NEW CARD / SAVED CARD Button END */}
 
-          {/* VISA/MASTER START */}
-          <View>
-            <VisaMasterCard></VisaMasterCard>
-          </View>
-
-          {/* NEW CARD DEAILS START */}
-          <View
-            style={{
-              marginHorizontal: moderateScale(20),
-              marginTop: verticalScale(20),
-              flex: 1
-            }}
-          >
-            <NewCard></NewCard>
-          </View>
-          {/* NEW CARD DEAILS END */}
+          {!this.state.isHidden ? (
+            <View>
+              {/* VISA/MASTER START */}
+              <View>
+                <VisaMasterCard></VisaMasterCard>
+              </View>
+              {/* NEW CARD DETAILS START */}
+              <View
+                style={{
+                  marginHorizontal: moderateScale(20),
+                  marginTop: verticalScale(20),
+                  flex: 1
+                }}
+              >
+                <NewCard></NewCard>
+              </View>
+              {/* NEW CARD DETAILS END */}
+            </View>
+          ) : (
+            <View style={{ marginTop: verticalScale(20) }}>
+              {/* SAVED CARD DETAILS START */}
+              <SavedCard
+                accountholdername="ACCOUNT HOLDER NAME"
+                accountexpiry="2020/02"
+                accountnumber="01234 5678 9876"
+              >
+                <Image
+                  source={require("../../assets/visa.png")}
+                  style={{
+                    width: moderateScale(76),
+                    height: verticalScale(76),
+                    position: "absolute",
+                    right: moderateScale(10)
+                  }}
+                  resizeMode="contain"
+                />
+              </SavedCard>
+              <SavedCard
+                accountholdername="ACCOUNT HOLDER NAME"
+                accountexpiry="2020/02"
+                accountnumber="01234 5678 9876"
+              >
+                <Image
+                  source={require("../../assets/visa.png")}
+                  style={{
+                    width: moderateScale(76),
+                    height: verticalScale(76),
+                    position: "absolute",
+                    right: moderateScale(10)
+                  }}
+                  resizeMode="contain"
+                />
+              </SavedCard>
+              <SavedCard
+                accountholdername="ACCOUNT HOLDER NAME"
+                accountexpiry="2020/02"
+                accountnumber="01234 5678 9876"
+              >
+                <Image
+                  source={require("../../assets/master.png")}
+                  style={{
+                    width: moderateScale(76),
+                    height: verticalScale(76),
+                    position: "absolute",
+                    right: moderateScale(10)
+                  }}
+                  resizeMode="contain"
+                />
+              </SavedCard>
+              {/* SAVED CARD DETAILS END */}
+            </View>
+          )}
 
           {/* PROCEED TO NEXT STEP BUTTON START*/}
           <View
