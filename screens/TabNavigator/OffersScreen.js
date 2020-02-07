@@ -8,6 +8,11 @@ import BrochureCartTwo from "../ProductScreen/BrochureCartTwo";
 import CheckoutScreen from "../CheckoutScreen/CheckoutScreen";
 import StepTwo from "../CheckoutScreen/StepTwo";
 import StepThree from "../CheckoutScreen/StepThree";
+import MainWalkthrough from "../WalkthroughScreen/MainWalkthrough";
+import FirstScreen from "../WalkthroughScreen/FirstScreen";
+import SecondScreen from "../WalkthroughScreen/SecondScreen";
+import ThirdScreen from "../WalkthroughScreen/ThirdScreen";
+import FourthScreen from "../WalkthroughScreen/FourthScreen";
 
 export default class OffersScreen extends Component {
   render() {
@@ -21,7 +26,12 @@ export default class OffersScreen extends Component {
       // </View>
       // <CheckoutScreen></CheckoutScreen>
       // <StepTwo></StepTwo>
-      <StepThree></StepThree>
+      // <StepThree></StepThree>
+      // <MainWalkthrough> </MainWalkthrough>
+      // <FirstScreen></FirstScreen>
+      // <SecondScreen></SecondScreen>
+      // <ThirdScreen></ThirdScreen>
+      <FourthScreen></FourthScreen>
     );
   }
 }

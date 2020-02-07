@@ -3,6 +3,8 @@ const colors = {
   bgbluedark: "#1D9FC5",
   bgyellow: "#F9CF2F",
   bgred: "#D60505",
+  bgorange: "#f96523",
+  walkthroughdarkblue: "#2e93e1",
   bggreen: "#7DA805",
   inactivegreybutton: "#C4C2C2",
   greytext: "#5D5D5D",
