@@ -21,11 +21,8 @@ export default class OffersScreen extends Component {
     return (
       // <LimitedTimeProduct />
       //<Brochure></Brochure>
-      //   <BrochureCart></BrochureCart>
+      <BrochureCart></BrochureCart>
       //   <BrochureCartTwo></BrochureCartTwo>
-      // <View style={styles.container}>
-      //   <Text>HELLO</Text>
-      // </View>
       // <CheckoutScreen></CheckoutScreen>
       // <StepTwo></StepTwo>
       // <StepThree></StepThree>
@@ -35,7 +32,7 @@ export default class OffersScreen extends Component {
       // <ThirdScreen></ThirdScreen>
       // <FourthScreen></FourthScreen>
       // <EmailSent></EmailSent>
-      <PasswordReset></PasswordReset>
+      // <PasswordReset></PasswordReset>
     );
   }
 }
