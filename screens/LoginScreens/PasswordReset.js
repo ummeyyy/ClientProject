@@ -43,7 +43,7 @@ class PasswordReset extends Component {
         > */}
         <View style={styles.container}>
           {/* BACK ARROW START*/}
-          <View
+          <TouchableOpacity
             style={{
               height: verticalScale(35),
               width: moderateScale(35),
@@ -60,7 +60,7 @@ class PasswordReset extends Component {
               }}
               resizeMode="contain"
             />
-          </View>
+          </TouchableOpacity>
 
           {/* BACK ARROW END*/}
 
