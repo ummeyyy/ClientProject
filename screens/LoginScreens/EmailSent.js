@@ -11,7 +11,7 @@ class EmailSent extends Component {
     return (
       <View style={styles.container}>
         {/* BACK ARROW START*/}
-        <View
+        <TouchableOpacity
           style={{
             height: verticalScale(35),
             width: moderateScale(35),
@@ -28,7 +28,7 @@ class EmailSent extends Component {
             }}
             resizeMode="contain"
           />
-        </View>
+        </TouchableOpacity>
 
         {/* BACK ARROW END*/}
 
