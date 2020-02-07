@@ -98,8 +98,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: colors.blacktext
+    justifyContent: "center"
   },
   skipbutton: {
     backgroundColor: "transparent",
