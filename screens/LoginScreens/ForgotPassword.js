@@ -42,7 +42,7 @@ class ForgotPassword extends Component {
         > */}
         <View style={styles.container}>
           {/* BACK ARROW START*/}
-          <View
+          <TouchableOpacity
             style={{
               height: verticalScale(35),
               width: moderateScale(35),
@@ -59,7 +59,7 @@ class ForgotPassword extends Component {
               }}
               resizeMode="contain"
             />
-          </View>
+          </TouchableOpacity>
 
           {/* BACK ARROW END*/}
 
