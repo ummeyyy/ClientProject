@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 
-import { Entypo } from "@expo/vector-icons";
-
 import { moderateScale, scale, verticalScale } from "../../scale";
 import colors from "../../assets/colors";
 
@@ -12,69 +10,82 @@ class EmailSent extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {/* LOGO */}
-        <Image
-          source={require("../../assets/email-sent.png")}
-          style={{
-            width: "100%",
-            height: "100%"
-          }}
-          resizeMode="cover"
-        />
-        {/* SKIP BUTTON START */}
+        {/* BACK ARROW START*/}
         <View
           style={{
-            flex: 1,
-            alignItems: "center",
-            justifyContent: "center",
+            height: verticalScale(35),
+            width: moderateScale(35),
             position: "absolute",
-            top: verticalScale(10),
-            right: moderateScale(20)
+            top: verticalScale(15),
+            left: moderateScale(15)
           }}
         >
-          <CategoryButton style={styles.skipbutton}>
-            <Text style={styles.skipbuttontext}>SKIP</Text>
-          </CategoryButton>
+          <Image
+            source={require("../../assets/arrow.png")}
+            style={{
+              width: moderateScale(30),
+              height: verticalScale(32)
+            }}
+            resizeMode="contain"
+          />
         </View>
-        {/* SKIP BUTTON END */}
+
+        {/* BACK ARROW END*/}
+
+        {/* LOGO START*/}
+        <View
+          style={{
+            marginTop: verticalScale(50)
+          }}
+        >
+          <Image
+            source={require("../../assets/email-sent.png")}
+            style={{
+              width: moderateScale(150),
+              height: verticalScale(152)
+            }}
+            resizeMode="contain"
+          />
+        </View>
+        {/* LOGO END*/}
 
         {/* SCREEN TEXT START*/}
-        <View style={styles.centerTextView}>
-          <Text style={styles.largetext}>
-            {"Empower Your Business,\nMobilize Your Life!"}
-          </Text>
-          <View style={{ marginTop: verticalScale(8) }}>
+        <View
+          style={{
+            marginTop: verticalScale(10)
+          }}
+        >
+          <Text style={styles.largetext}>{"WE'VE SEND\nYOU AN EMAIL"}</Text>
+          <View style={{ marginTop: verticalScale(15) }}>
             <Text style={styles.smalltext}>
               {
-                "Reach-out the ever expanding mobile\naudiences at large scale to gather useful linking\ndata from mobile users which Significantly\nimproves your digital marketing strategy and\nmakes it peerless to Stand out amongst your\ncompetitors and to Understand treads, and\nimprove performance."
+                "We've send you an email with a link\nto change your account password."
               }
-            </Text>
-          </View>
-          <View style={{ marginTop: verticalScale(8) }}>
-            <Text style={styles.smalltext}>
-              {"Generate new income streams and maximize\nyour market reach."}
             </Text>
           </View>
         </View>
         {/* SCREEN TEXT END*/}
 
-        {/* QUICK TOUR BUTTON START*/}
+        {/* BACK TO LOGIN PAGE BUTTON START*/}
         <View
           style={{
-            marginTop: verticalScale(10),
-            flex: 1,
+            marginTop: verticalScale(30),
             alignItems: "center",
-            justifyContent: "center",
-            position: "absolute",
-            bottom: verticalScale(20)
+            justifyContent: "center"
           }}
         >
-          <CategoryButton style={styles.nextbutton}>
-            <Text style={styles.nextbuttontext}>NEXT</Text>
+          <CategoryButton style={styles.backtologinbutton}>
+            <Text style={styles.backtologinbuttontext}>BACK TO LOGIN PAGE</Text>
           </CategoryButton>
         </View>
+        {/* BACK TO LOGIN PAGE BUTTON END*/}
 
-        {/* QUICK TOUR BUTTON END*/}
+        {/* RESEND EMAIL START*/}
+
+        <TouchableOpacity style={{ marginTop: verticalScale(30) }}>
+          <Text style={styles.resendemailtext}>RESEND EMAIL</Text>
+        </TouchableOpacity>
+        {/* RESEND EMAIL END*/}
       </View>
     );
   }
@@ -88,48 +99,35 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: colors.whitetext
   },
-  skipbutton: {
-    backgroundColor: "transparent",
-    borderColor: colors.whitetext,
-    borderWidth: scale(3),
-    height: verticalScale(35),
-    width: moderateScale(60),
-    borderRadius: scale(50)
-  },
-  skipbuttontext: {
-    fontSize: scale(13),
-    color: colors.whitetext,
-    fontWeight: "900"
-  },
-  centerTextView: {
-    flex: 1,
-    position: "absolute",
-    top: verticalScale(300),
-    alignItems: "center",
-    justifyContent: "center"
-  },
   largetext: {
-    fontSize: scale(16),
-    color: colors.bgyellow,
+    fontSize: scale(30),
+    color: colors.bgblue,
     textAlign: "center",
-    fontWeight: "800"
+    fontWeight: "700"
   },
   smalltext: {
-    fontSize: scale(10),
+    fontSize: scale(16),
     color: colors.grey2,
     textAlign: "center",
     fontWeight: "500"
   },
-  nextbutton: {
+  backtologinbutton: {
     backgroundColor: colors.bgblue,
     borderColor: colors.whitetext,
-    height: verticalScale(40),
-    width: moderateScale(100),
+    height: verticalScale(50),
+    width: moderateScale(250),
     borderRadius: scale(50)
   },
-  nextbuttontext: {
-    fontSize: scale(15),
+  backtologinbuttontext: {
+    fontSize: scale(14),
     color: colors.whitetext,
-    fontWeight: "600"
+    fontWeight: "800"
+  },
+  resendemailtext: {
+    color: colors.grey2,
+    textAlign: "center",
+    fontWeight: "800",
+    fontSize: scale(12),
+    textDecorationLine: "underline"
   }
 });
