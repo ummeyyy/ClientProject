@@ -15,13 +15,14 @@ import ThirdScreen from "../WalkthroughScreen/ThirdScreen";
 import FourthScreen from "../WalkthroughScreen/FourthScreen";
 import EmailSent from "../LoginScreens/EmailSent";
 import PasswordReset from "../LoginScreens/PasswordReset";
+import ForgotPassword from "../LoginScreens/ForgotPassword";
 
 export default class OffersScreen extends Component {
   render() {
     return (
       // <LimitedTimeProduct />
       //<Brochure></Brochure>
-      <BrochureCart></BrochureCart>
+      // <BrochureCart></BrochureCart>
       // <BrochureCartTwo></BrochureCartTwo>
       // <CheckoutScreen></CheckoutScreen>
       // <StepTwo></StepTwo>
@@ -33,6 +34,7 @@ export default class OffersScreen extends Component {
       // <FourthScreen></FourthScreen>
       // <EmailSent></EmailSent>
       // <PasswordReset></PasswordReset>
+      <ForgotPassword></ForgotPassword>
     );
   }
 }
