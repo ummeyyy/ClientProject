@@ -13,6 +13,7 @@ import FirstScreen from "../WalkthroughScreen/FirstScreen";
 import SecondScreen from "../WalkthroughScreen/SecondScreen";
 import ThirdScreen from "../WalkthroughScreen/ThirdScreen";
 import FourthScreen from "../WalkthroughScreen/FourthScreen";
+import EmailSent from "../LoginScreens/EmailSent";
 
 export default class OffersScreen extends Component {
   render() {
@@ -31,7 +32,8 @@ export default class OffersScreen extends Component {
       // <FirstScreen></FirstScreen>
       // <SecondScreen></SecondScreen>
       // <ThirdScreen></ThirdScreen>
-      <FourthScreen></FourthScreen>
+      // <FourthScreen></FourthScreen>
+      <EmailSent></EmailSent>
     );
   }
 }

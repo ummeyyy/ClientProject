@@ -1,12 +1,5 @@
 import React, { Component } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  ImageBackground,
-  TouchableOpacity
-} from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 
 import { Entypo } from "@expo/vector-icons";
 
@@ -15,19 +8,19 @@ import colors from "../../assets/colors";
 
 import CategoryButton from "../../components/CategoryButton";
 
-class FirstScreen extends Component {
+class EmailSent extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {/* BACKGROUND IMAGE */}
-        <ImageBackground
-          source={require("../../assets/walk_1.png")}
+        {/* LOGO */}
+        <Image
+          source={require("../../assets/email-sent.png")}
           style={{
             width: "100%",
-            height: "100%",
-            resizeImage: "contain"
+            height: "100%"
           }}
-        ></ImageBackground>
+          resizeMode="cover"
+        />
         {/* SKIP BUTTON START */}
         <View
           style={{
@@ -35,7 +28,7 @@ class FirstScreen extends Component {
             alignItems: "center",
             justifyContent: "center",
             position: "absolute",
-            top: verticalScale(9),
+            top: verticalScale(10),
             right: moderateScale(20)
           }}
         >
@@ -48,15 +41,18 @@ class FirstScreen extends Component {
         {/* SCREEN TEXT START*/}
         <View style={styles.centerTextView}>
           <Text style={styles.largetext}>
-            {
-              "Explainer Videos\nWhiteboard Animation\nCorporate Videos\nTV Commercial Ads\nSocial Media Ads (DVC)\nEducational Videos"
-            }
+            {"Empower Your Business,\nMobilize Your Life!"}
           </Text>
           <View style={{ marginTop: verticalScale(8) }}>
             <Text style={styles.smalltext}>
               {
-                "Motion Graphics Designer creates\ncomplex grpahics, animation and\n live video content for a diverse array\n of media, including smartphones\nhandeld electronic devices, the\n web and television"
+                "Reach-out the ever expanding mobile\naudiences at large scale to gather useful linking\ndata from mobile users which Significantly\nimproves your digital marketing strategy and\nmakes it peerless to Stand out amongst your\ncompetitors and to Understand treads, and\nimprove performance."
               }
+            </Text>
+          </View>
+          <View style={{ marginTop: verticalScale(8) }}>
+            <Text style={styles.smalltext}>
+              {"Generate new income streams and maximize\nyour market reach."}
             </Text>
           </View>
         </View>
@@ -70,7 +66,7 @@ class FirstScreen extends Component {
             alignItems: "center",
             justifyContent: "center",
             position: "absolute",
-            bottom: verticalScale(42)
+            bottom: verticalScale(20)
           }}
         >
           <CategoryButton style={styles.nextbutton}>
@@ -83,13 +79,14 @@ class FirstScreen extends Component {
     );
   }
 }
-export default FirstScreen;
+export default EmailSent;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    backgroundColor: colors.whitetext
   },
   skipbutton: {
     backgroundColor: "transparent",
@@ -107,21 +104,21 @@ const styles = StyleSheet.create({
   centerTextView: {
     flex: 1,
     position: "absolute",
-    top: verticalScale(280),
+    top: verticalScale(300),
     alignItems: "center",
     justifyContent: "center"
   },
   largetext: {
-    fontSize: scale(12),
+    fontSize: scale(16),
     color: colors.bgyellow,
     textAlign: "center",
-    fontWeight: "700"
+    fontWeight: "800"
   },
   smalltext: {
-    fontSize: scale(9),
+    fontSize: scale(10),
     color: colors.grey2,
     textAlign: "center",
-    fontWeight: "600"
+    fontWeight: "500"
   },
   nextbutton: {
     backgroundColor: colors.bgblue,
