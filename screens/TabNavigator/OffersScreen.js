@@ -21,8 +21,8 @@ export default class OffersScreen extends Component {
     return (
       // <LimitedTimeProduct />
       //<Brochure></Brochure>
-      // <BrochureCart></BrochureCart>
-      <BrochureCartTwo></BrochureCartTwo>
+      <BrochureCart></BrochureCart>
+      // <BrochureCartTwo></BrochureCartTwo>
       // <CheckoutScreen></CheckoutScreen>
       // <StepTwo></StepTwo>
       // <StepThree></StepThree>

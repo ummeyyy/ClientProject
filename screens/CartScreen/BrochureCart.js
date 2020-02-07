@@ -135,6 +135,7 @@ class BrochureCart extends Component {
             <View
               style={{
                 marginTop: verticalScale(20),
+                marginHorizontal: moderateScale(5),
                 paddingVertical: verticalScale(20)
               }}
             >
@@ -147,37 +148,6 @@ class BrochureCart extends Component {
                   keyExtractor={(item, index) => item.id}
                   ItemSeparatorComponent={this.renderSeparator}
                   data={section}
-                  renderHiddenItem={(rowData, rowMap) => (
-                    <View style={styles.rowBack}>
-                      <TouchableOpacity
-                        onPress={() => rowMap[rowData.item.key].closeRow()}
-                      >
-                        <View
-                          style={{
-                            // backgroundColor: colors.bggreen,
-                            height: verticalScale(135),
-                            width: scale(78),
-                            paddingBottom: verticalScale(30),
-                            justifyContent: "center",
-                            alignItems: "center"
-                          }}
-                        >
-                          <FontAwesome
-                            name="edit"
-                            color={colors.bggreen}
-                            size={scale(25)}
-                          />
-                        </View>
-                      </TouchableOpacity>
-                    </View>
-                  )}
-                  leftOpenValue={75}
-                  rightOpenValue={-75}
-                  onRowOpen={(rowKey, rowMap) => {
-                    setTimeout(() => {
-                      rowMap[rowKey].closeRow();
-                    }, 2000);
-                  }}
                   renderItem={({ item }) => (
                     // ITEMS DESIGN
                     <View style={styles.itemcontainer}>
@@ -268,7 +238,7 @@ class BrochureCart extends Component {
                             style={{
                               alignItems: "flex-end",
                               justifyContent: "flex-end",
-                              marginTop: verticalScale(-10)
+                              marginTop: verticalScale(2)
                             }}
                           >
                             <Text style={styles.PreferenceText}>
@@ -520,8 +490,7 @@ export default BrochureCart;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    marginHorizontal: moderateScale(4)
+    flex: 1
   },
   image: {
     height: verticalScale(560)
