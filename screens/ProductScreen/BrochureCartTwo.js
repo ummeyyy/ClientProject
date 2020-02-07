@@ -119,7 +119,8 @@ class BrochureCartTwo extends Component {
             <View
               style={{
                 marginTop: verticalScale(25),
-                flexDirection: "row"
+                flexDirection: "row",
+                paddingHorizontal: moderateScale(20)
               }}
             >
               <Image
