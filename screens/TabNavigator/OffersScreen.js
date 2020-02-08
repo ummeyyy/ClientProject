@@ -16,7 +16,9 @@ import FourthScreen from "../WalkthroughScreen/FourthScreen";
 import EmailSent from "../LoginScreens/EmailSent";
 import PasswordReset from "../LoginScreens/PasswordReset";
 import ForgotPassword from "../LoginScreens/ForgotPassword";
-
+import Password from "../LoginScreens/Password";
+import SignUp from "../SignUpScreen/SignUp";
+import MobileInput from "../../components/MobileInput";
 export default class OffersScreen extends Component {
   render() {
     return (
@@ -34,7 +36,9 @@ export default class OffersScreen extends Component {
       // <FourthScreen></FourthScreen>
       // <EmailSent></EmailSent>
       // <PasswordReset></PasswordReset>
-      <ForgotPassword></ForgotPassword>
+      // <ForgotPassword></ForgotPassword>
+      // <Password></Password>
+      <SignUp></SignUp>
     );
   }
 }

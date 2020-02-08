@@ -203,11 +203,6 @@ const styles = StyleSheet.create({
     borderColor: colors.bgblue,
     borderWidth: scale(1.5)
   },
-  passwordText: {
-    color: colors.blacktext,
-    fontSize: scale(14),
-    fontWeight: "400"
-  },
   submitrequestbutton: {
     backgroundColor: colors.bgblue,
     borderColor: colors.whitetext,

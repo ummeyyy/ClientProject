@@ -1,244 +1,186 @@
-import React, { Component } from "react";
-import {
-  StyleSheet,
-  Text,
-  Image,
-  View,
-  FlatList,
-  TouchableOpacity,
-  ImageBackground
-} from "react-native";
+<KeyboardAvoidingView
+  style={styles.container}
+  behavior="padding"
+  enabled
+  keyboardVerticalOffset={Platform.OS === "ios" ? scale(200) : 0}
+>
+  {/* <ScrollView
+  showsVerticalScrollIndicator={false}
+  showsHorizontalScrollIndicator={false}
+> */}
+  <View style={styles.container}>
+    {/* BACK ARROW START*/}
+    <TouchableOpacity
+      style={{
+        height: verticalScale(35),
+        width: moderateScale(35),
+        position: "absolute",
+        top: verticalScale(15),
+        left: moderateScale(5)
+      }}
+    >
+      <Image
+        source={require("../../assets/arrow.png")}
+        style={{
+          width: moderateScale(30),
+          height: verticalScale(32)
+        }}
+        resizeMode="contain"
+      />
+    </TouchableOpacity>
 
-import { SwipeListView } from "react-native-swipe-list-view";
+    {/* BACK ARROW END*/}
 
-import {
-  Ionicons,
-  MaterialCommunityIcons,
-  MaterialIcons
-} from "@expo/vector-icons";
+    {/* LOGO START*/}
+    <View
+      style={{
+        marginTop: verticalScale(50)
+      }}
+    >
+      <Image
+        source={require("../../assets/reset-pass.png")}
+        style={{
+          width: moderateScale(100),
+          height: verticalScale(102)
+        }}
+        resizeMode="contain"
+      />
+    </View>
+    {/* LOGO END*/}
 
-import Count from "../cartcomponents/Count";
-import { moderateScale, scale, verticalScale } from "../../../scale";
-import colors from "../../../assets/colors";
-
-const section = [
-  {
-    name: "4F FLYERS",
-    category: "BRANDING DESIGN",
-    price: 100,
-    sale: "10% OFF",
-    code: "D01",
-    id: "1",
-    image: require("../../../assets/home.jpg")
-  },
-  {
-    name: "5 PAGE WEBSITE DESIGN",
-    category: "WEBSITE",
-    price: 250,
-    sale: "35% OFF",
-    code: "W01",
-    id: "2",
-    image: require("../../../assets/restaurant.jpg")
-  },
-  {
-    name: "ANIMATION FOR YOUR BUSINESS",
-    category: "VIDEO ANIMATION",
-    price: 100,
-    sale: "5% OFF",
-    code: "V01",
-    id: "3",
-    image: require("../../../assets/home.jpg")
-  }
-];
-
-class CartItemsFlatlist extends Component {
-  constructor() {
-    super();
-    this.state = {
-      count: 1,
-      salePrice: (section[0].price * section[0].sale) / 100,
-      price: section[0].price,
-      actualprice: 0,
-      totalPrice: section[0].price - (section[0].price * section[0].sale) / 100
-    };
-  }
-
-  handleIncerement = () => {
-    this.setState({
-      count: this.state.count + 1,
-      actualprice: this.state.price - this.state.salePrice,
-      totalPrice:
-        (this.state.count + 1) * (this.state.price - this.state.salePrice)
-    });
-  };
-
-  handleDecrement = () => {
-    if (this.state.count <= 1) {
-      return;
-    } else {
-      this.setState({
-        count: this.state.count - 1,
-        actualprice: this.state.price - this.state.salePrice,
-        totalPrice:
-          (this.state.count - 1) * (this.state.price - this.state.salePrice)
-      });
-    }
-  };
-
-  renderSeparator = () => {
-    return (
+    {/* SCREEN TEXT START*/}
+    <View
+      style={{
+        marginTop: verticalScale(10)
+      }}
+    >
+      <Text style={styles.largetext}>{"RESET PASSWORD"}</Text>
       <View
         style={{
-          height: 1,
-          width: "100%",
-          backgroundColor: colors.blacktext,
-          marginVertical: verticalScale(10)
+          marginTop: verticalScale(15),
+          marginHorizontal: moderateScale(20)
         }}
-      />
-    );
-  };
-  render() {
-    return (
-      <View style={styles.container}>
-        <FlatList
-          horizontal={false}
-          showsHorizontalScrollIndicator={false}
-          showsVerticalScrollIndicator={false}
-          leftOpenValue={75}
-          rightOpenValue={-75}
-          keyExtractor={(item, index) => item.id}
-          ItemSeparatorComponent={this.renderSeparator}
-          data={section}
-          renderItem={({ item }) => (
-            // ITEMS DESIGN
-            <View style={styles.itemcontainer}>
-              <View style={{ flexDirection: "row" }}>
-                <View
-                  style={{
-                    flex: 1.15
-                  }}
-                >
-                  {/* ITEM IMAGE */}
-                  <Image
-                    source={item.image}
-                    style={styles.itemImage}
-                    resizeMode="cover"
-                  />
-                </View>
-
-                {/* ITEM DETAILS */}
-                <View
-                  style={{
-                    flex: 2.15,
-                    marginHorizontal: moderateScale(15),
-                    paddingTop: verticalScale(3)
-                  }}
-                >
-                  <Text style={styles.categorytext}>{item.category}</Text>
-                  <Text style={styles.itemTitle}>{item.name}</Text>
-
-                  {/* CODE AND SALE */}
-                  <View style={{ flexDirection: "row" }}>
-                    <View View={{ flex: 1.25 }}>
-                      <Text style={styles.codeText}>CODE: {item.code}</Text>
-                    </View>
-                    <View style={{ flex: 0.75, marginLeft: verticalScale(5) }}>
-                      {item.sale ? (
-                        <View style={styles.saleContainer}>
-                          <Text style={styles.saletext}>{item.sale}</Text>
-                        </View>
-                      ) : null}
-                    </View>
-                  </View>
-
-                  {/* ITEM PRICE */}
-                  <View style={{ flexDirection: "row" }}>
-                    <Text
-                      style={{
-                        fontSize: scale(10),
-                        fontWeight: "800",
-                        color: colors.greytext,
-                        lineHeight: 18
-                      }}
-                    >
-                      AED
-                    </Text>
-                    <Text style={styles.priceText}> {item.price}</Text>
-                  </View>
-                </View>
-
-                {/* ITEM QUANTITY */}
-                <View
-                  style={{
-                    flex: 0.65,
-                    backgroundColor: colors.bgblue
-                  }}
-                >
-                  <Count
-                    plus={() => this.state.handleIncerement()}
-                    startcount={this.state.count}
-                    minus={() => this.state.handleDecrement()}
-                  ></Count>
-                </View>
-              </View>
-            </View>
-          )}
-        />
+      >
+        <Text style={styles.smalltext}>
+          {
+            "Looks like you're trying to reset the password.\nPlease enter a new password that you\ndont use anywhere else."
+          }
+        </Text>
       </View>
-    );
-  }
-}
-export default CartItemsFlatlist;
+    </View>
+    {/* SCREEN TEXT END*/}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  itemContainer: {
-    height: verticalScale(50),
-    width: "100%"
-  },
-  itemImage: {
-    marginVertical: verticalScale(2),
-    width: "100%",
-    height: verticalScale(105),
-    borderWidth: scale(2.5),
-    borderColor: colors.bgblue,
-    borderRadius: moderateScale(10)
-  },
-  categorytext: {
-    fontWeight: "800",
-    fontSize: scale(11),
-    color: colors.greytext
-  },
-  saleContainer: {
-    backgroundColor: colors.bgred,
-    height: verticalScale(14),
-    width: verticalScale(60),
-    position: "absolute",
-    zIndex: scale(999),
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  saletext: {
-    fontWeight: "800",
-    fontSize: scale(9),
-    color: colors.whitetext
-  },
-  itemTitle: {
-    fontSize: scale(15),
-    fontWeight: "700",
-    color: colors.bgyellow
-  },
-  codeText: {
-    fontSize: scale(11),
-    fontWeight: "bold",
-    color: colors.bgblue
-  },
-  priceText: {
-    fontSize: scale(25),
-    fontWeight: "800",
-    color: colors.greytext,
-    lineHeight: 30
-  }
-});
+    {/* PASSWORD RESET START */}
+    <View
+      style={{
+        marginTop: verticalScale(20)
+      }}
+    >
+      {/* Email reset */}
+      <View
+        style={[styles.methodContainer, { marginVertical: verticalScale(10) }]}
+      >
+        <View style={{ flex: 0.25 }}>
+          <Image
+            source={require("../../assets/emailicon.png")}
+            style={{
+              width: moderateScale(25),
+              height: verticalScale(25),
+              tintColor: colors.greytext
+            }}
+            resizeMode="contain"
+          />
+        </View>
+        <View style={{ flex: 1 }}>
+          <TextInput
+            style={{
+              marginLeft: moderateScale(-10),
+              color: colors.greytext,
+              fontSize: scale(14),
+              fontWeight: "400"
+            }}
+            value={this.state.email}
+            underlineColorAndroid="transparent"
+            onChangeText={text => this.setState({ email: text })}
+            placeholder={"ENTER EMAIL ADDRESS"}
+            returnKeyType="done"
+          />
+        </View>
+      </View>
+      {/* password reset */}
+      <View style={styles.methodContainer}>
+        <View style={{ flex: 0.25 }}>
+          <Image
+            source={require("../../assets/pwd.png")}
+            style={{
+              width: moderateScale(25),
+              height: verticalScale(25),
+              tintColor: colors.greytext
+            }}
+            resizeMode="contain"
+          />
+        </View>
+        <View style={{ flex: 1 }}>
+          <TextInput
+            style={{
+              marginLeft: moderateScale(-10),
+              color: colors.greytext,
+              fontSize: scale(14),
+              fontWeight: "400"
+            }}
+            value={this.state.password}
+            secureTextEntry={this.state.password}
+            onChangeText={text => onChange({ password: text })}
+            underlineColorAndroid="transparent"
+            //   onChangeText={text => this.setState({ password: text })}
+            placeholder={"ENTER PASSWORD"}
+            returnKeyType="done"
+          />
+        </View>
+        {/* HIDE PASSWORD OR NOT START */}
+        <View style={{ position: "absolute", right: moderateScale(20) }}>
+          <TouchableOpacity onPress={this._makeYourEffectHere}>
+            {/* {!this.state.isHidden ? ( */}
+            <Image
+              source={require(this.state.image)}
+              //   source={require("../../assets/eye-close.png")}
+              style={{
+                width: moderateScale(25),
+                height: verticalScale(25)
+              }}
+              resizeMode="contain"
+            />
+            {/* ) : ( */}
+            {/* <Image
+              source={require("../../assets/eye-open.png")}
+              style={{
+                width: moderateScale(25),
+                height: verticalScale(25)
+              }}
+              resizeMode="contain"
+            />
+          )} */}
+          </TouchableOpacity>{" "}
+          */}
+        </View>
+        {/* HIDE PASSWORD OR NOT END */}
+      </View>
+    </View>
+    {/* PASSWORD RESET END */}
+
+    {/* BACK TO LOGIN PAGE BUTTON START*/}
+    <View
+      style={{
+        marginTop: verticalScale(30),
+        alignItems: "center",
+        justifyContent: "center"
+      }}
+    >
+      <CategoryButton style={styles.resetpasswordbutton}>
+        <Text style={styles.resetpasswordbuttontext}>RESET PASSWORD</Text>
+      </CategoryButton>
+    </View>
+    {/* BACK TO LOGIN PAGE BUTTON END*/}
+  </View>
+  {/* </ScrollView> */}
+</KeyboardAvoidingView>;
