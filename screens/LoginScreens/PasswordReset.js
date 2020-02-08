@@ -16,18 +16,43 @@ import colors from "../../assets/colors";
 
 import CategoryButton from "../../components/CategoryButton";
 
-class PasswordReset extends Component {
-  constructor() {
-    super();
+class ForgotPassword extends Component {
+  constructor(props) {
+    super(props);
+    this.toggleSwitch = this.toggleSwitch.bind(this);
+    this.passwordRemember = this.passwordRemember.bind(this);
+
     this.state = {
-      isHidden: false,
-      email: ""
+      showPassword: true,
+      rememberPassword: true,
+      email: "",
+      password: ""
     };
   }
 
-  buttonPressed = () => {
-    this.setState({ isHidden: !this.state.isHidden });
-  };
+  toggleSwitch() {
+    this.setState({
+      showPassword: !this.state.showPassword
+    });
+  }
+
+  passwordRemember() {
+    this.setState({
+      rememberPassword: !this.state.rememberPassword
+    });
+  }
+
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     isHidden: false,
+  //     email: ""
+  //   };
+  // }
+
+  // buttonPressed = () => {
+  //   this.setState({ isHidden: !this.state.isHidden });
+  // };
   render() {
     return (
       <KeyboardAvoidingView
@@ -47,8 +72,8 @@ class PasswordReset extends Component {
               height: verticalScale(35),
               width: moderateScale(35),
               position: "absolute",
-              top: verticalScale(15),
-              left: moderateScale(5)
+              top: verticalScale(25),
+              left: moderateScale(20)
             }}
           >
             <Image
@@ -70,7 +95,7 @@ class PasswordReset extends Component {
             }}
           >
             <Image
-              source={require("../../assets/main-icon.png")}
+              source={require("../../assets/reset-pass.png")}
               style={{
                 width: moderateScale(110),
                 height: verticalScale(112)
@@ -86,7 +111,7 @@ class PasswordReset extends Component {
               marginTop: verticalScale(10)
             }}
           >
-            <Text style={styles.largetext}>{"FORGOT PASSWORD"}</Text>
+            <Text style={styles.largetext}>{"RESET PASSWORD"}</Text>
             <View
               style={{
                 marginTop: verticalScale(15),
@@ -95,7 +120,7 @@ class PasswordReset extends Component {
             >
               <Text style={styles.smalltext}>
                 {
-                  "Enter your email address and you'll get an email\nwith the instructions to reset password."
+                  "Looks like you're trying to reset the password.\nPlease enter a new password that you\ndont use anywhere else."
                 }
               </Text>
             </View>
@@ -144,32 +169,90 @@ class PasswordReset extends Component {
           </View>
           {/* Enter emai  END */}
 
-          {/* BACK TO LOGIN PAGE BUTTON START*/}
+          {/* Enter password Start */}
+          <View
+            style={[
+              styles.methodContainer,
+              {
+                marginTop: verticalScale(10),
+                marginHorizontal: moderateScale(25)
+              }
+            ]}
+          >
+            <View style={{ flex: 0.25 }}>
+              <Image
+                source={require("../../assets/pwd.png")}
+                style={{
+                  width: moderateScale(25),
+                  height: verticalScale(25),
+                  tintColor: colors.greytext
+                }}
+                resizeMode="contain"
+              />
+            </View>
+            <View style={{ flex: 1 }}>
+              <TextInput
+                style={{
+                  marginLeft: moderateScale(-20),
+                  color: colors.greytext,
+                  fontSize: scale(14),
+                  fontWeight: "400"
+                }}
+                value={this.state.password}
+                secureTextEntry={this.state.showPassword}
+                underlineColorAndroid="transparent"
+                onChangeText={text => this.setState({ password: text })}
+                placeholder={"ENTER PASSWORD"}
+                returnKeyType="done"
+              />
+            </View>
+            <View style={{ position: "absolute", right: moderateScale(20) }}>
+              <TouchableOpacity onPress={this.toggleSwitch}>
+                {!this.state.showPassword ? (
+                  <Image
+                    source={require("../../assets/eye-close.png")}
+                    style={{
+                      width: moderateScale(25),
+                      height: verticalScale(25)
+                    }}
+                    resizeMode="contain"
+                  />
+                ) : (
+                  <Image
+                    source={require("../../assets/eye-open.png")}
+                    style={{
+                      width: moderateScale(25),
+                      height: verticalScale(25)
+                    }}
+                    resizeMode="contain"
+                  />
+                )}
+              </TouchableOpacity>
+            </View>
+          </View>
+          {/* Enter password END */}
+
+          {/* RESET PASSWORD BUTTON START*/}
           <View
             style={{
+              marginTop: verticalScale(25),
+              marginHorizontal: moderateScale(25),
               alignItems: "center",
               justifyContent: "center"
             }}
           >
-            <CategoryButton style={styles.submitrequestbutton}>
-              <Text style={styles.submitrequestbuttontext}>SUBMIT REQUEST</Text>
+            <CategoryButton style={styles.resetpasswordbutton}>
+              <Text style={styles.resetpasswordbuttontext}>RESET PASSWORD</Text>
             </CategoryButton>
           </View>
-          {/* BACK TO LOGIN PAGE BUTTON END*/}
-
-          {/* RESEND EMAIL START*/}
-
-          <TouchableOpacity style={{ marginTop: verticalScale(40) }}>
-            <Text style={styles.resendemailtext}>RESEND EMAIL</Text>
-          </TouchableOpacity>
-          {/* RESEND EMAIL END*/}
+          {/* RESET PASSWORD BUTTON END*/}
         </View>
         {/* </ScrollView> */}
       </KeyboardAvoidingView>
     );
   }
 }
-export default PasswordReset;
+export default ForgotPassword;
 
 const styles = StyleSheet.create({
   container: {
@@ -203,16 +286,11 @@ const styles = StyleSheet.create({
     borderColor: colors.bgblue,
     borderWidth: scale(1.5)
   },
-  passwordText: {
-    color: colors.blacktext,
-    fontSize: scale(14),
-    fontWeight: "400"
-  },
   resetpasswordbutton: {
     backgroundColor: colors.bgblue,
     borderColor: colors.whitetext,
-    height: verticalScale(50),
-    width: moderateScale(290),
+    height: verticalScale(54),
+    width: moderateScale(320),
     borderRadius: scale(50)
   },
   resetpasswordbuttontext: {

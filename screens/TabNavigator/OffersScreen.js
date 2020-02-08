@@ -37,8 +37,8 @@ export default class OffersScreen extends Component {
       // <ThirdScreen></ThirdScreen>
       // <FourthScreen></FourthScreen>
       // <EmailSent></EmailSent>
-      // <PasswordReset></PasswordReset>
-      <ForgotPassword></ForgotPassword>
+      <PasswordReset></PasswordReset>
+      // <ForgotPassword></ForgotPassword>
       // <Password></Password>
       // <SignUp></SignUp>
       // <Login></Login>
