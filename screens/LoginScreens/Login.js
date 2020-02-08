@@ -23,17 +23,26 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.toggleSwitch = this.toggleSwitch.bind(this);
+    this.passwordRemember = this.passwordRemember.bind(this);
+
     this.state = {
       showPassword: true,
+      rememberPassword: true,
       email: "",
-      fname: "",
-      password: "",
-      mobilenumber: ""
+      password: ""
     };
   }
 
   toggleSwitch() {
-    this.setState({ showPassword: !this.state.showPassword });
+    this.setState({
+      showPassword: !this.state.showPassword
+    });
+  }
+
+  passwordRemember() {
+    this.setState({
+      rememberPassword: !this.state.rememberPassword
+    });
   }
 
   render() {
@@ -64,13 +73,12 @@ class Login extends Component {
             width: moderateScale(370)
           }}
         >
-          {/* LOGO AND NAME START*/}
+          {/* LOGO & TEXT START*/}
           <View
             style={{
               position: "absolute",
-              paddingTop: verticalScale(-30),
-              top: verticalScale(50),
-              height: verticalScale(250),
+              top: verticalScale(55),
+              height: verticalScale(350),
               width: moderateScale(370),
               backgroundColor: colors.whitetext
             }}
@@ -78,10 +86,28 @@ class Login extends Component {
             <View
               style={{
                 marginLeft: moderateScale(15),
-                marginTop: verticalScale(65)
+                marginTop: verticalScale(10)
               }}
             >
-              <LogoAndName />
+              <View
+                style={{
+                  marginTop: verticalScale(5),
+                  alignItems: "center"
+                }}
+              >
+                <Image
+                  source={require("../../assets/logo.png")}
+                  style={{
+                    width: moderateScale(150),
+                    height: verticalScale(152)
+                  }}
+                  resizeMode="contain"
+                />
+
+                <Text style={styles.welcometext}>WELCOME</Text>
+              </View>
+
+              {/* LOGO & TEXT END*/}
             </View>
           </View>
           {/* BACK ARROW START*/}
@@ -108,7 +134,9 @@ class Login extends Component {
         </View>
 
         {/* PROFILE PICTURE START */}
-        <View style={styles.profilepictureContainer}>
+        <View
+          style={[styles.profilepictureContainer, { top: verticalScale(270) }]}
+        >
           <Image
             source={require("../../assets/dp.jpg")}
             style={{
@@ -123,7 +151,7 @@ class Login extends Component {
         <View
           style={{
             position: "relative",
-            top: moderateScale(140),
+            top: moderateScale(190),
             height: "100%",
             width: moderateScale(400),
             backgroundColor: colors.blacktext
@@ -144,52 +172,12 @@ class Login extends Component {
           <View style={{ position: "absolute", left: moderateScale(16) }}>
             {/* ALL INPUT FIELDS END*/}
 
-            {/* Enter fullname START */}
-            <View
-              style={[
-                styles.methodContainer,
-                {
-                  marginTop: verticalScale(100),
-                  marginHorizontal: moderateScale(25)
-                }
-              ]}
-            >
-              <View style={{ flex: 0.25 }}>
-                <Image
-                  source={require("../../assets/user.png")}
-                  style={{
-                    width: moderateScale(25),
-                    height: verticalScale(25),
-                    tintColor: colors.whitetext
-                  }}
-                  resizeMode="contain"
-                />
-              </View>
-              <View style={{ flex: 1 }}>
-                <TextInput
-                  style={{
-                    marginLeft: moderateScale(-20),
-                    color: colors.whitetext,
-                    fontSize: scale(14),
-                    fontWeight: "400"
-                  }}
-                  value={this.state.fname}
-                  underlineColorAndroid="transparent"
-                  onChangeText={text => this.setState({ fname: text })}
-                  placeholder={"ENTER FULL NAME"}
-                  placeholderTextColor={colors.whitetext}
-                  returnKeyType="done"
-                />
-              </View>
-            </View>
-            {/* Enter fullname  END */}
-
             {/* Enter email START */}
             <View
               style={[
                 styles.methodContainer,
                 {
-                  marginTop: verticalScale(10),
+                  marginTop: verticalScale(100),
                   marginHorizontal: moderateScale(25)
                 }
               ]}
@@ -222,7 +210,7 @@ class Login extends Component {
                 />
               </View>
             </View>
-            {/* Enter password  Start */}
+            {/* Enter password Start */}
             <View
               style={[
                 styles.methodContainer,
@@ -286,27 +274,60 @@ class Login extends Component {
             </View>
             {/* Enter password END */}
 
-            {/* Enter mobile number START */}
-            <View>
-              <MobileInput />
-            </View>
-            {/* Enter mobile number END */}
+            <View
+              style={{
+                flexDirection: "row",
+                marginVertical: verticalScale(20),
+                marginHorizontal: moderateScale(25)
+              }}
+            >
+              {/* Remember Me START*/}
+              <TouchableOpacity
+                style={styles.rememberContainer}
+                onPress={this.passwordRemember}
+              >
+                {!this.state.rememberPassword ? (
+                  <Entypo
+                    name="check"
+                    color={colors.whitetext}
+                    size={scale(16)}
+                  />
+                ) : null}
+              </TouchableOpacity>
+              <View
+                style={{
+                  marginTop: verticalScale(4),
+                  marginHorizontal: moderateScale(5)
+                }}
+              >
+                <Text style={styles.rememberText}> REMEMBER ME </Text>
+              </View>
 
-            {/* CREATE ACCOUNT BUTTON START*/}
+              <View
+                style={{
+                  marginTop: verticalScale(4),
+                  marginHorizontal: moderateScale(20)
+                }}
+              >
+                <Text style={[styles.forgotText]}>FORGOT PASSWORD?</Text>
+              </View>
+
+              {/* Remember Me END*/}
+            </View>
+
+            {/* LOGIN BUTTON START*/}
             <View
               style={{
                 marginTop: verticalScale(10),
                 marginHorizontal: moderateScale(25)
               }}
             >
-              <CategoryButton style={styles.createaccounttbutton}>
-                <Text style={styles.createaccountbuttontext}>
-                  CREATE ACCOUNT
-                </Text>
+              <CategoryButton style={styles.loginbutton}>
+                <Text style={styles.loginbuttontext}>LOGIN</Text>
               </CategoryButton>
             </View>
-            {/* CREATE ACCOUNT BUTTON END*/}
-            {/* ALREADY A MEMBER START*/}
+            {/* LOGIN BUTTON END*/}
+            {/* Dont have an account START*/}
             <TouchableOpacity
               style={{
                 marginTop: verticalScale(30),
@@ -315,32 +336,16 @@ class Login extends Component {
                 justifyContent: "center"
               }}
             >
-              <Text style={styles.alreadytext}>ALREADY A MEMBER? LOGIN</Text>
+              <Text style={styles.alreadytext}>
+                DON'T HAVE AN ACCOUNT? REGISTER
+              </Text>
               <Entypo
                 name="chevron-right"
                 color={colors.whitetext}
                 size={scale(15)}
               />
             </TouchableOpacity>
-            {/*ALREADY A MEMBER END*/}
-
-            {/*FINE PRINT START*/}
-            <View
-              style={{
-                marginTop: verticalScale(30),
-                marginHorizontal: moderateScale(15),
-                alignItems: "center",
-                justifyContent: "center"
-              }}
-            >
-              <Text style={styles.finePrint}>
-                {
-                  "*By tapping on CREATE ACCOUNT you agree to our \nTerms & Conditions And Privacy Policy."
-                }
-              </Text>
-            </View>
-
-            {/*FINE PRINT END*/}
+            {/*Dont Have an account END*/}
           </View>
           {/* ALL INPUT FIELDS END*/}
         </View>
@@ -358,6 +363,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: colors.blacktext
   },
+  welcometext: {
+    color: colors.bgblue,
+    fontSize: scale(24.5),
+    fontWeight: "800"
+  },
   profilepictureContainer: {
     overflow: "hidden",
     zIndex: scale(9999),
@@ -366,8 +376,7 @@ const styles = StyleSheet.create({
     borderRadius: moderateScale(60),
     borderWidth: scale(4),
     borderColor: colors.bgblue,
-    position: "relative",
-    top: verticalScale(210)
+    position: "relative"
   },
   methodContainer: {
     flexDirection: "row",
@@ -376,7 +385,6 @@ const styles = StyleSheet.create({
     height: verticalScale(54),
     width: moderateScale(320),
     paddingLeft: moderateScale(15),
-    borderRadius: moderateScale(25),
     backgroundColor: colors.blacktext,
     opacity: 0.8,
     borderRadius: moderateScale(25),
@@ -388,14 +396,36 @@ const styles = StyleSheet.create({
     fontSize: scale(14),
     fontWeight: "400"
   },
-  createaccounttbutton: {
+  rememberContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    height: verticalScale(26),
+    width: moderateScale(26),
+    borderRadius: moderateScale(3),
+    backgroundColor: colors.blacktext,
+    opacity: 0.5,
+    borderColor: colors.bgblue,
+    borderWidth: scale(2)
+  },
+  rememberText: {
+    color: colors.whitetext,
+    fontSize: scale(13),
+    fontWeight: "300"
+  },
+  forgotText: {
+    color: colors.bgblue,
+    fontSize: scale(12),
+    textDecorationLine: "underline",
+    fontWeight: "400"
+  },
+  loginbutton: {
     backgroundColor: colors.bgblue,
     borderColor: colors.bgblue,
     height: verticalScale(54),
     width: moderateScale(320),
     borderRadius: scale(25)
   },
-  createaccountbuttontext: {
+  loginbuttontext: {
     fontSize: scale(18),
     color: colors.whitetext,
     fontWeight: "800"
@@ -406,12 +436,5 @@ const styles = StyleSheet.create({
     fontWeight: "800",
     fontSize: scale(12),
     textDecorationLine: "underline"
-  },
-  finePrint: {
-    color: colors.inactivegreybutton,
-    textAlign: "center",
-    fontWeight: "800",
-    fontSize: scale(10),
-    fontStyle: "italic"
   }
 });

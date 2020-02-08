@@ -19,6 +19,8 @@ import ForgotPassword from "../LoginScreens/ForgotPassword";
 import Password from "../LoginScreens/Password";
 import SignUp from "../SignUpScreen/SignUp";
 import MobileInput from "../../components/MobileInput";
+import Login from "../LoginScreens/Login";
+
 export default class OffersScreen extends Component {
   render() {
     return (
@@ -38,7 +40,8 @@ export default class OffersScreen extends Component {
       // <PasswordReset></PasswordReset>
       // <ForgotPassword></ForgotPassword>
       // <Password></Password>
-      <SignUp></SignUp>
+      // <SignUp></SignUp>
+      <Login></Login>
     );
   }
 }
