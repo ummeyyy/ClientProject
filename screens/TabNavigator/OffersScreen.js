@@ -38,10 +38,10 @@ export default class OffersScreen extends Component {
       // <FourthScreen></FourthScreen>
       // <EmailSent></EmailSent>
       // <PasswordReset></PasswordReset>
-      // <ForgotPassword></ForgotPassword>
+      <ForgotPassword></ForgotPassword>
       // <Password></Password>
       // <SignUp></SignUp>
-      <Login></Login>
+      // <Login></Login>
     );
   }
 }
