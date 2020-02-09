@@ -13,6 +13,8 @@ import { moderateScale, scale, verticalScale } from "../../scale";
 
 import PriceTab from "../../components/PriceTab";
 import TotalPrice from "../ProductScreen/pcomponents/TotalPrice";
+import TimeStampComponent from "../ProductScreen/pcomponents/TimeStampComponent";
+import { Row } from "native-base";
 
 const products = [
   {
@@ -304,23 +306,75 @@ class BrandCheckupSchedule extends Component {
           {/*DATE CONTAINER END*/}
 
           {/* TIMES START*/}
+          <View
+            style={{
+              flex: 1,
+              flexDirection: "row",
+              marginLeft: verticalScale(-4),
+              marginTop: verticalScale(20)
+            }}
+          >
+            <TimeStampComponent time={"09:00 AM - 10:00 AM"} />
+            <TimeStampComponent time={"10:30 AM - 11:25 AM"} />
+          </View>
 
+          <View
+            style={{
+              flex: 1,
+              flexDirection: "row",
+              marginLeft: verticalScale(-4),
+              marginTop: verticalScale(8)
+            }}
+          >
+            <TimeStampComponent time={"11:45 AM - 12:30 PM"} />
+            <TimeStampComponent time={"01:30 PM - 02:00 PM"} />
+          </View>
+
+          <View
+            style={{
+              flex: 1,
+              flexDirection: "row",
+              marginLeft: verticalScale(-4),
+              marginTop: verticalScale(8)
+            }}
+          >
+            <TimeStampComponent time={"03:00 PM - 04:00 PM"} />
+            <TimeStampComponent time={"04:30 PM - 05:00 PM"} />
+          </View>
+
+          <View
+            style={{
+              flex: 1,
+              flexDirection: "row",
+              marginLeft: verticalScale(-4),
+              marginTop: verticalScale(8)
+            }}
+          >
+            <TimeStampComponent time={"05:30 PM - 06:00 PM"} />
+          </View>
           {/* TIMES END*/}
         </View>
         {/* CONTAINER END*/}
 
-        {/* BOTTOM TOTAL PRICE TAB */}
-        <PriceTab
+        {/* BOTTOM TOTAL PRICE TAB START*/}
+        <View
           style={{
-            backgroundColor: colors.bgblue,
-            paddingVertical: verticalScale(16)
+            marginTop: verticalScale(15)
           }}
         >
-          <TotalPrice
-            total={this.state.totalPrice}
-            oneline={products[0].description1line}
-          />
-        </PriceTab>
+          <PriceTab
+            style={{
+              backgroundColor: colors.bgblue,
+              paddingVertical: verticalScale(16)
+            }}
+          >
+            <TotalPrice
+              total={this.state.totalPrice}
+              oneline={products[0].description1line}
+            />
+          </PriceTab>
+        </View>
+        {/* BOTTOM TOTAL PRICE TAB END */}
       </ScrollView>
     );
   }
