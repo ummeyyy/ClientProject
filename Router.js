@@ -10,6 +10,15 @@ import ProductScreen from "./screens/ProductScreen/ProductScreen";
 import CheckoutScreen from "./screens/CheckoutScreen/CheckoutScreen";
 import ViewAllCategories from "./screens/HomeScreen/ViewAllCategories";
 import StepTwo from "./screens/CheckoutScreen/StepTwo";
+import SignUp from "./screens/SignUpScreen/SignUp";
+import VerifyNumber from "./screens/SignUpScreen/VerifyNumber";
+import AfterSplash from "./screens/Splashscreen/AfterSplash";
+import Splash from "./screens/Splashscreen/Splash";
+import Login from "./screens/LoginScreens/Login";
+import ForgotPassword from "./screens/LoginScreens/ForgotPassword";
+import EmailSent from "./screens/LoginScreens/EmailSent";
+import Password from "./screens/LoginScreens/Password";
+import PasswordReset from "./screens/LoginScreens/PasswordReset";
 
 import colors from "./assets/colors";
 import { Ionicons } from "@expo/vector-icons";
@@ -19,7 +28,8 @@ import {
   createSwitchNavigator,
   createStackNavigator,
   createDrawerNavigator,
-  createBottomTabNavigator
+  createBottomTabNavigator,
+  NavigationActions
 } from "react-navigation";
 
 class navigationRouter extends Component {
@@ -30,10 +40,13 @@ class navigationRouter extends Component {
     return <AppContainer></AppContainer>;
   }
 }
+const HomeStackNavigator = createStackNavigator({
+  HomeScreen: { screen: HomeScreen }
+});
 const TabNavigator = createBottomTabNavigator(
   {
-    HomeScreen: {
-      screen: HomeScreen,
+    HomeTab: {
+      screen: HomeStackNavigator,
       navigationOptions: {
         tabBarLabel: "HomeScreen"
         // tabBarIcon: ({ tintColor }) => (
@@ -41,7 +54,7 @@ const TabNavigator = createBottomTabNavigator(
         // )
       }
     },
-    CartScreen: {
+    CartTab: {
       screen: YourCart,
       navigationOptions: {
         tabBarLabel: "CartScreen"
@@ -50,7 +63,7 @@ const TabNavigator = createBottomTabNavigator(
         // )
       }
     },
-    MoreScreen: {
+    MoreTab: {
       screen: MoreScreen,
       navigationOptions: {
         tabBarLabel: "MoreScreen"
@@ -59,7 +72,7 @@ const TabNavigator = createBottomTabNavigator(
         // )
       }
     },
-    OffersScreen: {
+    OffersTab: {
       screen: OffersScreen,
       navigationOptions: {
         tabBarLabel: "OffersScreen"
@@ -68,7 +81,7 @@ const TabNavigator = createBottomTabNavigator(
         // )
       }
     },
-    SettingsScreen: {
+    SettingsTab: {
       screen: ViewAllCategories,
       navigationOptions: {
         tabBarLabel: "SettingsScreen"
@@ -88,54 +101,56 @@ const TabNavigator = createBottomTabNavigator(
     }
   }
 );
-const HomeStackNavigator = createStackNavigator(
-  {
-    HomeTabNavigator: {
-      screen: TabNavigator,
-      navigationOptions: ({ navigation }) => {
-        return {
-          headerLeft: (
-            <Ionicons
-              name="ios-menu"
-              size={30}
-              color={colors.whitetext}
-              onPress={() => navigation.openDrawer()}
-              style={{ marginLeft: 10 }}
-            />
-          )
-        };
-      }
-    },
-    //just an example
-    CartScreen: {
-      screen: YourCart
-    },
-    // ProductScreen: {
-    //   screen: ProductScreen
-    // },
-    checkout: {
-      screen: CheckoutScreen
-    },
-    View: {
-      screen: ViewAllCategories
-    },
-    item: {
-      screen: ProductScreen
-    },
-    steptwo: {
-      screen: StepTwo
-    }
-  },
 
-  {
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: colors.blacktext
-      },
-      headerTintColor: colors.inactivegreybutton
-    }
-  }
-);
+// const HomeStackNavigator = createStackNavigator(
+//   {
+//     HomeScreen: {
+//       screen: HomeScreen,
+//       navigationOptions: ({ navigation }) => {
+//         return {
+//           headerLeft: (
+//             <Ionicons
+//               name="ios-menu"
+//               size={30}
+//               color={colors.whitetext}
+//               onPress={() => navigation.openDrawer()}
+//               style={{ marginLeft: 10 }}
+//             />
+//           )
+//         };
+//       }
+//     }
+
+// //just an example
+// CartScreen: {
+//   screen: YourCart
+// },
+// // ProductScreen: {
+// //   screen: ProductScreen
+// // },
+// checkout: {
+//   screen: CheckoutScreen
+// },
+// View: {
+//   screen: ViewAllCategories
+// },
+// item: {
+//   screen: ProductScreen
+// },
+// steptwo: {
+//   screen: StepTwo
+// }
+//}
+
+// {
+//   defaultNavigationOptions: {
+//     headerStyle: {
+//       backgroundColor: colors.blacktext
+//     },
+//     headerTintColor: colors.inactivegreybutton
+//   }
+// }
+//);
 const AppDrawerNavigator = createDrawerNavigator(
   {
     HomeStackNavigator: {
@@ -157,15 +172,36 @@ const AppDrawerNavigator = createDrawerNavigator(
   //   contentComponent: CustomDrawerComponent
   // }
 );
-const AppContainer = createAppContainer(AppDrawerNavigator);
-
-export default navigationRouter;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "red"
+const AuthNavigator = createStackNavigator(
+  {
+    AfterSplash: { screen: AfterSplash },
+    SignUpScreen: { screen: SignUp },
+    VerifyNumber: { screen: VerifyNumber },
+    Login: { screen: Login },
+    Password: { screen: Password },
+    PasswordReset: { screen: PasswordReset },
+    ForgotPassword: { screen: ForgotPassword },
+    EmailSent: { screen: EmailSent }
+  },
+  {
+    mode: "modal",
+    header: null,
+     
   }
-});
+);
+ 
+const SwitchNavigator = createSwitchNavigator(
+  {
+    AuthLoading: Splash,
+    App: TabNavigator,
+    Auth: AuthNavigator
+  },
+  {
+    initialRouteName: "AuthLoading"
+  }
+);
+const AppContainer = createAppContainer(SwitchNavigator);
+
+// export default createAppContainer( SwitchNavigator);
+export default navigationRouter;
+ 

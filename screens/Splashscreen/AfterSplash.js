@@ -8,11 +8,14 @@ import {
   StatusBar
 } from "react-native";
 
-import { Images } from "./appConfigurations/Images";
+// import { Images } from "./appConfigurations/Images";
 import { moderateScale, scale, verticalScale } from "../../scale";
 import colors from "../../assets/colors";
 
 export default class AfterSplash extends Component {
+  tapOnLoginLater = () => {
+    this.props.navigation.navigate("HomeTab");
+  };
   render() {
     return (
       <View style={styles.container}>
@@ -80,6 +83,7 @@ export default class AfterSplash extends Component {
                 alignItems: "center",
                 justifyContent: "center"
               }}
+              onPress={() => this.tapOnLoginLater()}
             >
               <Text style={styles.logintext}>I'll login later</Text>
             </TouchableOpacity>
