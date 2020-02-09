@@ -69,7 +69,7 @@ const TabNavigator = createBottomTabNavigator(
       }
     },
     SettingsScreen: {
-      screen: SettingsScreen,
+      screen: ViewAllCategories,
       navigationOptions: {
         tabBarLabel: "SettingsScreen"
         // tabBarIcon: ({ tintColor }) => (

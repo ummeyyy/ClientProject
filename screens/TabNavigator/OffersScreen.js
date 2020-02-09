@@ -3,9 +3,11 @@ import { View, Text, StyleSheet } from "react-native";
 
 import LimitedTimeProduct from "../ProductScreen/LimitedTimeProduct";
 import ProductScreen from "../ProductScreen/ProductScreen";
+import ViewAllCategories from "../HomeScreen/ViewAllCategories";
 import Brochure from "../ProductScreen/Brochure";
 import BrochureCart from "../../screens/CartScreen/BrochureCart";
 import BrochureCartTwo from "../ProductScreen/BrochureCartTwo";
+import YourCart from "../CartScreen/YourCart";
 import CheckoutScreen from "../CheckoutScreen/CheckoutScreen";
 import StepTwo from "../CheckoutScreen/StepTwo";
 import StepThree from "../CheckoutScreen/StepThree";
@@ -22,7 +24,6 @@ import SignUp from "../SignUpScreen/SignUp";
 import MobileInput from "../../components/MobileInput";
 import VerifyNumber from "../SignUpScreen/VerifyNumber";
 import Login from "../LoginScreens/Login";
-import ViewAllCategories from "../HomeScreen/ViewAllCategories";
 import ConfirmationCode from "../SignUpScreen/SignUpComponents/ConfirmationCode";
 
 export default class OffersScreen extends Component {
@@ -31,15 +32,15 @@ export default class OffersScreen extends Component {
       // <LimitedTimeProduct />
       // <ProductScreen></ProductScreen>
       // <ViewAllCategories></ViewAllCategories>
-      //<Brochure></Brochure>
+      // <Brochure></Brochure>
       // <BrochureCart></BrochureCart>
       // <BrochureCartTwo></BrochureCartTwo>
+      <YourCart />
       // <CheckoutScreen></CheckoutScreen>
       // <StepTwo></StepTwo>
       // <StepThree></StepThree>
-      <VerifyNumber></VerifyNumber>
+      // <VerifyNumber></VerifyNumber>
       // <ConfirmationCode />
-
       // <MainWalkthrough> </MainWalkthrough>
       // <FirstScreen></FirstScreen>
       // <SecondScreen></SecondScreen>

@@ -13,99 +13,222 @@ import {
   MaterialCommunityIcons,
   MaterialIcons
 } from "@expo/vector-icons";
+import PromotionCard from "../hcomponents/PromotionCard";
 
 import { moderateScale, scale, verticalScale } from "../../../scale";
 import colors from "../../../assets/colors";
 import { Card } from "react-native-shadow-cards";
-
-const section = [
-  {
-    name: "4F FLYERS",
-    code: "D03",
-    time: 2,
-    price: 100,
-    sale: "10% OFF",
-    rating: 4.3,
-    desc:
-      "Short Description will come here in a very stylish and sleek way. It can be in bullet points, BOLD, ITALIC, UNDERLINE etc",
-    id: "1",
-    image: require("../../../assets/home.jpg")
-  },
-  {
-    name: "BROCHURE",
-    code: "D07",
-    time: 4,
-    price: 250,
-    sale: "35% OFF",
-    rating: 3.3,
-    desc:
-      "Short Description will come here in a very stylish and sleek way. It can be in bullet points, BOLD, ITALIC, UNDERLINE etc",
-    id: "2",
-    image: require("../../../assets/restaurant.jpg")
-  },
-  {
-    name: "POSTER",
-    code: "D08",
-    time: 2,
-    price: 100,
-    sale: "5% OFF",
-    rating: 2.3,
-    desc:
-      "Short Description will come here in a very stylish and sleek way. It can be in bullet points, BOLD, ITALIC, UNDERLINE etc",
-    id: "3",
-    image: require("../../../assets/home.jpg")
-  }
-  //   {
-  //     name: "4F FLYERS",
-  //     code: "D01",
-  //     time: 4,
-  //     price: 250,
-  //     rating: 4.2,
-  //     desc:
-  //       "Short Description will come here in a very stylish and sleek way. It can be in bullet points, BOLD, ITALIC, UNDERLINE etc",
-  //     id: "4",
-  //     image: require("../../../assets/restaurant.jpg")
-  //   },
-  //   {
-  //     name: "BROCHURE",
-  //     code: "D04",
-  //     time: 2,
-  //     price: 100,
-  //     sale: "20% OFF",
-  //     rating: 5.3,
-  //     desc:
-  //       "Short Description will come here in a very stylish and sleek way. It can be in bullet points, BOLD, ITALIC, UNDERLINE etc",
-  //     id: "5",
-  //     image: require("../../../assets/home.jpg")
-  //   },
-  //   {
-  //     name: "POSTER",
-  //     code: "D02",
-  //     time: 4,
-  //     price: 250,
-  //     rating: 6,
-  //     desc:
-  //       "Short Description will come here in a very stylish and sleek way. It can be in bullet points, BOLD, ITALIC, UNDERLINE etc",
-  //     id: "6",
-  //     image: require("../../../assets/restaurant.jpg")
-  //   }
-];
 
 class BrandingCategoryFlatList extends React.Component {
   constructor() {
     super();
 
     this.state = {
+      data: [
+        {
+          name: "4F FLYERS",
+          code: "D03",
+          time: 2,
+          price: 100,
+          sale: "10% OFF",
+          rating: 4.3,
+          desc:
+            "Short Description will come here in a very stylish and sleek way. It can be in bullet points, BOLD, ITALIC, UNDERLINE etc",
+          id: "1",
+          image: require("../../../assets/home.jpg")
+        },
+        {
+          name: "BROCHURE",
+          code: "D07",
+          time: 4,
+          price: 250,
+          sale: "35% OFF",
+          rating: 3.3,
+          desc:
+            "Short Description will come here in a very stylish and sleek way. It can be in bullet points, BOLD, ITALIC, UNDERLINE etc",
+          id: "2",
+          image: require("../../../assets/restaurant.jpg")
+        },
+        {
+          name: "Promotions"
+        },
+        {
+          name: "POSTER",
+          code: "D08",
+          time: 2,
+          price: 100,
+          sale: "5% OFF",
+          rating: 2.3,
+          desc:
+            "Short Description will come here in a very stylish and sleek way. It can be in bullet points, BOLD, ITALIC, UNDERLINE etc",
+          id: "3",
+          image: require("../../../assets/home.jpg")
+        }
+      ],
       liked: false,
       addcart: true
     };
   }
 
-  pressedLike = () => {
+  addto = () => {
     this.setState({
-      liked: !this.state.liked,
       addcart: !this.state.addcart
     });
+  };
+
+  pressedLike = () => {
+    this.setState({
+      liked: !this.state.liked
+    });
+  };
+  renderItem = item => {
+    switch (item.name) {
+      case "Promotions":
+        return <PromotionCard />;
+
+      default:
+        return (
+          // RENDERING THE ITEMS ONE BY ONE
+          <TouchableOpacity
+          // onPress={this.navigation.navigate("item")}
+          >
+            <Card style={styles.itemContainer}>
+              <Image
+                source={item.image}
+                style={styles.itemImage}
+                resizeMode="cover"
+              />
+
+              {/* ITEM SALE PORTION */}
+              {item.sale ? (
+                <View style={styles.saleContainer}>
+                  <ImageBackground
+                    source={require("../../../assets/saletag.png")}
+                    style={{ width: "100%", height: "100%" }}
+                  >
+                    <Text style={styles.saletext}>{item.sale}</Text>
+                  </ImageBackground>
+                </View>
+              ) : null}
+              <View style={styles.rateContainer}>
+                <Text style={styles.ratetext}>{item.rating}</Text>
+              </View>
+
+              {/* ADD CART PORTION */}
+              <TouchableOpacity
+                style={styles.cartContainer}
+                onPress={() => {
+                  this.addto();
+                }}
+              >
+                {this.state.addcart ? (
+                  <MaterialIcons
+                    name="add-shopping-cart"
+                    size={scale(20)}
+                    color={colors.bgyellow}
+                  />
+                ) : (
+                  <TouchableOpacity
+                    onPress={() => {
+                      this.addto();
+                    }}
+                  >
+                    <Image
+                      source={require("../../../assets/cart-view-icon.png")}
+                      style={{
+                        width: moderateScale(20),
+                        height: verticalScale(20)
+                      }}
+                    />
+                  </TouchableOpacity>
+                )}
+              </TouchableOpacity>
+              {/* FAVORITE PORTION */}
+              <TouchableOpacity
+                style={styles.favContainer}
+                onPress={() => {
+                  this.pressedLike();
+                }}
+              >
+                {this.state.liked ? (
+                  <MaterialCommunityIcons
+                    name="heart"
+                    size={scale(25)}
+                    color={colors.bgred}
+                  />
+                ) : (
+                  <MaterialCommunityIcons
+                    name="heart-outline"
+                    size={scale(25)}
+                    color={colors.bgred}
+                  />
+                )}
+              </TouchableOpacity>
+
+              {/* IMAGE DESCRIPTION */}
+              <View style={styles.descriptionContainer}>
+                {/* TIME & PRICE */}
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={styles.descriptionName}>{item.name}</Text>
+
+                  <View style={styles.timeandpricecontainer}>
+                    <TouchableOpacity>
+                      <Image
+                        source={require("../../../assets/est-icon.png")}
+                        style={{
+                          width: moderateScale(20),
+                          height: verticalScale(20)
+                        }}
+                      />
+                    </TouchableOpacity>
+                    <Text style={styles.timeandpricetext}>
+                      {" "}
+                      {item.time} DAYS{"   "}
+                    </Text>
+                    <TouchableOpacity>
+                      <Image
+                        source={require("../../../assets/price-icon.png")}
+                        style={{
+                          width: moderateScale(20),
+                          height: verticalScale(20)
+                        }}
+                      />
+                    </TouchableOpacity>
+                    <Text style={styles.timeandpricetext}>
+                      {" "}
+                      {item.price} AED{" "}
+                    </Text>
+                  </View>
+                </View>
+
+                {/* {DESCRIPTION TEXT} */}
+                <View style={{ marginTop: verticalScale(5) }}>
+                  <Text style={styles.descriptionText}>{item.desc}</Text>
+                </View>
+
+                {/* SHARE AND CODE */}
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={styles.codeText}>CODE: {item.code}</Text>
+                  <Text style={styles.shareText}> SHARE </Text>
+                  <FontAwesome
+                    color={colors.greytext}
+                    size={scale(15)}
+                    style={{ marginTop: scale(8) }}
+                    {...Platform.select({
+                      ios: {
+                        name: "share-square"
+                      },
+                      android: {
+                        name: "plus"
+                      }
+                    })}
+                  />
+                </View>
+              </View>
+            </Card>
+          </TouchableOpacity>
+        );
+    }
   };
 
   render() {
@@ -118,142 +241,8 @@ class BrandingCategoryFlatList extends React.Component {
             showsHorizontalScrollIndicator={false}
             showsVerticalScrollIndicator={false}
             keyExtractor={(item, index) => item.id}
-            data={section}
-            renderItem={({ item }) => (
-              // RENDERING THE ITEMS ONE BY ONE
-              <TouchableOpacity>
-                <Card style={styles.itemContainer}>
-                  <Image
-                    source={item.image}
-                    style={styles.itemImage}
-                    resizeMode="cover"
-                  />
-
-                  {/* ITEM SALE PORTION */}
-                  {item.sale ? (
-                    <View style={styles.saleContainer}>
-                      <ImageBackground
-                        source={require("../../../assets/saletag.png")}
-                        style={{ width: "100%", height: "100%" }}
-                      >
-                        <Text style={styles.saletext}>{item.sale}</Text>
-                      </ImageBackground>
-                    </View>
-                  ) : null}
-                  <View style={styles.rateContainer}>
-                    <Text style={styles.ratetext}>{item.rating}</Text>
-                  </View>
-
-                  {/* ADD CART PORTION */}
-                  <TouchableOpacity
-                    style={styles.cartContainer}
-                    onPress={() => {
-                      this.pressedLike();
-                    }}
-                  >
-                    {this.state.addcart ? (
-                      <MaterialIcons
-                        name="add-shopping-cart"
-                        size={scale(20)}
-                        color={colors.bgyellow}
-                      />
-                    ) : (
-                      <TouchableOpacity>
-                        <Image
-                          source={require("../../../assets/cart-view-icon.png")}
-                          style={{
-                            width: moderateScale(15),
-                            height: verticalScale(15)
-                          }}
-                        />
-                      </TouchableOpacity>
-                    )}
-                  </TouchableOpacity>
-                  {/* FAVORITE PORTION */}
-                  <TouchableOpacity
-                    style={styles.favContainer}
-                    onPress={() => {
-                      this.pressedLike();
-                    }}
-                  >
-                    {this.state.liked ? (
-                      <MaterialCommunityIcons
-                        name="heart"
-                        size={scale(25)}
-                        color={colors.bgred}
-                      />
-                    ) : (
-                      <MaterialCommunityIcons
-                        name="heart-outline"
-                        size={scale(25)}
-                        color={colors.bgred}
-                      />
-                    )}
-                  </TouchableOpacity>
-
-                  {/* IMAGE DESCRIPTION */}
-                  <View style={styles.descriptionContainer}>
-                    {/* TIME & PRICE */}
-                    <View style={{ flexDirection: "row" }}>
-                      <Text style={styles.descriptionName}>{item.name}</Text>
-
-                      <View style={styles.timeandpricecontainer}>
-                        <TouchableOpacity>
-                          <Image
-                            source={require("../../../assets/est-icon.png")}
-                            style={{
-                              width: moderateScale(20),
-                              height: verticalScale(20)
-                            }}
-                          />
-                        </TouchableOpacity>
-                        <Text style={styles.timeandpricetext}>
-                          {" "}
-                          {item.time} DAYS{"   "}
-                        </Text>
-                        <TouchableOpacity>
-                          <Image
-                            source={require("../../../assets/price-icon.png")}
-                            style={{
-                              width: moderateScale(20),
-                              height: verticalScale(20)
-                            }}
-                          />
-                        </TouchableOpacity>
-                        <Text style={styles.timeandpricetext}>
-                          {" "}
-                          {item.price} AED{" "}
-                        </Text>
-                      </View>
-                    </View>
-
-                    {/* {DESCRIPTION TEXT} */}
-                    <View style={{ marginTop: verticalScale(5) }}>
-                      <Text style={styles.descriptionText}>{item.desc}</Text>
-                    </View>
-
-                    {/* SHARE AND CODE */}
-                    <View style={{ flexDirection: "row" }}>
-                      <Text style={styles.codeText}>CODE: {item.code}</Text>
-                      <Text style={styles.shareText}> SHARE </Text>
-                      <FontAwesome
-                        color={colors.greytext}
-                        size={scale(15)}
-                        style={{ marginTop: scale(8) }}
-                        {...Platform.select({
-                          ios: {
-                            name: "share-square"
-                          },
-                          android: {
-                            name: "plus"
-                          }
-                        })}
-                      />
-                    </View>
-                  </View>
-                </Card>
-              </TouchableOpacity>
-            )}
+            data={this.state.data}
+            renderItem={({ item }) => this.renderItem(item)}
           />
         </View>
       </View>

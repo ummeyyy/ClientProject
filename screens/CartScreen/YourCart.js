@@ -26,6 +26,7 @@ class YourCart extends Component {
 
     this.state = {
       promoadded: false,
+
       addpromodata: "",
       promos: []
     };
@@ -110,7 +111,6 @@ class YourCart extends Component {
           {/* ITEMS TO ADD OR DELETE IN THE CART */}
           <View
             style={{
-              marginTop: verticalScale(20),
               paddingVertical: verticalScale(20)
             }}
           >

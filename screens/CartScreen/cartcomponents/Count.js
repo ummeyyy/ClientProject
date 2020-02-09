@@ -12,7 +12,7 @@ class Counter extends Component {
         <View style={{ flexDirection: "column" }}>
           {/* MINUS */}
           <TouchableOpacity
-            onPress={() => this.props.minus}
+            onPress={ this.props.minus}
             style={styles.minusiconwrapper}
           >
             <FontAwesome
@@ -29,7 +29,7 @@ class Counter extends Component {
 
           {/* PLUS */}
           <TouchableOpacity
-            onPress={() => this.props.plus}
+            onPress={ this.props.plus}
             style={styles.plusiconwrapper}
           >
             <FontAwesome

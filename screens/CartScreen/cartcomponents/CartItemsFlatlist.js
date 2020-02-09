@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { SwipeListView } from "react-native-swipe-list-view";
 
-import { FontAwesome } from "@expo/vector-icons";
+import { FontAwesome, Octicons } from "@expo/vector-icons";
 
 import Count from "../cartcomponents/Count";
 import { moderateScale, scale, verticalScale } from "../../../scale";
@@ -57,26 +57,12 @@ class CartItemsFlatlist extends Component {
     };
   }
 
-  handleIncerement = () => {
-    this.setState({
-      count: this.state.count + 1,
-      actualprice: this.state.price - this.state.salePrice,
-      totalPrice:
-        (this.state.count + 1) * (this.state.price - this.state.salePrice)
-    });
+  handleIncerement = (item, index) => {
+    console.log(index);
   };
 
-  handleDecrement = () => {
-    if (this.state.count <= 1) {
-      return;
-    } else {
-      this.setState({
-        count: this.state.count - 1,
-        actualprice: this.state.price - this.state.salePrice,
-        totalPrice:
-          (this.state.count - 1) * (this.state.price - this.state.salePrice)
-      });
-    }
+  handleDecrement = (item, index) => {
+    console.log(index);
   };
 
   renderSeparator = () => {
@@ -85,9 +71,7 @@ class CartItemsFlatlist extends Component {
         style={{
           height: 1,
           width: "95%",
-          backgroundColor: colors.blacktext,
-          marginVertical: verticalScale(10),
-          marginHorizontal: moderateScale(5)
+          backgroundColor: colors.blacktext
         }}
       />
     );
@@ -95,59 +79,52 @@ class CartItemsFlatlist extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {/* <SwipeListView
-          renderItem={(rowData, rowMap) => (
-            <View>
-              <Text>I am {rowData.item.text} in a SwipeListView</Text>
-            </View>
-          )}
-          renderHiddenItem={(rowData, rowMap) => (
-            <View style={styles.rowBack}>
-              <TouchableOpacity
-                onPress={() => rowMap[rowData.item.key].closeRow()}
-              >
-                <Text>Close</Text>
-              </TouchableOpacity>
-            </View>
-          )}
-          leftOpenValue={75}
-          rightOpenValue={-150}
-          onRowOpen={(rowKey, rowMap) => {
-            setTimeout(() => {
-              rowMap[rowKey].closeRow();
-            }, 2000);
-          }}
-        ></SwipeListView> */}
         <SwipeListView
           horizontal={false}
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
           useFlatList={true}
           keyExtractor={(item, index) => item.id}
-          ItemSeparatorComponent={this.renderSeparator}
+          // ItemSeparatorComponent={this.renderSeparator}
           data={section}
           renderHiddenItem={(rowData, rowMap) => (
             <View style={styles.rowBack}>
-              <TouchableOpacity
-                onPress={() => rowMap[rowData.item.key].closeRow()}
+              <View
+                style={{
+                  alignItems: "flex-start",
+                  justifyContent: "center",
+                  backgroundColor: colors.bggreen,
+                  flex: 1,
+                  height: verticalScale(120),
+                  padding: scale(22)
+                  // flexDirection: "row",
+                }}
               >
-                <View
-                  style={{
-                    // backgroundColor: colors.bggreen,
-                    height: verticalScale(135),
-                    width: scale(78),
-                    paddingBottom: verticalScale(30),
-                    justifyContent: "center",
-                    alignItems: "center"
-                  }}
-                >
-                  <FontAwesome
-                    name="edit"
-                    color={colors.bggreen}
-                    size={scale(25)}
-                  />
-                </View>
-              </TouchableOpacity>
+                <FontAwesome
+                  name="edit"
+                  color={colors.whitetext}
+                  size={scale(30)}
+                />
+              </View>
+
+              <View
+                style={{
+                  alignItems: "flex-end",
+                  justifyContent: "center",
+                  backgroundColor: colors.bgyellow,
+                  flex: 1,
+                  height: verticalScale(120),
+                  padding: scale(25)
+
+                  // flexDirection: "row",
+                }}
+              >
+                <Octicons
+                  name="trashcan"
+                  color={colors.whitetext}
+                  size={scale(30)}
+                />
+              </View>
             </View>
           )}
           leftOpenValue={75}
@@ -157,13 +134,15 @@ class CartItemsFlatlist extends Component {
               rowMap[rowKey].closeRow();
             }, 2000);
           }}
-          renderItem={({ item }) => (
+          renderItem={({ item, index }) => (
             // ITEMS DESIGN
-            <View style={styles.itemcontainer}>
+            <View style={styles.rowFront}>
               <View
                 style={{
                   flexDirection: "row",
-                  marginHorizontal: moderateScale(5)
+                  marginHorizontal: moderateScale(5),
+                  borderBottomColor: colors.blacktext,
+                  borderBottomWidth: scale(1)
                 }}
               >
                 <View
@@ -224,13 +203,14 @@ class CartItemsFlatlist extends Component {
                 <View
                   style={{
                     flex: 0.65,
-                    backgroundColor: colors.bgblue
+                    backgroundColor: colors.bgblue,
+                    marginBottom: verticalScale(5)
                   }}
                 >
                   <Count
-                    plus={() => this.state.handleIncerement()}
+                    plus={() => this.handleIncerement(item, index)}
                     startcount={this.state.count}
-                    minus={() => this.state.handleDecrement()}
+                    minus={() => this.handleDecrement(item, index)}
                   ></Count>
                 </View>
               </View>
@@ -252,8 +232,24 @@ const styles = StyleSheet.create({
     height: verticalScale(50),
     width: "100%"
   },
+  rowFront: {
+    alignItems: "center",
+    backgroundColor: colors.whitetext,
+    justifyContent: "center",
+    height: verticalScale(120),
+    paddingVertical: verticalScale(10)
+  },
+  rowBack: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: verticalScale(10),
+    marginVertical: verticalScale(10),
+    backgroundColor: colors.whitetext
+  },
   itemImage: {
-    marginVertical: verticalScale(2),
+    marginVertical: verticalScale(5),
     width: "100%",
     height: verticalScale(105),
     borderWidth: scale(2.5),
