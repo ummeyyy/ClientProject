@@ -51,7 +51,7 @@ const products = [
   }
 ];
 
-class BrochureType extends Component {
+class BrandCheckupSchedule extends Component {
   constructor() {
     super();
     this.state = {
@@ -112,7 +112,7 @@ class BrochureType extends Component {
             >
               BRANDING DESIGN
             </Text>
-            <Text style={styles.screenTitle}>BROCHURE</Text>
+            <Text style={styles.screenTitle}>BRAND CHECK-UP</Text>
             <Text style={styles.descriptionText}>
               {
                 "Short Description will come here in a\n very stylish and sleek way."
@@ -196,7 +196,7 @@ class BrochureType extends Component {
     );
   }
 }
-export default BrochureType;
+export default BrandCheckupSchedule;
 
 const styles = StyleSheet.create({
   container: {

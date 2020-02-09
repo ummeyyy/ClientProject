@@ -10,6 +10,7 @@ import ViewAllCategories from "../HomeScreen/ViewAllCategories";
 import Brochure from "../ProductScreen/Brochure";
 import BrochureType from "../ProductScreen/BrochureType";
 import BrochureCart from "../../screens/CartScreen/BrochureCart";
+import BrandCheckupSchedule from "../ProductScreen/BrandCheckupSchedule";
 import BrandCheckupCart from "../ProductScreen/BrandCheckupCart";
 import CheckoutScreen from "../CheckoutScreen/CheckoutScreen";
 import StepTwo from "../CheckoutScreen/StepTwo";
@@ -36,9 +37,10 @@ export default class OffersScreen extends Component {
       // <LimitedTimeProduct />
       // <ProductScreen></ProductScreen>
       // <ViewAllCategories></ViewAllCategories>
-      <Brochure></Brochure>
+      // <Brochure></Brochure>
       // <BrochureType />
       // <BrochureCart></BrochureCart>
+      <BrandCheckupSchedule />
       // <BrandCheckupCart></BrandCheckupCart>
       // <CheckoutScreen></CheckoutScreen>
       // <StepTwo></StepTwo>
