@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
 
+import Splash from "../Splashscreen/Splash";
+import AfterSplash from "../Splashscreen/AfterSplash";
+
 import LimitedTimeProduct from "../ProductScreen/LimitedTimeProduct";
 import ProductScreen from "../ProductScreen/ProductScreen";
 import ViewAllCategories from "../HomeScreen/ViewAllCategories";
 import Brochure from "../ProductScreen/Brochure";
 import BrochureCart from "../../screens/CartScreen/BrochureCart";
-import BrochureCartTwo from "../ProductScreen/BrochureCartTwo";
-import YourCart from "../CartScreen/YourCart";
+import BrandCheckupCart from "../ProductScreen/BrandCheckupCart";
 import CheckoutScreen from "../CheckoutScreen/CheckoutScreen";
 import StepTwo from "../CheckoutScreen/StepTwo";
 import StepThree from "../CheckoutScreen/StepThree";
@@ -29,13 +31,13 @@ import ConfirmationCode from "../SignUpScreen/SignUpComponents/ConfirmationCode"
 export default class OffersScreen extends Component {
   render() {
     return (
+      // <Splash />
       // <LimitedTimeProduct />
       // <ProductScreen></ProductScreen>
       // <ViewAllCategories></ViewAllCategories>
       // <Brochure></Brochure>
       // <BrochureCart></BrochureCart>
-      // <BrochureCartTwo></BrochureCartTwo>
-      <YourCart />
+      <BrandCheckupCart></BrandCheckupCart>
       // <CheckoutScreen></CheckoutScreen>
       // <StepTwo></StepTwo>
       // <StepThree></StepThree>

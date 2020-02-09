@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text, Image, StatusBar } from "react-native";
 
-import { Images } from "./appConfigurations/Images";
 import { moderateScale, scale, verticalScale } from "../../scale";
 import colors from "../../assets/colors";
-import { SplashScreen } from "expo";
 
 class Splash extends React.Component {
   render() {

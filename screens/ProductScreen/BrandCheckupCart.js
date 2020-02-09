@@ -34,7 +34,7 @@ const section = [
   }
 ];
 
-class BrochureCartTwo extends Component {
+class BrandCheckupCart extends Component {
   constructor() {
     super();
 
@@ -501,7 +501,7 @@ class BrochureCartTwo extends Component {
     );
   }
 }
-export default BrochureCartTwo;
+export default BrandCheckupCart;
 
 const styles = StyleSheet.create({
   container: {

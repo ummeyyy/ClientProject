@@ -1,14 +1,6 @@
 import React, { Component } from "react";
-import {
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  StatusBar
-} from "react-native";
+import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 
-import { Images } from "./appConfigurations/Images";
 import { moderateScale, scale, verticalScale } from "../../scale";
 import colors from "../../assets/colors";
 
