@@ -38,7 +38,6 @@ export default class OffersScreen extends Component {
       // <StepTwo></StepTwo>
       // <StepThree></StepThree>
       <VerifyNumber></VerifyNumber>
-
       // <ConfirmationCode />
 
       // <MainWalkthrough> </MainWalkthrough>
