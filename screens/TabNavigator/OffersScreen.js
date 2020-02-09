@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
 
 import LimitedTimeProduct from "../ProductScreen/LimitedTimeProduct";
+import ProductScreen from "../ProductScreen/ProductScreen";
 import Brochure from "../ProductScreen/Brochure";
 import BrochureCart from "../../screens/CartScreen/BrochureCart";
 import BrochureCartTwo from "../ProductScreen/BrochureCartTwo";
@@ -19,25 +20,34 @@ import ForgotPassword from "../LoginScreens/ForgotPassword";
 import Password from "../LoginScreens/Password";
 import SignUp from "../SignUpScreen/SignUp";
 import MobileInput from "../../components/MobileInput";
+import VerifyNumber from "../SignUpScreen/VerifyNumber";
 import Login from "../LoginScreens/Login";
+import ViewAllCategories from "../HomeScreen/ViewAllCategories";
+import ConfirmationCode from "../SignUpScreen/SignUpComponents/ConfirmationCode";
 
 export default class OffersScreen extends Component {
   render() {
     return (
       // <LimitedTimeProduct />
+      // <ProductScreen></ProductScreen>
+      // <ViewAllCategories></ViewAllCategories>
       //<Brochure></Brochure>
       // <BrochureCart></BrochureCart>
       // <BrochureCartTwo></BrochureCartTwo>
       // <CheckoutScreen></CheckoutScreen>
       // <StepTwo></StepTwo>
       // <StepThree></StepThree>
+      <VerifyNumber></VerifyNumber>
+
+      // <ConfirmationCode />
+
       // <MainWalkthrough> </MainWalkthrough>
       // <FirstScreen></FirstScreen>
       // <SecondScreen></SecondScreen>
       // <ThirdScreen></ThirdScreen>
       // <FourthScreen></FourthScreen>
       // <EmailSent></EmailSent>
-      <PasswordReset></PasswordReset>
+      // <PasswordReset></PasswordReset>
       // <ForgotPassword></ForgotPassword>
       // <Password></Password>
       // <SignUp></SignUp>

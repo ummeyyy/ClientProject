@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   backtologinbutton: {
     backgroundColor: colors.bgblue,
     borderColor: colors.whitetext,
-    height: verticalScale(50),
+    height: verticalScale(54),
     width: moderateScale(250),
     borderRadius: scale(50)
   },

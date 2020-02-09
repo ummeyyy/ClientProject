@@ -121,7 +121,7 @@ class BrandingCategoryFlatList extends React.Component {
             data={section}
             renderItem={({ item }) => (
               // RENDERING THE ITEMS ONE BY ONE
-              <TouchableOpacity onPress={this.navigation.navigate("item")}>
+              <TouchableOpacity>
                 <Card style={styles.itemContainer}>
                   <Image
                     source={item.image}
