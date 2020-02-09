@@ -57,26 +57,41 @@ class CartItemsFlatlist extends Component {
     };
   }
 
-  handleIncerement = () => {
-    this.setState({
-      count: this.state.count + 1,
-      actualprice: this.state.price - this.state.salePrice,
-      totalPrice:
-        (this.state.count + 1) * (this.state.price - this.state.salePrice)
-    });
+  handleIncerement = (item, index) => {
+    console.log(index);
+    // switch (index) {
+    //   case 0:
+    //     console.log("printing");
+    //     this.setState({
+    //       count: this.state.count + 1,
+    //       actualprice: this.state.price - this.state.salePrice,
+    //       totalPrice:
+    //         (this.state.count + 1) * (this.state.price - this.state.salePrice)
+    //     });
+
+    //   default:
+    //     console.log(item, index);
+    // }
   };
 
-  handleDecrement = () => {
-    if (this.state.count <= 1) {
-      return;
-    } else {
-      this.setState({
-        count: this.state.count - 1,
-        actualprice: this.state.price - this.state.salePrice,
-        totalPrice:
-          (this.state.count - 1) * (this.state.price - this.state.salePrice)
-      });
-    }
+  handleDecrement = (item, index) => {
+    console.log(index);
+    // switch (index) {
+    //   case 0:
+    //     if (this.state.count <= 1) {
+    //       return;
+    //     } else {
+    //       this.setState({
+    //         count: this.state.count - 1,
+    //         actualprice: this.state.price - this.state.salePrice,
+    //         totalPrice:
+    //           (this.state.count - 1) * (this.state.price - this.state.salePrice)
+    //       });
+    //     }
+
+    //   default:
+    //     console.log(item, index);
+    // }
   };
 
   renderSeparator = () => {
@@ -127,27 +142,39 @@ class CartItemsFlatlist extends Component {
           ItemSeparatorComponent={this.renderSeparator}
           data={section}
           renderHiddenItem={(rowData, rowMap) => (
+            // <View style={styles.rowBack}>
+            //   <TouchableOpacity
+            //     onPress={() => rowMap[rowData.item.key].closeRow()}
+            //   >
+            //     <View
+            //       style={{
+            //         // backgroundColor: colors.bggreen,
+            //         height: verticalScale(135),
+            //         width: scale(75),
+            //         paddingBottom: verticalScale(30),
+            //         justifyContent: "center",
+            //         alignItems: "center"
+            //       }}
+            //     >
+            //       <FontAwesome
+            //         name="edit"
+            //         color={colors.bggreen}
+            //         size={scale(25)}
+            //       />
+            //     </View>
+            //   </TouchableOpacity>
+            // </View>
             <View style={styles.rowBack}>
-              <TouchableOpacity
-                onPress={() => rowMap[rowData.item.key].closeRow()}
-              >
-                <View
-                  style={{
-                    // backgroundColor: colors.bggreen,
-                    height: verticalScale(135),
-                    width: scale(78),
-                    paddingBottom: verticalScale(30),
-                    justifyContent: "center",
-                    alignItems: "center"
-                  }}
-                >
-                  <FontAwesome
-                    name="edit"
-                    color={colors.bggreen}
-                    size={scale(25)}
-                  />
-                </View>
-              </TouchableOpacity>
+              <FontAwesome
+                name="edit"
+                color={colors.bggreen}
+                size={scale(25)}
+              />
+              <FontAwesome
+                name="edit"
+                color={colors.bggreen}
+                size={scale(25)}
+              />
             </View>
           )}
           leftOpenValue={75}
@@ -157,9 +184,9 @@ class CartItemsFlatlist extends Component {
               rowMap[rowKey].closeRow();
             }, 2000);
           }}
-          renderItem={({ item }) => (
+          renderItem={({ item, index }) => (
             // ITEMS DESIGN
-            <View style={styles.itemcontainer}>
+            <View style={styles.rowFront}>
               <View
                 style={{
                   flexDirection: "row",
@@ -228,9 +255,9 @@ class CartItemsFlatlist extends Component {
                   }}
                 >
                   <Count
-                    plus={() => this.state.handleIncerement()}
+                    plus={() => this.handleIncerement(item, index)}
                     startcount={this.state.count}
-                    minus={() => this.state.handleDecrement()}
+                    minus={() => this.handleDecrement(item, index)}
                   ></Count>
                 </View>
               </View>
@@ -251,6 +278,22 @@ const styles = StyleSheet.create({
   itemContainer: {
     height: verticalScale(50),
     width: "100%"
+  },
+  rowFront: {
+    alignItems: "center",
+    backgroundColor: "white",
+    borderBottomColor: "black",
+    borderBottomWidth: 1,
+    justifyContent: "center",
+    height: verticalScale(100)
+  },
+  rowBack: {
+    alignItems: "center",
+    backgroundColor: "#DDD",
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingLeft: 15
   },
   itemImage: {
     marginVertical: verticalScale(2),

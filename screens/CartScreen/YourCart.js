@@ -26,6 +26,7 @@ class YourCart extends Component {
 
     this.state = {
       promoadded: false,
+    
       addpromodata: "",
       promos: []
     };

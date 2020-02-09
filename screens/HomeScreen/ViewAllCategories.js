@@ -51,9 +51,9 @@ export default class ViewAllCategories extends React.Component {
             </View>
 
             {/* PROMOTIONS HERE */}
-            <View>
+            {/* <View>
               <PromotionCard />
-            </View>
+            </View> */}
 
             {/* RELATED PRODUCTS HERE */}
             <View

@@ -27,7 +27,10 @@ const section = [
     sale: "10% OFF",
     rating: 4.3,
     id: "1",
-    image: require("../assets/home.jpg")
+    image: require("../assets/home.jpg"),
+    addcart:false,
+    liked: false,
+    
   },
   {
     name: "BROCHURE",
@@ -36,7 +39,9 @@ const section = [
     sale: "35% OFF",
     rating: 3.3,
     id: "2",
-    image: require("../assets/restaurant.jpg")
+    image: require("../assets/restaurant.jpg"),
+    addcart:false,
+    liked: false,
   },
   {
     name: "POSTER",
@@ -45,7 +50,9 @@ const section = [
     sale: "5% OFF",
     rating: 2.3,
     id: "3",
-    image: require("../assets/home.jpg")
+    image: require("../assets/home.jpg"),
+    addcart:false,
+    liked: false,
   },
   {
     name: "4F FLYERS",
@@ -53,7 +60,10 @@ const section = [
     price: 250,
     rating: 4.2,
     id: "4",
-    image: require("../assets/restaurant.jpg")
+    image: require("../assets/restaurant.jpg"),
+    addcart:false,
+    liked: false,
+
   },
   {
     name: "BROCHURE",
@@ -62,7 +72,9 @@ const section = [
     sale: "20% OFF",
     rating: 5.3,
     id: "5",
-    image: require("../assets/home.jpg")
+    image: require("../assets/home.jpg"),
+    addcart:false,
+    liked: false,
   },
   {
     name: "POSTER",
@@ -70,7 +82,9 @@ const section = [
     price: 250,
     rating: 6,
     id: "6",
-    image: require("../assets/restaurant.jpg")
+    image: require("../assets/restaurant.jpg"),
+    addcart:false,
+    liked: false,
   }
 ];
 
@@ -123,7 +137,7 @@ class FlatListComponent extends React.Component {
               </View>
               <TouchableOpacity
                 style={styles.cartContainer}
-                onPress={() => {
+                onPress={(item) => {
                   this.pressedLike();
                 }}
               >
