@@ -291,14 +291,6 @@ class StepThree extends Component {
                 marginTop: verticalScale(10)
               }}
             >
-              {/* <Image
-                source={require("../../assets/yourcart.png")}
-                style={{
-                  width: moderateScale(30),
-                  height: verticalScale(30)
-                }}
-                resizeMode="contain"
-              /> */}
               <Image
                 source={require("../../assets/yourcart.png")}
                 style={styles.yourcartlogo}
