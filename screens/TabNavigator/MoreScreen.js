@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-import AddProduct from "../ProductScreen/AddProduct";
+import BrochureType from "../ProductScreen/BrochureType";
 import colors from "../../assets/colors";
 
 class MoreScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <AddProduct></AddProduct>
+        <BrochureType></BrochureType>
       </View>
     );
   }

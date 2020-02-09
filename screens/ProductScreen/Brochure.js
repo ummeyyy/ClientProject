@@ -65,7 +65,7 @@ const products = [
   }
 ];
 
-class ProductScreen extends React.Component {
+class Brochure extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -283,7 +283,7 @@ class ProductScreen extends React.Component {
     );
   }
 }
-export default ProductScreen;
+export default Brochure;
 
 const styles = StyleSheet.create({
   container: {
