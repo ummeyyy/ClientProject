@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text, Image, StatusBar } from "react-native";
+import { StyleSheet,SafeAreaView, View, Text, Image, StatusBar } from "react-native";
 
 import { moderateScale, scale, verticalScale } from "../../scale";
 import colors from "../../assets/colors";
@@ -7,7 +7,7 @@ import colors from "../../assets/colors";
 class Header extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         {/* TOP PART OF HEADER */}
         <View
           style={{
@@ -140,7 +140,7 @@ class Header extends React.Component {
           </View>
           {/* OTHER ICONS END */}
         </View>
-      </View>
+      </SafeAreaView>
     );
   }
 }
