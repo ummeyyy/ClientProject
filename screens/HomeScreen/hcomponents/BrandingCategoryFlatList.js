@@ -18,7 +18,6 @@ import PromotionCard from "../hcomponents/PromotionCard";
 import { moderateScale, scale, verticalScale } from "../../../scale";
 import colors from "../../../assets/colors";
 import { Card } from "react-native-shadow-cards";
-import { useNavigation } from "@react-navigation/native";
 
 class BrandingCategoryFlatList extends React.Component {
   constructor() {
@@ -94,7 +93,9 @@ class BrandingCategoryFlatList extends React.Component {
       default:
         return (
           // RENDERING THE ITEMS ONE BY ONE
-          <TouchableOpacity onPress={() => navigation.navigate(OneItem)}>
+          <TouchableOpacity
+          // onPress={this.navigation.navigate("item")}
+          >
             <Card style={styles.itemContainer}>
               <Image
                 source={item.image}
@@ -234,9 +235,7 @@ class BrandingCategoryFlatList extends React.Component {
     }
   };
 
-  render({ OneItem }) {
-    const navigation = useNavigation();
-
+  render() {
     return (
       <View style={{ flex: 1, backgroundColor: colors.whitetext }}>
         <View>
