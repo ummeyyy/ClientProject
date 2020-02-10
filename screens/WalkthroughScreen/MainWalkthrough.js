@@ -16,6 +16,14 @@ import colors from "../../assets/colors";
 import CategoryButton from "../../components/CategoryButton";
 
 class MainWalkthrough extends Component {
+  tapOnSkip = () => {
+    this.props.navigation.navigate("SignUpScreen");
+  };
+
+  tapOnStartTour = () => {
+    this.props.navigation.navigate("FirstPage");
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -39,11 +47,14 @@ class MainWalkthrough extends Component {
             alignItems: "center",
             justifyContent: "center",
             position: "absolute",
-            top: verticalScale(10),
+            top: verticalScale(30),
             right: moderateScale(20)
           }}
         >
-          <CategoryButton style={styles.skipbutton}>
+          <CategoryButton
+            style={styles.skipbutton}
+            onPress={() => this.tapOnSkip()}
+          >
             <Text style={styles.skipbuttontext}>SKIP</Text>
           </CategoryButton>
         </View>
@@ -54,10 +65,10 @@ class MainWalkthrough extends Component {
           <Image
             source={require("../../assets/prize.png")}
             style={{
-              width: moderateScale(40),
-              height: verticalScale(40),
+              width: moderateScale(60),
+              height: verticalScale(60),
               position: "absolute",
-              top: moderateScale(5),
+              top: moderateScale(25),
               tintColor: colors.whitetext,
               marginVertical: verticalScale(10)
             }}
@@ -65,7 +76,7 @@ class MainWalkthrough extends Component {
           />
           <View
             style={{
-              marginTop: verticalScale(50)
+              marginTop: verticalScale(80)
             }}
           >
             <Text style={styles.smalltext}>{"introducing\n the all new"}</Text>
@@ -95,10 +106,13 @@ class MainWalkthrough extends Component {
             alignItems: "center",
             justifyContent: "center",
             position: "absolute",
-            bottom: verticalScale(140)
+            bottom: verticalScale(160)
           }}
         >
-          <CategoryButton style={styles.quicktourbutton}>
+          <CategoryButton
+            style={styles.quicktourbutton}
+            onPress={() => this.tapOnStartTour()}
+          >
             <Text style={styles.quicktourbuttontext}>Start the quick tour</Text>
           </CategoryButton>
         </View>
@@ -131,28 +145,28 @@ const styles = StyleSheet.create({
     fontWeight: "900"
   },
   smalltext: {
-    fontSize: scale(15),
+    fontSize: scale(18),
     color: colors.whitetext,
     fontStyle: "italic",
     textAlign: "center",
     fontWeight: "500"
   },
   largetext: {
-    fontSize: scale(28),
+    fontSize: scale(40),
     color: colors.blacktext,
     fontStyle: "italic",
     textAlign: "center",
-    fontWeight: "800"
+    fontWeight: "900"
   },
   newFeatureYellowRound: {
-    width: moderateScale(200),
-    height: verticalScale(205),
+    width: moderateScale(270),
+    height: verticalScale(285),
     backgroundColor: colors.bgyellow,
-    borderRadius: scale(100),
+    borderRadius: scale(165),
     borderWidth: scale(0.2),
     borderColor: colors.bgyellow,
     position: "absolute",
-    top: verticalScale(130),
+    top: verticalScale(150),
     alignItems: "center",
     justifyContent: "center"
   },

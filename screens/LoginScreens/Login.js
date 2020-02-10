@@ -45,6 +45,22 @@ class Login extends Component {
     });
   }
 
+  tapOnBack = () => {
+    this.props.navigation.navigate("AfterSplash");
+  };
+
+  tapOnLogin = () => {
+    this.props.navigation.navigate("HomeTab");
+  };
+
+  tapOnRegister = () => {
+    this.props.navigation.navigate("SignUpScreen");
+  };
+
+  tapOnForgotPassword = () => {
+    this.props.navigation.navigate("ForgotPassword");
+  };
+
   render() {
     return (
       <KeyboardAwareScrollView
@@ -119,12 +135,13 @@ class Login extends Component {
               zIndex: scale(9999),
               left: moderateScale(16)
             }}
+            onPress={() => this.tapOnBack()}
           >
             <Image
               source={require("../../assets/arrow.png")}
               style={{
-                width: moderateScale(17),
-                height: verticalScale(19)
+                width: moderateScale(30),
+                height: verticalScale(32)
               }}
               resizeMode="contain"
             />
@@ -309,7 +326,12 @@ class Login extends Component {
                   marginHorizontal: moderateScale(20)
                 }}
               >
-                <Text style={[styles.forgotText]}>FORGOT PASSWORD?</Text>
+                <Text
+                  style={styles.forgotText}
+                  onPress={() => this.tapOnForgotPassword()}
+                >
+                  FORGOT PASSWORD?
+                </Text>
               </View>
 
               {/* Remember Me END*/}
@@ -322,7 +344,10 @@ class Login extends Component {
                 marginHorizontal: moderateScale(25)
               }}
             >
-              <CategoryButton style={styles.loginbutton}>
+              <CategoryButton
+                style={styles.loginbutton}
+                onPress={() => this.tapOnLogin()}
+              >
                 <Text style={styles.loginbuttontext}>LOGIN</Text>
               </CategoryButton>
             </View>
@@ -335,6 +360,7 @@ class Login extends Component {
                 alignItems: "center",
                 justifyContent: "center"
               }}
+              onPress={() => this.tapOnRegister()}
             >
               <Text style={styles.alreadytext}>
                 DON'T HAVE AN ACCOUNT? REGISTER

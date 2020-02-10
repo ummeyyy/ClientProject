@@ -7,6 +7,17 @@ import colors from "../../assets/colors";
 import CategoryButton from "../../components/CategoryButton";
 
 class EmailSent extends Component {
+  tapOnBack = () => {
+    this.props.navigation.navigate("ForgotPassword");
+  };
+
+  tapOnLogin = () => {
+    this.props.navigation.navigate("Login");
+  };
+
+  tapOnResendEmail = () => {
+    this.props.navigation.navigate("ForgotPassword");
+  };
   render() {
     return (
       <View style={styles.container}>
@@ -19,6 +30,7 @@ class EmailSent extends Component {
             top: verticalScale(15),
             left: moderateScale(15)
           }}
+          onPress={() => this.tapOnBack()}
         >
           <Image
             source={require("../../assets/arrow.png")}
@@ -74,7 +86,10 @@ class EmailSent extends Component {
             justifyContent: "center"
           }}
         >
-          <CategoryButton style={styles.backtologinbutton}>
+          <CategoryButton
+            style={styles.backtologinbutton}
+            onPress={() => this.tapOnLogin()}
+          >
             <Text style={styles.backtologinbuttontext}>BACK TO LOGIN PAGE</Text>
           </CategoryButton>
         </View>
@@ -82,7 +97,10 @@ class EmailSent extends Component {
 
         {/* RESEND EMAIL START*/}
 
-        <TouchableOpacity style={{ marginTop: verticalScale(30) }}>
+        <TouchableOpacity
+          style={{ marginTop: verticalScale(30) }}
+          onPress={() => this.tapOnResendEmail()}
+        >
           <Text style={styles.resendemailtext}>RESEND EMAIL</Text>
         </TouchableOpacity>
         {/* RESEND EMAIL END*/}

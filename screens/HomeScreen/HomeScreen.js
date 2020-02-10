@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import {
   StyleSheet,
   Image,
@@ -18,7 +18,7 @@ import FlatListComponent from "../../components/FlatListComponent";
 import CardsCategory from "../HomeScreen/hcomponents/CardsCategory";
 import PromotionCard from "../HomeScreen/hcomponents/PromotionCard";
 
-export default class HomeScreen extends React.Component {
+class HomeScreen extends  Component {
   // componentDidMount() {
   //   setTimeout(() => {
   //     console.log("naviagtion cehcking");
@@ -157,7 +157,7 @@ export default class HomeScreen extends React.Component {
     );
   }
 }
-
+export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -220,3 +220,4 @@ const styles = StyleSheet.create({
     fontWeight: "500"
   }
 });
+ 

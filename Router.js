@@ -10,6 +10,21 @@ import ProductScreen from "./screens/ProductScreen/ProductScreen";
 import CheckoutScreen from "./screens/CheckoutScreen/CheckoutScreen";
 import ViewAllCategories from "./screens/HomeScreen/ViewAllCategories";
 import StepTwo from "./screens/CheckoutScreen/StepTwo";
+import SignUp from "./screens/SignUpScreen/SignUp";
+import MobileInput from "./components/MobileInput";
+import VerifyNumber from "./screens/SignUpScreen/VerifyNumber";
+import AfterSplash from "./screens/Splashscreen/AfterSplash";
+import Splash from "./screens/Splashscreen/Splash";
+import Login from "./screens/LoginScreens/Login";
+import ForgotPassword from "./screens/LoginScreens/ForgotPassword";
+import EmailSent from "./screens/LoginScreens/EmailSent";
+import Password from "./screens/LoginScreens/Password";
+import PasswordReset from "./screens/LoginScreens/PasswordReset";
+import MainWalkthrough from "./screens/WalkthroughScreen/MainWalkthrough";
+import FirstScreen from "./screens/WalkthroughScreen/FirstScreen";
+import SecondScreen from "./screens/WalkthroughScreen/SecondScreen";
+import ThirdScreen from "./screens/WalkthroughScreen/ThirdScreen";
+import FourthScreen from "./screens/WalkthroughScreen/FourthScreen";
 
 import colors from "./assets/colors";
 import { Ionicons } from "@expo/vector-icons";
@@ -19,62 +34,61 @@ import {
   createSwitchNavigator,
   createStackNavigator,
   createDrawerNavigator,
-  createBottomTabNavigator
+  createBottomTabNavigator,
+  NavigationActions
 } from "react-navigation";
 
 class navigationRouter extends Component {
   render() {
     {
-      console.log("hellp");
+      console.log("help");
     }
     return <AppContainer></AppContainer>;
   }
 }
+const HomeStackNavigator = createStackNavigator({
+  HomeScreen: {
+    screen: HomeScreen,
+    navigationOptions: {
+      headerTintColor: "royalblue",
+      headerStyle: {
+        backgroundColor: colors.bgblue
+      },
+      tabBarVisible: false
+    }
+  }
+});
+
 const TabNavigator = createBottomTabNavigator(
   {
-    HomeScreen: {
-      screen: HomeScreen,
+    HomeTab: {
+      screen: HomeStackNavigator,
       navigationOptions: {
         tabBarLabel: "HomeScreen"
-        // tabBarIcon: ({ tintColor }) => (
-        //   <BooksCountContainer color={tintColor} type="books" />
-        // )
       }
     },
-    CartScreen: {
+    CartTab: {
       screen: YourCart,
       navigationOptions: {
         tabBarLabel: "CartScreen"
-        // tabBarIcon: ({ tintColor }) => (
-        //   <BooksCountContainer color={tintColor} type="booksReading" />
-        // )
       }
     },
-    MoreScreen: {
+    MoreTab: {
       screen: MoreScreen,
       navigationOptions: {
         tabBarLabel: "MoreScreen"
-        // tabBarIcon: ({ tintColor }) => (
-        //   <BooksCountContainer color={tintColor} type="booksRead" />
-        // )
       }
     },
-    OffersScreen: {
+    OffersTab: {
       screen: OffersScreen,
       navigationOptions: {
         tabBarLabel: "OffersScreen"
-        // tabBarIcon: ({ tintColor }) => (
-        //   <BooksCountContainer color={tintColor} type="booksRead" />
-        // )
       }
     },
-    SettingsScreen: {
+    SettingsTab: {
       screen: ViewAllCategories,
       navigationOptions: {
         tabBarLabel: "SettingsScreen"
-        // tabBarIcon: ({ tintColor }) => (
-        //   <BooksCountContainer color={tintColor} type="booksRead" />
-        // )
       }
     }
   },
@@ -88,84 +102,169 @@ const TabNavigator = createBottomTabNavigator(
     }
   }
 );
-const HomeStackNavigator = createStackNavigator(
+
+// const HomeStackNavigator = createStackNavigator(
+//   {
+//     HomeScreen: {
+//       screen: HomeScreen,
+//       navigationOptions: ({ navigation }) => {
+//         return {
+//           headerLeft: (
+//             <Ionicons
+//               name="ios-menu"
+//               size={30}
+//               color={colors.whitetext}
+//               onPress={() => navigation.openDrawer()}
+//               style={{ marginLeft: 10 }}
+//             />
+//           )
+//         };
+//       }
+//     }
+
+// //just an example
+// CartScreen: {
+//   screen: YourCart
+// },
+// // ProductScreen: {
+// //   screen: ProductScreen
+// // },
+// checkout: {
+//   screen: CheckoutScreen
+// },
+// View: {
+//   screen: ViewAllCategories
+// },
+// item: {
+//   screen: ProductScreen
+// },
+// steptwo: {
+//   screen: StepTwo
+// }
+//}
+
+// {
+//   defaultNavigationOptions: {
+//     headerStyle: {
+//       backgroundColor: colors.blacktext
+//     },
+//     headerTintColor: colors.inactivegreybutton
+//   }
+// }
+//);
+const AppDrawerNavigator = createDrawerNavigator({
+  HomeStackNavigator: {
+    screen: HomeStackNavigator,
+    navigationOptions: {
+      title: "Home",
+      drawerIcon: () => <Ionicons name="ios-home" size={24} />
+    }
+  },
+  SettingsScreen: {
+    screen: SettingsScreen,
+    navigationOptions: {
+      title: "Settings",
+      drawerIcon: () => <Ionicons name="ios-settings" size={24} />
+    }
+  }
+});
+const AuthNavigator = createStackNavigator(
   {
-    HomeTabNavigator: {
-      screen: TabNavigator,
-      navigationOptions: ({ navigation }) => {
-        return {
-          headerLeft: (
-            <Ionicons
-              name="ios-menu"
-              size={30}
-              color={colors.whitetext}
-              onPress={() => navigation.openDrawer()}
-              style={{ marginLeft: 10 }}
-            />
-          )
-        };
-      }
+    AfterSplash: {
+      screen: AfterSplash
+      // navigationOptions: {
+      //   header: null,
+      //   tabBarVisible: false
+      // }
     },
-    //just an example
-    CartScreen: {
-      screen: YourCart
-    },
-    // ProductScreen: {
-    //   screen: ProductScreen
-    // },
-    checkout: {
-      screen: CheckoutScreen
-    },
-    View: {
-      screen: ViewAllCategories
-    },
-    item: {
-      screen: ProductScreen
-    },
-    steptwo: {
-      screen: StepTwo
+    SignUpScreen: { screen: SignUp },
+    CountryCode: { screen: MobileInput },
+    VerifyNumber: { screen: VerifyNumber },
+    Login: { screen: Login },
+    Password: { screen: Password },
+    PasswordReset: { screen: PasswordReset },
+    ForgotPassword: { screen: ForgotPassword },
+    EmailSent: { screen: EmailSent }
+  },
+  {
+    header: null,
+    headerMode: "none"
+  }
+);
+
+const WalkthroughStackNavigator = createStackNavigator({
+  MainScreen: {
+    screen: MainWalkthrough,
+    navigationOptions: {
+      header: null,
+      tabBarVisible: false
     }
   },
 
-  {
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: colors.blacktext
-      },
-      headerTintColor: colors.inactivegreybutton
+  FirstPage: {
+    screen: FirstScreen,
+    navigationOptions: {
+      header: null,
+      tabBarVisible: false
     }
-  }
-);
-const AppDrawerNavigator = createDrawerNavigator(
-  {
-    HomeStackNavigator: {
-      screen: HomeStackNavigator,
-      navigationOptions: {
-        title: "Home",
-        drawerIcon: () => <Ionicons name="ios-home" size={24} />
-      }
-    },
-    SettingsScreen: {
-      screen: SettingsScreen,
-      navigationOptions: {
-        title: "Settings",
-        drawerIcon: () => <Ionicons name="ios-settings" size={24} />
-      }
+  },
+  SecondPage: {
+    screen: SecondScreen,
+    navigationOptions: {
+      header: null,
+      tabBarVisible: false
     }
-  }
-  // {
-  //   contentComponent: CustomDrawerComponent
-  // }
-);
-const AppContainer = createAppContainer(AppDrawerNavigator);
-
-export default navigationRouter;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "red"
+  },
+  ThirdPage: {
+    screen: ThirdScreen,
+    navigationOptions: {
+      header: null,
+      tabBarVisible: false
+    }
+  },
+  FourthPage: {
+    screen: FourthScreen,
+    navigationOptions: {
+      header: null,
+      tabBarVisible: false
+    }
   }
 });
+
+// const HomeTabNavigator = createBottomTabNavigator({
+//   home: Home,
+//   recipe: Recipe
+// },{
+//   navigationOptions: ({ navigation }) => ({
+//     tabBarIcon: ({ focused, tintColor }) => {
+//       const { routeName } = navigation.state;
+//       let iconName;
+//       if (routeName === 'home') {
+//         iconName = `ios-information-circle${focused ? '' : '-outline'}`;
+//       } else if (routeName === 'recipe') {
+//         iconName = `ios-options${focused ? '' : '-outline'}`;
+//       }
+//       return <Ionicons name={iconName} size={25} color={tintColor} />;
+//     },
+//   }),
+//   tabBarOptions: {
+//     activeTintColor: '#d2959f',
+//     inactiveTintColor: 'gray',
+//   },
+// });
+
+const SwitchNavigator = createSwitchNavigator(
+  {
+    AuthLoading: Splash,
+    App: TabNavigator,
+    WalkthroughStackNavigator,
+    Auth: AuthNavigator
+  },
+  {
+    initialRouteName: "AuthLoading"
+  }
+);
+const AppContainer = createAppContainer(SwitchNavigator);
+
+// export default createAppContainer( SwitchNavigator);
+export default navigationRouter;

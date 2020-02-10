@@ -16,6 +16,13 @@ import colors from "../../assets/colors";
 import CategoryButton from "../../components/CategoryButton";
 
 class SecondScreen extends Component {
+  tapOnSkip = () => {
+    this.props.navigation.navigate("SignUpScreen");
+  };
+
+  tapOnNext = () => {
+    this.props.navigation.navigate("ThirdPage");
+  };
   render() {
     return (
       <View style={styles.container}>
@@ -35,11 +42,14 @@ class SecondScreen extends Component {
             alignItems: "center",
             justifyContent: "center",
             position: "absolute",
-            top: verticalScale(10),
+            top: verticalScale(30),
             right: moderateScale(20)
           }}
         >
-          <CategoryButton style={styles.skipbutton}>
+          <CategoryButton
+            style={styles.skipbutton}
+            onPress={() => this.tapOnSkip()}
+          >
             <Text style={styles.skipbuttontext}>SKIP</Text>
           </CategoryButton>
         </View>
@@ -71,7 +81,7 @@ class SecondScreen extends Component {
         </View>
         {/* SCREEN TEXT END*/}
 
-        {/* QUICK TOUR BUTTON START*/}
+        {/* NEXT BUTTON START*/}
         <View
           style={{
             marginTop: verticalScale(10),
@@ -79,15 +89,18 @@ class SecondScreen extends Component {
             alignItems: "center",
             justifyContent: "center",
             position: "absolute",
-            bottom: verticalScale(30)
+            bottom: verticalScale(50)
           }}
         >
-          <CategoryButton style={styles.nextbutton}>
+          <CategoryButton
+            style={styles.nextbutton}
+            onPress={() => this.tapOnNext()}
+          >
             <Text style={styles.nextbuttontext}>NEXT</Text>
           </CategoryButton>
         </View>
 
-        {/* QUICK TOUR BUTTON END*/}
+        {/* NEXT BUTTON END*/}
       </View>
     );
   }
@@ -116,24 +129,24 @@ const styles = StyleSheet.create({
   centerTextView: {
     flex: 1,
     position: "absolute",
-    top: verticalScale(285),
+    top: verticalScale(350),
     alignItems: "center",
     justifyContent: "center"
   },
   largesttext: {
-    fontSize: scale(17),
+    fontSize: scale(20),
     color: colors.bgblue,
     textAlign: "center",
     fontWeight: "800"
   },
   largetext: {
-    fontSize: scale(16),
+    fontSize: scale(18),
     color: colors.bgorange,
     textAlign: "center",
     fontWeight: "800"
   },
   smalltext: {
-    fontSize: scale(10),
+    fontSize: scale(12),
     color: colors.grey2,
     textAlign: "center",
     fontWeight: "500"

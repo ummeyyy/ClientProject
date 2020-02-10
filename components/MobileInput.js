@@ -34,6 +34,11 @@ export default class MobileInput extends React.Component {
     modalVisible: false,
     phoneNumber: ""
   };
+
+  tapOnBack = () => {
+    this.props.navigation.navigate("SignUpScreen");
+  };
+
   onChangeText(key, value) {
     this.setState({
       [key]: value
@@ -92,8 +97,6 @@ export default class MobileInput extends React.Component {
                   }
                 ]}
               >
-                {/* <Item rounded style={styles.itemStyle}> */}
-
                 <View style={{ flex: 0.15 }}>
                   <Image
                     source={require("../assets/phone.png")}
@@ -302,9 +305,6 @@ export default class MobileInput extends React.Component {
                   </Modal>
                 </View>
               </View>
-
-              {/* </Item>
-              </Container>*/}
             </View>
           </TouchableWithoutFeedback>
         </KeyboardAvoidingView>

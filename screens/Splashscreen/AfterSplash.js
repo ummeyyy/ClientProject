@@ -5,14 +5,13 @@ import { moderateScale, scale, verticalScale } from "../../scale";
 import colors from "../../assets/colors";
 
 export default class AfterSplash extends Component {
+  tapOnLoginLater = () => {
+    this.props.navigation.navigate("MainScreen");
+  };
   render() {
     return (
       <View style={styles.container}>
-        <View
-          style={{
-            flexDirection: "column"
-          }}
-        >
+        <View>
           <View
             style={{
               flex: 1.75,
@@ -72,6 +71,7 @@ export default class AfterSplash extends Component {
                 alignItems: "center",
                 justifyContent: "center"
               }}
+              onPress={() => this.tapOnLoginLater()}
             >
               <Text style={styles.logintext}>I'll login later</Text>
             </TouchableOpacity>

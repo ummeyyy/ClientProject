@@ -16,6 +16,14 @@ import CategoryButton from "../../components/CategoryButton";
 import ConfirmationCode from "../SignUpScreen/SignUpComponents/ConfirmationCode";
 
 class VerifyNumber extends Component {
+  tapOnBack = () => {
+    this.props.navigation.navigate("SignUpScreen");
+  };
+
+  tapOnVerifyNow = () => {
+    this.props.navigation.navigate("Login");
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -89,7 +97,7 @@ class VerifyNumber extends Component {
                       fontWeight: "800"
                     }
                   ]}
-                  onPress={true}
+                  onPress={() => this.tapOnBack()}
                 >
                   {" Wrong Number?"}
                 </Text>
@@ -143,7 +151,7 @@ class VerifyNumber extends Component {
                   fontWeight: "800"
                 }
               ]}
-              onPress={true}
+              onPress={() => this.tapOnBack()}
             >
               {" Didnt get code?"}
             </Text>
@@ -161,7 +169,10 @@ class VerifyNumber extends Component {
             paddingTop: verticalScale(10)
           }}
         >
-          <CategoryButton style={styles.verifybutton}>
+          <CategoryButton
+            style={styles.verifybutton}
+            onPress={() => this.tapOnVerifyNow()}
+          >
             <Text style={styles.verifybuttonbuttontext}>VERIFY NOW</Text>
           </CategoryButton>
         </View>

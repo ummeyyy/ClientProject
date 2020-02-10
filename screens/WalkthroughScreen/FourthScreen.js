@@ -16,6 +16,14 @@ import colors from "../../assets/colors";
 import CategoryButton from "../../components/CategoryButton";
 
 class FourthScreen extends Component {
+  tapOnSkip = () => {
+    this.props.navigation.navigate("SignUpScreen");
+  };
+
+  tapOnNext = () => {
+    this.props.navigation.navigate("SignUpScreen");
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -35,11 +43,14 @@ class FourthScreen extends Component {
             alignItems: "center",
             justifyContent: "center",
             position: "absolute",
-            top: verticalScale(10),
+            top: verticalScale(30),
             right: moderateScale(20)
           }}
         >
-          <CategoryButton style={styles.skipbutton}>
+          <CategoryButton
+            style={styles.skipbutton}
+            onPress={() => this.tapOnSkip()}
+          >
             <Text style={styles.skipbuttontext}>SKIP</Text>
           </CategoryButton>
         </View>
@@ -65,7 +76,7 @@ class FourthScreen extends Component {
         </View>
         {/* SCREEN TEXT END*/}
 
-        {/* QUICK TOUR BUTTON START*/}
+        {/* FINISH BUTTON START*/}
         <View
           style={{
             marginTop: verticalScale(10),
@@ -73,15 +84,18 @@ class FourthScreen extends Component {
             alignItems: "center",
             justifyContent: "center",
             position: "absolute",
-            bottom: verticalScale(20)
+            bottom: verticalScale(50)
           }}
         >
-          <CategoryButton style={styles.nextbutton}>
-            <Text style={styles.nextbuttontext}>NEXT</Text>
+          <CategoryButton
+            style={styles.nextbutton}
+            onPress={() => this.tapOnNext()}
+          >
+            <Text style={styles.nextbuttontext}>FINISH</Text>
           </CategoryButton>
         </View>
 
-        {/* QUICK TOUR BUTTON END*/}
+        {/* FINISH BUTTON END*/}
       </View>
     );
   }
@@ -110,18 +124,18 @@ const styles = StyleSheet.create({
   centerTextView: {
     flex: 1,
     position: "absolute",
-    top: verticalScale(300),
+    top: verticalScale(350),
     alignItems: "center",
     justifyContent: "center"
   },
   largetext: {
-    fontSize: scale(16),
+    fontSize: scale(20),
     color: colors.bgyellow,
     textAlign: "center",
     fontWeight: "800"
   },
   smalltext: {
-    fontSize: scale(10),
+    fontSize: scale(12),
     color: colors.grey2,
     textAlign: "center",
     fontWeight: "500"

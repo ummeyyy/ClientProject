@@ -36,6 +36,22 @@ class SignUp extends Component {
     this.setState({ showPassword: !this.state.showPassword });
   }
 
+  tapOnBackForNumber = () => {
+    this.props.navigation.navigate("SignUpScreen");
+  };
+
+  tapOnBack = () => {
+    this.props.navigation.navigate("AfterSplash");
+  };
+
+  tapOnCreateAccount = () => {
+    this.props.navigation.navigate("VerifyNumber");
+  };
+
+  tapOnAlreadyMember = () => {
+    this.props.navigation.navigate("Login");
+  };
+
   render() {
     return (
       <KeyboardAwareScrollView
@@ -93,12 +109,13 @@ class SignUp extends Component {
               zIndex: scale(9999),
               left: moderateScale(16)
             }}
+            onPress={() => this.tapOnBack()}
           >
             <Image
               source={require("../../assets/arrow.png")}
               style={{
-                width: moderateScale(17),
-                height: verticalScale(19)
+                width: moderateScale(30),
+                height: verticalScale(30)
               }}
               resizeMode="contain"
             />
@@ -288,7 +305,7 @@ class SignUp extends Component {
 
             {/* Enter mobile number START */}
             <View>
-              <MobileInput />
+              <MobileInput back={this.tapOnBackForNumber()} />
             </View>
             {/* Enter mobile number END */}
 
@@ -299,7 +316,10 @@ class SignUp extends Component {
                 marginHorizontal: moderateScale(25)
               }}
             >
-              <CategoryButton style={styles.createaccounttbutton}>
+              <CategoryButton
+                style={styles.createaccounttbutton}
+                onPress={() => this.tapOnCreateAccount()}
+              >
                 <Text style={styles.createaccountbuttontext}>
                   CREATE ACCOUNT
                 </Text>
@@ -314,6 +334,7 @@ class SignUp extends Component {
                 alignItems: "center",
                 justifyContent: "center"
               }}
+              onPress={() => this.tapOnAlreadyMember()}
             >
               <Text style={styles.alreadytext}>ALREADY A MEMBER? LOGIN</Text>
               <Entypo

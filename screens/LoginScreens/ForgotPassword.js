@@ -17,6 +17,14 @@ import colors from "../../assets/colors";
 import CategoryButton from "../../components/CategoryButton";
 
 class ForgotPassword extends Component {
+  tapOnBack = () => {
+    this.props.navigation.navigate("Login");
+  };
+
+  tapOnResendEmail = () => {
+    this.props.navigation.navigate("EmailSent");
+  };
+
   constructor() {
     super();
     this.state = {
@@ -50,6 +58,7 @@ class ForgotPassword extends Component {
               top: verticalScale(15),
               left: moderateScale(5)
             }}
+            onPress={() => this.tapOnBack()}
           >
             <Image
               source={require("../../assets/arrow.png")}
@@ -151,7 +160,10 @@ class ForgotPassword extends Component {
               justifyContent: "center"
             }}
           >
-            <CategoryButton style={styles.submitrequestbutton}>
+            <CategoryButton
+              style={styles.submitrequestbutton}
+              onPress={() => this.tapOnResendEmail()}
+            >
               <Text style={styles.submitrequestbuttontext}>SUBMIT REQUEST</Text>
             </CategoryButton>
           </View>
@@ -159,7 +171,10 @@ class ForgotPassword extends Component {
 
           {/* RESEND EMAIL START*/}
 
-          <TouchableOpacity style={{ marginTop: verticalScale(40) }}>
+          <TouchableOpacity
+            style={{ marginTop: verticalScale(40) }}
+            onPress={() => this.tapOnResendEmail()}
+          >
             <Text style={styles.resendemailtext}>RESEND EMAIL</Text>
           </TouchableOpacity>
           {/* RESEND EMAIL END*/}
