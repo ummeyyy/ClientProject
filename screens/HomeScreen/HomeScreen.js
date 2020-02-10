@@ -4,6 +4,7 @@ import {
   Image,
   Text,
   View,
+  TextInput,
   SafeAreaView,
   TouchableOpacity,
   ScrollView
@@ -11,6 +12,7 @@ import {
 
 import { moderateScale, scale, verticalScale } from "../../scale";
 import colors from "../../assets/colors";
+import { FontAwesome } from "@expo/vector-icons";
 
 import Swiper from "../../components/Swiper";
 import CategoryButton from "../../components/CategoryButton";
@@ -18,13 +20,25 @@ import FlatListComponent from "../../components/FlatListComponent";
 import CardsCategory from "../HomeScreen/hcomponents/CardsCategory";
 import PromotionCard from "../HomeScreen/hcomponents/PromotionCard";
 
-class HomeScreen extends  Component {
+class HomeScreen extends Component {
   // componentDidMount() {
   //   setTimeout(() => {
   //     console.log("naviagtion cehcking");
   //     this.props.navigation.navigate("CartScreen");
   //   }, 5000);
   // }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      search: ""
+    };
+  }
+
+  tapOnBrandingDesignViewAll = () => {
+    this.props.navigation.navigate("BrandingDesign");
+  };
+
   render() {
     return (
       // HEADER
@@ -33,6 +47,58 @@ class HomeScreen extends  Component {
 
         {/* BODY */}
         <ScrollView>
+          {/* SEARCH BAR START */}
+          <View
+            style={{
+              flex: 1,
+              backgroundColor: colors.bgblue,
+              height: verticalScale(50)
+            }}
+          >
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-around",
+                padding: scale(5),
+                marginHorizontal: moderateScale(30),
+                marginBottom: verticalScale(10),
+                backgroundColor: colors.whitetext,
+                height: verticalScale(40)
+              }}
+            >
+              <Image
+                source={require("../../assets/searchicon.png")}
+                style={{
+                  width: moderateScale(25),
+                  height: verticalScale(25)
+                }}
+                resizeMode="contain"
+              />
+              <TextInput
+                style={{
+                  marginLeft: moderateScale(-20),
+                  color: colors.blacktext,
+                  fontSize: scale(14),
+                  fontWeight: "400"
+                }}
+                value={this.state.search}
+                underlineColorAndroid="transparent"
+                onChangeText={text => this.setState({ search: text })}
+                placeholder={"What are you looking for?"}
+                placeholderTextColor={colors.inactivegreybutton}
+                returnKeyType="done"
+              />
+              <FontAwesome
+                name="microphone"
+                color={colors.inactivegreybutton}
+                size={scale(20)}
+              />
+            </View>
+          </View>
+          {/* SEARCH BAR END */}
+
           <View style={{ flex: 1 }}>
             <Swiper />
             <TouchableOpacity>
@@ -57,7 +123,7 @@ class HomeScreen extends  Component {
               </View>
               <View>
                 <CategoryButton
-                  onPress={() => props.navigation.navigate("View")}
+                  onPress={() => this.tapOnBrandingDesignViewAll()}
                   style={styles.categorybuttonstyle}
                 >
                   <Text style={styles.categorybuttonText}>VIEW ALL</Text>
@@ -220,4 +286,3 @@ const styles = StyleSheet.create({
     fontWeight: "500"
   }
 });
- 

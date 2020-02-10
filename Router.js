@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 
 import HomeScreen from "./screens/HomeScreen/HomeScreen";
 import MoreScreen from "./screens/TabNavigator/MoreScreen";
@@ -9,6 +9,7 @@ import YourCart from "./screens/CartScreen/YourCart";
 import ProductScreen from "./screens/ProductScreen/ProductScreen";
 import CheckoutScreen from "./screens/CheckoutScreen/CheckoutScreen";
 import ViewAllCategories from "./screens/HomeScreen/ViewAllCategories";
+import BrandingCategoryFlatList from "./screens/HomeScreen/hcomponents/BrandingCategoryFlatList";
 import StepTwo from "./screens/CheckoutScreen/StepTwo";
 import SignUp from "./screens/SignUpScreen/SignUp";
 import MobileInput from "./components/MobileInput";
@@ -26,6 +27,10 @@ import SecondScreen from "./screens/WalkthroughScreen/SecondScreen";
 import ThirdScreen from "./screens/WalkthroughScreen/ThirdScreen";
 import FourthScreen from "./screens/WalkthroughScreen/FourthScreen";
 
+import Header from "./screens/HomeScreen/Header";
+import HeaderTwo from "./screens/HomeScreen/HeaderTwo";
+
+import { moderateScale, scale, verticalScale } from "./scale";
 import colors from "./assets/colors";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -50,11 +55,58 @@ const HomeStackNavigator = createStackNavigator({
   HomeScreen: {
     screen: HomeScreen,
     navigationOptions: {
-      headerTintColor: "royalblue",
-      headerStyle: {
-        backgroundColor: colors.bgblue
-      },
-      tabBarVisible: false
+      headerBackground: <Header />,
+      headerBackTitle: null
+    }
+  },
+  BrandingDesign: {
+    screen: ViewAllCategories,
+    navigationOptions: {
+      tabBarVisible: false,
+      headerBackTitle: null,
+      headerBackground: <HeaderTwo />,
+      headerBackImage: (
+        <View
+          style={{
+            marginLeft: scale(5)
+          }}
+        >
+          <Image
+            source={require("./assets/back-arrow-icon.png")}
+            style={{
+              width: moderateScale(20),
+              height: verticalScale(20),
+              tintColor: colors.whitetext
+            }}
+            resizeMode="contain"
+          />
+        </View>
+      )
+    }
+  },
+  OneItem: {
+    screen: ProductScreen,
+    navigationOptions: {
+      tabBarVisible: false,
+      headerBackTitle: null,
+      headerBackground: <HeaderTwo />,
+      headerBackImage: (
+        <View
+          style={{
+            marginLeft: scale(5)
+          }}
+        >
+          <Image
+            source={require("./assets/back-arrow-icon.png")}
+            style={{
+              width: moderateScale(20),
+              height: verticalScale(20),
+              tintColor: colors.whitetext
+            }}
+            resizeMode="contain"
+          />
+        </View>
+      )
     }
   }
 });
@@ -86,7 +138,7 @@ const TabNavigator = createBottomTabNavigator(
       }
     },
     SettingsTab: {
-      screen: ViewAllCategories,
+      screen: SettingsScreen,
       navigationOptions: {
         tabBarLabel: "SettingsScreen"
       }
@@ -103,55 +155,6 @@ const TabNavigator = createBottomTabNavigator(
   }
 );
 
-// const HomeStackNavigator = createStackNavigator(
-//   {
-//     HomeScreen: {
-//       screen: HomeScreen,
-//       navigationOptions: ({ navigation }) => {
-//         return {
-//           headerLeft: (
-//             <Ionicons
-//               name="ios-menu"
-//               size={30}
-//               color={colors.whitetext}
-//               onPress={() => navigation.openDrawer()}
-//               style={{ marginLeft: 10 }}
-//             />
-//           )
-//         };
-//       }
-//     }
-
-// //just an example
-// CartScreen: {
-//   screen: YourCart
-// },
-// // ProductScreen: {
-// //   screen: ProductScreen
-// // },
-// checkout: {
-//   screen: CheckoutScreen
-// },
-// View: {
-//   screen: ViewAllCategories
-// },
-// item: {
-//   screen: ProductScreen
-// },
-// steptwo: {
-//   screen: StepTwo
-// }
-//}
-
-// {
-//   defaultNavigationOptions: {
-//     headerStyle: {
-//       backgroundColor: colors.blacktext
-//     },
-//     headerTintColor: colors.inactivegreybutton
-//   }
-// }
-//);
 const AppDrawerNavigator = createDrawerNavigator({
   HomeStackNavigator: {
     screen: HomeStackNavigator,
@@ -168,6 +171,7 @@ const AppDrawerNavigator = createDrawerNavigator({
     }
   }
 });
+
 const AuthNavigator = createStackNavigator(
   {
     AfterSplash: {
@@ -231,6 +235,23 @@ const WalkthroughStackNavigator = createStackNavigator({
   }
 });
 
+const CheckOutStackNavigator = createStackNavigator({
+  MainScreen: {
+    screen: MainWalkthrough,
+    navigationOptions: {
+      header: null,
+      tabBarVisible: false
+    }
+  },
+
+  FirstPage: {
+    screen: FirstScreen,
+    navigationOptions: {
+      header: null,
+      tabBarVisible: false
+    }
+  }
+});
 // const HomeTabNavigator = createBottomTabNavigator({
 //   home: Home,
 //   recipe: Recipe

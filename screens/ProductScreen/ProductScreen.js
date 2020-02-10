@@ -33,35 +33,6 @@ const products = [
     id: "1",
     description1line: "(ONE DESCRIPTION LINE - DYNAMIC)",
     image: require("../../assets/product1.png")
-  },
-  {
-    name: "2D DRAWING",
-    code: "D02",
-    price: 250,
-    sale: 5,
-    rating: 3.3,
-    description1line: "(ONE DESCRIPTION LINE - DYNAMIC)",
-    id: "2",
-    image: require("../../assets/restaurant.jpg")
-  },
-  {
-    name: "3D DRAWING",
-    code: "D03",
-    price: 100,
-    sale: 35,
-    rating: 2.3,
-    description1line: "(ONE DESCRIPTION LINE - DYNAMIC)",
-    id: "3",
-    image: require("../../assets/home.jpg")
-  },
-  {
-    name: "INFOGRAPHICS",
-    code: "D04",
-    price: 250,
-    rating: 4.2,
-    description1line: "(ONE DESCRIPTION LINE - DYNAMIC)",
-    id: "4",
-    image: require("../../assets/restaurant.jpg")
   }
 ];
 

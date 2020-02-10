@@ -5,8 +5,11 @@ import { moderateScale, scale, verticalScale } from "../../scale";
 import colors from "../../assets/colors";
 
 export default class AfterSplash extends Component {
+  // tapOnLoginLater = () => {
+  //   this.props.navigation.navigate("MainScreen");
+  // };
   tapOnLoginLater = () => {
-    this.props.navigation.navigate("MainScreen");
+    this.props.navigation.navigate("HomeTab");
   };
   render() {
     return (
