@@ -47,9 +47,7 @@ export default class ViewAllCategories extends React.Component {
               <Text style={styles.categoryTitle}>BRANDING DESIGN</Text>
             </View>
             <View style={{ marginTop: verticalScale(10) }}>
-              <BrandingCategoryFlatList
-                nav={props.navigation}
-              ></BrandingCategoryFlatList>
+              <BrandingCategoryFlatList></BrandingCategoryFlatList>
             </View>
 
             {/* PROMOTIONS HERE */}
