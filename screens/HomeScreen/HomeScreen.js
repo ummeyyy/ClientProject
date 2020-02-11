@@ -52,6 +52,7 @@ class HomeScreen extends Component {
             style={{
               flex: 1,
               backgroundColor: colors.bgblue,
+              paddingTop: verticalScale(3),
               height: verticalScale(50)
             }}
           >
@@ -63,7 +64,7 @@ class HomeScreen extends Component {
                 justifyContent: "space-around",
                 padding: scale(5),
                 marginHorizontal: moderateScale(30),
-                marginBottom: verticalScale(10),
+                marginBottom: verticalScale(5),
                 backgroundColor: colors.whitetext,
                 height: verticalScale(40)
               }}

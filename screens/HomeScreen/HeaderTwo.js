@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text, Image, StatusBar } from "react-native";
+import { StyleSheet, View, Text, Image, SafeAreaView } from "react-native";
 
 import { moderateScale, scale, verticalScale } from "../../scale";
 import colors from "../../assets/colors";
@@ -7,13 +7,12 @@ import colors from "../../assets/colors";
 class HeaderTwo extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         {/* TOP PART OF HEADER */}
         <View
           style={{
             flexDirection: "row",
-            alignItems: "center",
-            marginTop: verticalScale(10)
+            alignItems: "center"
           }}
         >
           {/* DRAWER ICON START*/}
@@ -23,8 +22,7 @@ class HeaderTwo extends React.Component {
               flex: 0.2,
               alignItems: "center",
               justifyContent: "space-around",
-              marginLeft: scale(25),
-              marginTop: verticalScale(10)
+              marginLeft: scale(25)
             }}
           >
             <Image
@@ -43,7 +41,6 @@ class HeaderTwo extends React.Component {
               flex: 0.2,
               alignItems: "center",
               justifyContent: "center",
-              marginTop: verticalScale(10),
               marginLeft: moderateScale(10)
             }}
           >
@@ -70,8 +67,7 @@ class HeaderTwo extends React.Component {
             <View
               style={{
                 flexDirection: "row",
-                marginLeft: moderateScale(5),
-                marginTop: verticalScale(8)
+                marginLeft: moderateScale(5)
               }}
             >
               <Text>
@@ -113,7 +109,6 @@ class HeaderTwo extends React.Component {
               alignItems: "center",
               justifyContent: "space-between",
               padding: scale(10),
-              marginTop: verticalScale(10),
               marginRight: moderateScale(10)
             }}
           >
@@ -155,7 +150,7 @@ class HeaderTwo extends React.Component {
           </View>
           {/* OTHER ICONS END */}
         </View>
-      </View>
+      </SafeAreaView>
     );
   }
 }
