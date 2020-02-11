@@ -14,12 +14,25 @@ import {
   MaterialIcons
 } from "@expo/vector-icons";
 import PromotionCard from "../hcomponents/PromotionCard";
+import PropTypes from "prop-types";
 
 import { moderateScale, scale, verticalScale } from "../../../scale";
 import colors from "../../../assets/colors";
 import { Card } from "react-native-shadow-cards";
 
 class BrandingCategoryFlatList extends React.Component {
+  // static propTypes = {
+  //   style: PropTypes.oneOfType([
+  //     PropTypes.array,
+  //     PropTypes.object,
+  //     PropTypes.number,
+  //   ]),
+  //   // children: PropTypes.node.isRequired,
+  // };
+
+  // static defaultProps = {
+  //   style: {},
+  // };
   constructor() {
     super();
 
@@ -76,16 +89,18 @@ class BrandingCategoryFlatList extends React.Component {
     });
   };
 
-  tapOnItem = () => {
-    this.props.navigation.navigate("OneItem");
-  };
+  // tapOnItem = index => {
+  //   console.log(index);
+  //   this.props.navigation.navigate("productScreen");
+  // };
 
   pressedLike = () => {
     this.setState({
       liked: !this.state.liked
     });
   };
-  renderItem = item => {
+  renderItem = (item, index) => {
+ 
     switch (item.name) {
       case "Promotions":
         return <PromotionCard />;
@@ -94,7 +109,8 @@ class BrandingCategoryFlatList extends React.Component {
         return (
           // RENDERING THE ITEMS ONE BY ONE
           <TouchableOpacity
-          // onPress={this.navigation.navigate("item")}
+            onPress={()=> {this.props.onpress(item)} }
+            // onPress= { () => this.tapOnItem(index)}
           >
             <Card style={styles.itemContainer}>
               <Image
@@ -236,6 +252,7 @@ class BrandingCategoryFlatList extends React.Component {
   };
 
   render() {
+    const { children, ...rest } = this.props;
     return (
       <View style={{ flex: 1, backgroundColor: colors.whitetext }}>
         <View>
@@ -246,7 +263,7 @@ class BrandingCategoryFlatList extends React.Component {
             showsVerticalScrollIndicator={false}
             keyExtractor={(item, index) => item.id}
             data={this.state.data}
-            renderItem={({ item }) => this.renderItem(item)}
+            renderItem={({ item, index }) => this.renderItem(item, index)}
           />
         </View>
       </View>

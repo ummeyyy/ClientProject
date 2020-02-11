@@ -6,7 +6,8 @@ import {
   View,
   SafeAreaView,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
+  Alert
 } from "react-native";
 
 import { moderateScale, scale, verticalScale } from "../../scale";
@@ -19,6 +20,17 @@ import BrandingCategoryFlatList from "../HomeScreen/hcomponents/BrandingCategory
 import PromotionCard from "../HomeScreen/hcomponents/PromotionCard";
 
 export default class ViewAllCategories extends React.Component {
+ //onpress call back from tapping on branding flatlist for 
+ //navigation. we are also getting the index and item here so we can
+ //also pass it to the screen we are navigating 
+ handleOnPress = (item) => {
+  //  Alert.alert(item)
+  console.log(item)
+
+    console.log('hello')
+  this.props.navigation.navigate('OneItem')
+ }
+  
   render() {
     return (
       // HEADER
@@ -47,7 +59,7 @@ export default class ViewAllCategories extends React.Component {
               <Text style={styles.categoryTitle}>BRANDING DESIGN</Text>
             </View>
             <View style={{ marginTop: verticalScale(10) }}>
-              <BrandingCategoryFlatList></BrandingCategoryFlatList>
+              <BrandingCategoryFlatList onpress = {  this.handleOnPress}></BrandingCategoryFlatList>
             </View>
 
             {/* PROMOTIONS HERE */}
@@ -72,7 +84,7 @@ export default class ViewAllCategories extends React.Component {
             </View>
             {/* FLATLIST */}
             <View style={{ marginTop: verticalScale(15) }}>
-              <FlatListComponent />
+              <FlatListComponent   />
             </View>
           </View>
         </ScrollView>
