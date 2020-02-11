@@ -21,18 +21,6 @@ import colors from "../../../assets/colors";
 import { Card } from "react-native-shadow-cards";
 
 class BrandingCategoryFlatList extends React.Component {
-  // static propTypes = {
-  //   style: PropTypes.oneOfType([
-  //     PropTypes.array,
-  //     PropTypes.object,
-  //     PropTypes.number,
-  //   ]),
-  //   // children: PropTypes.node.isRequired,
-  // };
-
-  // static defaultProps = {
-  //   style: {},
-  // };
   constructor() {
     super();
 
@@ -89,18 +77,13 @@ class BrandingCategoryFlatList extends React.Component {
     });
   };
 
-  // tapOnItem = index => {
-  //   console.log(index);
-  //   this.props.navigation.navigate("productScreen");
-  // };
-
   pressedLike = () => {
     this.setState({
       liked: !this.state.liked
     });
   };
+
   renderItem = (item, index) => {
- 
     switch (item.name) {
       case "Promotions":
         return <PromotionCard />;
@@ -109,8 +92,9 @@ class BrandingCategoryFlatList extends React.Component {
         return (
           // RENDERING THE ITEMS ONE BY ONE
           <TouchableOpacity
-            onPress={()=> {this.props.onpress(item)} }
-            // onPress= { () => this.tapOnItem(index)}
+            onPress={() => {
+              this.props.onpress(item, item.id);
+            }}
           >
             <Card style={styles.itemContainer}>
               <Image
@@ -148,19 +132,13 @@ class BrandingCategoryFlatList extends React.Component {
                     color={colors.bgyellow}
                   />
                 ) : (
-                  <TouchableOpacity
-                    onPress={() => {
-                      this.addto();
+                  <Image
+                    source={require("../../../assets/cart-view-icon.png")}
+                    style={{
+                      width: moderateScale(20),
+                      height: verticalScale(20)
                     }}
-                  >
-                    <Image
-                      source={require("../../../assets/cart-view-icon.png")}
-                      style={{
-                        width: moderateScale(20),
-                        height: verticalScale(20)
-                      }}
-                    />
-                  </TouchableOpacity>
+                  />
                 )}
               </TouchableOpacity>
               {/* FAVORITE PORTION */}

@@ -4,6 +4,7 @@ import {
   Text,
   StyleSheet,
   SafeAreaView,
+  Image,
   TouchableOpacity,
   ScrollView
 } from "react-native";
@@ -25,7 +26,7 @@ import TotalPrice from "../ProductScreen/pcomponents/TotalPrice";
 
 const products = [
   {
-    name: "4F FLYERS DESIGN",
+    name: "BROCHURE",
     categoryname: "BRANDING DESIGN",
     code: "D01",
     price: 150,
@@ -33,35 +34,6 @@ const products = [
     id: "1",
     description1line: "(ONE DESCRIPTION LINE - DYNAMIC)",
     image: require("../../assets/product1.png")
-  },
-  {
-    name: "2D DRAWING",
-    code: "D02",
-    price: 250,
-    sale: 5,
-    rating: 3.3,
-    description1line: "(ONE DESCRIPTION LINE - DYNAMIC)",
-    id: "2",
-    image: require("../../assets/restaurant.jpg")
-  },
-  {
-    name: "3D DRAWING",
-    code: "D03",
-    price: 100,
-    sale: 35,
-    rating: 2.3,
-    description1line: "(ONE DESCRIPTION LINE - DYNAMIC)",
-    id: "3",
-    image: require("../../assets/home.jpg")
-  },
-  {
-    name: "INFOGRAPHICS",
-    code: "D04",
-    price: 250,
-    rating: 4.2,
-    description1line: "(ONE DESCRIPTION LINE - DYNAMIC)",
-    id: "4",
-    image: require("../../assets/restaurant.jpg")
   }
 ];
 
@@ -69,6 +41,7 @@ class Brochure extends React.Component {
   constructor() {
     super();
     this.state = {
+      addfav: true,
       count: 1,
       salePrice: (products[0].price * products[0].sale) / 100,
       price: products[0].price,
@@ -98,6 +71,24 @@ class Brochure extends React.Component {
           (this.state.count - 1) * (this.state.price - this.state.salePrice)
       });
     }
+  };
+
+  addto = () => {
+    this.setState({
+      addfav: !this.state.addfav
+    });
+  };
+
+  handleOnPress = () => {
+    this.props.navigation.navigate("Brochurecart");
+  };
+
+  pressOnViewAll = () => {
+    this.props.navigation.navigate("BrandingDesign");
+  };
+
+  handleOnAdd = () => {
+    this.props.navigation.navigate("BrochureSpecs");
   };
 
   render() {
@@ -147,12 +138,30 @@ class Brochure extends React.Component {
             {/* SWIPER SECTION */}
             <View>
               <Swiper />
-              <TouchableOpacity style={styles.favwrapper}>
-                <FontAwesome
-                  name="heart"
-                  color={colors.bgred}
-                  size={scale(30)}
-                />
+              {/* ADD TO FAVORITES */}
+              <TouchableOpacity
+                style={styles.favwrapper}
+                onPress={() => {
+                  this.addto();
+                }}
+              >
+                {this.state.addfav ? (
+                  <Image
+                    source={require("../../assets/fav-icon.png")}
+                    style={{
+                      width: moderateScale(24),
+                      height: verticalScale(24)
+                    }}
+                  />
+                ) : (
+                  <Image
+                    source={require("../../assets/fav-view-icon.png")}
+                    style={{
+                      width: moderateScale(24),
+                      height: verticalScale(24)
+                    }}
+                  />
+                )}
               </TouchableOpacity>
             </View>
 
@@ -206,34 +215,35 @@ class Brochure extends React.Component {
                 aftersale={this.state.price - this.state.salePrice}
                 oneline={products[0].description1line}
               />
-              <View style={styles.cartbuttonwrapper}>
-                <TouchableOpacity style={{ flexDirection: "row" }}>
-                  <View
+              <TouchableOpacity
+                style={[styles.addbuttonwrapper, { flexDirection: "row" }]}
+                onPress={this.handleOnAdd}
+              >
+                <View
+                  style={{
+                    flex: 1,
+                    alignItems: "flex-end",
+                    justifyContent: "center"
+                  }}
+                >
+                  <Text style={styles.addbuttontext}>ADD</Text>
+                </View>
+                <View
+                  style={{
+                    flex: 0.75,
+                    justifyContent: "center",
+                    alignItems: "center"
+                  }}
+                >
+                  <Image
+                    source={require("../../assets/add-cart-icon.png")}
                     style={{
-                      flex: 1,
-                      paddingVertical: scale(4),
-                      justifyContent: "flex-end",
-                      alignItems: "flex-end"
+                      width: moderateScale(20),
+                      height: verticalScale(20)
                     }}
-                  >
-                    <Text style={styles.cartbuttontext}>ADD</Text>
-                  </View>
-
-                  <View
-                    style={{
-                      flex: 0.75,
-                      paddingVertical: verticalScale(5),
-                      left: scale(4)
-                    }}
-                  >
-                    <AntDesign
-                      name="pluscircle"
-                      color={colors.whitetext}
-                      size={scale(18)}
-                    />
-                  </View>
-                </TouchableOpacity>
-              </View>
+                  />
+                </View>
+              </TouchableOpacity>
             </PriceTab>
 
             {/* TAB VIEW */}
@@ -256,7 +266,10 @@ class Brochure extends React.Component {
                 </Text>
               </View>
               <View>
-                <CategoryButton style={styles.categorybuttonstyle}>
+                <CategoryButton
+                  style={styles.categorybuttonstyle}
+                  onPress={this.pressOnViewAll}
+                >
                   <Text style={styles.categorybuttonText}>VIEW ALL</Text>
                 </CategoryButton>
               </View>
@@ -275,6 +288,7 @@ class Brochure extends React.Component {
               <TotalPrice
                 total={this.state.totalPrice}
                 oneline={products[0].description1line}
+                onpress={this.handleOnPress}
               />
             </PriceTab>
           </ScrollView>
@@ -331,10 +345,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: moderateScale(50),
     height: moderateScale(50),
-    paddingVertical: verticalScale(7),
+    paddingVertical: verticalScale(5),
     right: moderateScale(15),
     bottom: moderateScale(-15),
-    backgroundColor: "white",
+    backgroundColor: colors.whitetext,
     borderWidth: moderateScale(2.5),
     borderColor: colors.bgblue,
     borderRadius: moderateScale(25)
@@ -398,7 +412,9 @@ const styles = StyleSheet.create({
     color: colors.whitetext,
     textDecorationLine: "line-through"
   },
-  cartbuttonwrapper: {
+  addbuttonwrapper: {
+    alignItems: "center",
+    justifyContent: "center",
     right: scale(20),
     top: scale(20),
     width: moderateScale(100),
@@ -406,12 +422,10 @@ const styles = StyleSheet.create({
     position: "absolute",
     backgroundColor: colors.bgyellow,
     borderWidth: scale(3.5),
-    borderColor: colors.whitetext,
-    paddingHorizontal: moderateScale(5)
+    borderColor: colors.whitetext
   },
-  cartbuttontext: {
-    flex: 1.75,
-    fontSize: scale(14),
+  addbuttontext: {
+    fontSize: scale(15),
     fontWeight: "600",
     color: colors.whitetext
   },

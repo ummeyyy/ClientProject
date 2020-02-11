@@ -5,27 +5,38 @@ import HomeScreen from "./screens/HomeScreen/HomeScreen";
 import MoreScreen from "./screens/TabNavigator/MoreScreen";
 import OffersScreen from "./screens/TabNavigator/OffersScreen";
 import SettingsScreen from "./screens/TabNavigator/SettingsScreen";
-import YourCart from "./screens/CartScreen/YourCart";
-import ProductScreen from "./screens/ProductScreen/ProductScreen";
-import CheckoutScreen from "./screens/CheckoutScreen/CheckoutScreen";
-import ViewAllCategories from "./screens/HomeScreen/ViewAllCategories";
-import BrandingCategoryFlatList from "./screens/HomeScreen/hcomponents/BrandingCategoryFlatList";
-import StepTwo from "./screens/CheckoutScreen/StepTwo";
+
+import AfterSplash from "./screens/Splashscreen/AfterSplash";
+import Splash from "./screens/Splashscreen/Splash";
+
 import SignUp from "./screens/SignUpScreen/SignUp";
 import MobileInput from "./components/MobileInput";
 import VerifyNumber from "./screens/SignUpScreen/VerifyNumber";
-import AfterSplash from "./screens/Splashscreen/AfterSplash";
-import Splash from "./screens/Splashscreen/Splash";
+
 import Login from "./screens/LoginScreens/Login";
 import ForgotPassword from "./screens/LoginScreens/ForgotPassword";
 import EmailSent from "./screens/LoginScreens/EmailSent";
 import Password from "./screens/LoginScreens/Password";
 import PasswordReset from "./screens/LoginScreens/PasswordReset";
+
 import MainWalkthrough from "./screens/WalkthroughScreen/MainWalkthrough";
 import FirstScreen from "./screens/WalkthroughScreen/FirstScreen";
 import SecondScreen from "./screens/WalkthroughScreen/SecondScreen";
 import ThirdScreen from "./screens/WalkthroughScreen/ThirdScreen";
 import FourthScreen from "./screens/WalkthroughScreen/FourthScreen";
+
+import ViewAllCategories from "./screens/HomeScreen/ViewAllCategories";
+import BrandingCategoryFlatList from "./screens/HomeScreen/hcomponents/BrandingCategoryFlatList";
+
+import ProductScreen from "./screens/ProductScreen/ProductScreen";
+import YourCart from "./screens/CartScreen/YourCart";
+
+import Brochure from "./screens/ProductScreen/Brochure";
+import BrochureType from "./screens/ProductScreen/BrochureType";
+import BrochureCart from "./screens/CartScreen/BrochureCart";
+
+import CheckoutScreen from "./screens/CheckoutScreen/CheckoutScreen";
+import StepTwo from "./screens/CheckoutScreen/StepTwo";
 
 import Header from "./screens/HomeScreen/Header";
 import HeaderTwo from "./screens/HomeScreen/HeaderTwo";
@@ -42,6 +53,8 @@ import {
   createBottomTabNavigator,
   NavigationActions
 } from "react-navigation";
+import BrandCheckupSchedule from "./screens/ProductScreen/BrandCheckupSchedule";
+import BrandCheckupCart from "./screens/ProductScreen/BrandCheckupCart";
 
 class navigationRouter extends Component {
   render() {
@@ -84,8 +97,161 @@ const HomeStackNavigator = createStackNavigator({
       )
     }
   },
-  OneItem: {
+  A4FlyerScreen: {
     screen: ProductScreen,
+    navigationOptions: {
+      tabBarVisible: false,
+      headerBackTitle: null,
+      headerBackground: <HeaderTwo />,
+      headerBackImage: (
+        <View
+          style={{
+            marginLeft: scale(5)
+          }}
+        >
+          <Image
+            source={require("./assets/back-arrow-icon.png")}
+            style={{
+              width: moderateScale(20),
+              height: verticalScale(20),
+              tintColor: colors.whitetext
+            }}
+            resizeMode="contain"
+          />
+        </View>
+      )
+    }
+  }
+});
+
+const CartStackNavigator = createStackNavigator({
+  BrochureScreen: {
+    screen: Brochure,
+    navigationOptions: {
+      tabBarVisible: false,
+      headerBackTitle: null,
+      headerBackground: <HeaderTwo />,
+      headerBackImage: (
+        <View
+          style={{
+            marginLeft: scale(5)
+          }}
+        >
+          <Image
+            source={require("./assets/back-arrow-icon.png")}
+            style={{
+              width: moderateScale(20),
+              height: verticalScale(20),
+              tintColor: colors.whitetext
+            }}
+            resizeMode="contain"
+          />
+        </View>
+      )
+    }
+  },
+  ViewCart: {
+    screen: YourCart,
+    navigationOptions: {
+      tabBarVisible: false,
+      headerBackTitle: null,
+      headerBackground: <HeaderTwo />,
+      headerBackImage: (
+        <View
+          style={{
+            marginLeft: scale(5)
+          }}
+        >
+          <Image
+            source={require("./assets/back-arrow-icon.png")}
+            style={{
+              width: moderateScale(20),
+              height: verticalScale(20),
+              tintColor: colors.whitetext
+            }}
+            resizeMode="contain"
+          />
+        </View>
+      )
+    }
+  },
+  BrochureSpecs: {
+    screen: BrochureType,
+    navigationOptions: {
+      tabBarVisible: false,
+      headerBackTitle: null,
+      headerBackground: <HeaderTwo />,
+      headerBackImage: (
+        <View
+          style={{
+            marginLeft: scale(5)
+          }}
+        >
+          <Image
+            source={require("./assets/back-arrow-icon.png")}
+            style={{
+              width: moderateScale(20),
+              height: verticalScale(20),
+              tintColor: colors.whitetext
+            }}
+            resizeMode="contain"
+          />
+        </View>
+      )
+    }
+  },
+  Brochurecart: {
+    screen: BrochureCart,
+    navigationOptions: {
+      tabBarVisible: false,
+      headerBackTitle: null,
+      headerBackground: <HeaderTwo />,
+      headerBackImage: (
+        <View
+          style={{
+            marginLeft: scale(5)
+          }}
+        >
+          <Image
+            source={require("./assets/back-arrow-icon.png")}
+            style={{
+              width: moderateScale(20),
+              height: verticalScale(20),
+              tintColor: colors.whitetext
+            }}
+            resizeMode="contain"
+          />
+        </View>
+      )
+    }
+  },
+  BrandSpecs: {
+    screen: BrandCheckupSchedule,
+    navigationOptions: {
+      tabBarVisible: false,
+      headerBackTitle: null,
+      headerBackground: <HeaderTwo />,
+      headerBackImage: (
+        <View
+          style={{
+            marginLeft: scale(5)
+          }}
+        >
+          <Image
+            source={require("./assets/back-arrow-icon.png")}
+            style={{
+              width: moderateScale(20),
+              height: verticalScale(20),
+              tintColor: colors.whitetext
+            }}
+            resizeMode="contain"
+          />
+        </View>
+      )
+    }
+  },
+  BrandCart: {
+    screen: BrandCheckupCart,
     navigationOptions: {
       tabBarVisible: false,
       headerBackTitle: null,
@@ -120,7 +286,7 @@ const TabNavigator = createBottomTabNavigator(
       }
     },
     CartTab: {
-      screen: YourCart,
+      screen: CartStackNavigator,
       navigationOptions: {
         tabBarLabel: "CartScreen"
       }

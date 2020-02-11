@@ -11,21 +11,25 @@ class TotalPrice extends Component {
       <View>
         <Text style={styles.tpricetabtext}>AED {this.props.total}</Text>
         <Text style={styles.onelinetext}>{this.props.oneline}</Text>
-        <View style={styles.cartbuttonwrapper}>
-          <TouchableOpacity style={{ flexDirection: "row" }}>
-            <View style={{ flex: 1.75, padding: scale(4) }}>
-              <Text style={styles.cartbuttontext}>VIEW CART</Text>
-            </View>
+        <TouchableOpacity
+          style={[styles.cartbuttonwrapper, { flexDirection: "row" }]}
+          // onPress={() => {
+          //   this.props.onpress;
+          // }}
+          onPress={this.props.onpress}
+        >
+          <View style={{ flex: 1.75, padding: scale(4) }}>
+            <Text style={styles.cartbuttontext}>VIEW CART</Text>
+          </View>
 
-            <View style={{ flex: 0.5, padding: scale(3) }}>
-              <AntDesign
-                name="rightcircle"
-                color={colors.whitetext}
-                size={scale(18)}
-              />
-            </View>
-          </TouchableOpacity>
-        </View>
+          <View style={{ flex: 0.5, padding: scale(3) }}>
+            <AntDesign
+              name="rightcircle"
+              color={colors.whitetext}
+              size={scale(17)}
+            />
+          </View>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -39,19 +43,19 @@ const styles = StyleSheet.create({
     color: colors.whitetext
   },
   cartbuttonwrapper: {
-    right: scale(5),
+    right: scale(2),
     top: scale(5),
-    width: moderateScale(150),
+    width: moderateScale(135),
     height: verticalScale(35),
     position: "absolute",
     backgroundColor: colors.bgblue,
     borderWidth: scale(3.5),
     borderColor: colors.whitetext,
-    paddingHorizontal: moderateScale(5)
+    paddingHorizontal: moderateScale(3)
   },
   cartbuttontext: {
     flex: 1.75,
-    fontSize: scale(14),
+    fontSize: scale(13.5),
     fontWeight: "600",
     color: colors.whitetext
   },

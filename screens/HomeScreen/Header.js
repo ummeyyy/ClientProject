@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import {
   StyleSheet,
+  SafeAreaView,
   View,
   Text,
-  SafeAreaView,
   Image,
-  TouchableOpacity,
   StatusBar
 } from "react-native";
 
@@ -30,7 +29,8 @@ class Header extends React.Component {
               flex: 0.2,
               alignItems: "center",
               justifyContent: "center",
-              paddingLeft: scale(10)
+              paddingLeft: scale(10),
+              marginTop: verticalScale(10)
             }}
           >
             <Image
@@ -49,6 +49,7 @@ class Header extends React.Component {
               flex: 0.2,
               alignItems: "center",
               justifyContent: "center",
+              marginTop: verticalScale(10),
               marginLeft: moderateScale(20)
             }}
           >
@@ -75,7 +76,8 @@ class Header extends React.Component {
             <View
               style={{
                 flexDirection: "row",
-                marginLeft: moderateScale(5)
+                marginLeft: moderateScale(5),
+                marginTop: verticalScale(8)
               }}
             >
               <Text>
@@ -117,6 +119,7 @@ class Header extends React.Component {
               alignItems: "center",
               justifyContent: "space-between",
               padding: scale(10),
+              marginTop: verticalScale(10),
               marginRight: moderateScale(10)
             }}
           >

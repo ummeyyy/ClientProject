@@ -52,7 +52,13 @@ class PreferenceList extends Component {
   constructor() {
     super();
     this.state = {
+      // pressedidone: false,
+      // pressedidtwo: false,
+      // pressedidthree: false,
+      // pressedidfour: false,
+      // pressedidfive: false,
       indexChecked: "0",
+      add: true,
       count: 1,
       pressed: false,
       salePrice: (section[0].price * section[0].sale) / 100,
@@ -84,9 +90,74 @@ class PreferenceList extends Component {
     }
   };
 
-  buttonPressed = () => {
+  handleOnCart = () => {
+    this.props.navigation.navigate("Brochurecart");
+  };
+
+  // whichstate = index => {
+  //   if (index === 1) {
+  //     this.setState({
+  //       pressedidone: !this.state.pressedidone
+  //     });
+  //     return pressedidone;
+  //   } else if (index === 2) {
+  //     this.setState({
+  //       pressedidtwo: !this.state.pressedidtwo
+  //     });
+  //     return pressedidtwo;
+  //   } else if (index === 3) {
+  //     this.setState({
+  //       pressedidthree: !this.state.pressedidthree
+  //     });
+  //     return pressedidthree;
+  //   } else if (index === 4) {
+  //     this.setState({
+  //       pressedidfour: !this.state.pressedidfour
+  //     });
+  //     return pressedidfour;
+  //   } else {
+  //     this.setState({
+  //       pressedidfive: !this.state.pressedidfive
+  //     });
+  //     return pressedidfive;
+  //   }
+
+  // this.setState({
+  //   pressedidone: !this.state.pressedidone,
+  //   pressedidtwo: this.state.pressedidtwo,
+  //   pressedidthree: this.state.pressedidthree,
+  //   pressedidfour: this.state.pressedidfour,
+  //   pressedidfive: this.state.pressedidfive
+  // });
+  // };
+
+  // buttonPressed = index => {
+  //   if (index === 1) {
+  //     this.setState({
+  //       checked: !this.state.checked
+  //     });
+  //   } else if (index === 2) {
+  //     this.setState({
+  //       checked: !this.state.checked
+  //     });
+  //   } else if (index === 3) {
+  //     this.setState({
+  //       checked: !this.state.checked
+  //     });
+  //   } else if (index === 4) {
+  //     this.setState({
+  //       checked: !this.state.checked
+  //     });
+  //   } else {
+  //     this.setState({
+  //       checked: !this.state.checked
+  //     });
+  //   }
+  // };
+
+  pressedadd = () => {
     this.setState({
-      pressed: !this.state.pressed
+      add: !this.state.add
     });
   };
 
@@ -122,11 +193,14 @@ class PreferenceList extends Component {
                 checkedIcon="circle-slice-8"
                 checkedColor={colors.bgblue}
                 checked={this.state.checked}
-                onPress={() =>
-                  this.setState({
-                    checked: !this.state.checked,
-                    indexChecked: item.id
-                  })
+                // checked={this.whichstate(item.id)}
+                onPress={
+                  // this.buttonPressed(item.id)
+                  () =>
+                    this.setState({
+                      checked: !this.state.checked,
+                      indexChecked: item.id
+                    })
                 }
               />
 
@@ -200,11 +274,13 @@ class PreferenceList extends Component {
 
               {/* PLUS MINUS */}
 
-              {this.state.pressed !== "false" ? (
-                <TouchableOpacity
-                  onPress={this.buttonPressed}
-                  style={styles.addbutton}
-                >
+              <TouchableOpacity
+                onPress={() => {
+                  this.pressedadd();
+                }}
+                style={styles.addbutton}
+              >
+                {this.state.add ? (
                   <View style={{ flexDirection: "row" }}>
                     <View
                       style={{ justifyContent: "center", alignItems: "center" }}
@@ -237,38 +313,47 @@ class PreferenceList extends Component {
                       />
                     </View>
                   </View>
-                </TouchableOpacity>
-              ) : (
-                <View
-                  style={{
-                    flexDirection: "row",
-                    backgroundColor: colors.greytext,
-                    height: verticalScale(42),
-                    marginBottom: verticalScale(4),
-                    paddingVertical: verticalScale(4)
-                  }}
-                >
-                  <TouchableOpacity
-                    onPress={() => this.handleIncerement()}
-                    style={styles.plusiconwrapper}
-                  ></TouchableOpacity>
-
-                  <View style={styles.countwrapper}>
-                    <Text style={styles.counttext}>{this.state.count}</Text>
-                  </View>
-
-                  <TouchableOpacity
-                    onPress={() => this.handleDecrement()}
-                    style={styles.minusiconwrapper}
+                ) : (
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      backgroundColor: colors.greytext,
+                      height: moderateScale(32)
+                    }}
                   >
-                    <FontAwesome
-                      name="minus"
-                      color={colors.whitetext}
-                      size={scale(15)}
-                    />
-                  </TouchableOpacity>
-                </View>
-              )}
+                    <TouchableOpacity
+                      onPress={() => this.handleIncerement()}
+                      style={styles.plusiconwrapper}
+                    >
+                      <FontAwesome
+                        name="plus"
+                        color={colors.whitetext}
+                        size={scale(15)}
+                      />
+                    </TouchableOpacity>
+
+                    <View
+                      style={[
+                        styles.countwrapper,
+                        { marginVertical: verticalScale(4) }
+                      ]}
+                    >
+                      <Text style={styles.counttext}>{this.state.count}</Text>
+                    </View>
+
+                    <TouchableOpacity
+                      onPress={() => this.handleDecrement()}
+                      style={styles.minusiconwrapper}
+                    >
+                      <FontAwesome
+                        name="minus"
+                        color={colors.whitetext}
+                        size={scale(15)}
+                      />
+                    </TouchableOpacity>
+                  </View>
+                )}
+              </TouchableOpacity>
             </View>
           </View>
         )}
@@ -325,9 +410,10 @@ const styles = StyleSheet.create({
     color: colors.greytext
   },
   addbutton: {
+    marginTop: verticalScale(5),
     marginLeft: moderateScale(10),
     width: moderateScale(88),
-    height: moderateScale(32),
+    height: moderateScale(30),
     backgroundColor: colors.whitetext,
     borderColor: colors.greytext,
     borderWidth: scale(3),
@@ -335,33 +421,30 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   plusiconwrapper: {
-    width: moderateScale(30),
-    height: moderateScale(35),
+    width: moderateScale(28),
+    height: moderateScale(28),
     backgroundColor: colors.greytext,
-    padding: scale(5),
+    // padding: scale(5),
     alignItems: "center",
     justifyContent: "center"
   },
   minusiconwrapper: {
-    width: moderateScale(30),
-    height: moderateScale(35),
+    width: moderateScale(28),
+    height: moderateScale(28),
     backgroundColor: colors.greytext,
-    padding: scale(5),
+    // padding: scale(5),
     alignItems: "center",
     justifyContent: "center"
   },
   countwrapper: {
     alignItems: "center",
     justifyContent: "center",
-    width: moderateScale(40),
-    height: moderateScale(32),
-    backgroundColor: colors.whitetext,
-    borderWidth: scale(4),
-    borderColor: colors.whitetext,
-    padding: scale(0.25)
+    width: moderateScale(35),
+    height: moderateScale(23),
+    backgroundColor: colors.whitetext
   },
   counttext: {
-    fontSize: scale(15),
+    fontSize: scale(14),
     fontWeight: "bold",
     color: colors.greytext
   }

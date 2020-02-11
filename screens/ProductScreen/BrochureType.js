@@ -73,6 +73,10 @@ class BrochureType extends Component {
     });
   };
 
+  handleOnCart = () => {
+    this.props.navigation.navigate("Brochurecart");
+  };
+
   handleDecrement = () => {
     if (this.state.count <= 1) {
       return;
@@ -148,7 +152,7 @@ class BrochureType extends Component {
           <PreferenceList></PreferenceList>
 
           {/* PAGE SIZES */}
-          <View style={{ marginTop: verticalScale(35) }}>
+          <View style={{ marginTop: verticalScale(20) }}>
             <View
               style={{ marginTop: verticalScale(20), flexDirection: "row" }}
             >
@@ -190,6 +194,7 @@ class BrochureType extends Component {
           <TotalPrice
             total={this.state.totalPrice}
             oneline={products[0].description1line}
+            onpress={this.handleOnCart}
           />
         </PriceTab>
       </ScrollView>

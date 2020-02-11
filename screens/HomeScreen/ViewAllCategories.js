@@ -20,17 +20,21 @@ import BrandingCategoryFlatList from "../HomeScreen/hcomponents/BrandingCategory
 import PromotionCard from "../HomeScreen/hcomponents/PromotionCard";
 
 export default class ViewAllCategories extends React.Component {
- //onpress call back from tapping on branding flatlist for 
- //navigation. we are also getting the index and item here so we can
- //also pass it to the screen we are navigating 
- handleOnPress = (item) => {
-  //  Alert.alert(item)
-  console.log(item)
+  //onpress call back from tapping on branding flatlist for
+  //navigation. we are also getting the index and item here so we can
+  //also pass it to the screen we are navigating
+  handleOnPress = (item, index) => {
+    //  Alert.alert(item)
+    // console.log(item);
+    // console.log("hello");
+    if (index === "1") {
+      this.props.navigation.navigate("A4FlyerScreen");
+      console.log(index);
+    } else {
+      this.props.navigation.navigate("BrochureScreen");
+    }
+  };
 
-    console.log('hello')
-  this.props.navigation.navigate('OneItem')
- }
-  
   render() {
     return (
       // HEADER
@@ -59,7 +63,9 @@ export default class ViewAllCategories extends React.Component {
               <Text style={styles.categoryTitle}>BRANDING DESIGN</Text>
             </View>
             <View style={{ marginTop: verticalScale(10) }}>
-              <BrandingCategoryFlatList onpress = {  this.handleOnPress}></BrandingCategoryFlatList>
+              <BrandingCategoryFlatList
+                onpress={this.handleOnPress}
+              ></BrandingCategoryFlatList>
             </View>
 
             {/* PROMOTIONS HERE */}
@@ -84,7 +90,7 @@ export default class ViewAllCategories extends React.Component {
             </View>
             {/* FLATLIST */}
             <View style={{ marginTop: verticalScale(15) }}>
-              <FlatListComponent   />
+              <FlatListComponent />
             </View>
           </View>
         </ScrollView>

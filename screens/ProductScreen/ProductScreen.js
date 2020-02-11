@@ -2,6 +2,7 @@ import React from "react";
 import {
   View,
   Text,
+  Image,
   StyleSheet,
   SafeAreaView,
   TouchableOpacity,
@@ -40,6 +41,7 @@ class ProductScreen extends React.Component {
   constructor() {
     super();
     this.state = {
+      addfav: true,
       count: 1,
       salePrice: (products[0].price * products[0].sale) / 100,
       price: products[0].price,
@@ -48,6 +50,12 @@ class ProductScreen extends React.Component {
         products[0].price - (products[0].price * products[0].sale) / 100
     };
   }
+
+  addto = () => {
+    this.setState({
+      addfav: !this.state.addfav
+    });
+  };
 
   handleIncerement = () => {
     this.setState({
@@ -69,6 +77,14 @@ class ProductScreen extends React.Component {
           (this.state.count - 1) * (this.state.price - this.state.salePrice)
       });
     }
+  };
+
+  handleOnPress = () => {
+    this.props.navigation.navigate("CartTab");
+  };
+
+  pressOnViewAll = () => {
+    this.props.navigation.navigate("BrandingDesign");
   };
 
   render() {
@@ -118,12 +134,30 @@ class ProductScreen extends React.Component {
             {/* SWIPER SECTION */}
             <View>
               <Swiper />
-              <TouchableOpacity style={styles.favwrapper}>
-                <FontAwesome
-                  name="heart"
-                  color={colors.bgred}
-                  size={scale(30)}
-                />
+              {/* ADD TO FAVORITES */}
+              <TouchableOpacity
+                style={styles.favwrapper}
+                onPress={() => {
+                  this.addto();
+                }}
+              >
+                {this.state.addfav ? (
+                  <Image
+                    source={require("../../assets/fav-icon.png")}
+                    style={{
+                      width: moderateScale(24),
+                      height: verticalScale(24)
+                    }}
+                  />
+                ) : (
+                  <Image
+                    source={require("../../assets/fav-view-icon.png")}
+                    style={{
+                      width: moderateScale(24),
+                      height: verticalScale(24)
+                    }}
+                  />
+                )}
               </TouchableOpacity>
             </View>
 
@@ -226,7 +260,10 @@ class ProductScreen extends React.Component {
                 </Text>
               </View>
               <View>
-                <CategoryButton style={styles.categorybuttonstyle}>
+                <CategoryButton
+                  style={styles.categorybuttonstyle}
+                  onPress={this.pressOnViewAll}
+                >
                   <Text style={styles.categorybuttonText}>VIEW ALL</Text>
                 </CategoryButton>
               </View>
@@ -245,6 +282,7 @@ class ProductScreen extends React.Component {
               <TotalPrice
                 total={this.state.totalPrice}
                 oneline={products[0].description1line}
+                onpress={this.handleOnPress}
               />
             </PriceTab>
           </ScrollView>
@@ -300,10 +338,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: moderateScale(50),
     height: moderateScale(50),
-    paddingVertical: verticalScale(7),
+    paddingVertical: verticalScale(5),
     right: moderateScale(15),
     bottom: moderateScale(-15),
-    backgroundColor: "white",
+    backgroundColor: colors.whitetext,
     borderWidth: moderateScale(2.5),
     borderColor: colors.bgblue,
     borderRadius: moderateScale(25)

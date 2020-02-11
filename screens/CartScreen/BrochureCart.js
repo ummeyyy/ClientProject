@@ -66,6 +66,14 @@ class BrochureCart extends Component {
     }));
   };
 
+  handleOnEdit = () => {
+    this.props.navigation.navigate("BrochureSpecs");
+  };
+
+  handleOnAddMore = () => {
+    this.props.navigation.navigate("BrandSpecs");
+  };
+
   renderItem = (item, index) => (
     <View
       style={{
@@ -246,7 +254,10 @@ class BrochureCart extends Component {
                             </Text>
                           </View>
 
-                          <CategoryButton style={styles.EditbuttonContainer}>
+                          <CategoryButton
+                            style={styles.EditbuttonContainer}
+                            onPress={this.handleOnEdit}
+                          >
                             <Text style={styles.EditText}>EDIT</Text>
                           </CategoryButton>
                         </View>
@@ -259,7 +270,10 @@ class BrochureCart extends Component {
 
             {/* CONTINUE TO ADD MORE ITEMS BUTTON */}
             <View style={{ marginTop: verticalScale(20) }}>
-              <CategoryButton style={styles.addmorebuttonContainer}>
+              <CategoryButton
+                style={styles.addmorebuttonContainer}
+                onPress={this.handleOnAddMore}
+              >
                 <Text style={styles.addmoreText}>CONTINUE TO ADD MORE</Text>
               </CategoryButton>
             </View>
