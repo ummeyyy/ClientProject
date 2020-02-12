@@ -52,6 +52,14 @@ class YourCart extends Component {
     }));
   };
 
+  handleOnAddMore = () => {
+    this.props.navigation.navigate("BrandingDesign");
+  };
+
+  handleOnProceed = () => {
+    this.props.navigation.navigate("CheckoutMain");
+  };
+
   renderItem = (item, index) => (
     <View
       style={{
@@ -118,7 +126,10 @@ class YourCart extends Component {
           </View>
 
           {/* CONTINUE TO ADD MORE ITEMS BUTTON */}
-          <CategoryButton style={styles.addmorebuttonContainer}>
+          <CategoryButton
+            style={styles.addmorebuttonContainer}
+            onPress={this.handleOnAddMore}
+          >
             <Text style={styles.addmoreText}>CONTINUE TO ADD MORE</Text>
           </CategoryButton>
 
@@ -302,40 +313,42 @@ class YourCart extends Component {
 
               <Text style={styles.onelinetaxtext}> INCLUSIVE OF TAX</Text>
 
-              <View style={styles.proceedbuttonwrapper}>
-                <TouchableOpacity
-                  style={{
+              <TouchableOpacity
+                style={[
+                  styles.proceedbuttonwrapper,
+                  {
                     flexDirection: "row",
                     paddingHorizontal: moderateScale(5),
                     paddingTop: verticalScale(3.5)
+                  }
+                ]}
+                onPress={this.handleOnProceed}
+              >
+                <View
+                  style={{
+                    flex: 2.2,
+                    alignItems: "center",
+                    justifyContent: "center"
                   }}
                 >
-                  <View
-                    style={{
-                      flex: 2.2,
-                      alignItems: "center",
-                      justifyContent: "center"
-                    }}
-                  >
-                    <Text style={styles.proceedbuttontext}>PROCEED</Text>
-                  </View>
+                  <Text style={styles.proceedbuttontext}>PROCEED</Text>
+                </View>
 
-                  <View
-                    style={{
-                      flex: 0.8,
-                      alignItems: "center",
-                      justifyContent: "center",
-                      paddingLeft: moderateScale(5)
-                    }}
-                  >
-                    <AntDesign
-                      name="rightcircle"
-                      color={colors.whitetext}
-                      size={scale(18)}
-                    />
-                  </View>
-                </TouchableOpacity>
-              </View>
+                <View
+                  style={{
+                    flex: 0.8,
+                    alignItems: "center",
+                    justifyContent: "center",
+                    paddingLeft: moderateScale(5)
+                  }}
+                >
+                  <AntDesign
+                    name="rightcircle"
+                    color={colors.whitetext}
+                    size={scale(18)}
+                  />
+                </View>
+              </TouchableOpacity>
             </View>
           </PriceTab>
         </ScrollView>

@@ -80,7 +80,7 @@ class ProductScreen extends React.Component {
   };
 
   handleOnPress = () => {
-    this.props.navigation.navigate("CartTab");
+    this.props.navigation.navigate("ViewCart");
   };
 
   pressOnViewAll = () => {

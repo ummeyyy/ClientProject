@@ -195,7 +195,7 @@ export default class MobileInput extends React.Component {
                           }}
                         >
                           <TouchableOpacity
-                            onPress={() => this.hideModalx()}
+                            onPress={() => this.hideModal()}
                             style={{
                               paddingTop: verticalScale(20),
                               paddingLeft: moderateScale(10)

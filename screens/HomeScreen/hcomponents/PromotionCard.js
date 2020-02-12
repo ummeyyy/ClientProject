@@ -41,6 +41,7 @@ class PromotionCard extends Component {
               right: scale(10),
               bottom: scale(8)
             }}
+            onPress={this.props.onPress}
           >
             <View style={styles.promobuttonContainer}>
               <Text style={styles.promobuttonText}> DETAILS </Text>

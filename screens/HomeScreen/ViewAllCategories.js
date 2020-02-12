@@ -35,6 +35,10 @@ export default class ViewAllCategories extends React.Component {
     }
   };
 
+  handlePromotions = () => {
+    this.props.navigation.navigate("LimitedOffers");
+  };
+
   render() {
     return (
       // HEADER
@@ -65,6 +69,7 @@ export default class ViewAllCategories extends React.Component {
             <View style={{ marginTop: verticalScale(10) }}>
               <BrandingCategoryFlatList
                 onpress={this.handleOnPress}
+                onDetails={this.handlePromotions}
               ></BrandingCategoryFlatList>
             </View>
 

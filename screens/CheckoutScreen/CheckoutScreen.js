@@ -17,21 +17,22 @@ import { moderateScale, scale, verticalScale } from "../../scale";
 import colors from "../../assets/colors";
 
 class CheckoutScreen extends Component {
+  handleOnProceedToNextStep = () => {
+    this.props.navigation.navigate("CheckoutCard");
+  };
+  handleOnDetails = () => {
+    this.props.navigation.navigate("Summary");
+  };
+
   render() {
     return (
       <View style={styles.container}>
         {/* Searchbar Alternative*/}
-        {/* <View
-          style={{
-            height: moderateScale(50),
-            backgroundColor: colors.bgblue
-          }}
-        ></View> */}
 
         {/* Checkout heading Section*/}
         <View
           style={{
-            marginTop: verticalScale(25),
+            marginTop: verticalScale(50),
             flexDirection: "row",
             paddingHorizontal: moderateScale(20)
           }}
@@ -78,7 +79,7 @@ class CheckoutScreen extends Component {
         <View
           style={{
             marginHorizontal: moderateScale(20),
-            marginVertical: verticalScale(25)
+            marginVertical: verticalScale(30)
           }}
         >
           <PaymentMethodSelection name="CASH ON DELIVERY">
@@ -126,11 +127,14 @@ class CheckoutScreen extends Component {
         {/* PROCEED TO NEXT STEP BUTTON START*/}
         <View
           style={{
-            marginTop: verticalScale(115),
+            marginTop: verticalScale(80),
             marginBottom: verticalScale(30)
           }}
         >
-          <CategoryButton style={styles.addmorebuttonContainer}>
+          <CategoryButton
+            style={styles.addmorebuttonContainer}
+            onPress={this.handleOnProceedToNextStep}
+          >
             <Text style={styles.addmoreText}>PROCEED TO NEXT STEP</Text>
           </CategoryButton>
         </View>
@@ -156,40 +160,42 @@ class CheckoutScreen extends Component {
 
             <Text style={styles.onelinetaxtext}> INCLUSIVE OF TAX</Text>
 
-            <View style={styles.proceedbuttonwrapper}>
-              <TouchableOpacity
-                style={{
+            <TouchableOpacity
+              style={[
+                styles.proceedbuttonwrapper,
+                {
                   flexDirection: "row",
                   paddingHorizontal: moderateScale(5),
                   paddingTop: verticalScale(3.5)
+                }
+              ]}
+              onPress={this.handleOnDetails}
+            >
+              <View
+                style={{
+                  flex: 2.2,
+                  alignItems: "center",
+                  justifyContent: "center"
                 }}
               >
-                <View
-                  style={{
-                    flex: 2.2,
-                    alignItems: "center",
-                    justifyContent: "center"
-                  }}
-                >
-                  <Text style={styles.proceedbuttontext}>DETAILS</Text>
-                </View>
+                <Text style={styles.proceedbuttontext}>DETAILS</Text>
+              </View>
 
-                <View
-                  style={{
-                    flex: 0.5,
-                    alignItems: "center",
-                    justifyContent: "center",
-                    paddingLeft: moderateScale(5)
-                  }}
-                >
-                  <AntDesign
-                    name="upcircle"
-                    color={colors.whitetext}
-                    size={scale(18)}
-                  />
-                </View>
-              </TouchableOpacity>
-            </View>
+              <View
+                style={{
+                  flex: 0.5,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  paddingLeft: moderateScale(5)
+                }}
+              >
+                <AntDesign
+                  name="upcircle"
+                  color={colors.whitetext}
+                  size={scale(18)}
+                />
+              </View>
+            </TouchableOpacity>
           </View>
         </PriceTab>
         {/* TOTAL PRICE TAB BOTTOM END */}

@@ -29,8 +29,8 @@ class Header extends React.Component {
               flex: 0.2,
               alignItems: "center",
               justifyContent: "center",
-              paddingLeft: scale(10),
-              marginTop: verticalScale(10)
+              paddingLeft: scale(30),
+              marginTop: verticalScale(2)
             }}
           >
             <Image
@@ -49,8 +49,8 @@ class Header extends React.Component {
               flex: 0.2,
               alignItems: "center",
               justifyContent: "center",
-              marginTop: verticalScale(10),
-              marginLeft: moderateScale(20)
+              marginTop: verticalScale(-2),
+              marginLeft: moderateScale(10)
             }}
           >
             <Image
@@ -77,7 +77,7 @@ class Header extends React.Component {
               style={{
                 flexDirection: "row",
                 marginLeft: moderateScale(5),
-                marginTop: verticalScale(8)
+                marginTop: verticalScale(-2)
               }}
             >
               <Text>
@@ -119,7 +119,7 @@ class Header extends React.Component {
               alignItems: "center",
               justifyContent: "space-between",
               padding: scale(10),
-              marginTop: verticalScale(10),
+              marginTop: verticalScale(2),
               marginRight: moderateScale(10)
             }}
           >

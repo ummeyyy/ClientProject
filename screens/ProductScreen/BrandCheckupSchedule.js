@@ -93,6 +93,10 @@ class BrandCheckupSchedule extends Component {
     }
   };
 
+  handleOnViewCart = () => {
+    this.props.navigation.navigate("BrandCart");
+  };
+
   render() {
     return (
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -371,6 +375,7 @@ class BrandCheckupSchedule extends Component {
             <TotalPrice
               total={this.state.totalPrice}
               oneline={products[0].description1line}
+              onpress={this.handleOnViewCart}
             />
           </PriceTab>
         </View>

@@ -86,7 +86,7 @@ class BrandingCategoryFlatList extends React.Component {
   renderItem = (item, index) => {
     switch (item.name) {
       case "Promotions":
-        return <PromotionCard />;
+        return <PromotionCard onPress={this.props.onDetails} />;
 
       default:
         return (

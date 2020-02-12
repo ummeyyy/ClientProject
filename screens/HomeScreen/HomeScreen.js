@@ -35,8 +35,12 @@ class HomeScreen extends Component {
     };
   }
 
-  tapOnBrandingDesignViewAll = () => {
+  tapOnViewAll = () => {
     this.props.navigation.navigate("BrandingDesign");
+  };
+
+  handlePromotions = () => {
+    this.props.navigation.navigate("LimitedOffers");
   };
 
   render() {
@@ -124,7 +128,7 @@ class HomeScreen extends Component {
               </View>
               <View>
                 <CategoryButton
-                  onPress={() => this.tapOnBrandingDesignViewAll()}
+                  onPress={this.tapOnViewAll}
                   style={styles.categorybuttonstyle}
                 >
                   <Text style={styles.categorybuttonText}>VIEW ALL</Text>
@@ -143,7 +147,10 @@ class HomeScreen extends Component {
                 <Text style={styles.categoryTitle}>WEBSITE DESIGN</Text>
               </View>
               <View style={{ marginLeft: moderateScale(20) }}>
-                <CategoryButton style={styles.categorybuttonstyle}>
+                <CategoryButton
+                  style={styles.categorybuttonstyle}
+                  onPress={this.tapOnViewAll}
+                >
                   <Text style={styles.categorybuttonText}>VIEW ALL</Text>
                 </CategoryButton>
               </View>
@@ -168,6 +175,7 @@ class HomeScreen extends Component {
                     right: scale(7),
                     top: scale(-5)
                   }}
+                  onPress={this.tapOnViewAll}
                 >
                   <View style={styles.buttonContainer}>
                     <Text style={styles.cbuttonText}>VIEW ALL</Text>
@@ -179,7 +187,7 @@ class HomeScreen extends Component {
 
             {/* PROMOTIONS HERE */}
             <View>
-              <PromotionCard />
+              <PromotionCard onPress={this.handlePromotions} />
             </View>
 
             {/* VIDEO ANIMATION */}
@@ -190,7 +198,10 @@ class HomeScreen extends Component {
                 <Text style={styles.categoryTitle}>VIDEO ANIMATION</Text>
               </View>
               <View style={{ marginLeft: moderateScale(5) }}>
-                <CategoryButton style={styles.categorybuttonstyle}>
+                <CategoryButton
+                  style={styles.categorybuttonstyle}
+                  onPress={this.tapOnViewAll}
+                >
                   <Text style={styles.categorybuttonText}>VIEW ALL</Text>
                 </CategoryButton>
               </View>
@@ -208,7 +219,10 @@ class HomeScreen extends Component {
                 <Text style={styles.categoryTitle}>ILLUSTRATION</Text>
               </View>
               <View style={{ marginLeft: moderateScale(45) }}>
-                <CategoryButton style={styles.categorybuttonstyle}>
+                <CategoryButton
+                  style={styles.categorybuttonstyle}
+                  onPress={this.tapOnViewAll}
+                >
                   <Text style={styles.categorybuttonText}>VIEW ALL</Text>
                 </CategoryButton>
               </View>

@@ -34,9 +34,16 @@ import YourCart from "./screens/CartScreen/YourCart";
 import Brochure from "./screens/ProductScreen/Brochure";
 import BrochureType from "./screens/ProductScreen/BrochureType";
 import BrochureCart from "./screens/CartScreen/BrochureCart";
+import BrandCheckupSchedule from "./screens/ProductScreen/BrandCheckupSchedule";
 
+import BrandCheckupCart from "./screens/ProductScreen/BrandCheckupCart";
 import CheckoutScreen from "./screens/CheckoutScreen/CheckoutScreen";
 import StepTwo from "./screens/CheckoutScreen/StepTwo";
+
+import StepThree from "./screens/CheckoutScreen/StepThree";
+import ThankyouScreens from "./screens/PlaceOrderScreens/ThankyouScreen";
+
+import LimitedTimeProduct from "./screens/TabNavigator/LimitedTimeProduct";
 
 import Header from "./screens/HomeScreen/Header";
 import HeaderTwo from "./screens/HomeScreen/HeaderTwo";
@@ -53,10 +60,39 @@ import {
   createBottomTabNavigator,
   NavigationActions
 } from "react-navigation";
-import BrandCheckupSchedule from "./screens/ProductScreen/BrandCheckupSchedule";
-import BrandCheckupCart from "./screens/ProductScreen/BrandCheckupCart";
 
 class navigationRouter extends Component {
+  Label({ name, focused }) {
+    return (
+      <Text
+        style={{
+          fontWeight: "800",
+          color: colors.whitetext,
+          fontSize: scale(8),
+          textAlign: "center",
+          color: focused ? colors.bgblue : colors.whitetext
+        }}
+      >
+        {name}
+      </Text>
+    );
+  }
+
+  // Label = ({ name }) => {
+  //   return (
+  //     <Text
+  //       style={{
+  //         fontWeight: "800",
+  //         color: colors.whitetext,
+  //         fontSize: scale(8),
+  //         textAlign: "center"
+  //       }}
+  //     >
+  //       {name}
+  //     </Text>
+  //   );
+  // };
+
   render() {
     {
       console.log("help");
@@ -78,6 +114,30 @@ const HomeStackNavigator = createStackNavigator({
       tabBarVisible: false,
       headerBackTitle: null,
       headerBackground: <HeaderTwo />,
+      headerBackImage: (
+        <View
+          style={{
+            marginLeft: scale(5)
+          }}
+        >
+          <Image
+            source={require("./assets/back-arrow-icon.png")}
+            style={{
+              width: moderateScale(20),
+              height: verticalScale(20),
+              tintColor: colors.whitetext
+            }}
+            resizeMode="contain"
+          />
+        </View>
+      )
+    }
+  },
+  LimitedOffers: {
+    screen: LimitedTimeProduct,
+    navigationOptions: {
+      headerBackground: <Header />,
+      headerBackTitle: null,
       headerBackImage: (
         <View
           style={{
@@ -121,10 +181,7 @@ const HomeStackNavigator = createStackNavigator({
         </View>
       )
     }
-  }
-});
-
-const CartStackNavigator = createStackNavigator({
+  },
   BrochureScreen: {
     screen: Brochure,
     navigationOptions: {
@@ -274,49 +331,464 @@ const CartStackNavigator = createStackNavigator({
         </View>
       )
     }
+  },
+  CheckoutMain: {
+    screen: CheckoutScreen,
+    navigationOptions: {
+      tabBarVisible: false,
+      headerBackTitle: null,
+      headerBackground: <HeaderTwo />,
+      headerBackImage: (
+        <View
+          style={{
+            marginLeft: scale(5)
+          }}
+        >
+          <Image
+            source={require("./assets/back-arrow-icon.png")}
+            style={{
+              width: moderateScale(20),
+              height: verticalScale(20),
+              tintColor: colors.whitetext
+            }}
+            resizeMode="contain"
+          />
+        </View>
+      )
+    }
+  },
+  CheckoutCard: {
+    screen: StepTwo,
+    navigationOptions: {
+      tabBarVisible: false,
+      headerBackTitle: null,
+      headerBackground: <HeaderTwo />,
+      headerBackImage: (
+        <View
+          style={{
+            marginLeft: scale(5)
+          }}
+        >
+          <Image
+            source={require("./assets/back-arrow-icon.png")}
+            style={{
+              width: moderateScale(20),
+              height: verticalScale(20),
+              tintColor: colors.whitetext
+            }}
+            resizeMode="contain"
+          />
+        </View>
+      )
+    }
+  },
+  Summary: {
+    screen: StepThree,
+    navigationOptions: {
+      tabBarVisible: false,
+      headerBackTitle: null,
+      headerBackground: <HeaderTwo />,
+      headerBackImage: (
+        <View
+          style={{
+            marginLeft: scale(5)
+          }}
+        >
+          <Image
+            source={require("./assets/back-arrow-icon.png")}
+            style={{
+              width: moderateScale(20),
+              height: verticalScale(20),
+              tintColor: colors.whitetext
+            }}
+            resizeMode="contain"
+          />
+        </View>
+      )
+    }
+  },
+  OrderNow: {
+    screen: ThankyouScreens,
+    navigationOptions: {
+      tabBarVisible: false,
+      headerBackTitle: null,
+      headerBackground: <HeaderTwo />,
+      headerBackImage: (
+        <View
+          style={{
+            marginLeft: scale(5)
+          }}
+        >
+          <Image
+            source={require("./assets/back-arrow-icon.png")}
+            style={{
+              width: moderateScale(20),
+              height: verticalScale(20),
+              tintColor: colors.whitetext
+            }}
+            resizeMode="contain"
+          />
+        </View>
+      )
+    }
   }
 });
+
+// const CartStackNavigator = createStackNavigator({
+//   BrochureScreen: {
+//     screen: Brochure,
+//     navigationOptions: {
+//       tabBarVisible: false,
+//       headerBackTitle: null,
+//       headerBackground: <HeaderTwo />,
+//       headerBackImage: (
+//         <View
+//           style={{
+//             marginLeft: scale(5)
+//           }}
+//         >
+//           <Image
+//             source={require("./assets/back-arrow-icon.png")}
+//             style={{
+//               width: moderateScale(20),
+//               height: verticalScale(20),
+//               tintColor: colors.whitetext
+//             }}
+//             resizeMode="contain"
+//           />
+//         </View>
+//       )
+//     }
+//   },
+//   ViewCart: {
+//     screen: YourCart,
+//     navigationOptions: {
+//       tabBarVisible: false,
+//       headerBackTitle: null,
+//       headerBackground: <HeaderTwo />,
+//       headerBackImage: (
+//         <View
+//           style={{
+//             marginLeft: scale(5)
+//           }}
+//         >
+//           <Image
+//             source={require("./assets/back-arrow-icon.png")}
+//             style={{
+//               width: moderateScale(20),
+//               height: verticalScale(20),
+//               tintColor: colors.whitetext
+//             }}
+//             resizeMode="contain"
+//           />
+//         </View>
+//       )
+//     }
+//   },
+//   BrochureSpecs: {
+//     screen: BrochureType,
+//     navigationOptions: {
+//       tabBarVisible: false,
+//       headerBackTitle: null,
+//       headerBackground: <HeaderTwo />,
+//       headerBackImage: (
+//         <View
+//           style={{
+//             marginLeft: scale(5)
+//           }}
+//         >
+//           <Image
+//             source={require("./assets/back-arrow-icon.png")}
+//             style={{
+//               width: moderateScale(20),
+//               height: verticalScale(20),
+//               tintColor: colors.whitetext
+//             }}
+//             resizeMode="contain"
+//           />
+//         </View>
+//       )
+//     }
+//   },
+//   Brochurecart: {
+//     screen: BrochureCart,
+//     navigationOptions: {
+//       tabBarVisible: false,
+//       headerBackTitle: null,
+//       headerBackground: <HeaderTwo />,
+//       headerBackImage: (
+//         <View
+//           style={{
+//             marginLeft: scale(5)
+//           }}
+//         >
+//           <Image
+//             source={require("./assets/back-arrow-icon.png")}
+//             style={{
+//               width: moderateScale(20),
+//               height: verticalScale(20),
+//               tintColor: colors.whitetext
+//             }}
+//             resizeMode="contain"
+//           />
+//         </View>
+//       )
+//     }
+//   },
+//   BrandSpecs: {
+//     screen: BrandCheckupSchedule,
+//     navigationOptions: {
+//       tabBarVisible: false,
+//       headerBackTitle: null,
+//       headerBackground: <HeaderTwo />,
+//       headerBackImage: (
+//         <View
+//           style={{
+//             marginLeft: scale(5)
+//           }}
+//         >
+//           <Image
+//             source={require("./assets/back-arrow-icon.png")}
+//             style={{
+//               width: moderateScale(20),
+//               height: verticalScale(20),
+//               tintColor: colors.whitetext
+//             }}
+//             resizeMode="contain"
+//           />
+//         </View>
+//       )
+//     }
+//   },
+//   BrandCart: {
+//     screen: BrandCheckupCart,
+//     navigationOptions: {
+//       tabBarVisible: false,
+//       headerBackTitle: null,
+//       headerBackground: <HeaderTwo />,
+//       headerBackImage: (
+//         <View
+//           style={{
+//             marginLeft: scale(5)
+//           }}
+//         >
+//           <Image
+//             source={require("./assets/back-arrow-icon.png")}
+//             style={{
+//               width: moderateScale(20),
+//               height: verticalScale(20),
+//               tintColor: colors.whitetext
+//             }}
+//             resizeMode="contain"
+//           />
+//         </View>
+//       )
+//     }
+//   },
+//   CheckoutMain: {
+//     screen: CheckoutScreen,
+//     navigationOptions: {
+//       tabBarVisible: false,
+//       headerBackTitle: null,
+//       headerBackground: <HeaderTwo />,
+//       headerBackImage: (
+//         <View
+//           style={{
+//             marginLeft: scale(5)
+//           }}
+//         >
+//           <Image
+//             source={require("./assets/back-arrow-icon.png")}
+//             style={{
+//               width: moderateScale(20),
+//               height: verticalScale(20),
+//               tintColor: colors.whitetext
+//             }}
+//             resizeMode="contain"
+//           />
+//         </View>
+//       )
+//     }
+//   },
+//   CheckoutCard: {
+//     screen: StepTwo,
+//     navigationOptions: {
+//       tabBarVisible: false,
+//       headerBackTitle: null,
+//       headerBackground: <HeaderTwo />,
+//       headerBackImage: (
+//         <View
+//           style={{
+//             marginLeft: scale(5)
+//           }}
+//         >
+//           <Image
+//             source={require("./assets/back-arrow-icon.png")}
+//             style={{
+//               width: moderateScale(20),
+//               height: verticalScale(20),
+//               tintColor: colors.whitetext
+//             }}
+//             resizeMode="contain"
+//           />
+//         </View>
+//       )
+//     }
+//   },
+//   Summary: {
+//     screen: StepThree,
+//     navigationOptions: {
+//       tabBarVisible: false,
+//       headerBackTitle: null,
+//       headerBackground: <HeaderTwo />,
+//       headerBackImage: (
+//         <View
+//           style={{
+//             marginLeft: scale(5)
+//           }}
+//         >
+//           <Image
+//             source={require("./assets/back-arrow-icon.png")}
+//             style={{
+//               width: moderateScale(20),
+//               height: verticalScale(20),
+//               tintColor: colors.whitetext
+//             }}
+//             resizeMode="contain"
+//           />
+//         </View>
+//       )
+//     }
+//   },
+//   OrderNow: {
+//     screen: ThankyouScreens,
+//     navigationOptions: {
+//       tabBarVisible: false,
+//       headerBackTitle: null,
+//       headerBackground: <HeaderTwo />,
+//       headerBackImage: (
+//         <View
+//           style={{
+//             marginLeft: scale(5)
+//           }}
+//         >
+//           <Image
+//             source={require("./assets/back-arrow-icon.png")}
+//             style={{
+//               width: moderateScale(20),
+//               height: verticalScale(20),
+//               tintColor: colors.whitetext
+//             }}
+//             resizeMode="contain"
+//           />
+//         </View>
+//       )
+//     }
+//   }
+// });
+// const focused =(
+//   <labelStyle style={{color: focused ? colors.bgblue : colors.whitetext}}/>
+// )
 
 const TabNavigator = createBottomTabNavigator(
   {
     HomeTab: {
       screen: HomeStackNavigator,
       navigationOptions: {
-        tabBarLabel: "HomeScreen"
-      }
-    },
-    CartTab: {
-      screen: CartStackNavigator,
-      navigationOptions: {
-        tabBarLabel: "CartScreen"
-      }
-    },
-    MoreTab: {
-      screen: MoreScreen,
-      navigationOptions: {
-        tabBarLabel: "MoreScreen"
+        tabBarLabel: "HOME"
+        // focused={ focused ? colors.bgblue : colors.whitetext}
       }
     },
     OffersTab: {
-      screen: OffersScreen,
+      screen: LimitedTimeProduct,
       navigationOptions: {
-        tabBarLabel: "OffersScreen"
+        tabBarLabel: "OFFERS"
       }
     },
     SettingsTab: {
       screen: SettingsScreen,
       navigationOptions: {
-        tabBarLabel: "SettingsScreen"
+        tabBarLabel: "SETTINGS"
+      }
+    },
+    CartTab: {
+      screen: YourCart,
+      navigationOptions: {
+        tabBarLabel: "CART"
+      }
+    },
+    MoreTab: {
+      screen: MoreScreen,
+      navigationOptions: {
+        tabBarLabel: "MORE"
       }
     }
   },
   {
+    defaultNavigationOptions: ({ navigation }) => ({
+      // tabBarLabel: ({ focused }) => (
+      //   <MyTabBarLabel
+      //     title={i18n.t("common.request")}
+      //     focused={focused}
+      //     tintColor={colors.bgblue}
+      //   />
+      // ),
+      tabBarIcon: ({ focused, horizontal, tintColor }) => {
+        const { routeName } = navigation.state;
+        if (routeName === "HomeTab") {
+          return (
+            <Image
+              source={require("./assets/menu-icon-1.png")}
+              style={{ height: 25, width: 25 }}
+            />
+          );
+        } else if (routeName === "OffersTab") {
+          return (
+            <Image
+              source={require("./assets/menu-icon-2.png")}
+              style={{ height: 25, width: 25, tintColor: colors.whitetext }}
+            />
+          );
+        } else if (routeName === "SettingsTab") {
+          return (
+            <Image
+              source={require("./assets/menu-icon-3.png")}
+              style={{ height: 25, width: 25, tintColor: colors.whitetext }}
+            />
+          );
+        } else if (routeName === "CartTab") {
+          return (
+            <Image
+              source={require("./assets/menu-icon-4.png")}
+              style={{ height: 25, width: 25, tintColor: colors.whitetext }}
+            />
+          );
+        } else if (routeName === "MoreTab") {
+          return (
+            <Image
+              source={require("./assets/menu-icon-5.png")}
+              style={{ height: 25, width: 25, tintColor: colors.whitetext }}
+            />
+          );
+        }
+      }
+    }),
     tabBarOptions: {
       style: {
         backgroundColor: colors.greytext
       },
+      labelStyle: {
+        fontWeight: "800",
+        color: colors.whitetext,
+        // color: focused ? colors.bgblue : colors.whitetext,
+        fontSize: scale(8),
+        activeTintColor: colors.bgblue,
+        inactiveTintColor: colors.whitetext
+      },
       activeTintColor: colors.bgblue,
       inactiveTintColor: colors.whitetext
+      // activeLabelColor: colors.bgblue
+      // activeBackgroundColor: colors.greytext
     }
   }
 );
@@ -401,23 +873,100 @@ const WalkthroughStackNavigator = createStackNavigator({
   }
 });
 
-const CheckOutStackNavigator = createStackNavigator({
-  MainScreen: {
-    screen: MainWalkthrough,
-    navigationOptions: {
-      header: null,
-      tabBarVisible: false
-    }
-  },
+// const OffersStackNavigator = createStackNavigator({
+//   LimitedOffers: {
+//     screen: LimitedTimeProduct,
+//     navigationOptions: {
+//       headerBackground: <Header />,
+//       headerBackTitle: null,
+//       headerBackImage: (
+//         <View
+//           style={{
+//             marginLeft: scale(5)
+//           }}
+//         >
+//           <Image
+//             source={require("./assets/back-arrow-icon.png")}
+//             style={{
+//               width: moderateScale(20),
+//               height: verticalScale(20),
+//               tintColor: colors.whitetext
+//             }}
+//             resizeMode="contain"
+//           />
+//         </View>
+//       )
+//     }
+//   },
+//   BrandingDesign: {
+//     screen: ViewAllCategories,
+//     navigationOptions: {
+//       tabBarVisible: false,
+//       headerBackTitle: null,
+//       headerBackground: <HeaderTwo />,
+//       headerBackImage: (
+//         <View
+//           style={{
+//             marginLeft: scale(5)
+//           }}
+//         >
+//           <Image
+//             source={require("./assets/back-arrow-icon.png")}
+//             style={{
+//               width: moderateScale(20),
+//               height: verticalScale(20),
+//               tintColor: colors.whitetext
+//             }}
+//             resizeMode="contain"
+//           />
+//         </View>
+//       )
+//     }
+//   },
+//   ViewCart: {
+//     screen: YourCart,
+//     navigationOptions: {
+//       tabBarVisible: false,
+//       headerBackTitle: null,
+//       headerBackground: <HeaderTwo />,
+//       headerBackImage: (
+//         <View
+//           style={{
+//             marginLeft: scale(5)
+//           }}
+//         >
+//           <Image
+//             source={require("./assets/back-arrow-icon.png")}
+//             style={{
+//               width: moderateScale(20),
+//               height: verticalScale(20),
+//               tintColor: colors.whitetext
+//             }}
+//             resizeMode="contain"
+//           />
+//         </View>
+//       )
+//     }
+//   }
+// });
 
-  FirstPage: {
-    screen: FirstScreen,
-    navigationOptions: {
-      header: null,
-      tabBarVisible: false
-    }
-  }
-});
+// const CheckOutStackNavigator = createStackNavigator({
+//   MainScreen: {
+//     screen: MainWalkthrough,
+//     navigationOptions: {
+//       header: null,
+//       tabBarVisible: false
+//     }
+//   },
+
+//   FirstPage: {
+//     screen: FirstScreen,
+//     navigationOptions: {
+//       header: null,
+//       tabBarVisible: false
+//     }
+//   }
+// });
 // const HomeTabNavigator = createBottomTabNavigator({
 //   home: Home,
 //   recipe: Recipe

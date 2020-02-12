@@ -5,6 +5,7 @@ import {
   Image,
   StyleSheet,
   SafeAreaView,
+  TextInput,
   TouchableOpacity,
   ScrollView
 } from "react-native";
@@ -65,7 +66,7 @@ const products = [
   }
 ];
 
-class ProductScreen extends React.Component {
+class LimitedTimeProducts extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -100,6 +101,14 @@ class ProductScreen extends React.Component {
     }
   };
 
+  handleOnAdd = () => {
+    this.props.navigation.navigate("ViewCart");
+  };
+
+  pressOnViewAll = () => {
+    this.props.navigation.navigate("BrandingDesign");
+  };
+
   render() {
     return (
       <SafeAreaView style={{ flex: 1 }}>
@@ -109,6 +118,58 @@ class ProductScreen extends React.Component {
           showsVerticalScrollIndicator={false}
           horizontal={false}
         >
+          <View
+            style={{
+              flex: 1,
+              backgroundColor: colors.bgblue,
+              paddingTop: verticalScale(3),
+              height: verticalScale(50)
+            }}
+          >
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-around",
+                padding: scale(5),
+                marginHorizontal: moderateScale(30),
+                marginBottom: verticalScale(5),
+                backgroundColor: colors.whitetext,
+                height: verticalScale(40)
+              }}
+            >
+              <Image
+                source={require("../../assets/searchicon.png")}
+                style={{
+                  width: moderateScale(25),
+                  height: verticalScale(25)
+                }}
+                resizeMode="contain"
+              />
+              <TextInput
+                style={{
+                  marginLeft: moderateScale(-20),
+                  color: colors.blacktext,
+                  fontSize: scale(14),
+                  fontWeight: "400"
+                }}
+                value={this.state.search}
+                underlineColorAndroid="transparent"
+                onChangeText={text => this.setState({ search: text })}
+                placeholder={"What are you looking for?"}
+                placeholderTextColor={colors.inactivegreybutton}
+                returnKeyType="done"
+              />
+              <FontAwesome
+                name="microphone"
+                color={colors.inactivegreybutton}
+                size={scale(20)}
+              />
+            </View>
+          </View>
+          {/* SEARCH BAR END */}
+
           <View style={{ flex: 1 }}>
             <Image
               source={require("../../assets/limited.jpg")}
@@ -148,34 +209,35 @@ class ProductScreen extends React.Component {
               aftersale={this.state.price - this.state.salePrice}
               oneline={products[0].description1line}
             />
-            <View style={styles.cartbuttonwrapper}>
-              <TouchableOpacity style={{ flexDirection: "row" }}>
-                <View
-                  style={{
-                    flex: 1,
-                    paddingVertical: scale(4),
-                    justifyContent: "flex-end",
-                    alignItems: "flex-end"
-                  }}
-                >
-                  <Text style={styles.cartbuttontext}>ADD</Text>
-                </View>
+            <TouchableOpacity
+              style={[styles.cartbuttonwrapper, { flexDirection: "row" }]}
+              onPress={this.handleOnAdd}
+            >
+              <View
+                style={{
+                  flex: 1,
+                  paddingVertical: scale(4),
+                  justifyContent: "flex-end",
+                  alignItems: "flex-end"
+                }}
+              >
+                <Text style={styles.cartbuttontext}>ADD</Text>
+              </View>
 
-                <View
-                  style={{
-                    flex: 0.75,
-                    paddingVertical: verticalScale(5),
-                    left: scale(4)
-                  }}
-                >
-                  <AntDesign
-                    name="pluscircle"
-                    color={colors.whitetext}
-                    size={scale(18)}
-                  />
-                </View>
-              </TouchableOpacity>
-            </View>
+              <View
+                style={{
+                  flex: 0.75,
+                  paddingVertical: verticalScale(5),
+                  left: scale(4)
+                }}
+              >
+                <AntDesign
+                  name="pluscircle"
+                  color={colors.whitetext}
+                  size={scale(18)}
+                />
+              </View>
+            </TouchableOpacity>
           </PriceTab>
 
           {/* TAB VIEW */}
@@ -194,7 +256,10 @@ class ProductScreen extends React.Component {
               <Text style={styles.relatedProductsTitle}>RELATED PRODUCTS</Text>
             </View>
             <View>
-              <CategoryButton style={styles.categorybuttonstyle}>
+              <CategoryButton
+                style={styles.categorybuttonstyle}
+                onPress={this.pressOnViewAll}
+              >
                 <Text style={styles.categorybuttonText}>VIEW ALL</Text>
               </CategoryButton>
             </View>
@@ -213,6 +278,7 @@ class ProductScreen extends React.Component {
             <TotalPrice
               total={this.state.totalPrice}
               oneline={products[0].description1line}
+              onpress={this.handleOnAdd}
             />
           </PriceTab>
         </ScrollView>
@@ -220,7 +286,7 @@ class ProductScreen extends React.Component {
     );
   }
 }
-export default ProductScreen;
+export default LimitedTimeProducts;
 
 const styles = StyleSheet.create({
   container: {

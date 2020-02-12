@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from "react-native";
 import Splash from "../Splashscreen/Splash";
 import AfterSplash from "../Splashscreen/AfterSplash";
 
-import LimitedTimeProduct from "../ProductScreen/LimitedTimeProduct";
+import LimitedTimeProduct from "./LimitedTimeProduct";
 import ProductScreen from "../ProductScreen/ProductScreen";
 import ViewAllCategories from "../HomeScreen/ViewAllCategories";
 import Brochure from "../ProductScreen/Brochure";
@@ -38,7 +38,7 @@ export default class OffersScreen extends Component {
       // <ProductScreen></ProductScreen>
       // <ViewAllCategories></ViewAllCategories>
       // <Brochure></Brochure>
-      <BrochureType />
+      // <BrochureType />
       // <BrochureCart></BrochureCart>
       // <BrandCheckupSchedule />
       // <BrandCheckupCart></BrandCheckupCart>
@@ -58,6 +58,10 @@ export default class OffersScreen extends Component {
       // <Password></Password>
       // <SignUp></SignUp>
       // <Login></Login>
+
+      <View style={styles.container}>
+        <Text>Offers Screen</Text>
+      </View>
     );
   }
 }

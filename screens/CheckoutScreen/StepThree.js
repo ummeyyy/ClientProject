@@ -97,6 +97,18 @@ class StepThree extends Component {
     }
   };
 
+  handleChange = () => {
+    this.props.navigation.navigate("CheckoutCard");
+  };
+
+  handleOnEdit = () => {
+    this.props.navigation.navigate("ViewCart");
+  };
+
+  handleOrderNow = () => {
+    this.props.navigation.navigate("OrderNow");
+  };
+
   renderSeparator = () => {
     return (
       <View
@@ -186,8 +198,8 @@ class StepThree extends Component {
             <Image
               source={require("../../assets/logo.png")}
               style={{
-                width: moderateScale(90),
-                height: verticalScale(90)
+                width: moderateScale(120),
+                height: verticalScale(120)
               }}
               resizeMode="contain"
             />
@@ -270,7 +282,10 @@ class StepThree extends Component {
                 left: moderateScale(130)
               }}
             >
-              <CategoryButton style={styles.changeeditContainer}>
+              <CategoryButton
+                style={styles.changeeditContainer}
+                onPress={this.handleChange}
+              >
                 <Text style={styles.changeeditText}>CHANGE</Text>
               </CategoryButton>
             </View>
@@ -310,7 +325,10 @@ class StepThree extends Component {
                 marginTop: verticalScale(2)
               }}
             >
-              <CategoryButton style={styles.changeeditContainer}>
+              <CategoryButton
+                style={styles.changeeditContainer}
+                onPress={this.handleOnEdit}
+              >
                 <Text style={styles.changeeditText}>EDIT</Text>
               </CategoryButton>
             </View>
@@ -562,39 +580,41 @@ class StepThree extends Component {
 
               <Text style={styles.onelinetaxtext}> INCLUSIVE OF TAX</Text>
 
-              <View style={styles.proceedbuttonwrapper}>
-                <TouchableOpacity
-                  style={{
+              <TouchableOpacity
+                style={[
+                  styles.proceedbuttonwrapper,
+                  {
                     flexDirection: "row",
                     paddingHorizontal: moderateScale(5),
                     paddingTop: verticalScale(3.5)
+                  }
+                ]}
+                onPress={this.handleOrderNow}
+              >
+                <View
+                  style={{
+                    flex: 2.2,
+                    alignItems: "center",
+                    justifyContent: "center"
                   }}
                 >
-                  <View
-                    style={{
-                      flex: 2.2,
-                      alignItems: "center",
-                      justifyContent: "center"
-                    }}
-                  >
-                    <Text style={styles.proceedbuttontext}>ORDER NOW</Text>
-                  </View>
+                  <Text style={styles.proceedbuttontext}>ORDER NOW</Text>
+                </View>
 
-                  <View
-                    style={{
-                      flex: 0.4,
-                      alignItems: "center",
-                      justifyContent: "center"
-                    }}
-                  >
-                    <AntDesign
-                      name="rightcircle"
-                      color={colors.whitetext}
-                      size={scale(20)}
-                    />
-                  </View>
-                </TouchableOpacity>
-              </View>
+                <View
+                  style={{
+                    flex: 0.4,
+                    alignItems: "center",
+                    justifyContent: "center"
+                  }}
+                >
+                  <AntDesign
+                    name="rightcircle"
+                    color={colors.whitetext}
+                    size={scale(20)}
+                  />
+                </View>
+              </TouchableOpacity>
             </View>
           </PriceTab>
         </ScrollView>

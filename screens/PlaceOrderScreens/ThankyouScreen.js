@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet } from "react-native";
 
 import CategoryButton from "../../components/CategoryButton";
+
 import { moderateScale, scale, verticalScale } from "../../scale";
 import colors from "../../assets/colors";
 
@@ -11,23 +12,18 @@ class ThankyouScreen extends Component {
       <View style={styles.container}>
         <View
           style={{
-            height: moderateScale(50),
-            backgroundColor: colors.bgblue
-          }}
-        ></View>
-        <View
-          style={{
             paddingHorizontal: moderateScale(8)
           }}
         >
           <Image
-            source={require("./assets/thanks.png")}
+            source={require("../../assets/thanks.png")}
             style={styles.image}
             resizeMode="cover"
           />
           <View
             style={{
               position: "absolute",
+              marginTop: scale(350),
               zIndex: scale(999)
             }}
           >
@@ -59,7 +55,6 @@ const styles = StyleSheet.create({
   orderNumberbuttonContainer: {
     width: moderateScale(290),
     height: verticalScale(35),
-    marginTop: scale(375),
     borderRadius: moderateScale(25),
     backgroundColor: colors.greytext,
     marginHorizontal: moderateScale(35)
