@@ -275,7 +275,7 @@ class BrandCheckupCart extends Component {
                           </View>
                           <CategoryButton
                             style={styles.EditbuttonContainer}
-                            onPress={this.handleOnEdit()}
+                            onPress={this.handleOnEdit}
                           >
                             <Text style={styles.EditText}>EDIT</Text>
                           </CategoryButton>
