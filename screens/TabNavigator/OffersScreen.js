@@ -11,7 +11,7 @@ import Brochure from "../ProductScreen/Brochure";
 import BrochureType from "../ProductScreen/BrochureType";
 import BrochureCart from "../../screens/CartScreen/BrochureCart";
 import BrandCheckupSchedule from "../ProductScreen/BrandCheckupSchedule";
-import BrandCheckupCart from "../ProductScreen/BrandCheckupCart";
+import BrandCheckupCart from "../CartScreen/BrandCheckupCart";
 import CheckoutScreen from "../CheckoutScreen/CheckoutScreen";
 import StepTwo from "../CheckoutScreen/StepTwo";
 import StepThree from "../CheckoutScreen/StepThree";
@@ -58,7 +58,6 @@ export default class OffersScreen extends Component {
       // <Password></Password>
       // <SignUp></SignUp>
       // <Login></Login>
-
       <View style={styles.container}>
         <Text>Offers Screen</Text>
       </View>

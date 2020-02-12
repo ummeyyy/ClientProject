@@ -35,8 +35,8 @@ import Brochure from "./screens/ProductScreen/Brochure";
 import BrochureType from "./screens/ProductScreen/BrochureType";
 import BrochureCart from "./screens/CartScreen/BrochureCart";
 import BrandCheckupSchedule from "./screens/ProductScreen/BrandCheckupSchedule";
+import BrandCheckupCart from "./screens/CartScreen/BrandCheckupCart";
 
-import BrandCheckupCart from "./screens/ProductScreen/BrandCheckupCart";
 import CheckoutScreen from "./screens/CheckoutScreen/CheckoutScreen";
 import StepTwo from "./screens/CheckoutScreen/StepTwo";
 

@@ -24,7 +24,7 @@ class StepTwo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newbuttonColor: colors.greytext,
+      newbuttonColor: colors.bg,
       savedbuttonColor: colors.greytext,
       isHidden: false
     };
@@ -35,6 +35,18 @@ class StepTwo extends Component {
     this.setState({
       isHidden: !this.state.isHidden
     });
+
+    // if  (isHidden == false){
+    //   this.setState({
+    //     newbuttonColor:  colors.greytext,
+    //     savedbuttonColor: colors.greytext,
+    //   });
+    // }
+    // else if(isHidden == true){
+    //   this.setState({
+    //     // newbuttonColor:  colors.bgblue,
+    //     savedbuttonColor: colors.bgblue,
+    //   });
   };
 
   render() {

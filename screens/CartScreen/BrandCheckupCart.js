@@ -45,12 +45,12 @@ class BrandCheckupCart extends Component {
     };
   }
 
-  handleOnEdit = () => {
-    this.props.navigation.navigate("BrandSpecs");
-  };
-
   handleOnAddMore = () => {
     this.props.navigation.navigate("BrandingDesign");
+  };
+
+  handleOnEdit = () => {
+    this.props.navigation.navigate("BrandSpecs");
   };
 
   handleOnProceed = () => {
@@ -273,7 +273,10 @@ class BrandCheckupCart extends Component {
                               04:30 PM - 05:00 PM
                             </Text>
                           </View>
-                          <CategoryButton style={styles.EditbuttonContainer}>
+                          <CategoryButton
+                            style={styles.EditbuttonContainer}
+                            onPress={this.handleOnEdit()}
+                          >
                             <Text style={styles.EditText}>EDIT</Text>
                           </CategoryButton>
                         </View>

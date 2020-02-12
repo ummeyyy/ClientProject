@@ -14,7 +14,6 @@ import { moderateScale, scale, verticalScale } from "../../scale";
 import PriceTab from "../../components/PriceTab";
 import TotalPrice from "../ProductScreen/pcomponents/TotalPrice";
 import TimeStampComponent from "../ProductScreen/pcomponents/TimeStampComponent";
-import { Row } from "native-base";
 
 const products = [
   {
