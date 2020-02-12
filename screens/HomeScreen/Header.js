@@ -5,16 +5,22 @@ import {
   View,
   Text,
   Image,
-  StatusBar
+  StatusBar,
+  TouchableOpacity,
+  Alert
 } from "react-native";
 
 import { moderateScale, scale, verticalScale } from "../../scale";
 import colors from "../../assets/colors";
+import { withNavigation } from 'react-navigation';
 
 class Header extends React.Component {
+  tap = () => {
+    this.props.navigation.navigate("BrandingDesign");
+  }
   render() {
     return (
-      <SafeAreaView style={styles.container}>
+       <SafeAreaView style={styles.container}>
         {/* TOP PART OF HEADER */}
         <View
           style={{
@@ -24,7 +30,7 @@ class Header extends React.Component {
         >
           {/* DRAWER ICON START*/}
 
-          <View
+          <TouchableOpacity
             style={{
               flex: 0.2,
               alignItems: "center",
@@ -32,6 +38,7 @@ class Header extends React.Component {
               paddingLeft: scale(30),
               marginTop: verticalScale(2)
             }}
+            onPress={ this.tap}
           >
             <Image
               source={require("../../assets/menu-icon.png")}
@@ -41,7 +48,7 @@ class Header extends React.Component {
               }}
               resizeMode="contain"
             />
-          </View>
+          </TouchableOpacity>
           {/* DRAWER ICON END*/}
           {/* Logo START*/}
           <View
@@ -148,10 +155,10 @@ class Header extends React.Component {
           {/* OTHER ICONS END */}
         </View>
       </SafeAreaView>
-    );
+     );
   }
 }
-export default Header;
+export default withNavigation(Header);
 
 const styles = StyleSheet.create({
   container: {
