@@ -43,7 +43,7 @@ class VisaMasterCard extends Component {
 
           <View
             style={{
-              marginTop: verticalScale(50),
+              marginTop: verticalScale(20),
               marginRight: moderateScale(-5)
             }}
           >
@@ -65,7 +65,11 @@ class VisaMasterCard extends Component {
               </TouchableOpacity>
             )}
           </View>
-          <View>
+          <View
+            style={{
+              marginTop: verticalScale(-30)
+            }}
+          >
             <Image
               source={require("../../../assets/master.png")}
               style={{
@@ -80,7 +84,7 @@ class VisaMasterCard extends Component {
           {/* VISA CARD START */}
           <View
             style={{
-              marginTop: verticalScale(50),
+              marginTop: verticalScale(20),
               marginRight: moderateScale(-7)
             }}
           >
@@ -102,7 +106,11 @@ class VisaMasterCard extends Component {
               </TouchableOpacity>
             )}
           </View>
-          <View>
+          <View
+            style={{
+              marginTop: verticalScale(-30)
+            }}
+          >
             <Image
               source={require("../../../assets/visa.png")}
               style={{

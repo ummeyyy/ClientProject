@@ -23,7 +23,7 @@ class SavedCard extends Component {
         {/* SAVED CARD DETAILS  START */}
         <View style={styles.methodContainer}>
           {/* VIEW FOR TEXTS */}
-          <View style={{ flex: 1.65 }}>
+          <View style={{ flex: 1.8 }}>
             <Text style={styles.accountholdertext}>
               {this.props.accountholdername}
             </Text>
@@ -36,8 +36,9 @@ class SavedCard extends Component {
           </View>
           <View
             style={{
-              flex: 0.2,
-              marginRight: moderateScale(-15)
+              flex: 0.3,
+              alignItems: "center",
+              justifyContent: "center"
             }}
           >
             {!this.state.isHidden ? (
@@ -45,7 +46,7 @@ class SavedCard extends Component {
                 <Entypo
                   name="circle"
                   color={colors.greytext}
-                  size={scale(22)}
+                  size={scale(25)}
                 />
               </TouchableOpacity>
             ) : (
@@ -79,7 +80,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "flex-start"
     // backgroundColor: colors.bgblue
   },
   methodContainer: {

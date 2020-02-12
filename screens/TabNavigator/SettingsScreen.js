@@ -1,16 +1,15 @@
-import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import * as React from "react";
+import { View, StyleSheet, Text } from "react-native";
 
-class SettingsScreen extends Component {
+export default class SettingsScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>SETTINGS</Text>
+        <Text>Settings Screen</Text>
       </View>
     );
   }
 }
-export default SettingsScreen;
 
 const styles = StyleSheet.create({
   container: {

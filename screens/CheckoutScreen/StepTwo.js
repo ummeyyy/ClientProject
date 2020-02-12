@@ -4,7 +4,6 @@ import {
   Text,
   StyleSheet,
   Image,
-  FlatList,
   TouchableOpacity,
   ScrollView
 } from "react-native";
@@ -12,41 +11,16 @@ import {
 import { AntDesign } from "@expo/vector-icons";
 
 import PriceTab from "../../components/PriceTab";
+import CardDetails from "../CheckoutScreen/checkoutcomponents/CardDetails";
 import CategoryButton from "../../components/CategoryButton";
-import NewCard from "../CheckoutScreen/checkoutcomponents/NewCard";
-import VisaMasterCard from "../CheckoutScreen/checkoutcomponents/VisaMasterCard";
+
 import { moderateScale, scale, verticalScale } from "../../scale";
 
 import colors from "../../assets/colors";
-import SavedCard from "./checkoutcomponents/SavedCard";
 
 class StepTwo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      newbuttonColor: colors.bg,
-      savedbuttonColor: colors.greytext,
-      isHidden: false
-    };
-    // this.selectionOnPress = this.selectionOnPress.bind(this);
-  }
-
-  buttonPressed = () => {
-    this.setState({
-      isHidden: !this.state.isHidden
-    });
-
-    // if  (isHidden == false){
-    //   this.setState({
-    //     newbuttonColor:  colors.greytext,
-    //     savedbuttonColor: colors.greytext,
-    //   });
-    // }
-    // else if(isHidden == true){
-    //   this.setState({
-    //     // newbuttonColor:  colors.bgblue,
-    //     savedbuttonColor: colors.bgblue,
-    //   });
+  handleProceedToCheckout = () => {
+    this.props.navigation.navigate("Summary");
   };
 
   render() {
@@ -58,15 +32,6 @@ class StepTwo extends Component {
           showsVerticalScrollIndicator={false}
           horizontal={false}
         >
-          {/* Searchbar Alternative*/}
-
-          {/* <View
-          style={{
-            height: moderateScale(50),
-            backgroundColor: colors.bgblue
-          }}
-        ></View> */}
-
           {/* Checkout heading Section*/}
           <View
             style={{
@@ -113,134 +78,11 @@ class StepTwo extends Component {
           </View>
           {/* Checkout heading Section END*/}
 
-          {/* NEW CARD / SAVED CARD Button START */}
-          <View style={{ flexDirection: "row", marginTop: verticalScale(20) }}>
-            {/* NEW CARD START */}
-            <View
-              style={{
-                marginLeft: moderateScale(25)
-              }}
-            >
-              <CategoryButton
-                style={[
-                  styles.cardbuttonContainer,
-                  { backgroundColor: this.state.newbuttonColor }
-                ]}
-                onPress={() => this.setState({ newbuttonColor: colors.bgblue })}
-                onPressOut={() =>
-                  this.setState({ newbuttonColor: colors.greytext })
-                }
-              >
-                <Text style={styles.cardbuttonText}>NEW CARD</Text>
-              </CategoryButton>
-            </View>
-
-            {/* SAVED CARD START Button*/}
-
-            <View style={{ position: "absolute", right: moderateScale(30) }}>
-              <CategoryButton
-                style={[
-                  styles.cardbuttonContainer,
-                  { backgroundColor: this.state.savedbuttonColor }
-                ]}
-                onPress={() =>
-                  this.setState({ savedbuttonColor: colors.bgblue })
-                }
-                onPressOut={() =>
-                  this.setState({ savedbuttonColor: colors.greytext })
-                }
-              >
-                <Text style={styles.cardbuttonText}>SAVED CARD</Text>
-              </CategoryButton>
-            </View>
+          {/* NEW CARD / SAVED CARD  START */}
+          <View>
+            <CardDetails onProceedToCheckout={this.handleProceedToCheckout} />
           </View>
-
-          {/* NEW CARD / SAVED CARD Button END */}
-
-          {!this.state.isHidden ? (
-            <View>
-              {/* VISA/MASTER START */}
-              <View>
-                <VisaMasterCard></VisaMasterCard>
-              </View>
-              {/* NEW CARD DETAILS START */}
-              <View
-                style={{
-                  marginHorizontal: moderateScale(20),
-                  marginTop: verticalScale(20),
-                  flex: 1
-                }}
-              >
-                <NewCard></NewCard>
-              </View>
-              {/* NEW CARD DETAILS END */}
-            </View>
-          ) : (
-            <View style={{ marginTop: verticalScale(20) }}>
-              {/* SAVED CARD DETAILS START */}
-              <SavedCard
-                accountholdername="ACCOUNT HOLDER NAME"
-                accountexpiry="2020/02"
-                accountnumber="01234 5678 9876"
-              >
-                <Image
-                  source={require("../../assets/visa.png")}
-                  style={{
-                    width: moderateScale(76),
-                    height: verticalScale(76),
-                    position: "absolute",
-                    right: moderateScale(10)
-                  }}
-                  resizeMode="contain"
-                />
-              </SavedCard>
-              <SavedCard
-                accountholdername="ACCOUNT HOLDER NAME"
-                accountexpiry="2020/02"
-                accountnumber="01234 5678 9876"
-              >
-                <Image
-                  source={require("../../assets/visa.png")}
-                  style={{
-                    width: moderateScale(76),
-                    height: verticalScale(76),
-                    position: "absolute",
-                    right: moderateScale(10)
-                  }}
-                  resizeMode="contain"
-                />
-              </SavedCard>
-              <SavedCard
-                accountholdername="ACCOUNT HOLDER NAME"
-                accountexpiry="2020/02"
-                accountnumber="01234 5678 9876"
-              >
-                <Image
-                  source={require("../../assets/master.png")}
-                  style={{
-                    width: moderateScale(76),
-                    height: verticalScale(76),
-                    position: "absolute",
-                    right: moderateScale(10)
-                  }}
-                  resizeMode="contain"
-                />
-              </SavedCard>
-              {/* SAVED CARD DETAILS END */}
-            </View>
-          )}
-
-          {/* PROCEED TO NEXT STEP BUTTON START*/}
-          <View
-            style={{
-              marginVertical: verticalScale(40)
-            }}
-          >
-            <CategoryButton style={styles.addmorebuttonContainer}>
-              <Text style={styles.addmoreText}>PROCEED TO NEXT STEP</Text>
-            </CategoryButton>
-          </View>
-          {/* PROCEED TO NEXT STEP BUTTON END*/}
+          {/* NEW CARD / SAVED CARD END */}
 
           {/* TOTAL PRICE TAB BOTTOM START */}
           <View
@@ -268,40 +110,42 @@ class StepTwo extends Component {
 
                 <Text style={styles.onelinetaxtext}> INCLUSIVE OF TAX</Text>
 
-                <View style={styles.proceedbuttonwrapper}>
-                  <TouchableOpacity
-                    style={{
+                <TouchableOpacity
+                  style={[
+                    styles.proceedbuttonwrapper,
+                    {
                       flexDirection: "row",
                       paddingHorizontal: moderateScale(5),
                       paddingTop: verticalScale(3.5)
+                    }
+                  ]}
+                  onPress={this.handleProceedToCheckout}
+                >
+                  <View
+                    style={{
+                      flex: 2.2,
+                      alignItems: "center",
+                      justifyContent: "center"
                     }}
                   >
-                    <View
-                      style={{
-                        flex: 2.2,
-                        alignItems: "center",
-                        justifyContent: "center"
-                      }}
-                    >
-                      <Text style={styles.proceedbuttontext}>DETAILS</Text>
-                    </View>
+                    <Text style={styles.proceedbuttontext}>DETAILS</Text>
+                  </View>
 
-                    <View
-                      style={{
-                        flex: 0.5,
-                        alignItems: "center",
-                        justifyContent: "center",
-                        paddingLeft: moderateScale(5)
-                      }}
-                    >
-                      <AntDesign
-                        name="upcircle"
-                        color={colors.whitetext}
-                        size={scale(18)}
-                      />
-                    </View>
-                  </TouchableOpacity>
-                </View>
+                  <View
+                    style={{
+                      flex: 0.5,
+                      alignItems: "center",
+                      justifyContent: "center",
+                      paddingLeft: moderateScale(5)
+                    }}
+                  >
+                    <AntDesign
+                      name="upcircle"
+                      color={colors.whitetext}
+                      size={scale(18)}
+                    />
+                  </View>
+                </TouchableOpacity>
               </View>
             </PriceTab>
           </View>
@@ -317,7 +161,6 @@ export default StepTwo;
 const styles = StyleSheet.create({
   container: {
     flex: 1
-    // backgroundColor: colors.blacktext
   },
   yourcartlogo: {
     height: verticalScale(25),
@@ -345,32 +188,6 @@ const styles = StyleSheet.create({
     color: colors.whitetext,
     fontSize: scale(15),
     fontWeight: "bold"
-  },
-  // NEXT SECTION STYLE
-  cardbuttonContainer: {
-    width: moderateScale(100),
-    height: verticalScale(35),
-    borderRadius: moderateScale(25),
-    marginHorizontal: moderateScale(48)
-  },
-  cardbuttonText: {
-    color: colors.whitetext,
-    fontSize: scale(12),
-    fontWeight: "500"
-  },
-
-  // NEXT SECTION STYLE
-  addmorebuttonContainer: {
-    width: moderateScale(270),
-    height: verticalScale(40),
-    borderRadius: moderateScale(25),
-    backgroundColor: colors.bgyellow,
-    marginHorizontal: moderateScale(48)
-  },
-  addmoreText: {
-    color: colors.whitetext,
-    fontSize: scale(15),
-    fontWeight: "800"
   },
   // NEXT SECTION STYLE
   tpricetabtext: {

@@ -18,10 +18,11 @@ import {
 } from "@expo/vector-icons";
 
 class NewCard extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.toggleSwitch = this.toggleSwitch.bind(this);
     this.state = {
-      isHidden: false,
+      showcardnumber: true,
       username: "",
       cardnumber: "",
       year: "",
@@ -30,9 +31,9 @@ class NewCard extends Component {
     };
   }
 
-  buttonPressed = () => {
-    this.setState({ isHidden: !this.state.isHidden });
-  };
+  toggleSwitch() {
+    this.setState({ showcardnumber: !this.state.showcardnumber });
+  }
 
   render() {
     return (
@@ -139,6 +140,7 @@ class NewCard extends Component {
               />
               <TextInput
                 value={this.state.cardnumber}
+                secureTextEntry={this.state.showcardnumber}
                 underlineColorAndroid="transparent"
                 onChangeText={cardnumber => this.setState({ cardnumber })}
                 placeholder={"CARD NUMBER"}
@@ -148,8 +150,8 @@ class NewCard extends Component {
               />
               {/* to check if number is to be hidden or not*/}
               <View style={{ position: "absolute", right: moderateScale(20) }}>
-                {!this.state.isHidden ? (
-                  <TouchableOpacity onPress={this.buttonPressed}>
+                <TouchableOpacity onPress={this.toggleSwitch}>
+                  {!this.state.showcardnumber ? (
                     <Image
                       source={require("../../../assets/eye-close.png")}
                       style={{
@@ -158,9 +160,7 @@ class NewCard extends Component {
                       }}
                       resizeMode="contain"
                     />
-                  </TouchableOpacity>
-                ) : (
-                  <TouchableOpacity onPress={this.buttonPressed}>
+                  ) : (
                     <Image
                       source={require("../../../assets/eye-open.png")}
                       style={{
@@ -169,8 +169,8 @@ class NewCard extends Component {
                       }}
                       resizeMode="contain"
                     />
-                  </TouchableOpacity>
-                )}
+                  )}
+                </TouchableOpacity>
               </View>
             </View>
           </View>
@@ -221,10 +221,9 @@ export default NewCard;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
-    // alignItems: "center",
-    // justifyContent: "center"
-    // backgroundColor: colors.bgblue
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center"
   },
   shortmethodContainer: {
     height: verticalScale(54),

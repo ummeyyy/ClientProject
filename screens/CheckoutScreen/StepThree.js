@@ -11,14 +11,16 @@ import {
 
 import { SwipeListView } from "react-native-swipe-list-view";
 
-import { FontAwesome, AntDesign } from "@expo/vector-icons";
-
 import CartPriceTab from "../../components/CartPriceTab";
 import PriceTab from "../../components/PriceTab";
+
+import { FontAwesome, AntDesign } from "@expo/vector-icons";
+
 import CategoryButton from "../../components/CategoryButton";
+import SavedCard from "./checkoutcomponents/SavedCard";
+
 import { moderateScale, scale, verticalScale } from "../../scale";
 import colors from "../../assets/colors";
-import SavedCard from "./checkoutcomponents/SavedCard";
 
 const section = [
   {
@@ -116,8 +118,7 @@ class StepThree extends Component {
           height: 1,
           width: moderateScale(320),
           backgroundColor: colors.blacktext,
-          marginVertical: verticalScale(10),
-          marginLeft: moderateScale(30)
+          marginVertical: verticalScale(10)
         }}
       />
     );
@@ -132,8 +133,6 @@ class StepThree extends Component {
           showsVerticalScrollIndicator={false}
           horizontal={false}
         >
-          {/* Searchbar Alternative*/}
-
           {/* <View
           style={{
             height: moderateScale(50),
@@ -246,83 +245,102 @@ class StepThree extends Component {
           {/* PAYMENT MODE END*/}
 
           {/* SAVED ACOUNT DETAILS START */}
-          <View style={styles.methodContainer}>
-            {/* VIEW FOR TEXTS */}
-            <View style={{ flexDirection: "row" }}>
-              <View
-                style={{
-                  flex: 0.75,
-                  alignItems: "center",
-                  justifyContent: "center"
-                }}
-              >
-                <Image
-                  source={require("../../assets/visa.png")}
+          <View
+            style={{
+              marginTop: verticalScale(-10),
+              alignItems: "center",
+              justifyContent: "flex-start",
+              paddingHorizontal: moderateScale(20)
+            }}
+          >
+            <View style={styles.methodContainer}>
+              <View>
+                {/* VIEW FOR LOGO AND TEXT CONTAINER */}
+                <View>
+                  {/* VIEW FOR LOGO OF CARD TYPE */}
+                  <View style={{ flexDirection: "row" }}>
+                    <View
+                      style={{
+                        flex: 0.75,
+                        justifyContent: "center",
+                        alignItems: "center"
+                      }}
+                    >
+                      <Image
+                        source={require("../../assets/visa.png")}
+                        style={{
+                          width: moderateScale(80),
+                          height: verticalScale(80)
+                        }}
+                        resizeMode="contain"
+                      />
+                    </View>
+                    {/* VIEW FOR TEXT CONTAINER */}
+                    <View
+                      style={{
+                        flex: 2,
+                        justifyContent: "center",
+                        paddingHorizontal: moderateScale(10)
+                      }}
+                    >
+                      <Text style={styles.accountholdertext}>
+                        ACCOUNT HOLDER NAME
+                      </Text>
+                      <Text style={styles.othertext}>Expiry: 2020/02</Text>
+                      <Text style={styles.othertext}>
+                        Card Number: 01234 5678 9876
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                {/* VIEW FOR BUTTON */}
+                <View
                   style={{
-                    width: moderateScale(80),
-                    height: verticalScale(80),
-                    position: "absolute",
-                    right: moderateScale(10)
+                    marginTop: verticalScale(-3),
+                    justifyContent: "space-evenly",
+                    alignItems: "flex-end"
                   }}
-                  resizeMode="contain"
-                />
+                >
+                  <CategoryButton style={styles.changeeditContainer}>
+                    <Text style={styles.changeeditText}>CHANGE</Text>
+                  </CategoryButton>
+                </View>
               </View>
-              <View style={{ flex: 1.65 }}>
-                <Text style={styles.accountholdertext}>
-                  ACCOUNT HOLDER NAME
-                </Text>
-                <Text style={styles.othertext}>Expiry: 2020/02</Text>
-                <Text style={styles.othertext}>
-                  Card Number: 01234 5678 9876
-                </Text>
-              </View>
-            </View>
-            <View
-              style={{
-                left: moderateScale(130)
-              }}
-            >
-              <CategoryButton
-                style={styles.changeeditContainer}
-                onPress={this.handleChange}
-              >
-                <Text style={styles.changeeditText}>CHANGE</Text>
-              </CategoryButton>
             </View>
           </View>
-
           {/* SAVED ACOUNT DETAILS END */}
 
           {/* YOUR CART START */}
           <View
             style={{
               flexDirection: "row",
-              marginTop: verticalScale(20)
+              alignItems: "center",
+              justifyContent: "space-evenly",
+              paddingVertical: verticalScale(20),
+              paddingHorizontal: moderateScale(20)
             }}
           >
+            {/* YOUR CART LOGO AND TEXT START*/}
             <View
               style={{
-                marginLeft: moderateScale(33),
-                marginTop: verticalScale(10)
+                flex: 0.5,
+                flexDirection: "row",
+                justifyContent: "space-evenly"
               }}
             >
               <Image
                 source={require("../../assets/yourcart.png")}
                 style={styles.yourcartlogo}
               />
-            </View>
-            <View
-              style={{
-                marginLeft: moderateScale(10),
-                marginTop: verticalScale(10)
-              }}
-            >
               <Text style={styles.paymentmodeText}>YOUR CART </Text>
             </View>
+            {/* YOUR CART LOGO AND TEXT END*/}
+
+            {/* EDIT BUTTON START*/}
             <View
               style={{
-                marginLeft: moderateScale(100),
-                marginTop: verticalScale(2)
+                flex: 0.5,
+                alignItems: "flex-end"
               }}
             >
               <CategoryButton
@@ -332,111 +350,116 @@ class StepThree extends Component {
                 <Text style={styles.changeeditText}>EDIT</Text>
               </CategoryButton>
             </View>
-            {/* DISPLAYING ITEMS THROUGH FLATLIST */}
-            <View
-              style={{
-                flex: 1,
-                marginHorizontal: moderateScale(-355),
-                marginVertical: verticalScale(50)
-              }}
-            >
-              <FlatList
-                horizontal={false}
-                showsHorizontalScrollIndicator={false}
-                showsVerticalScrollIndicator={false}
-                useFlatList={true}
-                keyExtractor={(item, index) => item.id}
-                ItemSeparatorComponent={this.renderSeparator}
-                data={section}
-                renderItem={({ item }) => (
-                  // ITEMS DESIGN
+            {/* EDIT BUTTON END*/}
+          </View>
+
+          {/* DISPLAYING ITEMS THROUGH FLATLIST */}
+          <View
+            style={{
+              alignItems: "center",
+              paddingBottom: verticalScale(20)
+            }}
+          >
+            <FlatList
+              horizontal={false}
+              showsHorizontalScrollIndicator={false}
+              showsVerticalScrollIndicator={false}
+              useFlatList={true}
+              keyExtractor={(item, index) => item.id}
+              ItemSeparatorComponent={this.renderSeparator}
+              data={section}
+              renderItem={({ item }) => (
+                // ITEMS DESIGN
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    paddingVertical: verticalScale(10),
+                    width: moderateScale(325)
+                  }}
+                >
+                  {/* ITEM IMAGE */}
+
                   <View
                     style={{
-                      flexDirection: "row",
-                      marginHorizontal: moderateScale(20),
-                      marginTop: verticalScale(10),
-                      width: moderateScale(330)
+                      flex: 0.78,
+                      marginLeft: moderateScale(5)
                     }}
                   >
-                    <View
-                      style={{
-                        flex: 0.65,
-                        marginLeft: moderateScale(8)
-                      }}
-                    >
-                      {/* ITEM IMAGE */}
-                      <Image
-                        source={item.image}
-                        style={styles.itemImage}
-                        resizeMode="cover"
-                      />
-                    </View>
+                    <Image
+                      source={item.image}
+                      style={styles.itemImage}
+                      resizeMode="cover"
+                    />
+                  </View>
+                  {/* ITEM IMAGE END*/}
 
-                    {/* ITEM DETAILS */}
-                    <View
-                      style={{
-                        flex: 1.35,
-                        marginLeft: moderateScale(25),
-                        paddingTop: verticalScale(3)
-                      }}
-                    >
+                  {/* CENTER ITEM DETAIL START */}
+                  <View
+                    style={{
+                      flex: 1.35,
+                      paddingLeft: moderateScale(10),
+                      paddingTop: verticalScale(3)
+                    }}
+                  >
+                    <View>
                       <Text style={styles.categorytext}>{item.category}</Text>
                       <Text style={styles.itemTitle}>{item.name}</Text>
-
-                      {/* CODE AND SALE */}
-                      <View style={{ flexDirection: "row" }}>
-                        <View View={{ flex: 1.25 }}>
-                          <Text style={styles.codeText}>CODE: {item.code}</Text>
-                        </View>
-                        <View
-                          style={{ flex: 0.75, marginLeft: verticalScale(5) }}
-                        >
-                          {item.sale ? (
-                            <View style={styles.saleContainer}>
-                              <Text style={styles.saletext}>{item.sale}</Text>
-                            </View>
-                          ) : null}
-                        </View>
+                    </View>
+                    {/* CODE AND SALE */}
+                    <View style={{ flexDirection: "row" }}>
+                      <View View={{ flex: 1.25 }}>
+                        <Text style={styles.codeText}>CODE: {item.code}</Text>
                       </View>
-
-                      {/* ITEM PRICE */}
-                      <View style={{ flexDirection: "row" }}>
-                        <Text
-                          style={{
-                            fontSize: scale(10),
-                            fontWeight: "800",
-                            color: colors.greytext,
-                            lineHeight: 18
-                          }}
-                        >
-                          AED
-                        </Text>
-                        <Text style={styles.priceText}> {item.price}</Text>
+                      <View
+                        style={{ flex: 0.75, marginLeft: verticalScale(5) }}
+                      >
+                        {item.sale ? (
+                          <View style={styles.saleContainer}>
+                            <Text style={styles.saletext}>{item.sale}</Text>
+                          </View>
+                        ) : null}
                       </View>
                     </View>
+                    {/* CODE AND SALE END*/}
 
-                    {/* ITEM QUANTITY */}
-                    <View
-                      style={{
-                        flex: 0.54,
-                        marginRight: moderateScale(10),
-                        paddingTop: verticalScale(70)
-                      }}
-                    >
+                    {/* ITEM PRICE */}
+                    <View style={{ flexDirection: "row" }}>
                       <Text
                         style={{
-                          color: colors.bgblue,
-                          fontSize: scale(15),
-                          fontWeight: "700"
+                          fontSize: scale(10),
+                          fontWeight: "800",
+                          color: colors.greytext,
+                          lineHeight: 18
                         }}
                       >
-                        QTY {item.quantity}
+                        AED
                       </Text>
+                      <Text style={styles.priceText}> {item.price}</Text>
                     </View>
+                    {/* ITEM PRICE END*/}
                   </View>
-                )}
-              />
-            </View>
+                  {/* CENTER ITEM DETAIL END */}
+
+                  {/* ITEM QUANTITY */}
+                  <View
+                    style={{
+                      paddingTop: verticalScale(74)
+                    }}
+                  >
+                    <Text
+                      style={{
+                        color: colors.bgblue,
+                        fontSize: scale(15),
+                        fontWeight: "700"
+                      }}
+                    >
+                      QTY {item.quantity}
+                    </Text>
+                  </View>
+                </View>
+              )}
+            />
           </View>
           {/* YOUR CART END */}
 
@@ -678,38 +701,33 @@ const styles = StyleSheet.create({
   },
   // NEXT SECTION STYLE
   methodContainer: {
-    marginHorizontal: moderateScale(25),
-    height: verticalScale(100),
+    height: verticalScale(120),
     width: moderateScale(320),
-    alignItems: "center",
-    justifyContent: "center",
     borderBottomWidth: scale(1),
     borderBottomColor: colors.greytext
   },
   accountholdertext: {
-    fontSize: scale(13),
+    fontSize: scale(15),
     color: colors.bgyellow,
-    fontWeight: "300"
+    fontWeight: "400"
   },
   othertext: {
     fontSize: scale(12),
     color: colors.blacktext,
     fontWeight: "300"
   },
-  // NEXT SECTION STYLE
-
   changeeditContainer: {
-    marginVertical: verticalScale(5),
-    width: moderateScale(70),
-    height: verticalScale(28),
+    width: moderateScale(80),
+    height: verticalScale(30),
     borderRadius: moderateScale(25),
     backgroundColor: colors.bgyellow
   },
   changeeditText: {
     color: colors.whitetext,
-    fontSize: scale(11),
+    fontSize: scale(12),
     fontWeight: "700"
   },
+
   // NEXT SECTION STYLE
   tpricetabtext: {
     fontSize: scale(25),
