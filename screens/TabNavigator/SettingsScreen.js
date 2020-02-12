@@ -1,12 +1,13 @@
 import * as React from "react";
 import { View, StyleSheet, Text } from "react-native";
-
+import CardDetails from "../CheckoutScreen/checkoutcomponents/CardDetails";
 export default class SettingsScreen extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Settings Screen</Text>
-      </View>
+      <CardDetails />
+      // <View style={styles.container}>
+      //   <Text>Settings Screen</Text>
+      // </View>
     );
   }
 }

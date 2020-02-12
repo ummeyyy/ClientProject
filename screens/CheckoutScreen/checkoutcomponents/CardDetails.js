@@ -12,129 +12,142 @@ import colors from "../../../assets/colors";
 
 import Animated from "react-native-reanimated";
 
-const FirstRoute = () => (
-  <View style={[styles.container, { paddingVertical: verticalScale(20) }]}>
-    {/* SAVED CARD DETAILS START */}
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "space-evenly"
-      }}
-    >
-      <View>
-        <SavedCard
-          accountholdername="ACCOUNT HOLDER NAME"
-          accountexpiry="2020/02"
-          accountnumber="01234 5678 9876"
-        >
-          <Image
-            source={require("../../../assets/visa.png")}
-            style={{
-              width: moderateScale(76),
-              height: verticalScale(76),
-              position: "absolute",
-              right: moderateScale(10)
-            }}
-            resizeMode="contain"
-          />
-        </SavedCard>
+const FirstRoute = () => {
+  //   onButtonPress = () => {
+  //     this.props.jumpTo("second");
+  //   };
+
+  return (
+    <View style={[styles.container, { paddingVertical: verticalScale(20) }]}>
+      {/* SAVED CARD DETAILS START */}
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "space-evenly"
+        }}
+      >
+        <View>
+          <SavedCard
+            accountholdername="ACCOUNT HOLDER NAME"
+            accountexpiry="2020/02"
+            accountnumber="01234 5678 9876"
+          >
+            <Image
+              source={require("../../../assets/visa.png")}
+              style={{
+                width: moderateScale(76),
+                height: verticalScale(76),
+                position: "absolute",
+                right: moderateScale(10)
+              }}
+              resizeMode="contain"
+            />
+          </SavedCard>
+        </View>
+        {/* SECOND CARD */}
+        <View>
+          <SavedCard
+            accountholdername="ACCOUNT HOLDER NAME"
+            accountexpiry="2020/02"
+            accountnumber="01234 5678 9876"
+          >
+            <Image
+              source={require("../../../assets/master.png")}
+              style={{
+                width: moderateScale(76),
+                height: verticalScale(76),
+                position: "absolute",
+                right: moderateScale(10)
+              }}
+              resizeMode="contain"
+            />
+          </SavedCard>
+        </View>
+        {/* THIRD CARD */}
+        <View>
+          <SavedCard
+            accountholdername="ACCOUNT HOLDER NAME"
+            accountexpiry="2020/02"
+            accountnumber="01234 5678 9876"
+          >
+            <Image
+              source={require("../../../assets/master.png")}
+              style={{
+                width: moderateScale(76),
+                height: verticalScale(76),
+                position: "absolute",
+                right: moderateScale(10)
+              }}
+              resizeMode="contain"
+            />
+          </SavedCard>
+        </View>
+        {/* END OF SAVED CARD DETAILS */}
       </View>
-      {/* SECOND CARD */}
-      <View>
-        <SavedCard
-          accountholdername="ACCOUNT HOLDER NAME"
-          accountexpiry="2020/02"
-          accountnumber="01234 5678 9876"
+
+      <View
+        style={{
+          flex: 0.5,
+          justifyContent: "center",
+          paddingVertical: verticalScale(10),
+          paddingHorizontal: verticalScale(35)
+        }}
+      >
+        {/* SAVE CARD AND PROCEED BUTTON START*/}
+        <CategoryButton
+          style={styles.addmorebuttonContainer}
+          onPress={() => {
+            this.props.jumpTo("second");
+          }}
         >
-          <Image
-            source={require("../../../assets/master.png")}
-            style={{
-              width: moderateScale(76),
-              height: verticalScale(76),
-              position: "absolute",
-              right: moderateScale(10)
-            }}
-            resizeMode="contain"
-          />
-        </SavedCard>
+          <Text style={styles.ButtonText}>SAVE CARD AND PROCEED</Text>
+        </CategoryButton>
+        {/* SAVE CARD AND PROCEED BUTTON END*/}
       </View>
-      {/* THIRD CARD */}
+    </View>
+  );
+};
+
+const SecondRoute = () => {
+  return (
+    <View style={styles.container}>
+      {/* VISA/MASTER START */}
       <View>
-        <SavedCard
-          accountholdername="ACCOUNT HOLDER NAME"
-          accountexpiry="2020/02"
-          accountnumber="01234 5678 9876"
-        >
-          <Image
-            source={require("../../../assets/master.png")}
-            style={{
-              width: moderateScale(76),
-              height: verticalScale(76),
-              position: "absolute",
-              right: moderateScale(10)
-            }}
-            resizeMode="contain"
-          />
-        </SavedCard>
+        <VisaMasterCard></VisaMasterCard>
       </View>
-      {/* END OF SAVED CARD DETAILS */}
-    </View>
+      {/* VISA/MASTER END */}
 
-    <View
-      style={{
-        flex: 0.5,
-        justifyContent: "center",
-        paddingVertical: verticalScale(10),
-        paddingHorizontal: verticalScale(35)
-      }}
-    >
-      {/* SAVE CARD AND PROCEED BUTTON START*/}
-      <CategoryButton style={styles.addmorebuttonContainer}>
-        <Text style={styles.ButtonText}>SAVE CARD AND PROCEED</Text>
-      </CategoryButton>
-      {/* SAVE CARD AND PROCEED BUTTON END*/}
-    </View>
-  </View>
-);
-const SecondRoute = () => (
-  <View style={styles.container}>
-    {/* VISA/MASTER START */}
-    <View>
-      <VisaMasterCard></VisaMasterCard>
-    </View>
-    {/* VISA/MASTER END */}
+      {/* ENTER NEW CARD DETAILS START*/}
+      <View
+        style={{
+          flex: 1,
+          // paddingHorizontal: verticalScale(20),
+          alignItems: "center",
+          justifyContent: "center",
+          marginTop: verticalScale(-20)
+        }}
+      >
+        <NewCard />
+      </View>
+      {/* ENTER NEW CARD DETAILS END*/}
 
-    {/* ENTER NEW CARD DETAILS START*/}
-    <View
-      style={{
-        flex: 1,
-        // paddingHorizontal: verticalScale(20),
-        alignItems: "center",
-        justifyContent: "center",
-        marginTop: verticalScale(-20)
-      }}
-    >
-      <NewCard />
+      <View
+        style={{
+          flex: 0.5,
+          justifyContent: "center",
+          paddingVertical: verticalScale(40),
+          paddingHorizontal: verticalScale(35)
+        }}
+      >
+        {/* PROCEED TO CHECK OUT BUTTON START*/}
+        <CategoryButton style={styles.addmorebuttonContainer}>
+          <Text style={styles.ButtonText}>PROCEED TO CHECK OUT</Text>
+        </CategoryButton>
+        {/* PROCEED TO CHECK OUT BUTTON END*/}
+      </View>
     </View>
-    {/* ENTER NEW CARD DETAILS END*/}
-
-    <View
-      style={{
-        flex: 0.5,
-        justifyContent: "center",
-        paddingVertical: verticalScale(40),
-        paddingHorizontal: verticalScale(35)
-      }}
-    >
-      {/* PROCEED TO CHECK OUT BUTTON START*/}
-      <CategoryButton style={styles.addmorebuttonContainer}>
-        <Text style={styles.ButtonText}>PROCEED TO CHECK OUT</Text>
-      </CategoryButton>
-      {/* PROCEED TO CHECK OUT BUTTON END*/}
-    </View>
-  </View>
-);
-
+  );
+};
 export default class CardDetails extends React.Component {
   state = {
     index: 0,
@@ -142,10 +155,6 @@ export default class CardDetails extends React.Component {
       { key: "first", title: "NEW CARD" },
       { key: "second", title: "SAVED CARD" }
     ]
-  };
-
-  onButtonPress = () => {
-    this.props.jumpTo(second);
   };
 
   handleChange = () => {
