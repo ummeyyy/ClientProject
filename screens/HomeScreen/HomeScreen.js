@@ -27,6 +27,7 @@ class HomeScreen extends Component {
   //     this.props.navigation.navigate("CartScreen");
   //   }, 5000);
   // }
+  
 
   constructor(props) {
     super(props);

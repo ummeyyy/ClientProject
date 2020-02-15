@@ -104,8 +104,9 @@ const HomeStackNavigator = createStackNavigator({
   HomeScreen: {
     screen: HomeScreen,
     navigationOptions: {
-      headerBackground: <Header />,
-      headerBackTitle: null
+      // headerBackground: <Header />,
+      headerBackTitle: null,
+      header:<Header />
     }
   },
   BrandingDesign: {
@@ -433,7 +434,7 @@ const HomeStackNavigator = createStackNavigator({
     }
   }
 });
-
+ 
 // const CartStackNavigator = createStackNavigator({
 //   BrochureScreen: {
 //     screen: Brochure,
@@ -774,22 +775,14 @@ const TabNavigator = createBottomTabNavigator(
       }
     }),
     tabBarOptions: {
-      style: {
-        backgroundColor: colors.greytext
-      },
-      labelStyle: {
-        fontWeight: "800",
-        color: colors.whitetext,
-        // color: focused ? colors.bgblue : colors.whitetext,
-        fontSize: scale(8),
-        activeTintColor: colors.bgblue,
-        inactiveTintColor: colors.whitetext
-      },
       activeTintColor: colors.bgblue,
-      inactiveTintColor: colors.whitetext
-      // activeLabelColor: colors.bgblue
-      // activeBackgroundColor: colors.greytext
-    }
+      inactiveTintColor: 'gray',
+      style: {
+        backgroundColor: 'black',
+
+        //color you want to change
+      },
+    },
   }
 );
 
