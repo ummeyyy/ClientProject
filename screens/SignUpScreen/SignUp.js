@@ -159,7 +159,7 @@ class SignUp extends Component {
           ></ImageBackground>
 
           <View style={{ position: "absolute", left: moderateScale(16) }}>
-            {/* ALL INPUT FIELDS END*/}
+            {/* ALL INPUT FIELDS START*/}
 
             {/* Enter fullname START */}
             <View

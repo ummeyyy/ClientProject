@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 
-import HomeScreen from "./screens/HomeScreen/HomeScreen";
 import MoreScreen from "./screens/TabNavigator/MoreScreen";
 import OffersScreen from "./screens/TabNavigator/OffersScreen";
 import SettingsScreen from "./screens/TabNavigator/SettingsScreen";
@@ -24,6 +23,9 @@ import FirstScreen from "./screens/WalkthroughScreen/FirstScreen";
 import SecondScreen from "./screens/WalkthroughScreen/SecondScreen";
 import ThirdScreen from "./screens/WalkthroughScreen/ThirdScreen";
 import FourthScreen from "./screens/WalkthroughScreen/FourthScreen";
+
+import HomeScreen from "./screens/HomeScreen/HomeScreen";
+import Profile from "./screens/ProfileScreen/Profile";
 
 import ViewAllCategories from "./screens/HomeScreen/ViewAllCategories";
 import BrandingCategoryFlatList from "./screens/HomeScreen/hcomponents/BrandingCategoryFlatList";
@@ -73,6 +75,14 @@ class navigationRouter extends Component {
 const HomeStackNavigator = createStackNavigator({
   HomeScreen: {
     screen: HomeScreen,
+    navigationOptions: {
+      // headerBackground: <Header />,
+      headerBackTitle: null,
+      header: <Header />
+    }
+  },
+  Profile: {
+    screen: Profile,
     navigationOptions: {
       // headerBackground: <Header />,
       headerBackTitle: null,
