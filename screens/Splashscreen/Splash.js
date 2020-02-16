@@ -25,7 +25,7 @@ class Splash extends React.Component {
     setTimeout(() => {
       console.log("hello");
       this.props.navigation.navigate(this.state.userInfo ? "App" : "Auth");
-    }, 4000);
+    }, 20);
   };
   render() {
     return (

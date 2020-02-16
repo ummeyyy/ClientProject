@@ -62,37 +62,6 @@ import {
 } from "react-navigation";
 
 class navigationRouter extends Component {
-  Label({ name, focused }) {
-    return (
-      <Text
-        style={{
-          fontWeight: "800",
-          color: colors.whitetext,
-          fontSize: scale(8),
-          textAlign: "center",
-          color: focused ? colors.bgblue : colors.whitetext
-        }}
-      >
-        {name}
-      </Text>
-    );
-  }
-
-  // Label = ({ name }) => {
-  //   return (
-  //     <Text
-  //       style={{
-  //         fontWeight: "800",
-  //         color: colors.whitetext,
-  //         fontSize: scale(8),
-  //         textAlign: "center"
-  //       }}
-  //     >
-  //       {name}
-  //     </Text>
-  //   );
-  // };
-
   render() {
     {
       console.log("help");
@@ -100,13 +69,14 @@ class navigationRouter extends Component {
     return <AppContainer></AppContainer>;
   }
 }
+
 const HomeStackNavigator = createStackNavigator({
   HomeScreen: {
     screen: HomeScreen,
     navigationOptions: {
       // headerBackground: <Header />,
       headerBackTitle: null,
-      header:<Header />
+      header: <Header />
     }
   },
   BrandingDesign: {
@@ -434,7 +404,7 @@ const HomeStackNavigator = createStackNavigator({
     }
   }
 });
- 
+
 // const CartStackNavigator = createStackNavigator({
 //   BrochureScreen: {
 //     screen: Brochure,
@@ -697,6 +667,7 @@ const TabNavigator = createBottomTabNavigator(
       screen: HomeStackNavigator,
       navigationOptions: {
         tabBarLabel: "HOME"
+
         // focused={ focused ? colors.bgblue : colors.whitetext}
       }
     },
@@ -727,13 +698,6 @@ const TabNavigator = createBottomTabNavigator(
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
-      // tabBarLabel: ({ focused }) => (
-      //   <MyTabBarLabel
-      //     title={i18n.t("common.request")}
-      //     focused={focused}
-      //     tintColor={colors.bgblue}
-      //   />
-      // ),
       tabBarIcon: ({ focused, horizontal, tintColor }) => {
         const { routeName } = navigation.state;
         if (routeName === "HomeTab") {
@@ -775,14 +739,19 @@ const TabNavigator = createBottomTabNavigator(
       }
     }),
     tabBarOptions: {
+      labelStyle: {
+        fontWeight: "800",
+        fontSize: scale(10),
+        textAlign: "center"
+      },
       activeTintColor: colors.bgblue,
-      inactiveTintColor: 'gray',
+      inactiveTintColor: colors.whitetext,
       style: {
-        backgroundColor: 'black',
+        backgroundColor: colors.tabbarbackground
 
         //color you want to change
-      },
-    },
+      }
+    }
   }
 );
 

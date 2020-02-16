@@ -12,15 +12,23 @@ import {
 
 import { moderateScale, scale, verticalScale } from "../../scale";
 import colors from "../../assets/colors";
-import { withNavigation } from 'react-navigation';
+import { withNavigation } from "react-navigation";
 
 class Header extends React.Component {
   tap = () => {
     this.props.navigation.navigate("BrandingDesign");
-  }
+  };
+  notification = () => {
+    this.props.navigation.navigate("LimitedOffers");
+  };
+
+  cart = () => {
+    this.props.navigation.navigate("ViewCart");
+  };
+
   render() {
     return (
-       <SafeAreaView style={styles.container}>
+      <SafeAreaView style={styles.container}>
         {/* TOP PART OF HEADER */}
         <View
           style={{
@@ -38,7 +46,7 @@ class Header extends React.Component {
               paddingLeft: scale(30),
               marginTop: verticalScale(2)
             }}
-            onPress={ this.tap}
+            onPress={this.tap}
           >
             <Image
               source={require("../../assets/menu-icon.png")}
@@ -131,31 +139,36 @@ class Header extends React.Component {
             }}
           >
             {/* NOTIFICATION ICON START*/}
-            <Image
-              source={require("../../assets/notification.png")}
-              style={{
-                width: moderateScale(25),
-                height: verticalScale(25)
-              }}
-              resizeMode="contain"
-            />
+            <TouchableOpacity onPress={this.notification}>
+              <Image
+                source={require("../../assets/notification.png")}
+                style={{
+                  width: moderateScale(25),
+                  height: verticalScale(25)
+                }}
+                resizeMode="contain"
+              />
+            </TouchableOpacity>
             {/* NOTIFICATION ICON END*/}
 
             {/* CART ICON START*/}
-            <Image
-              source={require("../../assets/cart-icon.png")}
-              style={{
-                width: moderateScale(25),
-                height: verticalScale(25)
-              }}
-              resizeMode="contain"
-            />
+            <TouchableOpacity onPress={this.cart}>
+              <Image
+                source={require("../../assets/cart-icon.png")}
+                style={{
+                  width: moderateScale(25),
+                  height: verticalScale(25)
+                }}
+                resizeMode="contain"
+              />
+            </TouchableOpacity>
+
             {/* CART ICON END*/}
           </View>
           {/* OTHER ICONS END */}
         </View>
       </SafeAreaView>
-     );
+    );
   }
 }
 export default withNavigation(Header);

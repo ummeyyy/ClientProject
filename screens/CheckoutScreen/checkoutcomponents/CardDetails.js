@@ -7,6 +7,7 @@ import VisaMasterCard from "../checkoutcomponents/VisaMasterCard";
 import SavedCard from "../checkoutcomponents/SavedCard";
 import NewCard from "../checkoutcomponents/NewCard";
 
+import { withNavigation } from "react-navigation";
 import { moderateScale, scale, verticalScale } from "../../../scale";
 import colors from "../../../assets/colors";
 
@@ -148,7 +149,7 @@ const SecondRoute = () => {
     </View>
   );
 };
-export default class CardDetails extends React.Component {
+class CardDetails extends React.Component {
   state = {
     index: 0,
     routes: [
@@ -231,6 +232,8 @@ export default class CardDetails extends React.Component {
     );
   }
 }
+
+export default withNavigation(CardDetails);
 
 const styles = StyleSheet.create({
   container: {

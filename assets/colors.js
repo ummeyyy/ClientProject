@@ -11,6 +11,7 @@ const colors = {
   grey2: "#9E9E9E",
   whitetext: "#fff",
   blacktext: "#000",
-  promotext: "#309D42"
+  promotext: "#309D42",
+  tabbarbackground: "#454545"
 };
 export default colors;
