@@ -19,7 +19,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import CategoryButton from "../../components/CategoryButton";
 import ProfileMbInput from "../ProfileScreen/ProfileComponents/ProfileMbInput";
 
-class Profile extends Component {
+class EmptyFavorites extends Component {
   constructor(props) {
     super(props);
     this.toggleSwitch = this.toggleSwitch.bind(this);
@@ -37,22 +37,6 @@ class Profile extends Component {
   toggleSwitch() {
     this.setState({ showPassword: !this.state.showPassword });
   }
-
-  tapOnProfile = () => {
-    this.props.navigation.navigate("Profile");
-  };
-
-  tapOnMyOrders = () => {
-    this.props.navigation.navigate("MyOrders");
-  };
-
-  tapOnFavoruties = () => {
-    this.props.navigation.navigate("Favourites");
-  };
-
-  tapOnSavedCards = () => {
-    this.props.navigation.navigate("SavedCards");
-  };
 
   render() {
     return (
@@ -78,27 +62,24 @@ class Profile extends Component {
                 ACCOUNT DETAILS
               </Text>
 
-              <CategoryButton onPress={this.tapOnProfile}>
+              <CategoryButton>
                 <Text style={styles.catogeryContainerText}>PROFILE</Text>
               </CategoryButton>
 
               <CategoryButton
                 style={{ backgroundColor: colors.inactivegreybutton }}
-                onPress={this.tapOnMyOrders}
               >
                 <Text style={styles.catogeryContainerText}>MY ORDERS</Text>
               </CategoryButton>
 
               <CategoryButton
                 style={{ backgroundColor: colors.inactivegreybutton }}
-                onPress={this.tapOnFavoruties}
               >
                 <Text style={styles.catogeryContainerText}>FAVOURITES</Text>
               </CategoryButton>
 
               <CategoryButton
                 style={{ backgroundColor: colors.inactivegreybutton }}
-                onPress={this.tapOnSavedCards}
               >
                 <Text style={styles.catogeryContainerText}>SAVED CARDS</Text>
               </CategoryButton>
@@ -341,8 +322,8 @@ class Profile extends Component {
                     paddingTop: verticalScale(15)
                   }}
                 >
-                  <CategoryButton style={styles.updatebutton}>
-                    <Text style={styles.updatebuttontext}>UPDATE</Text>
+                  <CategoryButton style={styles.createaccounttbutton}>
+                    <Text style={styles.createaccountbuttontext}>UPDATE</Text>
                   </CategoryButton>
                 </View>
                 {/* UPDATE BUTTON  END */}
@@ -356,7 +337,7 @@ class Profile extends Component {
     );
   }
 }
-export default Profile;
+export default EmptyFavorites;
 
 const styles = StyleSheet.create({
   container: {
@@ -409,14 +390,14 @@ const styles = StyleSheet.create({
     fontWeight: "400"
   },
 
-  updatebutton: {
+  createaccounttbutton: {
     backgroundColor: colors.bgblue,
     borderColor: colors.bgblue,
     height: verticalScale(42),
     width: moderateScale(105),
     borderRadius: scale(25)
   },
-  updatebuttontext: {
+  createaccountbuttontext: {
     fontSize: scale(15),
     color: colors.whitetext,
     fontWeight: "700"

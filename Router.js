@@ -28,7 +28,6 @@ import HomeScreen from "./screens/HomeScreen/HomeScreen";
 import Profile from "./screens/ProfileScreen/Profile";
 
 import ViewAllCategories from "./screens/HomeScreen/ViewAllCategories";
-import BrandingCategoryFlatList from "./screens/HomeScreen/hcomponents/BrandingCategoryFlatList";
 
 import ProductScreen from "./screens/ProductScreen/ProductScreen";
 import YourCart from "./screens/CartScreen/YourCart";
@@ -62,6 +61,10 @@ import {
   createBottomTabNavigator,
   NavigationActions
 } from "react-navigation";
+import MyOrders from "./screens/ProfileScreen/MyOrders";
+import Favourites from "./screens/ProfileScreen/Favourites";
+import EmptyFavorites from "./screens/ProfileScreen/EmptyFavorites";
+import SavedCards from "./screens/ProfileScreen/SavedCards";
 
 class navigationRouter extends Component {
   render() {
@@ -76,15 +79,6 @@ const HomeStackNavigator = createStackNavigator({
   HomeScreen: {
     screen: HomeScreen,
     navigationOptions: {
-      // headerBackground: <Header />,
-      headerBackTitle: null,
-      header: <Header />
-    }
-  },
-  Profile: {
-    screen: Profile,
-    navigationOptions: {
-      // headerBackground: <Header />,
       headerBackTitle: null,
       header: <Header />
     }
@@ -94,7 +88,7 @@ const HomeStackNavigator = createStackNavigator({
     navigationOptions: {
       tabBarVisible: false,
       headerBackTitle: null,
-      headerBackground: <HeaderTwo />,
+      header: <HeaderTwo />,
       headerBackImage: (
         <View
           style={{
@@ -117,7 +111,7 @@ const HomeStackNavigator = createStackNavigator({
   LimitedOffers: {
     screen: LimitedTimeProduct,
     navigationOptions: {
-      headerBackground: <Header />,
+      header: <Header />,
       headerBackTitle: null,
       headerBackImage: (
         <View
@@ -143,7 +137,7 @@ const HomeStackNavigator = createStackNavigator({
     navigationOptions: {
       tabBarVisible: false,
       headerBackTitle: null,
-      headerBackground: <HeaderTwo />,
+      header: <HeaderTwo />,
       headerBackImage: (
         <View
           style={{
@@ -168,7 +162,7 @@ const HomeStackNavigator = createStackNavigator({
     navigationOptions: {
       tabBarVisible: false,
       headerBackTitle: null,
-      headerBackground: <HeaderTwo />,
+      header: <HeaderTwo />,
       headerBackImage: (
         <View
           style={{
@@ -193,7 +187,7 @@ const HomeStackNavigator = createStackNavigator({
     navigationOptions: {
       tabBarVisible: false,
       headerBackTitle: null,
-      headerBackground: <HeaderTwo />,
+      header: <HeaderTwo />,
       headerBackImage: (
         <View
           style={{
@@ -218,7 +212,7 @@ const HomeStackNavigator = createStackNavigator({
     navigationOptions: {
       tabBarVisible: false,
       headerBackTitle: null,
-      headerBackground: <HeaderTwo />,
+      header: <HeaderTwo />,
       headerBackImage: (
         <View
           style={{
@@ -243,7 +237,7 @@ const HomeStackNavigator = createStackNavigator({
     navigationOptions: {
       tabBarVisible: false,
       headerBackTitle: null,
-      headerBackground: <HeaderTwo />,
+      header: <HeaderTwo />,
       headerBackImage: (
         <View
           style={{
@@ -268,7 +262,7 @@ const HomeStackNavigator = createStackNavigator({
     navigationOptions: {
       tabBarVisible: false,
       headerBackTitle: null,
-      headerBackground: <HeaderTwo />,
+      header: <HeaderTwo />,
       headerBackImage: (
         <View
           style={{
@@ -293,7 +287,7 @@ const HomeStackNavigator = createStackNavigator({
     navigationOptions: {
       tabBarVisible: false,
       headerBackTitle: null,
-      headerBackground: <HeaderTwo />,
+      header: <HeaderTwo />,
       headerBackImage: (
         <View
           style={{
@@ -318,7 +312,7 @@ const HomeStackNavigator = createStackNavigator({
     navigationOptions: {
       tabBarVisible: false,
       headerBackTitle: null,
-      headerBackground: <HeaderTwo />,
+      header: <HeaderTwo />,
       headerBackImage: (
         <View
           style={{
@@ -343,7 +337,7 @@ const HomeStackNavigator = createStackNavigator({
     navigationOptions: {
       tabBarVisible: false,
       headerBackTitle: null,
-      headerBackground: <HeaderTwo />,
+      header: <HeaderTwo />,
       headerBackImage: (
         <View
           style={{
@@ -368,7 +362,7 @@ const HomeStackNavigator = createStackNavigator({
     navigationOptions: {
       tabBarVisible: false,
       headerBackTitle: null,
-      headerBackground: <HeaderTwo />,
+      header: <HeaderTwo />,
       headerBackImage: (
         <View
           style={{
@@ -393,7 +387,134 @@ const HomeStackNavigator = createStackNavigator({
     navigationOptions: {
       tabBarVisible: false,
       headerBackTitle: null,
-      headerBackground: <HeaderTwo />,
+      header: <HeaderTwo />,
+      headerBackImage: (
+        <View
+          style={{
+            marginLeft: scale(5)
+          }}
+        >
+          <Image
+            source={require("./assets/back-arrow-icon.png")}
+            style={{
+              width: moderateScale(20),
+              height: verticalScale(20),
+              tintColor: colors.whitetext
+            }}
+            resizeMode="contain"
+          />
+        </View>
+      )
+    }
+  }
+});
+
+const ProfileStackNavigator = createStackNavigator({
+  Profile: {
+    screen: Profile,
+    navigationOptions: {
+      headerBackTitle: null,
+      header: <Header />,
+      headerBackImage: (
+        <View
+          style={{
+            marginLeft: scale(5)
+          }}
+        >
+          <Image
+            source={require("./assets/back-arrow-icon.png")}
+            style={{
+              width: moderateScale(20),
+              height: verticalScale(20),
+              tintColor: colors.whitetext
+            }}
+            resizeMode="contain"
+          />
+        </View>
+      )
+    }
+  },
+  MyOrders: {
+    screen: MyOrders,
+    navigationOptions: {
+      headerBackTitle: null,
+      tabBarVisible: false,
+      header: <Header />,
+      headerBackImage: (
+        <View
+          style={{
+            marginLeft: scale(5)
+          }}
+        >
+          <Image
+            source={require("./assets/back-arrow-icon.png")}
+            style={{
+              width: moderateScale(20),
+              height: verticalScale(20),
+              tintColor: colors.whitetext
+            }}
+            resizeMode="contain"
+          />
+        </View>
+      )
+    }
+  },
+  Favourites: {
+    screen: Favourites,
+    navigationOptions: {
+      headerBackTitle: null,
+      tabBarVisible: false,
+      header: <Header />,
+      headerBackImage: (
+        <View
+          style={{
+            marginLeft: scale(5)
+          }}
+        >
+          <Image
+            source={require("./assets/back-arrow-icon.png")}
+            style={{
+              width: moderateScale(20),
+              height: verticalScale(20),
+              tintColor: colors.whitetext
+            }}
+            resizeMode="contain"
+          />
+        </View>
+      )
+    }
+  },
+  NoFavourites: {
+    screen: EmptyFavorites,
+    navigationOptions: {
+      headerBackTitle: null,
+      tabBarVisible: false,
+      header: <Header />,
+      headerBackImage: (
+        <View
+          style={{
+            marginLeft: scale(5)
+          }}
+        >
+          <Image
+            source={require("./assets/back-arrow-icon.png")}
+            style={{
+              width: moderateScale(20),
+              height: verticalScale(20),
+              tintColor: colors.whitetext
+            }}
+            resizeMode="contain"
+          />
+        </View>
+      )
+    }
+  },
+  SavedCards: {
+    screen: SavedCards,
+    navigationOptions: {
+      headerBackTitle: null,
+      tabBarVisible: false,
+      header: <Header />,
       headerBackImage: (
         <View
           style={{
@@ -441,6 +562,7 @@ const HomeStackNavigator = createStackNavigator({
 //       )
 //     }
 //   },
+
 //   ViewCart: {
 //     screen: YourCart,
 //     navigationOptions: {
@@ -466,6 +588,7 @@ const HomeStackNavigator = createStackNavigator({
 //       )
 //     }
 //   },
+
 //   BrochureSpecs: {
 //     screen: BrochureType,
 //     navigationOptions: {
@@ -491,6 +614,7 @@ const HomeStackNavigator = createStackNavigator({
 //       )
 //     }
 //   },
+
 //   Brochurecart: {
 //     screen: BrochureCart,
 //     navigationOptions: {
@@ -516,6 +640,7 @@ const HomeStackNavigator = createStackNavigator({
 //       )
 //     }
 //   },
+
 //   BrandSpecs: {
 //     screen: BrandCheckupSchedule,
 //     navigationOptions: {
@@ -541,6 +666,7 @@ const HomeStackNavigator = createStackNavigator({
 //       )
 //     }
 //   },
+
 //   BrandCart: {
 //     screen: BrandCheckupCart,
 //     navigationOptions: {
@@ -566,6 +692,7 @@ const HomeStackNavigator = createStackNavigator({
 //       )
 //     }
 //   },
+
 //   CheckoutMain: {
 //     screen: CheckoutScreen,
 //     navigationOptions: {
@@ -591,6 +718,7 @@ const HomeStackNavigator = createStackNavigator({
 //       )
 //     }
 //   },
+
 //   CheckoutCard: {
 //     screen: StepTwo,
 //     navigationOptions: {
@@ -616,6 +744,7 @@ const HomeStackNavigator = createStackNavigator({
 //       )
 //     }
 //   },
+
 //   Summary: {
 //     screen: StepThree,
 //     navigationOptions: {
@@ -641,6 +770,7 @@ const HomeStackNavigator = createStackNavigator({
 //       )
 //     }
 //   },
+
 //   OrderNow: {
 //     screen: ThankyouScreens,
 //     navigationOptions: {
@@ -667,6 +797,7 @@ const HomeStackNavigator = createStackNavigator({
 //     }
 //   }
 // });
+
 // const focused =(
 //   <labelStyle style={{color: focused ? colors.bgblue : colors.whitetext}}/>
 // )
@@ -677,8 +808,6 @@ const TabNavigator = createBottomTabNavigator(
       screen: HomeStackNavigator,
       navigationOptions: {
         tabBarLabel: "HOME"
-
-        // focused={ focused ? colors.bgblue : colors.whitetext}
       }
     },
     OffersTab: {
@@ -688,7 +817,7 @@ const TabNavigator = createBottomTabNavigator(
       }
     },
     SettingsTab: {
-      screen: SettingsScreen,
+      screen: ProfileStackNavigator,
       navigationOptions: {
         tabBarLabel: "SETTINGS"
       }
@@ -758,8 +887,6 @@ const TabNavigator = createBottomTabNavigator(
       inactiveTintColor: colors.whitetext,
       style: {
         backgroundColor: colors.tabbarbackground
-
-        //color you want to change
       }
     }
   }
@@ -774,7 +901,7 @@ const AppDrawerNavigator = createDrawerNavigator({
     }
   },
   SettingsScreen: {
-    screen: SettingsScreen,
+    screen: Profile,
     navigationOptions: {
       title: "Settings",
       drawerIcon: () => <Ionicons name="ios-settings" size={24} />
@@ -966,6 +1093,7 @@ const SwitchNavigator = createSwitchNavigator(
     AuthLoading: Splash,
     App: TabNavigator,
     WalkthroughStackNavigator,
+    HomeStackNavigator,
     Auth: AuthNavigator
   },
   {
