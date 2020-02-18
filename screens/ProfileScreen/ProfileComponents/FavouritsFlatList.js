@@ -43,21 +43,6 @@ class FavouritsFlatList extends Component {
     };
   }
 
-  renderSeparator = () => {
-    return (
-      <View
-        style={{
-          // height: 1,
-          borderBottomColor: colors.blacktext,
-          borderBottomWidth: scale(1),
-          // width: "95%",
-          marginHorizontal: moderateScale(15)
-          // backgroundColor: colors.blacktext
-        }}
-      />
-    );
-  };
-
   render() {
     return (
       <SwipeListView
@@ -65,7 +50,6 @@ class FavouritsFlatList extends Component {
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
         useFlatList={true}
-        ItemSeparatorComponent={this.renderSeparator}
         keyExtractor={(item, index) => item.id}
         data={cart}
         renderHiddenItem={(rowData, rowMap) => (
@@ -188,9 +172,9 @@ const styles = StyleSheet.create({
     height: verticalScale(130),
     flexDirection: "row",
     paddingVertical: verticalScale(5),
-    paddingHorizontal: moderateScale(20)
-    // borderBottomColor: colors.blacktext,
-    // borderBottomWidth: scale(1)
+    paddingHorizontal: moderateScale(20),
+    borderBottomColor: colors.blacktext,
+    borderBottomWidth: scale(1)
   },
   rowBack: {
     flexDirection: "row",

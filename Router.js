@@ -26,6 +26,11 @@ import FourthScreen from "./screens/WalkthroughScreen/FourthScreen";
 
 import HomeScreen from "./screens/HomeScreen/HomeScreen";
 import Profile from "./screens/ProfileScreen/Profile";
+import MyOrders from "./screens/ProfileScreen/MyOrders";
+import Favourites from "./screens/ProfileScreen/Favourites";
+import EmptyFavorites from "./screens/ProfileScreen/EmptyFavorites";
+import FavouritsFlatList from "./screens/ProfileScreen/ProfileComponents/FavouritsFlatList";
+import SavedCards from "./screens/ProfileScreen/SavedCards";
 
 import ViewAllCategories from "./screens/HomeScreen/ViewAllCategories";
 
@@ -61,10 +66,6 @@ import {
   createBottomTabNavigator,
   NavigationActions
 } from "react-navigation";
-import MyOrders from "./screens/ProfileScreen/MyOrders";
-import Favourites from "./screens/ProfileScreen/Favourites";
-import EmptyFavorites from "./screens/ProfileScreen/EmptyFavorites";
-import SavedCards from "./screens/ProfileScreen/SavedCards";
 
 class navigationRouter extends Component {
   render() {
@@ -509,6 +510,32 @@ const ProfileStackNavigator = createStackNavigator({
       )
     }
   },
+  ListFavourites: {
+    screen: FavouritsFlatList,
+    navigationOptions: {
+      headerBackTitle: null,
+      tabBarVisible: false,
+      header: <Header />,
+      headerBackImage: (
+        <View
+          style={{
+            marginLeft: scale(5)
+          }}
+        >
+          <Image
+            source={require("./assets/back-arrow-icon.png")}
+            style={{
+              width: moderateScale(20),
+              height: verticalScale(20),
+              tintColor: colors.whitetext
+            }}
+            resizeMode="contain"
+          />
+        </View>
+      )
+    }
+  },
+
   SavedCards: {
     screen: SavedCards,
     navigationOptions: {

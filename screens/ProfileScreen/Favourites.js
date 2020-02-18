@@ -16,6 +16,7 @@ import colors from "../../assets/colors";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import CategoryButton from "../../components/CategoryButton";
 import FavouritsFlatList from "./ProfileComponents/FavouritsFlatList";
+import EmptyFavorites from "../ProfileScreen/EmptyFavorites";
 
 class MyOrders extends Component {
   constructor(props) {
@@ -24,18 +25,6 @@ class MyOrders extends Component {
       showPassword: true
     };
   }
-
-  renderSeparator = () => {
-    return (
-      <View
-        style={{
-          height: 1,
-          width: "95%",
-          backgroundColor: colors.blacktext
-        }}
-      />
-    );
-  };
 
   tapOnProfile = () => {
     this.props.navigation.navigate("Profile");
@@ -107,8 +96,13 @@ class MyOrders extends Component {
           {/* ACCOUNT DETAILS SCROLLBAR END*/}
 
           {/* FLATLIST TO DISPLAY ORDERS START*/}
-          <View>
-            <FavouritsFlatList />
+          <View
+            style={{
+              flex: 1
+            }}
+          >
+            <EmptyFavorites></EmptyFavorites>
+            {/* <FavouritsFlatList /> */}
           </View>
           {/* FLATLIST TO DISPLAY ORDERS END*/}
         </KeyboardAwareScrollView>
