@@ -12,7 +12,9 @@ import {
 
 import { moderateScale, scale, verticalScale } from "../../scale";
 import colors from "../../assets/colors";
+
 import { FontAwesome } from "@expo/vector-icons";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 import Swiper from "../../components/Swiper";
 import CategoryButton from "../../components/CategoryButton";
@@ -27,7 +29,6 @@ class HomeScreen extends Component {
   //     this.props.navigation.navigate("CartScreen");
   //   }, 5000);
   // }
-  
 
   constructor(props) {
     super(props);
@@ -46,65 +47,13 @@ class HomeScreen extends Component {
 
   render() {
     return (
-      // HEADER
-      <View style={{ flex: 1 }}>
-        <SafeAreaView />
-
+      <SafeAreaView style={styles.container}>
         {/* BODY */}
-        <ScrollView>
-          {/* SEARCH BAR START */}
-          <View
-            style={{
-              flex: 1,
-              backgroundColor: colors.bgblue,
-              paddingTop: verticalScale(3),
-              height: verticalScale(50)
-            }}
-          >
-            <View
-              style={{
-                flex: 1,
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-around",
-                padding: scale(5),
-                marginHorizontal: moderateScale(30),
-                marginBottom: verticalScale(5),
-                backgroundColor: colors.whitetext,
-                height: verticalScale(40)
-              }}
-            >
-              <Image
-                source={require("../../assets/searchicon.png")}
-                style={{
-                  width: moderateScale(25),
-                  height: verticalScale(25)
-                }}
-                resizeMode="contain"
-              />
-              <TextInput
-                style={{
-                  marginLeft: moderateScale(-20),
-                  color: colors.blacktext,
-                  fontSize: scale(14),
-                  fontWeight: "400"
-                }}
-                value={this.state.search}
-                underlineColorAndroid="transparent"
-                onChangeText={text => this.setState({ search: text })}
-                placeholder={"What are you looking for?"}
-                placeholderTextColor={colors.inactivegreybutton}
-                returnKeyType="done"
-              />
-              <FontAwesome
-                name="microphone"
-                color={colors.inactivegreybutton}
-                size={scale(20)}
-              />
-            </View>
-          </View>
-          {/* SEARCH BAR END */}
-
+        <KeyboardAwareScrollView
+          resetScrollToCoords={{ x: 0, y: 0 }}
+          // contentContainerStyle={styles.container}
+          scrollEnabled={true}
+        >
           <View style={{ flex: 1 }}>
             <Swiper />
             <TouchableOpacity>
@@ -233,19 +182,16 @@ class HomeScreen extends Component {
               <FlatListComponent />
             </View>
           </View>
-        </ScrollView>
-        <SafeAreaView />
-      </View>
+        </KeyboardAwareScrollView>
+      </SafeAreaView>
     );
   }
 }
 export default HomeScreen;
+
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: colors.whitetext,
-    alignItems: "center",
-    justifyContent: "center"
+    flex: 1
   },
   categorybuttonstyle: {
     width: moderateScale(90),

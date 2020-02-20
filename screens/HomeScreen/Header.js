@@ -233,9 +233,7 @@ class Header extends React.Component {
           </View>
           {/* OTHER ICONS END */}
         </View>
-        <View>
-          <this.searchbar />
-        </View>
+        <this.searchbar />
       </SafeAreaView>
     );
   }
