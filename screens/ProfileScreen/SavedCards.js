@@ -43,6 +43,10 @@ class SavedCards extends Component {
     this.props.navigation.navigate("SavedCards");
   };
 
+  tapOnAdd = () => {
+    this.props.navigation.navigate("CheckoutMain");
+  };
+
   render() {
     return (
       <SafeAreaView style={styles.container}>
@@ -68,27 +72,26 @@ class SavedCards extends Component {
               </Text>
 
               <CategoryButton
+                onPress={this.tapOnProfile}
                 style={{ backgroundColor: colors.inactivegreybutton }}
               >
                 <Text style={styles.catogeryContainerText}>PROFILE</Text>
               </CategoryButton>
-
               <CategoryButton
+                onPress={this.tapOnMyOrders}
                 style={{ backgroundColor: colors.inactivegreybutton }}
               >
                 <Text style={styles.catogeryContainerText}>MY ORDERS</Text>
               </CategoryButton>
-
               <CategoryButton
                 style={{ backgroundColor: colors.inactivegreybutton }}
+                onPress={this.tapOnFavoruties}
               >
                 <Text style={styles.catogeryContainerText}>FAVOURITES</Text>
               </CategoryButton>
-
-              <CategoryButton>
+              <CategoryButton onPress={this.tapOnSavedCards}>
                 <Text style={styles.catogeryContainerText}>SAVED CARDS</Text>
               </CategoryButton>
-
               <CategoryButton
                 style={{ backgroundColor: colors.inactivegreybutton }}
               >
@@ -108,6 +111,7 @@ class SavedCards extends Component {
               alignItems: "center",
               justifyContent: "center"
             }}
+            onPress={this.tapOnAdd}
           >
             <AntDesign
               name="pluscircle"

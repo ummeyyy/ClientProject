@@ -112,6 +112,7 @@ const HomeStackNavigator = createStackNavigator({
   LimitedOffers: {
     screen: LimitedTimeProduct,
     navigationOptions: {
+      tabBarVisible: false,
       header: <Header />,
       headerBackTitle: null,
       headerBackImage: (
