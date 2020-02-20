@@ -113,8 +113,9 @@ const HomeStackNavigator = createStackNavigator({
     screen: LimitedTimeProduct,
     navigationOptions: {
       tabBarVisible: false,
-      header: <Header />,
+      tabBarVisible: false,
       headerBackTitle: null,
+      header: <HeaderTwo />,
       headerBackImage: (
         <View
           style={{
@@ -830,6 +831,60 @@ const ProfileStackNavigator = createStackNavigator({
 //   <labelStyle style={{color: focused ? colors.bgblue : colors.whitetext}}/>
 // )
 
+const LimitedStackNavigator = createStackNavigator({
+  Profile: {
+    screen: LimitedTimeProduct,
+    navigationOptions: {
+      tabBarLabel: "OFFERS",
+      headerBackTitle: null,
+      tabBarVisible: false,
+      header: <HeaderTwo />,
+      headerBackImage: (
+        <View
+          style={{
+            marginLeft: scale(5)
+          }}
+        >
+          <Image
+            source={require("./assets/back-arrow-icon.png")}
+            style={{
+              width: moderateScale(20),
+              height: verticalScale(20),
+              tintColor: colors.whitetext
+            }}
+            resizeMode="contain"
+          />
+        </View>
+      )
+    }
+  },
+  MyOrders: {
+    screen: MyOrders,
+    navigationOptions: {
+      headerBackTitle: null,
+      tabBarVisible: false,
+      header: <Header />,
+      headerBackImage: (
+        <View
+          style={{
+            marginLeft: scale(5)
+          }}
+        >
+          <Image
+            source={require("./assets/back-arrow-icon.png")}
+            style={{
+              width: moderateScale(20),
+              height: verticalScale(20),
+              tintColor: colors.whitetext
+            }}
+            resizeMode="contain"
+          />
+        </View>
+      )
+    }
+  }
+});
+
 const TabNavigator = createBottomTabNavigator(
   {
     HomeTab: {
@@ -839,7 +894,7 @@ const TabNavigator = createBottomTabNavigator(
       }
     },
     OffersTab: {
-      screen: LimitedTimeProduct,
+      screen: LimitedStackNavigator,
       navigationOptions: {
         tabBarLabel: "OFFERS"
       }
@@ -929,7 +984,7 @@ const AppDrawerNavigator = createDrawerNavigator({
     }
   },
   SettingsScreen: {
-    screen: Profile,
+    screen: ProfileStackNavigator,
     navigationOptions: {
       title: "Settings",
       drawerIcon: () => <Ionicons name="ios-settings" size={24} />
@@ -1121,7 +1176,6 @@ const SwitchNavigator = createSwitchNavigator(
     AuthLoading: Splash,
     App: TabNavigator,
     WalkthroughStackNavigator,
-    HomeStackNavigator,
     Auth: AuthNavigator
   },
   {

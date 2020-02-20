@@ -1,10 +1,100 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text, Image, SafeAreaView } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  SafeAreaView,
+  TextInput,
+  TouchableOpacity
+} from "react-native";
 
 import { moderateScale, scale, verticalScale } from "../../scale";
 import colors from "../../assets/colors";
 
+import { withNavigation } from "react-navigation";
+import { FontAwesome } from "@expo/vector-icons";
+
 class HeaderTwo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.toggleSearch = this.toggleSearch.bind(this);
+    this.state = {
+      showicon: true,
+      search: ""
+    };
+  }
+
+  toggleSearch() {
+    this.setState({ showicon: !this.state.showicon });
+  }
+
+  tap = () => {
+    this.props.navigation.navigate("BrandingDesign");
+  };
+  notification = () => {
+    this.props.navigation.navigate("LimitedOffers");
+  };
+
+  cart = () => {
+    this.props.navigation.navigate("ViewCart");
+  };
+
+  searchbar = () => {
+    return (
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: colors.bgblue,
+          paddingTop: verticalScale(3),
+          height: verticalScale(50)
+        }}
+      >
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-around",
+            padding: scale(5),
+            marginHorizontal: moderateScale(10),
+            marginBottom: verticalScale(5),
+            backgroundColor: colors.whitetext,
+            width: moderateScale(300),
+            height: verticalScale(40)
+          }}
+        >
+          <Image
+            source={require("../../assets/searchicon.png")}
+            style={{
+              width: moderateScale(25),
+              height: verticalScale(25)
+            }}
+            resizeMode="contain"
+          />
+          <TextInput
+            style={{
+              marginLeft: moderateScale(-20),
+              color: colors.blacktext,
+              fontSize: scale(14),
+              fontWeight: "400"
+            }}
+            value={this.state.search}
+            underlineColorAndroid="transparent"
+            onChangeText={text => this.setState({ search: text })}
+            placeholder={"What are you looking for?"}
+            placeholderTextColor={colors.inactivegreybutton}
+            returnKeyType="done"
+          />
+          <FontAwesome
+            name="microphone"
+            color={colors.inactivegreybutton}
+            size={scale(20)}
+          />
+        </View>
+      </View>
+    );
+  };
+
   render() {
     return (
       <SafeAreaView style={styles.container}>
@@ -17,13 +107,15 @@ class HeaderTwo extends React.Component {
         >
           {/* DRAWER ICON START*/}
 
-          <View
+          <TouchableOpacity
             style={{
               flex: 0.2,
               alignItems: "center",
-              justifyContent: "space-around",
-              marginLeft: scale(25)
+              justifyContent: "center",
+              paddingLeft: scale(30),
+              marginTop: verticalScale(2)
             }}
+            onPress={this.tap}
           >
             <Image
               source={require("../../assets/menu-icon.png")}
@@ -33,7 +125,7 @@ class HeaderTwo extends React.Component {
               }}
               resizeMode="contain"
             />
-          </View>
+          </TouchableOpacity>
           {/* DRAWER ICON END*/}
           {/* Logo START*/}
           <View
@@ -113,48 +205,56 @@ class HeaderTwo extends React.Component {
             }}
           >
             {/* SEARCH ICON START*/}
-            <Image
-              source={require("../../assets/searchicon.png")}
-              style={{
-                width: moderateScale(25),
-                height: verticalScale(25),
-                tintColor: colors.whitetext,
-                marginRight: scale(5),
-                marginLeft: scale(-5)
-              }}
-              resizeMode="contain"
-            />
+            <TouchableOpacity onPress={this.toggleSearch}>
+              <Image
+                source={require("../../assets/searchicon.png")}
+                style={{
+                  width: moderateScale(25),
+                  height: verticalScale(25),
+                  tintColor: colors.whitetext,
+                  marginRight: scale(5),
+                  marginLeft: scale(-5)
+                }}
+                resizeMode="contain"
+              />
+            </TouchableOpacity>
+
             {/* SEARCH ICON END*/}
 
             {/* NOTIFICATION ICON START*/}
-            <Image
-              source={require("../../assets/notification.png")}
-              style={{
-                width: moderateScale(25),
-                height: verticalScale(25)
-              }}
-              resizeMode="contain"
-            />
+            <TouchableOpacity onPress={this.notification}>
+              <Image
+                source={require("../../assets/notification.png")}
+                style={{
+                  width: moderateScale(25),
+                  height: verticalScale(25)
+                }}
+                resizeMode="contain"
+              />
+            </TouchableOpacity>
             {/* NOTIFICATION ICON END*/}
 
             {/* CART ICON START*/}
-            <Image
-              source={require("../../assets/cart-icon.png")}
-              style={{
-                width: moderateScale(25),
-                height: verticalScale(25)
-              }}
-              resizeMode="contain"
-            />
+            <TouchableOpacity onPress={this.cart}>
+              <Image
+                source={require("../../assets/cart-icon.png")}
+                style={{
+                  width: moderateScale(25),
+                  height: verticalScale(25)
+                }}
+                resizeMode="contain"
+              />
+            </TouchableOpacity>
             {/* CART ICON END*/}
           </View>
           {/* OTHER ICONS END */}
         </View>
+        {!this.state.showicon ? <this.searchbar /> : null}
       </SafeAreaView>
     );
   }
 }
-export default HeaderTwo;
+export default withNavigation(HeaderTwo);
 
 const styles = StyleSheet.create({
   container: {

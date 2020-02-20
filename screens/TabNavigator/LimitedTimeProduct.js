@@ -118,58 +118,6 @@ class LimitedTimeProducts extends React.Component {
           showsVerticalScrollIndicator={false}
           horizontal={false}
         >
-          <View
-            style={{
-              flex: 1,
-              backgroundColor: colors.bgblue,
-              paddingTop: verticalScale(3),
-              height: verticalScale(50)
-            }}
-          >
-            <View
-              style={{
-                flex: 1,
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-around",
-                padding: scale(5),
-                marginHorizontal: moderateScale(30),
-                marginBottom: verticalScale(5),
-                backgroundColor: colors.whitetext,
-                height: verticalScale(40)
-              }}
-            >
-              <Image
-                source={require("../../assets/searchicon.png")}
-                style={{
-                  width: moderateScale(25),
-                  height: verticalScale(25)
-                }}
-                resizeMode="contain"
-              />
-              <TextInput
-                style={{
-                  marginLeft: moderateScale(-20),
-                  color: colors.blacktext,
-                  fontSize: scale(14),
-                  fontWeight: "400"
-                }}
-                value={this.state.search}
-                underlineColorAndroid="transparent"
-                onChangeText={text => this.setState({ search: text })}
-                placeholder={"What are you looking for?"}
-                placeholderTextColor={colors.inactivegreybutton}
-                returnKeyType="done"
-              />
-              <FontAwesome
-                name="microphone"
-                color={colors.inactivegreybutton}
-                size={scale(20)}
-              />
-            </View>
-          </View>
-          {/* SEARCH BAR END */}
-
           <View style={{ flex: 1 }}>
             <Image
               source={require("../../assets/limited.jpg")}

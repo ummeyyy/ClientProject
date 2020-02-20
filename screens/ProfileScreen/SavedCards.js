@@ -22,6 +22,8 @@ import SavedCardFlatlist from "../ProfileScreen/ProfileComponents/SavedCardFlatl
 class SavedCards extends Component {
   constructor(props) {
     super(props);
+    this.toggleSwitch = this.toggleSwitch.bind(this);
+
     this.state = {
       showPassword: true
     };
