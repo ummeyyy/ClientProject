@@ -60,7 +60,7 @@ export default class EmptyFavorites extends Component {
           >
             <CategoryButton
               style={styles.createaccounttbutton}
-              onPress={this.tapOnGetStarted}
+              onPress={this.props.onPress}
             >
               <Text style={styles.createaccountbuttontext}>GET STARTED</Text>
             </CategoryButton>

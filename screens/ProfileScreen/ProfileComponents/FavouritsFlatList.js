@@ -13,8 +13,8 @@ import {
 import { SwipeListView } from "react-native-swipe-list-view";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import CategoryButton from "../../../components/CategoryButton";
-
 import { FontAwesome, AntDesign, Octicons } from "@expo/vector-icons";
+
 import { moderateScale, scale, verticalScale } from "../../../scale";
 import colors from "../../../assets/colors";
 

@@ -15,6 +15,7 @@ import colors from "../../assets/colors";
 
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import CategoryButton from "../../components/CategoryButton";
+
 import FavouritsFlatList from "./ProfileComponents/FavouritsFlatList";
 import EmptyFavorites from "../ProfileScreen/EmptyFavorites";
 
@@ -104,7 +105,7 @@ export default class MyOrders extends Component {
               flex: 1
             }}
           >
-            <EmptyFavorites onPress={this.tapOnGetStarted()}></EmptyFavorites>
+            <EmptyFavorites onPress={this.tapOnGetStarted}></EmptyFavorites>
             {/* <FavouritsFlatList /> */}
           </View>
           {/* FLATLIST TO DISPLAY ORDERS END*/}
