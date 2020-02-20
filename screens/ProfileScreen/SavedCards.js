@@ -22,8 +22,7 @@ import SavedCardFlatlist from "../ProfileScreen/ProfileComponents/SavedCardFlatl
 class SavedCards extends Component {
   constructor(props) {
     super(props);
-    this.toggleSwitch = this.toggleSwitch.bind(this);
-
+    // this.toggleSwitch = this.toggleSwitch.bind(this);
     this.state = {
       showPassword: true
     };
@@ -118,7 +117,7 @@ class SavedCards extends Component {
             <AntDesign
               name="pluscircle"
               color={colors.bgblue}
-              size={scale(50)}
+              size={scale(45)}
             />
             <Text style={styles.Addbuttontext}>ADD</Text>
           </TouchableOpacity>
