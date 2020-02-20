@@ -13,9 +13,9 @@ import colors from "../../assets/colors";
 
 import CategoryButton from "../../components/CategoryButton";
 
-class EmptyFavorites extends Component {
+export default class EmptyFavorites extends Component {
   tapOnGetStarted = () => {
-    this.props.navigation.navigate("Favourites");
+    this.props.navigation.navigate("ListFavourites");
   };
 
   render() {
@@ -71,7 +71,6 @@ class EmptyFavorites extends Component {
     );
   }
 }
-export default EmptyFavorites;
 
 const styles = StyleSheet.create({
   container: {

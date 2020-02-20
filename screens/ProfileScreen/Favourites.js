@@ -18,7 +18,7 @@ import CategoryButton from "../../components/CategoryButton";
 import FavouritsFlatList from "./ProfileComponents/FavouritsFlatList";
 import EmptyFavorites from "../ProfileScreen/EmptyFavorites";
 
-class MyOrders extends Component {
+export default class MyOrders extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -42,12 +42,15 @@ class MyOrders extends Component {
     this.props.navigation.navigate("SavedCards");
   };
 
+  tapOnGetStarted = () => {
+    this.props.navigation.navigate("ListFavourites");
+  };
+
   render() {
     return (
       <SafeAreaView style={styles.container}>
         <KeyboardAwareScrollView
           resetScrollToCoords={{ x: 0, y: 0 }}
-          contentContainerStyle={styles.container}
           scrollEnabled={true}
         >
           {/* ACCOUNT DETAILS SCROLLBAR START*/}
@@ -101,7 +104,7 @@ class MyOrders extends Component {
               flex: 1
             }}
           >
-            <EmptyFavorites></EmptyFavorites>
+            <EmptyFavorites onPress={this.tapOnGetStarted()}></EmptyFavorites>
             {/* <FavouritsFlatList /> */}
           </View>
           {/* FLATLIST TO DISPLAY ORDERS END*/}
@@ -110,7 +113,6 @@ class MyOrders extends Component {
     );
   }
 }
-export default MyOrders;
 
 const styles = StyleSheet.create({
   container: {

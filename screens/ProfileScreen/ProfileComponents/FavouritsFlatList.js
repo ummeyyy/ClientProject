@@ -1,10 +1,20 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, Image, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+  TextInput,
+  SafeAreaView
+} from "react-native";
 
 import { SwipeListView } from "react-native-swipe-list-view";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import CategoryButton from "../../../components/CategoryButton";
 
 import { FontAwesome, AntDesign, Octicons } from "@expo/vector-icons";
-
 import { moderateScale, scale, verticalScale } from "../../../scale";
 import colors from "../../../assets/colors";
 
@@ -35,139 +45,230 @@ const cart = [
   }
 ];
 
-class FavouritsFlatList extends Component {
-  constructor() {
-    super();
-    this.state = {
-      price: cart[0].price
-    };
-  }
+export default class FavouritsFlatList extends Component {
+  tapOnProfile = () => {
+    this.props.navigation.navigate("Profile");
+  };
+
+  tapOnMyOrders = () => {
+    this.props.navigation.navigate("MyOrders");
+  };
+
+  tapOnFavoruties = () => {
+    this.props.navigation.navigate("Favourites");
+  };
+
+  tapOnSavedCards = () => {
+    this.props.navigation.navigate("SavedCards");
+  };
 
   render() {
     return (
-      <SwipeListView
-        horizontal={false}
-        showsHorizontalScrollIndicator={false}
-        showsVerticalScrollIndicator={false}
-        useFlatList={true}
-        keyExtractor={(item, index) => item.id}
-        data={cart}
-        renderHiddenItem={(rowData, rowMap) => (
-          <View style={styles.rowBack}>
-            <View
-              style={{
-                alignItems: "flex-start",
-                // justifyContent: "center",
-                backgroundColor: colors.bggreen,
-                flex: 1,
-                height: verticalScale(150),
-                paddingVertical: verticalScale(45),
-                paddingHorizontal: moderateScale(25)
-              }}
+      <SafeAreaView style={styles.container}>
+        <KeyboardAwareScrollView
+          resetScrollToCoords={{ x: 0, y: 0 }}
+          contentContainerStyle={styles.container}
+          scrollEnabled={true}
+        >
+          {/* ACCOUNT DETAILS SCROLLBAR START*/}
+          <View style={styles.catogeryContainer}>
+            <ScrollView
+              directionalLockEnabled={true}
+              showsHorizontalScrollIndicator={false}
+              horizontal={true}
             >
-              <FontAwesome
-                name="edit"
-                color={colors.whitetext}
-                size={scale(30)}
-              />
-            </View>
-
-            <View
-              style={{
-                alignItems: "flex-end",
-                backgroundColor: colors.bgyellow,
-                flex: 1,
-                height: verticalScale(150),
-                paddingVertical: verticalScale(45),
-                paddingHorizontal: moderateScale(25)
-              }}
-            >
-              <Octicons
-                name="trashcan"
-                color={colors.whitetext}
-                size={scale(30)}
-              />
-            </View>
-          </View>
-        )}
-        leftOpenValue={80}
-        rightOpenValue={-80}
-        onRowOpen={(rowKey, rowMap) => {
-          setTimeout(() => {
-            rowMap[rowKey].closeRow();
-          }, 2000);
-        }}
-        renderItem={({ item, index }) => (
-          // ITEMS DESIGN
-          <View style={styles.rowFront}>
-            {/* IMAGE VIEW */}
-            <View
-              style={{
-                flex: 1,
-                alignItems: "center",
-                justifyContent: "center"
-              }}
-            >
-              <Image
-                source={item.image}
-                style={styles.itemImage}
-                resizeMode="cover"
-              />
-            </View>
-            {/* DETAILS VIEW */}
-            <View
-              style={{
-                flex: 2.2,
-                paddingLeft: moderateScale(10),
-                marginBottom: verticalScale(5)
-              }}
-            >
-              <Text style={styles.itemTitle}>{item.name}</Text>
-              <Text style={styles.itemDetails}>Date: {item.date}</Text>
-              <Text style={styles.itemDetails}>Order Id: {item.orderid}</Text>
-              <Text style={styles.itemDetails}>
-                {"\n"}
-                Price: {item.price} AED
-                {"\n"}
+              <Text
+                style={[
+                  styles.catogeryContainerTitle,
+                  { paddingTop: verticalScale(5) }
+                ]}
+              >
+                ACCOUNT DETAILS
               </Text>
-            </View>
-            {/* PLUS BUTTON START */}
-            <View
-              style={{
-                flex: 0.7,
-                alignItems: "center",
-                justifyContent: "center"
-              }}
-            >
-              <TouchableOpacity>
-                <View style={{ paddingLeft: moderateScale(5) }}>
-                  <AntDesign
-                    name="pluscircle"
-                    color={colors.bgblue}
-                    size={scale(25)}
-                  />
-                </View>
-                <Text style={styles.Addbuttontext}>ADD</Text>
-              </TouchableOpacity>
-            </View>
+              <CategoryButton
+                onPress={this.tapOnProfile}
+                style={{ backgroundColor: colors.inactivegreybutton }}
+              >
+                <Text style={styles.catogeryContainerText}>PROFILE</Text>
+              </CategoryButton>
+              <CategoryButton
+                onPress={this.tapOnMyOrders}
+                style={{ backgroundColor: colors.inactivegreybutton }}
+              >
+                <Text style={styles.catogeryContainerText}>MY ORDERS</Text>
+              </CategoryButton>
+              <CategoryButton onPress={this.tapOnFavoruties}>
+                <Text style={styles.catogeryContainerText}>FAVOURITES</Text>
+              </CategoryButton>
+              <CategoryButton
+                style={{ backgroundColor: colors.inactivegreybutton }}
+                onPress={this.tapOnSavedCards}
+              >
+                <Text style={styles.catogeryContainerText}>SAVED CARDS</Text>
+              </CategoryButton>
+              <CategoryButton
+                style={{ backgroundColor: colors.inactivegreybutton }}
+              >
+                <Text style={styles.catogeryContainerText}>SETTINGS</Text>
+              </CategoryButton>
+            </ScrollView>
           </View>
-        )}
-      />
+          {/* ACCOUNT DETAILS SCROLLBAR END*/}
+
+          {/* FLATLIST TO DISPLAY ORDERS START*/}
+          <View
+            style={{
+              flex: 1
+            }}
+          >
+            <SwipeListView
+              horizontal={false}
+              showsHorizontalScrollIndicator={false}
+              showsVerticalScrollIndicator={false}
+              useFlatList={true}
+              keyExtractor={(item, index) => item.id}
+              data={cart}
+              renderHiddenItem={(rowData, rowMap) => (
+                <View style={styles.rowBack}>
+                  <View
+                    style={{
+                      alignItems: "flex-start",
+                      // justifyContent: "center",
+                      backgroundColor: colors.bggreen,
+                      flex: 1,
+                      height: verticalScale(150),
+                      paddingVertical: verticalScale(45),
+                      paddingHorizontal: moderateScale(25)
+                    }}
+                  >
+                    <FontAwesome
+                      name="edit"
+                      color={colors.whitetext}
+                      size={scale(30)}
+                    />
+                  </View>
+
+                  <View
+                    style={{
+                      alignItems: "flex-end",
+                      backgroundColor: colors.bgyellow,
+                      flex: 1,
+                      height: verticalScale(150),
+                      paddingVertical: verticalScale(45),
+                      paddingHorizontal: moderateScale(25)
+                    }}
+                  >
+                    <Octicons
+                      name="trashcan"
+                      color={colors.whitetext}
+                      size={scale(30)}
+                    />
+                  </View>
+                </View>
+              )}
+              leftOpenValue={80}
+              rightOpenValue={-80}
+              onRowOpen={(rowKey, rowMap) => {
+                setTimeout(() => {
+                  rowMap[rowKey].closeRow();
+                }, 2000);
+              }}
+              renderItem={({ item, index }) => (
+                // ITEMS DESIGN
+                <View style={styles.rowFront}>
+                  {/* IMAGE VIEW */}
+                  <View
+                    style={{
+                      flex: 1,
+                      alignItems: "center",
+                      justifyContent: "center"
+                    }}
+                  >
+                    <Image
+                      source={item.image}
+                      style={styles.itemImage}
+                      resizeMode="cover"
+                    />
+                  </View>
+                  {/* DETAILS VIEW */}
+                  <View
+                    style={{
+                      flex: 2.2,
+                      paddingLeft: moderateScale(10),
+                      marginBottom: verticalScale(5)
+                    }}
+                  >
+                    <Text style={styles.itemTitle}>{item.name}</Text>
+                    <Text style={styles.itemDetails}>Date: {item.date}</Text>
+                    <Text style={styles.itemDetails}>
+                      Order Id: {item.orderid}
+                    </Text>
+                    <Text style={styles.itemDetails}>
+                      {"\n"}
+                      Price: {item.price} AED
+                      {"\n"}
+                    </Text>
+                  </View>
+                  {/* PLUS BUTTON START */}
+                  <View
+                    style={{
+                      flex: 0.7,
+                      alignItems: "center",
+                      justifyContent: "center"
+                    }}
+                  >
+                    <TouchableOpacity>
+                      <View style={{ paddingLeft: moderateScale(5) }}>
+                        <AntDesign
+                          name="pluscircle"
+                          color={colors.bgblue}
+                          size={scale(25)}
+                        />
+                      </View>
+                      <Text style={styles.Addbuttontext}>ADD</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              )}
+            />
+          </View>
+          {/* FLATLIST TO DISPLAY ORDERS END*/}
+        </KeyboardAwareScrollView>
+      </SafeAreaView>
     );
   }
 }
-export default FavouritsFlatList;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    marginHorizontal: moderateScale(6)
+    flex: 1
+  },
+  catogeryContainer: {
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    flexDirection: "row",
+    height: verticalScale(60),
+    padding: scale(10),
+    backgroundColor: colors.whitetext,
+    borderBottomWidth: scale(1.5),
+    borderBottomColor: colors.greytext
+  },
+  catogeryContainerTitle: {
+    color: colors.greytext,
+    fontSize: scale(12),
+    fontWeight: "bold"
+  },
+  catogeryContainerText: {
+    color: colors.whitetext,
+    fontSize: scale(10),
+    fontWeight: "bold"
   },
   itemContainer: {
     height: verticalScale(50),
     width: "100%"
   },
   rowFront: {
+    marginHorizontal: moderateScale(6),
     backgroundColor: colors.whitetext,
     height: verticalScale(130),
     flexDirection: "row",
@@ -180,6 +281,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+    marginHorizontal: moderateScale(6),
     backgroundColor: colors.whitetext
   },
   itemImage: {
