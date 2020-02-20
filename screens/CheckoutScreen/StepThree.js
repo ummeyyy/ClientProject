@@ -301,7 +301,10 @@ class StepThree extends Component {
                     alignItems: "flex-end"
                   }}
                 >
-                  <CategoryButton style={styles.changeeditContainer}>
+                  <CategoryButton
+                    style={styles.changeeditContainer}
+                    onPress={this.handleChange}
+                  >
                     <Text style={styles.changeeditText}>CHANGE</Text>
                   </CategoryButton>
                 </View>

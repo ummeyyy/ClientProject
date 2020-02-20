@@ -7,6 +7,10 @@ import { moderateScale, scale, verticalScale } from "../../scale";
 import colors from "../../assets/colors";
 
 class ThankyouScreen extends Component {
+  handleContinueShpping = () => {
+    this.props.navigation.navigate("HomeScreen");
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -33,7 +37,10 @@ class ThankyouScreen extends Component {
             <CategoryButton style={styles.orderTrackingbuttonContainer}>
               <Text style={styles.orderTrackingText}>ORDER TRACKING</Text>
             </CategoryButton>
-            <CategoryButton style={styles.continueShoppingbuttonContainer}>
+            <CategoryButton
+              style={styles.continueShoppingbuttonContainer}
+              onPress={this.handleContinueShpping}
+            >
               <Text style={styles.continueShoppingText}>CONTINUE SHOPPING</Text>
             </CategoryButton>
           </View>
