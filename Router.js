@@ -565,279 +565,12 @@ const ProfileStackNavigator = createStackNavigator({
   }
 });
 
-// const CartStackNavigator = createStackNavigator({
-//   BrochureScreen: {
-//     screen: Brochure,
-//     navigationOptions: {
-//       tabBarVisible: false,
-//       headerBackTitle: null,
-//       headerBackground: <HeaderTwo />,
-//       headerBackImage: (
-//         <View
-//           style={{
-//             marginLeft: scale(5)
-//           }}
-//         >
-//           <Image
-//             source={require("./assets/back-arrow-icon.png")}
-//             style={{
-//               width: moderateScale(20),
-//               height: verticalScale(20),
-//               tintColor: colors.whitetext
-//             }}
-//             resizeMode="contain"
-//           />
-//         </View>
-//       )
-//     }
-//   },
-
-//   ViewCart: {
-//     screen: YourCart,
-//     navigationOptions: {
-//       tabBarVisible: false,
-//       headerBackTitle: null,
-//       headerBackground: <HeaderTwo />,
-//       headerBackImage: (
-//         <View
-//           style={{
-//             marginLeft: scale(5)
-//           }}
-//         >
-//           <Image
-//             source={require("./assets/back-arrow-icon.png")}
-//             style={{
-//               width: moderateScale(20),
-//               height: verticalScale(20),
-//               tintColor: colors.whitetext
-//             }}
-//             resizeMode="contain"
-//           />
-//         </View>
-//       )
-//     }
-//   },
-
-//   BrochureSpecs: {
-//     screen: BrochureType,
-//     navigationOptions: {
-//       tabBarVisible: false,
-//       headerBackTitle: null,
-//       headerBackground: <HeaderTwo />,
-//       headerBackImage: (
-//         <View
-//           style={{
-//             marginLeft: scale(5)
-//           }}
-//         >
-//           <Image
-//             source={require("./assets/back-arrow-icon.png")}
-//             style={{
-//               width: moderateScale(20),
-//               height: verticalScale(20),
-//               tintColor: colors.whitetext
-//             }}
-//             resizeMode="contain"
-//           />
-//         </View>
-//       )
-//     }
-//   },
-
-//   Brochurecart: {
-//     screen: BrochureCart,
-//     navigationOptions: {
-//       tabBarVisible: false,
-//       headerBackTitle: null,
-//       headerBackground: <HeaderTwo />,
-//       headerBackImage: (
-//         <View
-//           style={{
-//             marginLeft: scale(5)
-//           }}
-//         >
-//           <Image
-//             source={require("./assets/back-arrow-icon.png")}
-//             style={{
-//               width: moderateScale(20),
-//               height: verticalScale(20),
-//               tintColor: colors.whitetext
-//             }}
-//             resizeMode="contain"
-//           />
-//         </View>
-//       )
-//     }
-//   },
-
-//   BrandSpecs: {
-//     screen: BrandCheckupSchedule,
-//     navigationOptions: {
-//       tabBarVisible: false,
-//       headerBackTitle: null,
-//       headerBackground: <HeaderTwo />,
-//       headerBackImage: (
-//         <View
-//           style={{
-//             marginLeft: scale(5)
-//           }}
-//         >
-//           <Image
-//             source={require("./assets/back-arrow-icon.png")}
-//             style={{
-//               width: moderateScale(20),
-//               height: verticalScale(20),
-//               tintColor: colors.whitetext
-//             }}
-//             resizeMode="contain"
-//           />
-//         </View>
-//       )
-//     }
-//   },
-
-//   BrandCart: {
-//     screen: BrandCheckupCart,
-//     navigationOptions: {
-//       tabBarVisible: false,
-//       headerBackTitle: null,
-//       headerBackground: <HeaderTwo />,
-//       headerBackImage: (
-//         <View
-//           style={{
-//             marginLeft: scale(5)
-//           }}
-//         >
-//           <Image
-//             source={require("./assets/back-arrow-icon.png")}
-//             style={{
-//               width: moderateScale(20),
-//               height: verticalScale(20),
-//               tintColor: colors.whitetext
-//             }}
-//             resizeMode="contain"
-//           />
-//         </View>
-//       )
-//     }
-//   },
-
-//   CheckoutMain: {
-//     screen: CheckoutScreen,
-//     navigationOptions: {
-//       tabBarVisible: false,
-//       headerBackTitle: null,
-//       headerBackground: <HeaderTwo />,
-//       headerBackImage: (
-//         <View
-//           style={{
-//             marginLeft: scale(5)
-//           }}
-//         >
-//           <Image
-//             source={require("./assets/back-arrow-icon.png")}
-//             style={{
-//               width: moderateScale(20),
-//               height: verticalScale(20),
-//               tintColor: colors.whitetext
-//             }}
-//             resizeMode="contain"
-//           />
-//         </View>
-//       )
-//     }
-//   },
-
-//   CheckoutCard: {
-//     screen: StepTwo,
-//     navigationOptions: {
-//       tabBarVisible: false,
-//       headerBackTitle: null,
-//       headerBackground: <HeaderTwo />,
-//       headerBackImage: (
-//         <View
-//           style={{
-//             marginLeft: scale(5)
-//           }}
-//         >
-//           <Image
-//             source={require("./assets/back-arrow-icon.png")}
-//             style={{
-//               width: moderateScale(20),
-//               height: verticalScale(20),
-//               tintColor: colors.whitetext
-//             }}
-//             resizeMode="contain"
-//           />
-//         </View>
-//       )
-//     }
-//   },
-
-//   Summary: {
-//     screen: StepThree,
-//     navigationOptions: {
-//       tabBarVisible: false,
-//       headerBackTitle: null,
-//       headerBackground: <HeaderTwo />,
-//       headerBackImage: (
-//         <View
-//           style={{
-//             marginLeft: scale(5)
-//           }}
-//         >
-//           <Image
-//             source={require("./assets/back-arrow-icon.png")}
-//             style={{
-//               width: moderateScale(20),
-//               height: verticalScale(20),
-//               tintColor: colors.whitetext
-//             }}
-//             resizeMode="contain"
-//           />
-//         </View>
-//       )
-//     }
-//   },
-
-//   OrderNow: {
-//     screen: ThankyouScreens,
-//     navigationOptions: {
-//       tabBarVisible: false,
-//       headerBackTitle: null,
-//       headerBackground: <HeaderTwo />,
-//       headerBackImage: (
-//         <View
-//           style={{
-//             marginLeft: scale(5)
-//           }}
-//         >
-//           <Image
-//             source={require("./assets/back-arrow-icon.png")}
-//             style={{
-//               width: moderateScale(20),
-//               height: verticalScale(20),
-//               tintColor: colors.whitetext
-//             }}
-//             resizeMode="contain"
-//           />
-//         </View>
-//       )
-//     }
-//   }
-// });
-
-// const focused =(
-//   <labelStyle style={{color: focused ? colors.bgblue : colors.whitetext}}/>
-// )
-
-const LimitedStackNavigator = createStackNavigator({
-  Profile: {
-    screen: LimitedTimeProduct,
+const CartStackNavigator = createStackNavigator({
+  ViewCart: {
+    screen: YourCart,
     navigationOptions: {
-      tabBarLabel: "OFFERS",
-      headerBackTitle: null,
       tabBarVisible: false,
+      headerBackTitle: null,
       header: <HeaderTwo />,
       headerBackImage: (
         <View
@@ -857,13 +590,17 @@ const LimitedStackNavigator = createStackNavigator({
         </View>
       )
     }
-  },
-  MyOrders: {
-    screen: MyOrders,
+  }
+});
+
+const LimitedStackNavigator = createStackNavigator({
+  Profile: {
+    screen: LimitedTimeProduct,
     navigationOptions: {
+      tabBarLabel: "OFFERS",
       headerBackTitle: null,
       tabBarVisible: false,
-      header: <Header />,
+      header: <HeaderTwo />,
       headerBackImage: (
         <View
           style={{
@@ -906,7 +643,7 @@ const TabNavigator = createBottomTabNavigator(
       }
     },
     CartTab: {
-      screen: YourCart,
+      screen: CartStackNavigator,
       navigationOptions: {
         tabBarLabel: "CART"
       }
