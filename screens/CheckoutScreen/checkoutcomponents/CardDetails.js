@@ -4,7 +4,8 @@ import { TabView, SceneMap, TabBar } from "react-native-tab-view";
 
 import CategoryButton from "../../../components/CategoryButton";
 import VisaMasterCard from "../checkoutcomponents/VisaMasterCard";
-import SavedCard from "../checkoutcomponents/SavedCard";
+import SavedCardFlatlist from "../../ProfileScreen/ProfileComponents/SavedCardFlatlist";
+// import SavedCard from "../checkoutcomponents/SavedCard";
 import NewCard from "../checkoutcomponents/NewCard";
 
 import { withNavigation } from "react-navigation";
@@ -19,71 +20,14 @@ const FirstRoute = () => {
   //   };
 
   return (
-    <View style={[styles.container, { paddingVertical: verticalScale(20) }]}>
+    <View style={[styles.container, { paddingVertical: verticalScale(5) }]}>
       {/* SAVED CARD DETAILS START */}
       <View
         style={{
-          flex: 1,
-          justifyContent: "space-evenly"
+          flex: 1
         }}
       >
-        <View>
-          <SavedCard
-            accountholdername="ACCOUNT HOLDER NAME"
-            accountexpiry="2020/02"
-            accountnumber="01234 5678 9876"
-          >
-            <Image
-              source={require("../../../assets/visa.png")}
-              style={{
-                width: moderateScale(76),
-                height: verticalScale(76),
-                position: "absolute",
-                right: moderateScale(10)
-              }}
-              resizeMode="contain"
-            />
-          </SavedCard>
-        </View>
-        {/* SECOND CARD */}
-        <View>
-          <SavedCard
-            accountholdername="ACCOUNT HOLDER NAME"
-            accountexpiry="2020/02"
-            accountnumber="01234 5678 9876"
-          >
-            <Image
-              source={require("../../../assets/master.png")}
-              style={{
-                width: moderateScale(76),
-                height: verticalScale(76),
-                position: "absolute",
-                right: moderateScale(10)
-              }}
-              resizeMode="contain"
-            />
-          </SavedCard>
-        </View>
-        {/* THIRD CARD */}
-        <View>
-          <SavedCard
-            accountholdername="ACCOUNT HOLDER NAME"
-            accountexpiry="2020/02"
-            accountnumber="01234 5678 9876"
-          >
-            <Image
-              source={require("../../../assets/master.png")}
-              style={{
-                width: moderateScale(76),
-                height: verticalScale(76),
-                position: "absolute",
-                right: moderateScale(10)
-              }}
-              resizeMode="contain"
-            />
-          </SavedCard>
-        </View>
-        {/* END OF SAVED CARD DETAILS */}
+        <SavedCardFlatlist />
       </View>
 
       <View
@@ -96,7 +40,7 @@ const FirstRoute = () => {
       >
         {/* SAVE CARD AND PROCEED BUTTON START*/}
         <CategoryButton
-          style={styles.addmorebuttonContainer}
+          style={styles.saveandproceedbuttonContainer}
           onPress={() => {
             this.props.jumpTo("second");
           }}
@@ -261,7 +205,7 @@ const styles = StyleSheet.create({
     borderRadius: scale(30)
   },
   // NEXT SECTION STYLE
-  addmorebuttonContainer: {
+  saveandproceedbuttonContainer: {
     width: moderateScale(280),
     height: verticalScale(50),
     borderRadius: moderateScale(25),
