@@ -251,12 +251,18 @@ class PreferenceList extends Component {
               {item.sale ? (
                 <View style={{ flexDirection: "column" }}>
                   <View style={{ flexDirection: "row" }}>
-                    <View style={{ flex: 1 }}>
+                    <View
+                      style={{
+                        flex: 1,
+                        alignItems: "flex-end",
+                        paddingRight: moderateScale(5)
+                      }}
+                    >
                       <Text style={styles.originalpriceText}>
                         AED {item.price}
                       </Text>
                     </View>
-                    <View style={{ flex: 0.97 }}>
+                    <View style={{ flex: 1, alignItems: "flex-end" }}>
                       <View style={styles.saleContainer}>
                         <Text style={styles.saletext}>{item.sale}</Text>
                       </View>

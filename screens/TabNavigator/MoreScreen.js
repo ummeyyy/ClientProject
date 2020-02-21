@@ -37,10 +37,10 @@ class MoreScreen extends Component {
       // <ProductScreen></ProductScreen>
       // <ViewAllCategories></ViewAllCategories>
       // <Brochure></Brochure>
-      // <BrochureType />
+      <BrochureType />
       // <BrochureCart></BrochureCart>
       // <BrandCheckupSchedule />
-      <BrandCheckupCart></BrandCheckupCart>
+      // <BrandCheckupCart></BrandCheckupCart>
       // <CheckoutScreen></CheckoutScreen>
       // <StepTwo></StepTwo>
       // <StepThree></StepThree>
