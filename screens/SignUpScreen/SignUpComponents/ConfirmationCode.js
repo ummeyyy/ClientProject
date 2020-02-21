@@ -57,15 +57,13 @@ const styles = StyleSheet.create({
   root: { flex: 1, paddingHorizontal: moderateScale(5) },
   codeFiledRoot: { marginTop: verticalScale(1) },
   cell: {
-    width: moderateScale(45),
-    height: verticalScale(45),
+    width: moderateScale(40),
+    height: verticalScale(40),
     backgroundColor: colors.inactivegreybutton,
-    lineHeight: scale(32),
+    lineHeight: scale(30),
     color: colors.greytext,
     fontWeight: "800",
-    fontSize: scale(26),
-    borderWidth: moderateScale(2),
-    borderColor: colors.inactivegreybutton,
+    fontSize: scale(22),
     textAlign: "center"
   },
   focusCell: {

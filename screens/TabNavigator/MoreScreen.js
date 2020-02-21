@@ -44,17 +44,16 @@ class MoreScreen extends Component {
       // <CheckoutScreen></CheckoutScreen>
       // <StepTwo></StepTwo>
       // <StepThree></StepThree>
-      // <VerifyNumber></VerifyNumber>
+      <VerifyNumber></VerifyNumber>
       // <ConfirmationCode />
       // <MainWalkthrough> </MainWalkthrough>
       // <FirstScreen></FirstScreen>
       // <SecondScreen></SecondScreen>
       // <ThirdScreen></ThirdScreen>
-      <FourthScreen></FourthScreen>
+      // <FourthScreen></FourthScreen>
       // <EmailSent></EmailSent>
       // <PasswordReset></PasswordReset>
       // <ForgotPassword></ForgotPassword>
-      // <Password></Password>
       // <SignUp></SignUp>
       // <Login></Login>
       // <View style={styles.container}>
