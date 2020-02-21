@@ -78,8 +78,10 @@ class CheckoutScreen extends Component {
         {/*WHICH PAYMENT METHOD START*/}
         <View
           style={{
+            flex: 2,
             marginHorizontal: moderateScale(20),
-            marginVertical: verticalScale(30)
+            alignItems: "center",
+            justifyContent: "center"
           }}
         >
           <PaymentMethodSelection name="CASH ON DELIVERY">
@@ -127,8 +129,10 @@ class CheckoutScreen extends Component {
         {/* PROCEED TO NEXT STEP BUTTON START*/}
         <View
           style={{
-            marginTop: verticalScale(80),
-            marginBottom: verticalScale(30)
+            flex: 0.7,
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: verticalScale(50)
           }}
         >
           <CategoryButton
@@ -144,7 +148,9 @@ class CheckoutScreen extends Component {
         <PriceTab
           style={{
             backgroundColor: colors.bgblue,
-            marginTop: verticalScale(10)
+            flex: 0.8,
+            justifyContent: "center"
+            // marginTop: verticalScale(10),
           }}
         >
           <View

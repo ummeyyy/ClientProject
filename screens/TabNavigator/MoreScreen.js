@@ -41,8 +41,8 @@ class MoreScreen extends Component {
       // <BrochureCart></BrochureCart>
       // <BrandCheckupSchedule />
       // <BrandCheckupCart></BrandCheckupCart>
-      // <CheckoutScreen></CheckoutScreen>
-      <StepTwo></StepTwo>
+      <CheckoutScreen></CheckoutScreen>
+      // <StepTwo></StepTwo>
       // <StepThree></StepThree>
       // <VerifyNumber></VerifyNumber>
       // <ConfirmationCode />
