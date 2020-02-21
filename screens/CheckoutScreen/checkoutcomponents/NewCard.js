@@ -254,7 +254,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     marginLeft: moderateScale(10),
     width: moderateScale(250),
-    height: verticalScale(40),
+    height: verticalScale(45),
     padding: scale(10),
     backgroundColor: colors.whitetext,
     color: colors.blacktext,

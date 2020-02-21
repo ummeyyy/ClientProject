@@ -42,9 +42,9 @@ class MoreScreen extends Component {
       // <BrandCheckupSchedule />
       // <BrandCheckupCart></BrandCheckupCart>
       // <CheckoutScreen></CheckoutScreen>
-      // <StepTwo></StepTwo>
+      <StepTwo></StepTwo>
       // <StepThree></StepThree>
-      <VerifyNumber></VerifyNumber>
+      // <VerifyNumber></VerifyNumber>
       // <ConfirmationCode />
       // <MainWalkthrough> </MainWalkthrough>
       // <FirstScreen></FirstScreen>
