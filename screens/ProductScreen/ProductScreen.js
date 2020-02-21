@@ -367,7 +367,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: moderateScale(8)
   },
   productHeadingText: {
-    fontSize: scale(17.5),
+    fontSize: scale(17),
     fontWeight: "bold",
     color: colors.bgyellow
   },

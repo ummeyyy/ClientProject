@@ -35,9 +35,9 @@ class MoreScreen extends Component {
       // <Splash />
       // <LimitedTimeProduct />
       // <ProductScreen></ProductScreen>
-      // <ViewAllCategories></ViewAllCategories>
+      <ViewAllCategories></ViewAllCategories>
       // <Brochure></Brochure>
-      <BrochureType />
+      // <BrochureType />
       // <BrochureCart></BrochureCart>
       // <BrandCheckupSchedule />
       // <BrandCheckupCart></BrandCheckupCart>

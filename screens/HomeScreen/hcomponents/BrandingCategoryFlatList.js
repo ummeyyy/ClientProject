@@ -205,22 +205,27 @@ class BrandingCategoryFlatList extends React.Component {
                 </View>
 
                 {/* SHARE AND CODE */}
-                <View style={{ flexDirection: "row" }}>
-                  <Text style={styles.codeText}>CODE: {item.code}</Text>
-                  <Text style={styles.shareText}> SHARE </Text>
-                  <FontAwesome
-                    color={colors.greytext}
-                    size={scale(15)}
-                    style={{ marginTop: scale(8) }}
-                    {...Platform.select({
-                      ios: {
-                        name: "share-square"
-                      },
-                      android: {
-                        name: "plus"
-                      }
-                    })}
-                  />
+                <View style={{ flexDirection: "row", alignItems: "flex-end" }}>
+                  <View>
+                    <Text style={styles.codeText}>CODE: {item.code}</Text>
+                  </View>
+                  <View style={{ flexDirection: "row" }}>
+                    <Text style={styles.shareText}> SHARE </Text>
+                    <TouchableOpacity
+                      style={{
+                        paddingTop: verticalScale(10),
+                        paddingHorizontal: moderateScale(5)
+                      }}
+                    >
+                      <Image
+                        source={require("../../../assets/share-icon.png")}
+                        style={{
+                          width: moderateScale(15),
+                          height: verticalScale(15)
+                        }}
+                      />
+                    </TouchableOpacity>
+                  </View>
                 </View>
               </View>
             </Card>
