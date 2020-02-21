@@ -59,7 +59,6 @@ class Profile extends Component {
       <View style={styles.container}>
         <KeyboardAwareScrollView
           resetScrollToCoords={{ x: 0, y: 0 }}
-          contentContainerStyle={styles.container}
           scrollEnabled={true}
           enableOnAndroid={true}
         >

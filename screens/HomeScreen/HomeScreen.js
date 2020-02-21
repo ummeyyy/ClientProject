@@ -51,6 +51,7 @@ class HomeScreen extends Component {
         {/* BODY */}
         <KeyboardAwareScrollView
           resetScrollToCoords={{ x: 0, y: 0 }}
+          contentContainerStyle={{ flexGrow: 1 }}
           scrollEnabled={true}
         >
           <View style={{ flex: 1 }}>

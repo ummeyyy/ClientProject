@@ -284,7 +284,7 @@ const styles = StyleSheet.create({
     paddingVertical: verticalScale(7),
     right: moderateScale(15),
     bottom: moderateScale(-15),
-    backgroundColor: "white",
+    backgroundColor: colors.whitetext,
     borderWidth: moderateScale(2.5),
     borderColor: colors.bgblue,
     borderRadius: moderateScale(25)
@@ -320,7 +320,7 @@ const styles = StyleSheet.create({
     marginHorizontal: moderateScale(10)
   },
   productHeadingText: {
-    fontSize: scale(17.5),
+    fontSize: scale(17),
     fontWeight: "bold",
     color: colors.bgyellow
   },
