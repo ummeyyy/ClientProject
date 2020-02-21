@@ -77,7 +77,7 @@ class BrandCheckupCart extends Component {
     }));
   };
 
-  renderItem = (item, index) => (
+  promorenderItem = (item, index) => (
     <View
       style={{
         flexDirection: "row",
@@ -102,7 +102,6 @@ class BrandCheckupCart extends Component {
           {item}
         </Text>
       </View>
-
       <View style={{ flex: 0.25 }}>
         <TouchableOpacity onPress={() => this.deletepromo(item, index)}>
           <Entypo name="cross" size={scale(25)} color={colors.greytext} />
@@ -117,7 +116,7 @@ class BrandCheckupCart extends Component {
         style={styles.container}
         behavior="padding"
         enabled
-        keyboardVerticalOffset={Platform.OS === "ios" ? scale(60) : 0}
+        keyboardVerticalOffset={Platform.OS === "ios" ? scale(2) : 0}
       >
         <View style={styles.container}>
           <SafeAreaView />
@@ -320,22 +319,24 @@ class BrandCheckupCart extends Component {
                   placeholder="ENTER CODE"
                   onChangeText={text => this.setState({ addpromodata: text })}
                 />
-                <CategoryButton
+
+                <TouchableOpacity
                   style={styles.applypromoContainer}
                   onPress={() => this.addpromo(this.state.addpromodata)}
                 >
                   <Text style={styles.applypromoText}>APPLY</Text>
-                </CategoryButton>
+                </TouchableOpacity>
               </View>
 
               {/* DISPLAYING PROMOS */}
               <FlatList
                 data={this.state.promos}
-                renderItem={({ item }, index) => this.renderItem(item, index)}
+                renderItem={({ item }, index) =>
+                  this.promorenderItem(item, index)
+                }
                 keyExtractor={(item, index) => index.toString()}
               />
             </View>
-
             {/* CALCULATIONS */}
             <View style={{ marginTop: verticalScale(35) }}>
               {/* SUB TOTAL */}
@@ -587,7 +588,9 @@ const styles = StyleSheet.create({
     width: moderateScale(90),
     height: verticalScale(34.5),
     position: "absolute",
-    right: scale(0.4),
+    right: scale(40),
+    alignItems: "center",
+    justifyContent: "center",
     marginVertical: verticalScale(5),
     borderRadius: moderateScale(25),
     backgroundColor: colors.bgblue
