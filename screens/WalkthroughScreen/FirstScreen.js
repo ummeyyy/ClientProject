@@ -80,7 +80,7 @@ class FirstScreen extends Component {
             alignItems: "center",
             justifyContent: "center",
             position: "absolute",
-            bottom: verticalScale(50)
+            bottom: verticalScale(35)
           }}
         >
           <CategoryButton
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   centerTextView: {
     flex: 1,
     position: "absolute",
-    top: verticalScale(335),
+    top: verticalScale(300),
     alignItems: "center",
     justifyContent: "center"
   },

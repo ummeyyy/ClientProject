@@ -81,7 +81,7 @@ class ThirdScreen extends Component {
             alignItems: "center",
             justifyContent: "center",
             position: "absolute",
-            bottom: verticalScale(50)
+            bottom: verticalScale(35)
           }}
         >
           <CategoryButton
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   centerTextView: {
     flex: 1,
     position: "absolute",
-    top: verticalScale(350),
+    top: verticalScale(310),
     alignItems: "center",
     justifyContent: "center"
   },

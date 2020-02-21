@@ -106,7 +106,7 @@ class MainWalkthrough extends Component {
             alignItems: "center",
             justifyContent: "center",
             position: "absolute",
-            bottom: verticalScale(160)
+            bottom: verticalScale(100)
           }}
         >
           <CategoryButton
