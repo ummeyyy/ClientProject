@@ -8,11 +8,7 @@ import {
   TouchableOpacity,
   ImageBackground
 } from "react-native";
-import {
-  Ionicons,
-  MaterialCommunityIcons,
-  MaterialIcons
-} from "@expo/vector-icons";
+import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 
 import { moderateScale, scale, verticalScale } from "../scale";
 import colors from "../assets/colors";
@@ -242,11 +238,10 @@ const styles = StyleSheet.create({
     marginLeft: scale(20),
     backgroundColor: colors.whitetext,
     flex: 2,
-
     shadowColor: colors.blacktext,
     shadowOffset: { width: moderateScale(0), height: verticalScale(11) },
     shadowOpacity: 0.57,
-    shadowRadius: scale(15.19),
+    shadowRadius: scale(15),
     elevation: scale(23)
   },
   descriptionContainer: {
@@ -294,7 +289,7 @@ const styles = StyleSheet.create({
   },
   ratetext: {
     fontWeight: "bold",
-    fontSize: scale(12.5),
+    fontSize: scale(12),
     color: colors.whitetext
   },
   saleContainer: {

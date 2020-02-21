@@ -17,7 +17,6 @@ import CategoryButton from "../../components/CategoryButton";
 import FlatListComponent from "../../components/FlatListComponent";
 import Swiper from "../../components/Swiper";
 import BrandingCategoryFlatList from "../HomeScreen/hcomponents/BrandingCategoryFlatList";
-import PromotionCard from "../HomeScreen/hcomponents/PromotionCard";
 
 export default class ViewAllCategories extends React.Component {
   //onpress call back from tapping on branding flatlist for
@@ -72,11 +71,6 @@ export default class ViewAllCategories extends React.Component {
                 onDetails={this.handlePromotions}
               ></BrandingCategoryFlatList>
             </View>
-
-            {/* PROMOTIONS HERE */}
-            {/* <View>
-              <PromotionCard />
-            </View> */}
 
             {/* RELATED PRODUCTS HERE */}
             <View

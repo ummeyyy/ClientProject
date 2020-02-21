@@ -7,6 +7,7 @@ import {
   Text,
   Animated
 } from "react-native";
+
 import { TabView, SceneMap, TabBar } from "react-native-tab-view";
 
 import { moderateScale, scale, verticalScale } from "../../../scale";

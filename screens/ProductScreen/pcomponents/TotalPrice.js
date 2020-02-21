@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   },
   cartbuttontext: {
     flex: 1.75,
-    fontSize: scale(13.5),
+    fontSize: scale(13),
     fontWeight: "600",
     color: colors.whitetext
   },

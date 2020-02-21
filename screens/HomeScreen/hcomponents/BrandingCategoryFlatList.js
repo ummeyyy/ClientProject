@@ -8,11 +8,7 @@ import {
   TouchableOpacity,
   ImageBackground
 } from "react-native";
-import {
-  FontAwesome,
-  MaterialCommunityIcons,
-  MaterialIcons
-} from "@expo/vector-icons";
+import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import PromotionCard from "../hcomponents/PromotionCard";
 import PropTypes from "prop-types";
 
