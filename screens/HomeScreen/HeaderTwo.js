@@ -5,11 +5,20 @@ import {
   Text,
   Image,
   SafeAreaView,
+  StatusBar,
   TextInput,
   TouchableOpacity
 } from "react-native";
 
-import { moderateScale, scale, verticalScale } from "../../scale";
+import {
+  moderateScale,
+  scale,
+  verticalScale,
+  isIphoneX,
+  getBottomSpace,
+  getStatusBarHeight,
+  ifIphoneX
+} from "../../scale";
 import colors from "../../assets/colors";
 
 import { withNavigation } from "react-navigation";
@@ -44,10 +53,11 @@ class HeaderTwo extends React.Component {
     return (
       <View
         style={{
-          flex: 1,
           backgroundColor: colors.bgblue,
           paddingTop: verticalScale(3),
-          height: verticalScale(50)
+          height: verticalScale(50),
+          alignItems: "center",
+          justifyContent: "center"
         }}
       >
         <View
@@ -97,23 +107,30 @@ class HeaderTwo extends React.Component {
 
   render() {
     return (
-      <SafeAreaView style={styles.container}>
+      <View
+        style={{
+          backgroundColor: colors.bgblue,
+          height: getStatusBarHeight()
+        }}
+      >
+        <SafeAreaView style={styles.topSafeArea} />
+        <StatusBar />
         {/* TOP PART OF HEADER */}
         <View
           style={{
             flexDirection: "row",
-            alignItems: "center"
+            alignItems: "center",
+            backgroundColor: colors.bgblue,
+            height: verticalScale(40)
           }}
         >
           {/* DRAWER ICON START*/}
-
           <TouchableOpacity
             style={{
               flex: 0.2,
               alignItems: "center",
               justifyContent: "center",
-              paddingLeft: scale(30),
-              marginTop: verticalScale(2)
+              paddingLeft: scale(30)
             }}
             onPress={this.tap}
           >
@@ -250,13 +267,17 @@ class HeaderTwo extends React.Component {
           {/* OTHER ICONS END */}
         </View>
         {!this.state.showicon ? <this.searchbar /> : null}
-      </SafeAreaView>
+      </View>
     );
   }
 }
 export default withNavigation(HeaderTwo);
 
 const styles = StyleSheet.create({
+  topSafeArea: {
+    flex: 1,
+    backgroundColor: colors.bgblue
+  },
   container: {
     flex: 1,
     alignItems: "center",

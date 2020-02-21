@@ -15,45 +15,6 @@ import colors from "../../../assets/colors";
 import Animated from "react-native-reanimated";
 
 const FirstRoute = () => {
-  //   onButtonPress = () => {
-  //     this.props.jumpTo("second");
-  //   };
-
-  return (
-    <View style={[styles.container, { paddingVertical: verticalScale(5) }]}>
-      {/* SAVED CARD DETAILS START */}
-      <View
-        style={{
-          flex: 1
-        }}
-      >
-        <SavedCardFlatlist />
-      </View>
-
-      <View
-        style={{
-          flex: 0.5,
-          justifyContent: "center",
-          paddingVertical: verticalScale(10),
-          paddingHorizontal: verticalScale(35)
-        }}
-      >
-        {/* SAVE CARD AND PROCEED BUTTON START*/}
-        <CategoryButton
-          style={styles.saveandproceedbuttonContainer}
-          onPress={() => {
-            this.props.jumpTo("second");
-          }}
-        >
-          <Text style={styles.ButtonText}>SAVE CARD AND PROCEED</Text>
-        </CategoryButton>
-        {/* SAVE CARD AND PROCEED BUTTON END*/}
-      </View>
-    </View>
-  );
-};
-
-const SecondRoute = () => {
   return (
     <View style={styles.container}>
       {/* VISA/MASTER START */}
@@ -84,8 +45,47 @@ const SecondRoute = () => {
           paddingHorizontal: verticalScale(35)
         }}
       >
+        {/* SAVE CARD AND PROCEED BUTTON START*/}
+        <CategoryButton
+          style={styles.buttonContainer}
+          // onPress={() => {
+          //   this.props.jumpTo("second");
+          // }}
+        >
+          <Text style={styles.ButtonText}>SAVE CARD AND PROCEED</Text>
+        </CategoryButton>
+        {/* SAVE CARD AND PROCEED BUTTON END*/}
+      </View>
+    </View>
+  );
+};
+
+const SecondRoute = () => {
+  //   onButtonPress = () => {
+  //     this.props.jumpTo("second");
+  //   };
+
+  return (
+    <View style={[styles.container, { paddingVertical: verticalScale(5) }]}>
+      {/* SAVED CARD DETAILS START */}
+      <View
+        style={{
+          flex: 1
+        }}
+      >
+        <SavedCardFlatlist />
+      </View>
+
+      <View
+        style={{
+          flex: 0.5,
+          justifyContent: "center",
+          paddingVertical: verticalScale(10),
+          paddingHorizontal: verticalScale(35)
+        }}
+      >
         {/* PROCEED TO CHECK OUT BUTTON START*/}
-        <CategoryButton style={styles.addmorebuttonContainer}>
+        <CategoryButton style={styles.buttonContainer}>
           <Text style={styles.ButtonText}>PROCEED TO CHECK OUT</Text>
         </CategoryButton>
         {/* PROCEED TO CHECK OUT BUTTON END*/}
@@ -93,6 +93,7 @@ const SecondRoute = () => {
     </View>
   );
 };
+
 class CardDetails extends React.Component {
   state = {
     index: 0,
@@ -205,7 +206,7 @@ const styles = StyleSheet.create({
     borderRadius: scale(30)
   },
   // NEXT SECTION STYLE
-  saveandproceedbuttonContainer: {
+  buttonContainer: {
     width: moderateScale(280),
     height: verticalScale(50),
     borderRadius: moderateScale(25),

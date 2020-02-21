@@ -64,6 +64,7 @@ import {
   createStackNavigator,
   createDrawerNavigator,
   createBottomTabNavigator,
+  HeaderBackButton,
   NavigationActions
 } from "react-navigation";
 

@@ -56,11 +56,12 @@ class Profile extends Component {
 
   render() {
     return (
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
         <KeyboardAwareScrollView
           resetScrollToCoords={{ x: 0, y: 0 }}
           contentContainerStyle={styles.container}
           scrollEnabled={true}
+          enableOnAndroid={true}
         >
           {/* ACCOUNT DETAILS SCROLLBAR START*/}
           <View style={styles.catogeryContainer}>
@@ -352,7 +353,7 @@ class Profile extends Component {
           </View>
           {/* ALL INPUT FIELDS END*/}
         </KeyboardAwareScrollView>
-      </SafeAreaView>
+      </View>
     );
   }
 }

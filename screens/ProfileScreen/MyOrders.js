@@ -48,6 +48,7 @@ class MyOrders extends Component {
           resetScrollToCoords={{ x: 0, y: 0 }}
           contentContainerStyle={styles.container}
           scrollEnabled={true}
+          enableOnAndroid={true}
         >
           {/* ACCOUNT DETAILS SCROLLBAR START*/}
           <View style={styles.catogeryContainer}>

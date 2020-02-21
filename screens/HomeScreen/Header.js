@@ -5,25 +5,37 @@ import {
   Text,
   Image,
   SafeAreaView,
-  TextInput,
   StatusBar,
-  Alert,
+  TextInput,
   TouchableOpacity
 } from "react-native";
 
-import { FontAwesome } from "@expo/vector-icons";
-
-import { moderateScale, scale, verticalScale } from "../../scale";
+import {
+  moderateScale,
+  scale,
+  verticalScale,
+  isIphoneX,
+  getBottomSpace,
+  getStatusBarHeight,
+  ifIphoneX
+} from "../../scale";
 import colors from "../../assets/colors";
 
 import { withNavigation } from "react-navigation";
+import { FontAwesome } from "@expo/vector-icons";
 
 class Header extends React.Component {
   constructor(props) {
     super(props);
+    this.toggleSearch = this.toggleSearch.bind(this);
     this.state = {
+      showicon: true,
       search: ""
     };
+  }
+
+  toggleSearch() {
+    this.setState({ showicon: !this.state.showicon });
   }
 
   tap = () => {
@@ -41,10 +53,11 @@ class Header extends React.Component {
     return (
       <View
         style={{
-          flex: 1,
           backgroundColor: colors.bgblue,
           paddingTop: verticalScale(3),
-          height: verticalScale(50)
+          height: verticalScale(50),
+          alignItems: "center",
+          justifyContent: "center"
         }}
       >
         <View
@@ -94,23 +107,30 @@ class Header extends React.Component {
 
   render() {
     return (
-      <SafeAreaView style={styles.container}>
+      <View
+        style={{
+          backgroundColor: colors.bgblue,
+          height: getStatusBarHeight()
+        }}
+      >
+        <SafeAreaView style={styles.topSafeArea} />
+        <StatusBar />
         {/* TOP PART OF HEADER */}
         <View
           style={{
             flexDirection: "row",
-            alignItems: "center"
+            alignItems: "center",
+            backgroundColor: colors.bgblue,
+            height: verticalScale(40)
           }}
         >
           {/* DRAWER ICON START*/}
-
           <TouchableOpacity
             style={{
               flex: 0.2,
               alignItems: "center",
               justifyContent: "center",
-              paddingLeft: scale(30),
-              marginTop: verticalScale(2)
+              paddingLeft: scale(30)
             }}
             onPress={this.tap}
           >
@@ -130,7 +150,6 @@ class Header extends React.Component {
               flex: 0.2,
               alignItems: "center",
               justifyContent: "center",
-              marginTop: verticalScale(-2),
               marginLeft: moderateScale(10)
             }}
           >
@@ -157,8 +176,7 @@ class Header extends React.Component {
             <View
               style={{
                 flexDirection: "row",
-                marginLeft: moderateScale(5),
-                marginTop: verticalScale(-2)
+                marginLeft: moderateScale(5)
               }}
             >
               <Text>
@@ -200,7 +218,6 @@ class Header extends React.Component {
               alignItems: "center",
               justifyContent: "space-between",
               padding: scale(10),
-              marginTop: verticalScale(2),
               marginRight: moderateScale(10)
             }}
           >
@@ -228,19 +245,22 @@ class Header extends React.Component {
                 resizeMode="contain"
               />
             </TouchableOpacity>
-
             {/* CART ICON END*/}
           </View>
           {/* OTHER ICONS END */}
         </View>
         <this.searchbar />
-      </SafeAreaView>
+      </View>
     );
   }
 }
 export default withNavigation(Header);
 
 const styles = StyleSheet.create({
+  topSafeArea: {
+    flex: 1,
+    backgroundColor: colors.bgblue
+  },
   container: {
     flex: 1,
     alignItems: "center",
